@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: Steps to make app in node with express
 ---
 
@@ -51,14 +51,13 @@ title: Steps to make app in node with express
 		    , "socket.io" : ">= 0.0.1"
 		  }
 		}
-	
+
 	我们添加了socket.io module，保存。再用npm来安装所有依赖的modules。
 
 		npm install
 
 6. 基本的配置已经完成了，接下来我们编辑./views/index.js
 
-		
 		/*
 		 * GET home page.
 		 */

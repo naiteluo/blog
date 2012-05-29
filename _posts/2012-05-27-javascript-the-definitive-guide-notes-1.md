@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: JavaScript the Definitive Guide Reading notes (1)
 ---
 
@@ -16,7 +16,7 @@ Minimal built-in API for working with text, arrays, dates, and regular expressio
 blablabla…
 
 JavaScript is object-oriented, but it is quite different than most. Here show how to create class to represent 2D geometric points.
-	
+
 	// Define a construtor function to initialize a new Point object
 	function Point(x, y) {		// by convention, constructors start with capitals
 		this.x = x;				// this keyword is the new object being init

@@ -3,10 +3,14 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="chrome=1">
-	<title>I Want To Talk With The World</title>
+	<title>
+		
+			I Want To Code With You
+		
+	</title>
 
-	<link rel="stylesheet" href="stylesheets/styles.css">
-	<link rel="stylesheet" href="stylesheets/pygment_trac.css">
+	<link rel="stylesheet" href="/stylesheets/styles.css">
+	<link rel="stylesheet" href="/stylesheets/pygment_trac.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -15,20 +19,200 @@
 <body>
 	<div class="wrapper">
 		<header>
-			<h1>MMNN</h1>
+			<h1><a href="http://naiteluo.net">MMNN</a></h1>
 			<p>naiteluo's blog</p>
 			<p class="view">
-				<a href="https://github.com/naiteluo/naiteluo">View the Project on GitHub <small>naiteluo/naiteluo</small></a>
+				<a href="https://github.com/naiteluo/blog">View the Project on GitHub <small>naiteluo/naiteluo</small></a>
 			</p>
-			<ul style="display: none">
-				<li><a href="https://github.com/naiteluo/naiteluo/zipball/master">Download <strong>ZIP File</strong></a></li>
-				<li><a href="https://github.com/naiteluo/naiteluo/tarball/master">Download <strong>TAR Ball</strong></a></li>
-				<li><a href="https://github.com/naiteluo/naiteluo">View On <strong>GitHub</strong></a></li>
+			<ul style="display: block">
+				<li><a href="#">Download <strong>ZIP File</strong></a></li>
+				<li><a href="#">Download <strong>TAR Ball</strong></a></li>
+				<li><a href="https://github.com/naiteluo/blog">View On <strong>GitHub</strong></a></li>
 			</ul>
 		</header>
 		<section>
-			<h1>I Want To Talk With The World</h1>
-			
+			<h1>I Want To Code With You</h1>
+
+<h2>
+	<a href="/2012-05-28/build-your-blog-with-github-pages-and-jekyll.html">
+		Build your blog with github pages and jekyll
+	</a>
+</h2>
+<!-- <p>It is cool to have yout own blog. And it is really cool to have a blog built with github pages. Let learn about it together.</p> <h2>what I refer to</h2> <p>Fisrt i will follow the guide in <a href="http://help.github.com/pages">GitHub Pages help</a>. If you can easily read that guide, i strongly... -->
+<p>It is cool to have yout own blog. And it is really cool to have a blog built with github pages. Let learn about it together.</p>
+
+<h2>what I refer to</h2>
+
+<p>Fisrt i will follow the guide in <a href="http://help.github.com/pages">GitHub Pages help</a>. If you can easily read that guide, i strongly recommend you to read it fisrt. I write this article as a reading note.
+Second, you need some basic knowledge about <a href="https://github.com/mojombo/jekyll/wiki/Usage">jekyll</a>.</p>
+
+<h2>What is GitHub Pages</h2>
+
+<p>It is a feature that allow you to publish content to web by pushing them to yout GitHub hosted repositories. Some people use it to make blog and some use Pages to create a project intro website. I am going to use it to make a personal Blog.</p>
+
+<h2>Steps</h2>
+
+<p>To be continued...</p>
+
+<em>Posted on 28 May 2012.</em>
+<hr/>
+
+<h2>
+	<a href="/2012-05-27/javascript-the-definitive-guide-notes-1.html">
+		JavaScript the Definitive Guide Reading notes (1)
+	</a>
+</h2>
+<!-- <h2>Chapter 1, Introduction to JavaScript</h2> <blockquote><p>HTML to specify the content of web pages, css to specify the presentation of web pages, and JavaScript to specify the behavior of web pages.</p></blockquote> <p>High-level, dynamic, untyped interpreted(解释). Well-suited to object-oriented and functional programming styles.</p> <p>Minimal built-in API for working with text, arrays, dates,... -->
+<h2>Chapter 1, Introduction to JavaScript</h2>
+
+<blockquote><p>HTML to specify the content of web pages, css to specify the presentation of web pages, and JavaScript to specify the behavior of web pages.</p></blockquote>
+
+<p>High-level, dynamic, untyped interpreted(解释). Well-suited to object-oriented and functional programming styles.</p>
+
+<p>Minimal built-in API for working with text, arrays, dates, and regular expressions but does not include any input or output functionality. I, O are the responsibility of the "host environment", usually web browser.</p>
+
+<h3>1.1 Core JavaScript</h3>
+
+<p>blablabla…</p>
+
+<p>JavaScript is object-oriented, but it is quite different than most. Here show how to create class to represent 2D geometric points.</p>
+
+<pre><code>// Define a construtor function to initialize a new Point object
+function Point(x, y) {      // by convention, constructors start with capitals
+    this.x = x;             // this keyword is the new object being init
+    this.y = y;             
+}                           // no return is necessary
+
+// Use a constructor function with the keyword "new" to create instances
+var p = new Point(1, 1);
+
+// Define methods for Point objects by assigning them to the prototype
+// object associated with constructor function.
+Point.prototype.r = function () {
+    return Math.sqrt(this.x * this.x + this.y + this.y);
+};
+
+// Now instances of Point object inherits the method r()
+console.log(p.r());
+</code></pre>
+
+<h3>1.2 Client-Side JavaScript</h3>
+
+<p>About web pages:</p>
+
+<ul>
+<li>JavaScript in Web Browser</li>
+<li>Scripting Documents</li>
+<li>Scripting CSS</li>
+<li><p>Handling Events</p>
+
+<p>  (addEventListener or attachEvent ? Compatibility with IE?)</p></li>
+<li><p>The [JQuery]: <a href="http://www.jquery.com/">http://www.jquery.com/</a> Library</p></li>
+</ul>
+
+
+<p>Focus on web applications:</p>
+
+<ul>
+<li>Scripted HTTP</li>
+<li>Client-Side Storage</li>
+<li>Scripted Media and Graphics</li>
+<li>HTML5 APIs, OS typed</li>
+</ul>
+
+
+<em>Posted on 27 May 2012.</em>
+<hr/>
+
+<h2>
+	<a href="/2012-05-25/steps-to-make-app-in+node-with-express.html">
+		Steps to make app in node with express
+	</a>
+</h2>
+<!-- <h2>Preparation</h2> <p>安装配置好node.js和npm。</p> <h2>Steps</h2> <ol> <li><p>创建App文件夹，进入文件夹</p> <pre><code> mkdir guess cd guess </code></pre></li> <li><p>用npm下载express</p> <pre><code> npm install express </code></pre></li> <li><p>用Express初始化App，可能会警告文件夹非空，选择y继续</p> <pre><code> ./node_module/express/bin/express . </code></pre></li> <li><p>文件目录如下：</p> <pre><code> . ├── app.js # 应用的入口，主文件 ├── node_modules # node 模块 │   └── express ├── package.json # 配置文件 ├── public # 公共文件，静态文件 │   ├── images # 图片... -->
+<h2>Preparation</h2>
+
+<p>安装配置好node.js和npm。</p>
+
+<h2>Steps</h2>
+
+<ol>
+<li><p>创建App文件夹，进入文件夹</p>
+
+<pre><code> mkdir guess
+ cd guess
+</code></pre></li>
+<li><p>用npm下载express</p>
+
+<pre><code> npm install express
+</code></pre></li>
+<li><p>用Express初始化App，可能会警告文件夹非空，选择y继续</p>
+
+<pre><code> ./node_module/express/bin/express .
+</code></pre></li>
+<li><p>文件目录如下：</p>
+
+<pre><code> .
+ ├── app.js                # 应用的入口，主文件
+ ├── node_modules      # node 模块
+ │   └── express           
+ ├── package.json      # 配置文件
+ ├── public                # 公共文件，静态文件
+ │   ├── images                # 图片
+ │   ├── javascripts           # 前端js
+ │   └── stylesheets           # 样式表
+ ├── routes                # 路由文件
+ │   └── index.js
+ └── views             # 模版
+     ├── index.jade
+     └── layout.jade
+</code></pre></li>
+<li><p>打开package.json文件，这个文件是npm用来获取app的信息和相关依赖module信息的，修改如下：</p>
+
+<pre><code> {
+     "name": "guess"
+   , "version": "0.0.1"
+   , "private": true
+   , "dependencies": {
+       "express": "2.5.8"
+     , "jade": "&gt;= 0.0.1"
+     , "socket.io" : "&gt;= 0.0.1"
+   }
+ }
+</code></pre>
+
+<p> 我们添加了socket.io module，保存。再用npm来安装所有依赖的modules。</p>
+
+<pre><code> npm install
+</code></pre></li>
+<li><p>基本的配置已经完成了，接下来我们编辑./views/index.js</p>
+
+<pre><code> /*
+  * GET home page.
+  */
+
+ exports.index = function(req, res){
+   res.render('index', { title: 'Guess' })
+ };
+</code></pre>
+
+<p> 将title修改成我们应用的名字：Guess。</p></li>
+<li><p>接下来就可以运行程序了</p>
+
+<pre><code> node app.js
+ Express server listening on port 3000 in development mode
+</code></pre>
+
+<p> 在浏览器中访问：[http://localhost:3000/]: <a href="http://localhost:3000/">http://localhost:3000/</a> ，效果如下:</p>
+
+<blockquote><p><h1>Guess</h1>
+<p>Welcome to Guess</p></p></blockquote></li>
+</ol>
+
+
+<em>Posted on 25 May 2012.</em>
+<hr/>
+
 
 
 		</section>
@@ -37,6 +221,6 @@
 			<p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
 		</footer>
 	</div>
-	<script src="javascripts/scale.fix.js"></script>
+	<script src="/javascripts/scale.fix.js"></script>
 </body>
 </html>
