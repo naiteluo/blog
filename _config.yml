@@ -1,0 +1,6 @@
+---
+# pygments: true
+title: MMNN
+permalink: /:year-:month-:day/:title.html
+
+markdown: rdiscount
