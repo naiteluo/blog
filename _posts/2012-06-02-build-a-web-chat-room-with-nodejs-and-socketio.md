@@ -1,7 +1,6 @@
 ---
-layout:post
-title:基于Node.JS与WebSocket的web聊天室
-
+layout: post
+title: 基于Node.JS与WebSocket的web聊天室
 ---
 
 # 基于Node.JS与WebSocket的web聊天室 #

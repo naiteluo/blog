@@ -1,7 +1,6 @@
 ---
 layout: post
 title: JavaScript the Definitive Guide Reading Introduction to JavaScript
-
 ---
 
 ##Chapter 1, Introduction to JavaScript##

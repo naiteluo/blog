@@ -1,7 +1,6 @@
 ---
 layout: post
 title: 用正则表达式检测微博中的at人
-
 ---
 	
 	var msg = "@reelin @naiteluo 哈哈，六一儿童节快乐";
