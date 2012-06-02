@@ -3,7 +3,6 @@ layout: post
 title: Build a web chat room with Node.JS and Socket.IO
 ---
 
-# 基于Node.JS与WebSocket的web聊天室 #
 ## 应用描述 ##
 
 *WebSocket* 作为HTML5的一个新特性，它的目的是为需要双向通信的基于浏览器的应用提供一个机制，不需要依靠建立多个HTTP连接即可实现双向通信。以前，web应用要在客户端和服务器建立双向连接的话，需要发送大量的http请求向服务器进行轮询，这导致了一些问题：
