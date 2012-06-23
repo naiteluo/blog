@@ -35,7 +35,7 @@ WebSocket是基于事件的，而Node.JS使用的则是事件驱动模型，直�
 * 登陆，及在线用户列表     
 	![image](https://github.com/naiteluo/Images/raw/master/snip/onchat3.png)
 
-* 聊天
+* 聊天    
 	![image](https://github.com/naiteluo/Images/raw/master/snip/onchat4.png)
 
 * at 人，私聊    
