@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<title>
+		
+			Archlinux 安装配置问题
+		
+	</title>
+
+	<link rel="stylesheet" href="/stylesheets/styles.css">
+	<link rel="stylesheet" href="/stylesheets/pygment_trac.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<div class="wrapper">
+		<header>
+			<h1><a href="http://naiteluo.net">MMNN</a></h1>
+			<p>naiteluo's blog</p>
+			<p class="view">
+				<a href="https://github.com/naiteluo/blog">View the Project on GitHub <small>naiteluo/naiteluo</small></a>
+			</p>
+			<ul style="display: block">
+				<li><a href="#">Download <strong>ZIP File</strong></a></li>
+				<li><a href="#">Download <strong>TAR Ball</strong></a></li>
+				<li><a href="https://github.com/naiteluo/blog">View On <strong>GitHub</strong></a></li>
+			</ul>
+		</header>
+		<section>
+			<p>已经重装了6、7 archlinux了，每次都因为一些琐碎的问题无法解决而选择重装，这次静下心来读wiki，看帖子，总算把之前积累的问题大概都解决了。</p>
+
+<p>用的默认的network进行网络管理，开机启动特别慢，而且gnome启动后的networkmanager因为冲突而disabled。networkmanager是一个DAEMON,可以手动用/etc/rc.d/networkmanager start来启动它，更好地是将其加入/etc/rc.conf的DAEMON列表中，并将原来的network用’!'感叹号取消掉，即可。安装network-manager-applet后就能在gnome里显示图标方便使用。</p>
+
+<p>此后发现了一个很严重的问题，nerworkmanager连不上校园网，网上也很多说wifi无法连接的文章，与其自己修改到崩溃，不如早点换一个，就试用了wicd，目前尚且完美。安装：</p>
+
+<pre><code># pacman -S wicd
+# pacman -S wicd-gtk
+</code></pre>
+
+<p>开启前必须关闭所有网络的daemons,</p>
+
+<pre><code># rc.d stop network
+# rc.d stop dhcpcd
+# rc.d stop networkmanager
+</code></pre>
+
+<p>设置DAEMONS，依赖dbus，前面禁用其他网络管理软件：</p>
+
+<pre><code># vim /etc/rc.conf
+DAEMONS=(syslog-ng dbus !network !dhcdbd !networkmanager wicd ...)
+~
+~
+</code></pre>
+
+<p>后续工作咯</p>
+
+<p>ibus1.4安装完后无法显示输入法，google之网友们说是一个bug，修复方法如下：</p>
+
+<pre><code>sudo pacman -S abs
+sudo abs community/ibus-sunpinyin
+mkdir ~/abs
+cp -r /var/abs/community/ibus-sunpinyin ~/abs
+cd ~/abs/ibus-sunpinyin
+makepkg -s
+sudo pacman -U ibus-sunpinyin-2.0.3-1-*.pkg.tar.xz
+</code></pre>
+
+<p>并在~/.profile文件中加入以下代码让其自启动：</p>
+
+<pre><code>export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+ibus-daemon -d -x
+</code></pre>
+
+		</section>
+		<footer>
+			<p>This project is maintained by <a href="https://github.com/naiteluo">naiteluo</a></p>
+			<p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+		</footer>
+	</div>
+	<script src="/javascripts/scale.fix.js"></script>
+</body>
+</html>

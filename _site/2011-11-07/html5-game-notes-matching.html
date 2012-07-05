@@ -1,0 +1,172 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<title>
+		
+			html5游戏笔记 matching game
+		
+	</title>
+
+	<link rel="stylesheet" href="/stylesheets/styles.css">
+	<link rel="stylesheet" href="/stylesheets/pygment_trac.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<div class="wrapper">
+		<header>
+			<h1><a href="http://naiteluo.net">MMNN</a></h1>
+			<p>naiteluo's blog</p>
+			<p class="view">
+				<a href="https://github.com/naiteluo/blog">View the Project on GitHub <small>naiteluo/naiteluo</small></a>
+			</p>
+			<ul style="display: block">
+				<li><a href="#">Download <strong>ZIP File</strong></a></li>
+				<li><a href="#">Download <strong>TAR Ball</strong></a></li>
+				<li><a href="https://github.com/naiteluo/blog">View On <strong>GitHub</strong></a></li>
+			</ul>
+		</header>
+		<section>
+			<h1>html5游戏笔记 matching game</h1>
+<p>我也不知道这个游戏的中文名叫什么，就是12张扑克，翻开两张如果不是一对就自动翻回来，一对的话就可以取走，最后所有牌都取走了游戏就结束。貌似挺无聊的游戏，不过不得不自愧设计功力之低，树上简单的几个css和几个图片，整个页面就变得很有质感和层次感。游戏主要通过CSS3来实现翻转，用javascript来改变DOM的类和整个游戏的逻辑。我觉得最主要吸收的精华是：用CSS3来实现页面元素的动画（效率是不是比cavans高？ 迟点再验证），用javascript控制逻辑。</p>
+
+<h2>CSS3实现元素动画</h2>
+
+<p>首先来看看CSS3的新的动画animation相关属性。 一开始还有点模糊，因为英文书上用了tween这个单词，查了一下单词的含义并仔细分析以下代码后，得知这动画的实现是利用transition属性来为transform属性的转化增加补间动画。有点绕，意思就是，本来transform属性的变化的是一个状态，是没有过程的，例如从一个位置translate到另一个位置，从一个角度rotate到另一个角度，一个跳跃式的变化。而transition的作用就是让这一切变得不那么突然，先看看CSS3 transition的W3C的解释</p>
+
+<blockquote><p>CSS transition allows property changes in CSS values to occur smoothly over a specified duration.</p></blockquote>
+
+<p>transition属性将瞬间的变化减慢，并附加指定的动画，它的用法如下：</p>
+
+<pre><code>/*
+ * 值：应用属性名，可设为all，
+ *     设置动画
+ *     补间时长
+ *     动画开始的延时
+ */
+transition: property_name duration timing_function delay;
+/* 为所有变化都附加时长为1s的线性补间动画 */
+transition: all 1s linear;
+/* 为透明化增加0.3s的补间动画，并为背景颜色变化增加0.5s的补间动画 */
+transition: opacity 0.3s, background-color o.5s;
+</code></pre>
+
+<p>transition属性的介绍大概到这里，附送一些参考链接：</p>
+
+<p>接着看看transform的用法，可能会跟以前接触到的CSS属性比较不一样，它所接受的值是函数：</p>
+
+<pre><code>transform: transform-function1 transform-function2;
+/* 移动到(150px,150px)的位置上，并上下翻转180度 */
+transform: translate(150px,150px) rotate3d(1,0,0,180deg);
+</code></pre>
+
+<p>主要有2D和3D两种函数，3D与2D的基本相似，增加了Z轴。所以这里只简单介绍3D transfroms functions：</p>
+
+<p>旋转函数,其中的[x, y, z]是一个单位向量：</p>
+
+<pre><code>rotate3d(x, y, z, angle)
+/* equals to */
+rotateX(angle)
+rotateY(angle)
+rotateZ(angle)
+</code></pre>
+
+<p>移动函数，其中(tx, ty, tz)为空间坐标值：</p>
+
+<pre><code>translate3d(tx, ty, tz)
+/* equals to */
+translateX(tx)
+translateY(ty)
+translateZ(tz)
+</code></pre>
+
+<p>缩放函数：</p>
+
+<pre><code>scale3d(sx, sy, sz)
+/* equals to */
+scaleX(sx)
+scaleY(sy)
+scaleZ(sz)
+</code></pre>
+
+<p>综上，就可以总结一下大概要设置哪些css类了</p>
+
+<pre><code>.card {
+    /* 卡牌的类，设置定位，设置所有动画0.3秒的补间 */
+}
+.face {
+    /* 设置卡牌牌面的需要补间的动哈：透明度，变形，盒阴影，补间0.3秒 */
+}
+.front {
+    /* 牌的正面的背景图，z-index高于.back */
+}
+.back {
+    /* 牌底背景图，未设置background-position，
+     * 后面会使用css spirit
+     */
+}
+.card:hover .face, .card-flipped .face {
+    /* 设置盒阴影 */
+}
+.card-flipped .front {
+    /* 旋转变换，设置z-index小于.back */
+}
+.card-flipped .front {
+    /* 旋转变换 */
+}
+.card-removed {
+    /* 设置淡去效果，并用于作为删除元素的标记 */
+}
+
+/* cards' css sprite */
+.cardXX { background-position: xpx ypx ;}
+</code></pre>
+
+<p>CSS3实现动画的部分好像讲得太多了，不过那是比较陌生的东西，所以看得比较细置，接下来简单记录以下游戏的逻辑：</p>
+
+<p>洗牌发牌，随机排列预定义的数组，并复制.card元素，通过根据index来作绝对定位，增加css类改变牌底背景坐标，用attr函数给我们自定义的data-pattern属性赋值，用于辨别牌型。最后给每张牌都绑定一个oncli，触发selecCard函数,selectCard先判断现在翻开的牌数：</p>
+
+<pre><code>// flip the card and schedule the checking function
+function selectCard() {
+    // we do nothing if there are already two card flipped
+    if ($(".card-flipped").size() &gt; 1) {
+        return;
+    }
+    $(this).addClass("card-flipped");
+    // check the pattern of both flipped card 0.7s later
+    if ($(".card-flipped").size() == 2) {
+        setTimeout(checkPattern, 300);
+    }
+}
+</code></pre>
+
+<p>对牌进行匹配判断，获取已翻开牌的data-pattern属性值来比较，同样的牌则对牌增加.card-removed作为标记，并在变换的补间动画后删除这两个标置了的牌；不匹配的话就将.card-filpped去掉.</p>
+
+<p>逻辑比较简单，不详细说了。</p>
+
+
+<em>Posted on 07 November 2011.</em>
+<a style="float:right" href="/2011-11-07/html5-game-notes-matching.html#disqus_thread">View Comments</a>
+<hr/>
+<div id="disqus_thread"></div>
+<script src="http://disqus.com/forums/mmnn/embed.js"></script>
+<!-- paginate -->
+<!-- 
+	<a class="paging" id="prev" href="/2011-11-03/html5-game-notes-pingpong.html">Prev</a>
+
+
+	<a class="paging" id="next" href="/2011-12-31/install-nodejs-in-ubuntu.html">Next</a>
+ -->
+		</section>
+		<footer>
+			<p>This project is maintained by <a href="https://github.com/naiteluo">naiteluo</a></p>
+			<p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+		</footer>
+	</div>
+	<script src="/javascripts/scale.fix.js"></script>
+</body>
+</html>

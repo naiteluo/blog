@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<title>
+		
+			archlinux简单网络配置与命令
+		
+	</title>
+
+	<link rel="stylesheet" href="/stylesheets/styles.css">
+	<link rel="stylesheet" href="/stylesheets/pygment_trac.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<div class="wrapper">
+		<header>
+			<h1><a href="http://naiteluo.net">MMNN</a></h1>
+			<p>naiteluo's blog</p>
+			<p class="view">
+				<a href="https://github.com/naiteluo/blog">View the Project on GitHub <small>naiteluo/naiteluo</small></a>
+			</p>
+			<ul style="display: block">
+				<li><a href="#">Download <strong>ZIP File</strong></a></li>
+				<li><a href="#">Download <strong>TAR Ball</strong></a></li>
+				<li><a href="https://github.com/naiteluo/blog">View On <strong>GitHub</strong></a></li>
+			</ul>
+		</header>
+		<section>
+			<p>这里只是给出简单的网络配置和常用命令，备忘。详细的可查阅官方wiki上的：
+Configuring Network</p>
+
+<p>首先是/etc/rc.conf的配置，动态获取ip的只需要选择一个接口：</p>
+
+<pre><code>interface="eth0"
+address=
+netmask=
+gateway=
+</code></pre>
+
+<p>想要自定义dns，在/etc/dhcpcd.conf</p>
+
+<pre><code>nohook resolv.conf
+</code></pre>
+
+<p>并将自己的dns服务器加入/etc/resolv.conf中。</p>
+
+<pre><code>/*
+ * 静态ip的还不太了解，
+ * 挖个坑以后再填。
+ */
+</code></pre>
+
+<p>重启nerwork daemon，启用配置:</p>
+
+<pre><code># /etc/rc.d/network restart
+</code></pre>
+
+<p>通过ping看是否已成功连接</p>
+
+<pre><code>$ ping -c 3 www.google.com
+</code></pre>
+
+<p>手动连接或断开网络接口：</p>
+
+<pre><code># ip link set  up/down
+</code></pre>
+
+<p>接下来是无线网络设置与连接，需要先安装wireless_tools和取得哦给相关软件包madwifi:</p>
+
+<pre><code># pacman -S wireless_tools
+# pacman -S madwifi
+</code></pre>
+
+<p>确定接口和相应模块</p>
+
+<pre><code># lspci | grep -i net
+</code></pre>
+
+<p>确定此模块已经被载入。使用命令</p>
+
+<pre><code># lsmod | grep 
+</code></pre>
+
+<p>接下来可以开始连接了，确定驱动已经创建了可用的接口(wlanX, ethX, athX):</p>
+
+<pre><code># iwconfig
+</code></pre>
+
+<p>启用无线接口:</p>
+
+<pre><code># ip link set wlan0 up
+</code></pre>
+
+<p>搜索可用的接入点</p>
+
+<pre><code># iwlist wlan0 scan
+</code></pre>
+
+<p>以下是几种不同的wifi的接入：</p>
+
+<p>No encryption 无加密的</p>
+
+<pre><code># iwconfig wlan0 essid "MyEssid"
+</code></pre>
+
+<p>WEP</p>
+
+<pre><code># #hecadecimal key
+# iwconfig wlan0 essid "MyEssid" key 1234567890
+# #ASCII key
+# iwconfig wlan0 essid "MyEssid" key s:asciikey
+</code></pre>
+
+<p>确定是否连接到接入点：</p>
+
+<pre><code># iwconfig wlan0
+</code></pre>
+
+<p>动态分配IP</p>
+
+<pre><code># dhcpcd wlan0
+</code></pre>
+
+<p>当然，最简单的还是用网络管理器如：Wicd,NetworkManager.不过我在连接校园网的wifi时用networkmanager未果，故推荐wicd。</p>
+
+		</section>
+		<footer>
+			<p>This project is maintained by <a href="https://github.com/naiteluo">naiteluo</a></p>
+			<p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+		</footer>
+	</div>
+	<script src="/javascripts/scale.fix.js"></script>
+</body>
+</html>

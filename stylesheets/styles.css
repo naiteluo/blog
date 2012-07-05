@@ -110,7 +110,7 @@ header {
   position:fixed;
 }
 
-header ul {
+header ul.func {
   list-style:none;
   height:40px;
   
@@ -137,7 +137,7 @@ header li {
   height:40px;
 }
 
-header ul a {
+header ul.func a {
   line-height:1;
   font-size:11px;
   color:#999;
@@ -152,17 +152,17 @@ strong {
   font-weight:700;
 }
 
-header ul li + li {
+header ul.func li + li {
   width:88px;
   border-left:1px solid #fff;
 }
 
-header ul li + li + li {
+header ul.func li + li + li {
   border-right:none;
   width:89px;
 }
 
-header ul a strong {
+header ul.func a strong {
   font-size:14px;
   display:block;
   color:#222;
@@ -241,7 +241,7 @@ footer {
     display:inline;
   }
   
-  header ul {
+  header ul.func {
     position:absolute;
     right:50px;
     top:52px;
@@ -257,7 +257,7 @@ footer {
     padding:0;
   }
   
-  header ul, header p.view {
+  header ul.func, header p.view {
     position:static;
   }
   
@@ -271,7 +271,7 @@ footer {
     padding:15px;
   }
   
-  header ul {
+  header ul.func {
     display:none;
   }
 }

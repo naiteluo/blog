@@ -4,15 +4,12 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="chrome=1">
 	<title>
-		{% if page.title %}
-			{{ page.title }}
-		{% else %}
-			{{ site.title }}
-		{% endif %}
+		
+			Ubuntu 11.04 LAMP安装配置
+		
 	</title>
 
 	<link rel="stylesheet" href="/stylesheets/styles.css">
-	<link rel="stylesheet" href="/stylesheets/fanfou.css">
 	<link rel="stylesheet" href="/stylesheets/pygment_trac.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<!--[if lt IE 9]>
@@ -27,18 +24,44 @@
 			<p class="view">
 				<a href="https://github.com/naiteluo/blog">View the Project on GitHub <small>naiteluo/naiteluo</small></a>
 			</p>
-			<ul class="func" style="display: block">
+			<ul style="display: block">
 				<li><a href="#">Download <strong>ZIP File</strong></a></li>
 				<li><a href="#">Download <strong>TAR Ball</strong></a></li>
 				<li><a href="https://github.com/naiteluo/blog">View On <strong>GitHub</strong></a></li>
 			</ul>
-			<script type="text/javascript">
-				fanfou_name="naiteluo";fanfou_count=5;fanfou_timeline="user";
-			</script>
-			<script type="text/javascript" charset="utf-8" src="http://static.fanfou.com/badge/timeline.js"></script>
 		</header>
 		<section>
-			{{ content }}
+			<h1>Ubuntu 11.04 LAMP安装配置</h1>
+<p>11.04是lts的版本，以后用ubuntu的话可以作为首选，这里纪录一下LAMP的配置方法。</p>
+
+<p>1.首先是安装LAMP，一个命令：</p>
+
+<pre><code>sudo apt-get install apache2 php5 libapache2-mod-php5 mysql-server libapache2-mod-auth-mysql php5-mysql phpmyadmin 
+</code></pre>
+
+<p>  期间会要求你输入mysql数据库的root用户密码，选择服务器类型［apache］，phpMyAdmin的密码等。</p>
+
+<p>2.装完之后重启一下apache，命令：</p>
+
+<pre><code>sudo /etc/init.d/apache2 restart
+</code></pre>
+
+<p>3.把安装的phpmyadmin 链接过来，在/var/www/下用命令：</p>
+
+<pre><code>ln -s /usr/share/phpmyadmin phpmyadmin
+</code></pre>
+
+
+<em>Posted on 01 October 2011.</em>
+<a style="float:right" href="/2011-10-01/install-LAMP-environment-in-ubuntu-1104.html#disqus_thread">View Comments</a>
+<hr/>
+<div id="disqus_thread"></div>
+<script src="http://disqus.com/forums/mmnn/embed.js"></script>
+<!-- paginate -->
+<!-- 
+
+	<a class="paging" id="next" href="/2011-10-16/problems-installing-archlinux.html">Next</a>
+ -->
 		</section>
 		<footer>
 			<p>This project is maintained by <a href="https://github.com/naiteluo">naiteluo</a></p>

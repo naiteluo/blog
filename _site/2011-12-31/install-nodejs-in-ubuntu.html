@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<title>
+		
+			Ubuntu 11.04 Node.js 配置
+		
+	</title>
+
+	<link rel="stylesheet" href="/stylesheets/styles.css">
+	<link rel="stylesheet" href="/stylesheets/pygment_trac.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<div class="wrapper">
+		<header>
+			<h1><a href="http://naiteluo.net">MMNN</a></h1>
+			<p>naiteluo's blog</p>
+			<p class="view">
+				<a href="https://github.com/naiteluo/blog">View the Project on GitHub <small>naiteluo/naiteluo</small></a>
+			</p>
+			<ul style="display: block">
+				<li><a href="#">Download <strong>ZIP File</strong></a></li>
+				<li><a href="#">Download <strong>TAR Ball</strong></a></li>
+				<li><a href="https://github.com/naiteluo/blog">View On <strong>GitHub</strong></a></li>
+			</ul>
+		</header>
+		<section>
+			<h1>Ubuntu 11.04 Node.js 配置</h1>
+<p>实在是很折腾，冲着一个好的设计环境换回了windows7，但是感觉做开发的话还是linux下限值会比较小，于是用虚拟机，刚开始装回archlinux，发现vmware下装archlinux又是另外的折腾了，装不好gnome3，不能忍受难看的界面，另外也懒得折腾了，于是改装了ubuntu，10.10不太稳定，选择了10.04 lts。啥都不管了，直奔node的配置，找了篇国外的文章，一边操作一边翻译一下:</p>
+
+<p>由于直奔node而去，之前什么都没有配置过，所以可以直接按照一下来满足node.js的alias：</p>
+
+<pre><code>sudo apt-get install g++ curl libssl-dev apache2-utils
+</code></pre>
+
+<p>最简单的方法当然用git下载node的源码啦，先安装git</p>
+
+<pre><code>sudo apt-get install git-core
+git clone git://github.com/joyent/node.git
+</code></pre>
+
+<p>我这里直接在官网上下载了包：</p>
+
+<pre><code>tar -zxf node-v0.6.5.tar.gz
+cd node-v0.6.5
+./configure
+make
+sudo make install
+</code></pre>
+
+<p>接下来是npm，One Line Install</p>
+
+<pre><code>curl http://npmjs.org/install.sh | sh
+</code></pre>
+
+<p>作者还给喜欢很多行安装方法的人提供了方法，遇到如权限问题等，具体可以到<a href="http://npmjs.org">npm官网</a>上查看</p>
+
+<p>OK啦，又开始nodejs啦</p>
+
+
+<em>Posted on 31 December 2011.</em>
+<a style="float:right" href="/2011-12-31/install-nodejs-in-ubuntu.html#disqus_thread">View Comments</a>
+<hr/>
+<div id="disqus_thread"></div>
+<script src="http://disqus.com/forums/mmnn/embed.js"></script>
+<!-- paginate -->
+<!-- 
+	<a class="paging" id="prev" href="/2011-11-07/html5-game-notes-matching.html">Prev</a>
+
+
+	<a class="paging" id="next" href="/2012-05-25/steps-to-make-app-in-node-with-express.html">Next</a>
+ -->
+		</section>
+		<footer>
+			<p>This project is maintained by <a href="https://github.com/naiteluo">naiteluo</a></p>
+			<p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+		</footer>
+	</div>
+	<script src="/javascripts/scale.fix.js"></script>
+</body>
+</html>
