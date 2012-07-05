@@ -1,3 +1,3 @@
-header div.fanfou_statuses ul li {
-
+header div.fanfou_statuses ul {
+  list-style: none;
 }
