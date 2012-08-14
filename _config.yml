@@ -3,4 +3,5 @@
 title: MMNN
 permalink: /:year-:month-:day/:title.html
 
+pygments: true
 markdown: rdiscount

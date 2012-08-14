@@ -7,6 +7,7 @@ title: high performance JavaScript notes 1
 
 1. JavaScript的阻塞特性使js性能问题变的复杂。大多数浏览器使用单一进程来处理ui和执行脚本。代码的执行会阻塞浏览器的其他进程，例如用户界面绘制。
 2. 将script标签放到页面的底部，</body>之前。能确保脚本执行前页面已经加载完毕。
+
     > 浏览器在解析到\<body\>前不会渲染页面
     
     > 把内嵌脚本放在引用外链样式表的\<link\>标签后会导致页面阻塞去等待样式表的下载；是为了确保脚本执行时能获得最精准的样式信息；
@@ -14,12 +15,15 @@ title: high performance JavaScript notes 1
 3. 合并脚本。页面中script标签越少，加载越快，响应更迅速。
 4. 使用无阻塞方式下载代码：
     * script标签的defer属性（不推荐）
-    * 动态创建script元素来下载、执行代码；脚本文件在该元素被添加到页面时开始下载，且下载和执行过程不会阻塞页面其他进程。下面是一个封装好的加载方法：
+    * 动态创建script元素来下载、执行代码；脚本文件在该元素被添加到页面时开始下载，且下载和执行过程不会阻塞页面其他进程。
     
+      下面是一个封装好的加载方法：
+    
+			{% highlight javascript %}
 			(function (window) {
 			    if (window.loadScript) 
 			        throw new Error('loadScript fails to be modefied.');
-			
+			        
 			    window.loadScript = function (url, callback) {
 			        var script = document.createElement('script');
 			        script.type = 'text/javascript';
@@ -42,27 +46,33 @@ title: high performance JavaScript notes 1
 			    };
 			
 			} (window));
-
-    * 用XHR对象下载代码，注入页面中
-    * 推荐的无阻塞模式：先添加动态加载所需的代码，再加载初始化页面所需要的剩下的代码。如：
-    		
-    		<script type="text/javascript" src="loader.js"></script>
+			{% endhighlight %}
+		
+	* 用XHR对象下载代码，注入页面中
+	* 推荐的无阻塞模式：先添加动态加载所需的代码，再加载初始化页面所需要的剩下的代码。
+	
+	  如:
+    
+			{% highlight html %}
+			<script type="text/javascript" src="loader.js"></script>
 			<script type="text/javascript">
 			    loadScript("the-rest.js", function () {
 			        app.init();
 			    });
 			</script>
-			
+			{% endhighlight %}
+	
 	  一旦页面初始化的脚本加载完，就可以用loadScript函数去加载页面其他功能所需的脚本了。
 	  YUI3也使用类似的方法，引入一个种子文件，来加载丰富的功能组件：
-	  
-	  		<script type="text/javascript" src="http://yui.yahooapis.com/combo?3.0.0/build/yui/yui-min.js"></script>
-			<script type="text/javascript">
-			    YUI().use('dom', function (Y) {
-			        Y.DOM.addClass(document.body, 'loaded');
-			    });
-			</script>
 
+			{% highlight html %}
+			<script type="text/javascript" src="http://yui.yahooapis.com/combo?3.0.0/build/yui/yui-min.js"></script>
+			<script type="text/javascript">
+				YUI().use('dom', function (Y) {
+				    Y.DOM.addClass(document.body, 'loaded');
+				});
+			</script>
+			{% endhighlight %}
 	 
 ## Chapter 2 Data Access 数据访问
 
@@ -94,6 +104,7 @@ title: high performance JavaScript notes 1
 
   用hasOwnProperty()方法判断对象是否包含特定的实例成员，要确定对象是否包含特定的属性，可以使用in操作符。
   
+		{% highlight javascript %}
 		var book = {
 		    title: "High Performance JavaScript",
 		    publisher: "Yahoo! Press"
@@ -104,6 +115,7 @@ title: high performance JavaScript notes 1
 		
 		alert("title" in book);                 // true
 		alert("toString" in book);              // true
+		{% endhighlight %}
   		
 * 对象成员嵌套得越深，访问速度就会越慢；可以通过缓存对象成员值来优化，讲需要多次读取的同一个对象属性值保存到局部变量中。<strong>这种技术不适用与对象的方法；许多对象方法使用this来判断执行上下文，缓存这些方法的话会导致this绑定到错误的对象上</strong>
 
