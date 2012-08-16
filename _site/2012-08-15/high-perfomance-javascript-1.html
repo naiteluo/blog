@@ -8,8 +8,8 @@
 			high performance JavaScript notes 1
 		
 	</title>
-
 	<link rel="stylesheet" href="/stylesheets/styles.css">
+	<!-- 代码着色 -->
 	<link rel="stylesheet" href="/stylesheets/pygment_trac.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<!--[if lt IE 9]>
@@ -29,15 +29,17 @@
 			<h1>high performance JavaScript notes 1</h1>
 <h2>Chapter 1 Loading and Execution 加载和执行</h2>
 
-<ol>
-<li>JavaScript的阻塞特性使js性能问题变的复杂。大多数浏览器使用单一进程来处理ui和执行脚本。代码的执行会阻塞浏览器的其他进程，例如用户界面绘制。</li>
-<li><p>将script标签放到页面的底部，</body>之前。能确保脚本执行前页面已经加载完毕。</p>
+<p>JavaScript的阻塞特性使js性能问题变的复杂。大多数浏览器使用单一进程来处理ui和执行脚本。代码的执行会阻塞浏览器的其他进程，例如用户界面绘制。</p>
+
+<p>将script标签放到页面的底部，</body>之前。能确保脚本执行前页面已经加载完毕。</p>
 
 <blockquote><p>浏览器在解析到&lt;body>前不会渲染页面</p>
 
-<p>把内嵌脚本放在引用外链样式表的&lt;link>标签后会导致页面阻塞去等待样式表的下载；是为了确保脚本执行时能获得最精准的样式信息；</p></blockquote></li>
-<li><p>合并脚本。页面中script标签越少，加载越快，响应更迅速。</p></li>
-<li>使用无阻塞方式下载代码：
+<p>把内嵌脚本放在引用外链样式表的&lt;link>标签后会导致页面阻塞去等待样式表的下载；是为了确保脚本执行时能获得最精准的样式信息；</p></blockquote>
+
+<p>合并脚本。页面中script标签越少，加载越快，响应更迅速。</p>
+
+<p>使用无阻塞方式下载代码：</p>
 
 <ul>
 <li>script标签的defer属性（不推荐）</li>
@@ -45,69 +47,67 @@
 
 <p>下面是一个封装好的加载方法：</p></li>
 </ul>
-</li>
-</ol>
 
 
-<div class="highlight"><pre><code class="javascript">           <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nb">window</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">loadScript</span><span class="p">)</span> 
-                    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;loadScript fails to be modefied.&#39;</span><span class="p">);</span>
-                    
-                <span class="nb">window</span><span class="p">.</span><span class="nx">loadScript</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="kd">var</span> <span class="nx">script</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
-                    <span class="nx">script</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s1">&#39;text/javascript&#39;</span><span class="p">;</span>
-            
-                    <span class="k">if</span> <span class="p">(</span><span class="nx">script</span><span class="p">.</span><span class="nx">readyState</span><span class="p">)</span> <span class="p">{</span>    <span class="c1">// IE</span>
-                        <span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-                            <span class="k">if</span> <span class="p">(</span><span class="nx">script</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;loaded&#39;</span> <span class="o">||</span> <span class="nx">script</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;complete&#39;</span><span class="p">)</span> <span class="p">{</span>
-                                <span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
-                                <span class="nx">callback</span><span class="p">();</span>
-                            <span class="p">}</span>
-                        <span class="p">};</span>
-                    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>    <span class="c1">// other browser</span>
-                        <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="javascript">       <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nb">window</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">loadScript</span><span class="p">)</span> 
+                <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;loadScript fails to be modefied.&#39;</span><span class="p">);</span>
+                
+            <span class="nb">window</span><span class="p">.</span><span class="nx">loadScript</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+                <span class="kd">var</span> <span class="nx">script</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
+                <span class="nx">script</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s1">&#39;text/javascript&#39;</span><span class="p">;</span>
+        
+                <span class="k">if</span> <span class="p">(</span><span class="nx">script</span><span class="p">.</span><span class="nx">readyState</span><span class="p">)</span> <span class="p">{</span>    <span class="c1">// IE</span>
+                    <span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                        <span class="k">if</span> <span class="p">(</span><span class="nx">script</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;loaded&#39;</span> <span class="o">||</span> <span class="nx">script</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;complete&#39;</span><span class="p">)</span> <span class="p">{</span>
+                            <span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
                             <span class="nx">callback</span><span class="p">();</span>
-                        <span class="p">};</span>
-                    <span class="p">}</span>
-            
-                    <span class="nx">script</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nx">url</span><span class="p">;</span>
-                    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;head&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
-                <span class="p">};</span>
-            
-            <span class="p">}</span> <span class="p">(</span><span class="nb">window</span><span class="p">));</span>
-            
+                        <span class="p">}</span>
+                    <span class="p">};</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>    <span class="c1">// other browser</span>
+                    <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                        <span class="nx">callback</span><span class="p">();</span>
+                    <span class="p">};</span>
+                <span class="p">}</span>
+        
+                <span class="nx">script</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nx">url</span><span class="p">;</span>
+                <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;head&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
+            <span class="p">};</span>
+        
+        <span class="p">}</span> <span class="p">(</span><span class="nb">window</span><span class="p">));</span>
+        
 </code></pre>
 </div>
 
 
-<pre><code>* 用XHR对象下载代码，注入页面中
-* 推荐的无阻塞模式：先添加动态加载所需的代码，再加载初始化页面所需要的剩下的代码。
+<ul>
+<li>用XHR对象下载代码，注入页面中</li>
+<li><p>推荐的无阻塞模式：先添加动态加载所需的代码，再加载初始化页面所需要的剩下的代码。</p>
 
-  如:
-</code></pre>
+<p>如:</p></li>
+</ul>
 
-<div class="highlight"><pre><code class="html">         <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;loader.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-            <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
-                <span class="nx">loadScript</span><span class="p">(</span><span class="s2">&quot;the-rest.js&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-                    <span class="nx">app</span><span class="p">.</span><span class="nx">init</span><span class="p">();</span>
-                <span class="p">});</span>
-            <span class="nt">&lt;/script&gt;</span>
-            
+
+<div class="highlight"><pre><code class="html"> <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;loader.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+        <span class="nx">loadScript</span><span class="p">(</span><span class="s2">&quot;the-rest.js&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nx">app</span><span class="p">.</span><span class="nx">init</span><span class="p">();</span>
+        <span class="p">});</span>
+    <span class="nt">&lt;/script&gt;</span>
+    
 </code></pre>
 </div>
 
 
-<pre><code>  一旦页面初始化的脚本加载完，就可以用loadScript函数去加载页面其他功能所需的脚本了。
-  YUI3也使用类似的方法，引入一个种子文件，来加载丰富的功能组件：
-</code></pre>
+<p>一旦页面初始化的脚本加载完，就可以用loadScript函数去加载页面其他功能所需的脚本了。YUI3也使用类似的方法，引入一个种子文件，来加载丰富的功能组件：</p>
 
-<div class="highlight"><pre><code class="html">         <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://yui.yahooapis.com/combo?3.0.0/build/yui/yui-min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-            <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
-                <span class="nx">YUI</span><span class="p">().</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;dom&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">Y</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="nx">Y</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">addClass</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">,</span> <span class="s1">&#39;loaded&#39;</span><span class="p">);</span>
-                <span class="p">});</span>
-            <span class="nt">&lt;/script&gt;</span>
-            
+<div class="highlight"><pre><code class="html"> <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://yui.yahooapis.com/combo?3.0.0/build/yui/yui-min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+        <span class="nx">YUI</span><span class="p">().</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;dom&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">Y</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">Y</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">addClass</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">,</span> <span class="s1">&#39;loaded&#39;</span><span class="p">);</span>
+        <span class="p">});</span>
+    <span class="nt">&lt;/script&gt;</span>
+    
 </code></pre>
 </div>
 
@@ -117,16 +117,16 @@
 <h3>四种基本的数据存储位置</h3>
 
 <ul>
-<li>直接量
+<li><p>直接量</p>
 
 <blockquote><p>直接量只代表自身，不存储在特定的位置。js中直接量有：字符串，数字，布尔值，对象，数组，函数，正则表达式，以及特殊的null和undefinded值。</p></blockquote></li>
-<li>变量
+<li><p>变量</p>
 
 <blockquote><p>开发者用关键字var定义的数据存储单元。</p></blockquote></li>
-<li>数组元素
+<li><p>数组元素</p>
 
 <blockquote><p>存储在js数组对象内部，以数字作为索引。</p></blockquote></li>
-<li>对象成员
+<li><p>对象成员</p>
 
 <blockquote><p>存储在js对象内部，以字符串作为索引。</p></blockquote></li>
 </ul>
@@ -137,10 +137,11 @@
 <h3>作用域链与标志符解析</h3>
 
 <ul>
-<li><p>局部变量位于作用域链的其实位置，访问速度比跨作用域的变量要快。变量在作用域链中的位置越深，访问时间越长。全局变量总出于作用域链的末端，所以访问速度最慢。</p>
+<li><p>局部变量位于作用域链的其实位置，访问速度比跨作用域的变量要快。变量在作用域链中的位置越深，访问时间越长。全局变量总出于作用域链的末端，所以访问速度最慢</p>
 
-<blockquote><p>在函数执行过程中，每遇到一个变量，都会经历一次标志符解析过程，决定从哪里获取或存储数据。搜索的过程类似dfs，从作用域链头部开始。
-标志符的解析是有代价的，所处位置越深越往作用域链后，读写速度越慢；因此，通常函数中读写局部变量总是最快的，读写全局变量较慢。</p></blockquote></li>
+<blockquote><p>在函数执行过程中，每遇到一个变量，都会经历一次标志符解析过程，决定从哪里获取或存储数据。搜索的过程类似dfs，从作用域链头部开始。</p>
+
+<p>标志符的解析是有代价的，所处位置越深越往作用域链后，读写速度越慢；因此，通常函数中读写局部变量总是最快的，读写全局变量较慢。</p></blockquote></li>
 <li><p>避免使用with语句，因为它会改变运行期上下文的作用域链，使的局部变量访问速度变慢。使用try-catch语句中的catch子句也有同样的影响。</p>
 
 <blockquote><p>经过优化的js引擎可能会通过分析代码来确定那些变量可以在特定时候被访问，试图避开传统作用域链的查找，取代以标志符索引的方式进行快速查找。但当设计eval等动态作用域时，优化方法失效，要转回传统的作用域链查找方式。</p></blockquote></li>
@@ -150,17 +151,17 @@
 </ul>
 
 
-<div class="highlight"><pre><code class="javascript">       <span class="kd">var</span> <span class="nx">book</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="nx">title</span><span class="o">:</span> <span class="s2">&quot;High Performance JavaScript&quot;</span><span class="p">,</span>
-            <span class="nx">publisher</span><span class="o">:</span> <span class="s2">&quot;Yahoo! Press&quot;</span>
-        <span class="p">};</span>
-        
-        <span class="nx">alert</span><span class="p">(</span><span class="nx">book</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">));</span>    <span class="c1">// true</span>
-        <span class="nx">alert</span><span class="p">(</span><span class="nx">book</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s2">&quot;toString&quot;</span><span class="p">));</span> <span class="c1">// false</span>
-        
-        <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;title&quot;</span> <span class="k">in</span> <span class="nx">book</span><span class="p">);</span>                 <span class="c1">// true</span>
-        <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;toString&quot;</span> <span class="k">in</span> <span class="nx">book</span><span class="p">);</span>              <span class="c1">// true</span>
-        
+<div class="highlight"><pre><code class="javascript">   <span class="kd">var</span> <span class="nx">book</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="nx">title</span><span class="o">:</span> <span class="s2">&quot;High Performance JavaScript&quot;</span><span class="p">,</span>
+        <span class="nx">publisher</span><span class="o">:</span> <span class="s2">&quot;Yahoo! Press&quot;</span>
+    <span class="p">};</span>
+    
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">book</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">));</span>    <span class="c1">// true</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">book</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s2">&quot;toString&quot;</span><span class="p">));</span> <span class="c1">// false</span>
+    
+    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;title&quot;</span> <span class="k">in</span> <span class="nx">book</span><span class="p">);</span>                 <span class="c1">// true</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;toString&quot;</span> <span class="k">in</span> <span class="nx">book</span><span class="p">);</span>              <span class="c1">// true</span>
+    
 </code></pre>
 </div>
 
@@ -184,8 +185,8 @@
  -->
 		</section>
 		<footer>
-			<p>This project is maintained by <a href="https://github.com/naiteluo">naiteluo</a></p>
-			<p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+			<p>Maintained by <a href="https://github.com/naiteluo">naiteluo</a></p>
+			<p><small>Hosted on GitHub Pages &mdash; Theme modified from <a href="https://github.com/orderedlist">orderedlist</a>'s, very nice one.</small></p>
 		</footer>
 	</div>
 	<script src="/javascripts/scale.fix.js"></script>
