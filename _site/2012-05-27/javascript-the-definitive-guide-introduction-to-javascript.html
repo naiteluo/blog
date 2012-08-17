@@ -41,24 +41,27 @@
 
 <p>JavaScript is object-oriented, but it is quite different than most. Here show how to create class to represent 2D geometric points.</p>
 
-<pre><code>// Define a construtor function to initialize a new Point object
-function Point(x, y) {      // by convention, constructors start with capitals
-    this.x = x;             // this keyword is the new object being init
-    this.y = y;             
-}                           // no return is necessary
+<div class="highlight"><pre><code class="javascript">   <span class="c1">// Define a construtor function to initialize a new Point object</span>
+    <span class="kd">function</span> <span class="nx">Point</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>      <span class="c1">// by convention, constructors start with capitals</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">x</span> <span class="o">=</span> <span class="nx">x</span><span class="p">;</span>             <span class="c1">// this keyword is the new object being init</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">y</span> <span class="o">=</span> <span class="nx">y</span><span class="p">;</span>             
+    <span class="p">}</span>                            <span class="c1">// no return is necessary</span>
 
-// Use a constructor function with the keyword "new" to create instances
-var p = new Point(1, 1);
+    <span class="c1">// Use a constructor function with the keyword &quot;new&quot; to create instances</span>
+    <span class="kd">var</span> <span class="nx">p</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
 
-// Define methods for Point objects by assigning them to the prototype
-// object associated with constructor function.
-Point.prototype.r = function () {
-    return Math.sqrt(this.x * this.x + this.y + this.y);
-};
+    <span class="c1">// Define methods for Point objects by assigning them to the prototype</span>
+    <span class="c1">// object associated with constructor function.</span>
+    <span class="nx">Point</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">r</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sqrt</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">x</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">x</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">y</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">y</span><span class="p">);</span>
+    <span class="p">};</span>
 
-// Now instances of Point object inherits the method r()
-console.log(p.r());
+    <span class="c1">// Now instances of Point object inherits the method r()</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">r</span><span class="p">());</span>
+    
 </code></pre>
+</div>
+
 
 <h3>1.2 Client-Side JavaScript</h3>
 
@@ -70,8 +73,8 @@ console.log(p.r());
 <li>Scripting CSS</li>
 <li><p>Handling Events</p>
 
-<p>  (addEventListener or attachEvent ? Compatibility with IE?)</p></li>
-<li><p>The [JQuery]: <a href="http://www.jquery.com/">http://www.jquery.com/</a> Library</p></li>
+<p>(addEventListener or attachEvent ? Compatibility with IE?)</p></li>
+<li><p>The jQuery Library</p></li>
 </ul>
 
 

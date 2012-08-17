@@ -142,25 +142,25 @@ Hello $foo World!
 <ul>
 <li><p>变量</p>
 
-<p>  要格式求同Java</p></li>
+<p>要格式求同Java</p></li>
 <li><p>属性</p>
 
-<p>  例子：</p>
+<p>例子：</p>
 
-<pre><code>  $customer.Address 
-  $purchase.Total 
+<pre><code>$customer.Address 
+$purchase.Total 
 </code></pre>
 
-<p>  $customer.Address有两种含义。它可以表示：查找hashtable对象customer中以Address为关键字的值；也可以表示调用customer对象的getAddress()方法。当你的页面被请求时，Velocity将确定以上两种方式选用那种，然后返回适当的值。
+<p>$customer.Address有两种含义。它可以表示：查找hashtable对象customer中以Address为关键字的值；也可以表示调用customer对象的getAddress()方法。当你的页面被请求时，Velocity将确定以上两种方式选用那种，然后返回适当的值。
 方法</p></li>
 <li><p>方法</p>
 
-<p>  一个方法就是被定义在java中的一段代码，并且它有完成某些有用工作的能力，例如一个执行计算和判断条件是否成立、满足等。方法是一个由$开始并跟随VTL标识符组成的References，一般还包括一个VTL方法体。例如：</p>
+<p>一个方法就是被定义在java中的一段代码，并且它有完成某些有用工作的能力，例如一个执行计算和判断条件是否成立、满足等。方法是一个由$开始并跟随VTL标识符组成的References，一般还包括一个VTL方法体。例如：</p>
 
-<pre><code>   $customer.getAddress() 
-   $purchase.getTotal() 
-   $page.setTitle( “My Home Page” ) 
-   $person.setAttributes( [“Strange”, “Weird”, “Excited”] ) 
+<pre><code> $customer.getAddress() 
+ $purchase.getTotal() 
+ $page.setTitle( “My Home Page” ) 
+ $person.setAttributes( [“Strange”, “Weird”, “Excited”] ) 
 </code></pre></li>
 </ul>
 

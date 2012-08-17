@@ -1,5 +1,6 @@
 ---
 layout: post
+
 title: JavaScript the Definitive Guide Reading Introduction to JavaScript
 ---
 
@@ -17,6 +18,7 @@ blablabla…
 
 JavaScript is object-oriented, but it is quite different than most. Here show how to create class to represent 2D geometric points.
 
+	{% highlight javascript %}
 	// Define a construtor function to initialize a new Point object
 	function Point(x, y) {		// by convention, constructors start with capitals
 		this.x = x;				// this keyword is the new object being init
@@ -34,24 +36,25 @@ JavaScript is object-oriented, but it is quite different than most. Here show ho
 
 	// Now instances of Point object inherits the method r()
 	console.log(p.r());
+	{% endhighlight %}
 
 ###1.2 Client-Side JavaScript###
 
 About web pages:
 
-* JavaScript in Web Browser
-* Scripting Documents
-* Scripting CSS
-* Handling Events 
+* 	JavaScript in Web Browser
+* 	Scripting Documents
+* 	Scripting CSS
+* 	Handling Events 
 
 	(addEventListener or attachEvent ? Compatibility with IE?)
 
-* The [JQuery]: <http://www.jquery.com/> Library
+* 	The jQuery Library
 
 
 Focus on web applications:
 
-* Scripted HTTP
-* Client-Side Storage
-* Scripted Media and Graphics
-* HTML5 APIs, OS typed
+* 	Scripted HTTP
+* 	Client-Side Storage
+* 	Scripted Media and Graphics
+* 	HTML5 APIs, OS typed

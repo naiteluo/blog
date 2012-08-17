@@ -1,5 +1,6 @@
 ---
 layout: post
+
 title: Steps to make app in node with express
 ---
 
@@ -9,20 +10,20 @@ title: Steps to make app in node with express
 
 ##Steps##
 
-1. 创建App文件夹，进入文件夹
+1.	创建App文件夹，进入文件夹
 
 		mkdir guess
 		cd guess
 
-2. 用npm下载express
+2. 	用npm下载express
 
 		npm install express
 
-3. 用Express初始化App，可能会警告文件夹非空，选择y继续
+3. 	用Express初始化App，可能会警告文件夹非空，选择y继续
 
 		./node_module/express/bin/express .
 
-4. 文件目录如下：
+4. 	文件目录如下：
 
 		.
 		├── app.js				# 应用的入口，主文件
@@ -39,8 +40,9 @@ title: Steps to make app in node with express
 		    ├── index.jade
 		    └── layout.jade
 
-5. 打开package.json文件，这个文件是npm用来获取app的信息和相关依赖module信息的，修改如下：
+5. 	打开package.json文件，这个文件是npm用来获取app的信息和相关依赖module信息的，修改如下：
 
+		{% highlight javascript %}
 		{
 		    "name": "guess"
 		  , "version": "0.0.1"
@@ -51,13 +53,15 @@ title: Steps to make app in node with express
 		    , "socket.io" : ">= 0.0.1"
 		  }
 		}
+		{% endhighlight %}
 
 	我们添加了socket.io module，保存。再用npm来安装所有依赖的modules。
 
 		npm install
 
-6. 基本的配置已经完成了，接下来我们编辑./views/index.js
+6. 	基本的配置已经完成了，接下来我们编辑./views/index.js
 
+		{% highlight javascript %}
 		/*
 		 * GET home page.
 		 */
@@ -65,15 +69,16 @@ title: Steps to make app in node with express
 		exports.index = function(req, res){
 		  res.render('index', { title: 'Guess' })
 		};
+		{% endhighlight %}
 
 	将title修改成我们应用的名字：Guess。
 
-7. 接下来就可以运行程序了
+7. 	接下来就可以运行程序了
 
 		node app.js
 		Express server listening on port 3000 in development mode
 
-	在浏览器中访问：[http://localhost:3000/]: <http://localhost:3000/> ，效果如下:
+	在浏览器中访问：[http://localhost:3000/](http://localhost:3000/) ，效果如下:
 
 	> <h1>Guess</h1>
 	> <p>Welcome to Guess</p>

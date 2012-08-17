@@ -1,5 +1,6 @@
 ---
 layout: post
+
 title: html5游戏笔记 pingpong ball
 ---
 
@@ -15,16 +16,21 @@ html5使用了跟简单的文件声明,取代了原来那一串重来都只是�
 
 主要只有三个对象，两挡板和球，对其使用
 
+	{% highlight css %}
 	position:absolute;
-	
+	{% endhighlight %}
+
 布局，再通过
 	
+	{% highlight javascript %}
 	$("#xxx").css({"top": xx, "left": yy});
+	{% endhighlight %}
 
 来改变球的位置,基本上就是用元素的top和left这两个css属性来作为x,y坐标，对三个对象进行操作。基本操作的方法就是这样，接下来要让东西动起来了。
 
 动起来就是让他们重复第进行位置改变，对于两挡板来说，位置的改变还需要按键的触发。设置一个interval，间隔为30ms，执行gameloop函数：
 
+	{% highlight javascript %}
 	$(function(){ // set interval to call gameloop every 20 milliseconds 		pingpong.timer = setInterval(gameloop, 30); // mark down what key is down and up into an array called "pressedKeys" 
 		$(document).keydown(function (e) { 
 			pingpong.pressedKeys[e.which] = true; 
@@ -37,9 +43,11 @@ html5使用了跟简单的文件声明,取代了原来那一串重来都只是�
 		moveBall(); 
 		movePaddles(); 
 	}
+	{% endhighlight %}
 
 其中，movePaddles()通过上面的keyup()获取键值，触发paddle的移动，最后只需要加上球的位置判断函数，根据位置来改变运动方向了。实例中没有考虑板的两端和背部对球的反弹，这里一并用一个inFiled()函数判断球的位置再根据板来判定反弹方向，
 
+	{% highlight javascript %}
 	function inField(p) { 
 		var pXL = parseInt(p.css("left")); 
 		var pXR = pXL + parseInt(p.css("width")); 
@@ -83,6 +91,7 @@ html5使用了跟简单的文件声明,取代了原来那一串重来都只是�
 	        }
 	    }
 	}
+	{% endhighlight %}
 
 另外，有个作者介绍的小技巧，就是在调试程序的时候可以用如下的Grid图来作为背景，方便坐标的测定和调整：
 

@@ -1,5 +1,6 @@
 ---
 layout: post
+
 title: Ubuntu 11.04 Node.js 配置
 ---
 
@@ -15,6 +16,7 @@ title: Ubuntu 11.04 Node.js 配置
 	git clone git://github.com/joyent/node.git
 
 我这里直接在官网上下载了包：
+
 	tar -zxf node-v0.6.5.tar.gz
 	cd node-v0.6.5
 	./configure

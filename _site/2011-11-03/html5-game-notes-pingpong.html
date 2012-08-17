@@ -39,78 +39,90 @@
 
 <p>主要只有三个对象，两挡板和球，对其使用</p>
 
-<pre><code>position:absolute;
+<div class="highlight"><pre><code class="css">  <span class="nt">position</span><span class="nd">:absolute</span><span class="o">;</span>
+    
 </code></pre>
+</div>
+
 
 <p>布局，再通过</p>
 
-<pre><code>$("#xxx").css({"top": xx, "left": yy});
+<div class="highlight"><pre><code class="javascript">   <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#xxx&quot;</span><span class="p">).</span><span class="nx">css</span><span class="p">({</span><span class="s2">&quot;top&quot;</span><span class="o">:</span> <span class="nx">xx</span><span class="p">,</span> <span class="s2">&quot;left&quot;</span><span class="o">:</span> <span class="nx">yy</span><span class="p">});</span>
+    
 </code></pre>
+</div>
+
 
 <p>来改变球的位置,基本上就是用元素的top和left这两个css属性来作为x,y坐标，对三个对象进行操作。基本操作的方法就是这样，接下来要让东西动起来了。</p>
 
 <p>动起来就是让他们重复第进行位置改变，对于两挡板来说，位置的改变还需要按键的触发。设置一个interval，间隔为30ms，执行gameloop函数：</p>
 
-<pre><code>$(function(){ // set interval to call gameloop every 20 milliseconds        pingpong.timer = setInterval(gameloop, 30); // mark down what key is down and up into an array called "pressedKeys" 
-    $(document).keydown(function (e) { 
-        pingpong.pressedKeys[e.which] = true; 
-    }); 
-    $(document).keyup(function (e) { 
-        pingpong.pressedKeys[e.which] = false; 
-    }); 
-}); 
-function gameloop() { 
-    moveBall(); 
-    movePaddles(); 
-}
+<div class="highlight"><pre><code class="javascript">   <span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span> <span class="c1">// set interval to call gameloop every 20 milliseconds         pingpong.timer = setInterval(gameloop, 30); // mark down what key is down and up into an array called &quot;pressedKeys&quot; </span>
+        <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">keydown</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span> 
+            <span class="nx">pingpong</span><span class="p">.</span><span class="nx">pressedKeys</span><span class="p">[</span><span class="nx">e</span><span class="p">.</span><span class="nx">which</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span> 
+        <span class="p">});</span> 
+        <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">keyup</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span> 
+            <span class="nx">pingpong</span><span class="p">.</span><span class="nx">pressedKeys</span><span class="p">[</span><span class="nx">e</span><span class="p">.</span><span class="nx">which</span><span class="p">]</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span> 
+        <span class="p">});</span> 
+    <span class="p">});</span> 
+    <span class="kd">function</span> <span class="nx">gameloop</span><span class="p">()</span> <span class="p">{</span> 
+        <span class="nx">moveBall</span><span class="p">();</span> 
+        <span class="nx">movePaddles</span><span class="p">();</span> 
+    <span class="p">}</span>
+    
 </code></pre>
+</div>
+
 
 <p>其中，movePaddles()通过上面的keyup()获取键值，触发paddle的移动，最后只需要加上球的位置判断函数，根据位置来改变运动方向了。实例中没有考虑板的两端和背部对球的反弹，这里一并用一个inFiled()函数判断球的位置再根据板来判定反弹方向，</p>
 
-<pre><code>function inField(p) { 
-    var pXL = parseInt(p.css("left")); 
-    var pXR = pXL + parseInt(p.css("width")); 
-    var pYT = parseInt(p.css("top")); 
-    var pYB = pYT + parseInt(p.css("height")); 
-    var bX = pingpong.ball.x; 
-    var bY = pingpong.ball.y; 
-    var bD = pingpong.ball.d; 
-    var fX = pingpong.ball.speed * pingpong.ball.directionX; 
-    var fY = pingpong.ball.speed * pingpong.ball.directionY; 
-        // right field, return 1
-    if (bX &gt;= pXR &amp;&amp; bY + bD &gt;= pYT &amp;&amp; bY &lt;= pYB) {
-        if (bX + fX &lt;= pXR) {
-            if (bY + bD + fY &gt;= pYT &amp;&amp; bY + fY &lt;= pYB) {
-                return 1;
-            }
-        }
-    }
-    // left field, return 2
-    if (bX + bD &lt;= pXL &amp;&amp; bY + bD &gt;= pYT &amp;&amp; bY &lt;= pYB) {
-        if (bX + bD + fX &gt;= pXL) {
-            if (bY + bD + fY &gt;= pYT &amp;&amp; bY + fY &lt;= pYB) {
-                return 2;
-            }
-        }
-    }
-    // top field, return 3
-    if (bX + bD &gt;= pXL &amp;&amp; bX &lt;= pXR &amp;&amp; bY + bD &lt;= pYT) {
-        if (bY + bD + fY &gt;= pYT) {
-            if (bX + bD + fX &gt;= pXL &amp;&amp; bX + fX &lt;= pXR) {
-                return 3;
-            }
-        }
-    }
-    // bottom field, return 4
-    if (bX + bD &gt;= pXL &amp;&amp; bX &lt;= pXR &amp;&amp; bY &gt;= pYB) {
-        if (bY + fY &gt;= pYT) {
-            if (bX + bD + fX &gt;= pXL &amp;&amp; bX + fX &lt;= pXR) {
-                return 4;
-            }
-        }
-    }
-}
+<div class="highlight"><pre><code class="javascript">   <span class="kd">function</span> <span class="nx">inField</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span> <span class="p">{</span> 
+        <span class="kd">var</span> <span class="nx">pXL</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;left&quot;</span><span class="p">));</span> 
+        <span class="kd">var</span> <span class="nx">pXR</span> <span class="o">=</span> <span class="nx">pXL</span> <span class="o">+</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;width&quot;</span><span class="p">));</span> 
+        <span class="kd">var</span> <span class="nx">pYT</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;top&quot;</span><span class="p">));</span> 
+        <span class="kd">var</span> <span class="nx">pYB</span> <span class="o">=</span> <span class="nx">pYT</span> <span class="o">+</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">));</span> 
+        <span class="kd">var</span> <span class="nx">bX</span> <span class="o">=</span> <span class="nx">pingpong</span><span class="p">.</span><span class="nx">ball</span><span class="p">.</span><span class="nx">x</span><span class="p">;</span> 
+        <span class="kd">var</span> <span class="nx">bY</span> <span class="o">=</span> <span class="nx">pingpong</span><span class="p">.</span><span class="nx">ball</span><span class="p">.</span><span class="nx">y</span><span class="p">;</span> 
+        <span class="kd">var</span> <span class="nx">bD</span> <span class="o">=</span> <span class="nx">pingpong</span><span class="p">.</span><span class="nx">ball</span><span class="p">.</span><span class="nx">d</span><span class="p">;</span> 
+        <span class="kd">var</span> <span class="nx">fX</span> <span class="o">=</span> <span class="nx">pingpong</span><span class="p">.</span><span class="nx">ball</span><span class="p">.</span><span class="nx">speed</span> <span class="o">*</span> <span class="nx">pingpong</span><span class="p">.</span><span class="nx">ball</span><span class="p">.</span><span class="nx">directionX</span><span class="p">;</span> 
+        <span class="kd">var</span> <span class="nx">fY</span> <span class="o">=</span> <span class="nx">pingpong</span><span class="p">.</span><span class="nx">ball</span><span class="p">.</span><span class="nx">speed</span> <span class="o">*</span> <span class="nx">pingpong</span><span class="p">.</span><span class="nx">ball</span><span class="p">.</span><span class="nx">directionY</span><span class="p">;</span> 
+            <span class="c1">// right field, return 1</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">&gt;=</span> <span class="nx">pXR</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">&gt;=</span> <span class="nx">pYT</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">&lt;=</span> <span class="nx">pYB</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">+</span> <span class="nx">fX</span> <span class="o">&lt;=</span> <span class="nx">pXR</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">bY</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">+</span> <span class="nx">fY</span> <span class="o">&gt;=</span> <span class="nx">pYT</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">+</span> <span class="nx">fY</span> <span class="o">&lt;=</span> <span class="nx">pYB</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="c1">// left field, return 2</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">&lt;=</span> <span class="nx">pXL</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">&gt;=</span> <span class="nx">pYT</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">&lt;=</span> <span class="nx">pYB</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">+</span> <span class="nx">fX</span> <span class="o">&gt;=</span> <span class="nx">pXL</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">bY</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">+</span> <span class="nx">fY</span> <span class="o">&gt;=</span> <span class="nx">pYT</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">+</span> <span class="nx">fY</span> <span class="o">&lt;=</span> <span class="nx">pYB</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">return</span> <span class="mi">2</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="c1">// top field, return 3</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">&gt;=</span> <span class="nx">pXL</span> <span class="o">&amp;&amp;</span> <span class="nx">bX</span> <span class="o">&lt;=</span> <span class="nx">pXR</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">&lt;=</span> <span class="nx">pYT</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">bY</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">+</span> <span class="nx">fY</span> <span class="o">&gt;=</span> <span class="nx">pYT</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">+</span> <span class="nx">fX</span> <span class="o">&gt;=</span> <span class="nx">pXL</span> <span class="o">&amp;&amp;</span> <span class="nx">bX</span> <span class="o">+</span> <span class="nx">fX</span> <span class="o">&lt;=</span> <span class="nx">pXR</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">return</span> <span class="mi">3</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="c1">// bottom field, return 4</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">&gt;=</span> <span class="nx">pXL</span> <span class="o">&amp;&amp;</span> <span class="nx">bX</span> <span class="o">&lt;=</span> <span class="nx">pXR</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">&gt;=</span> <span class="nx">pYB</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">bY</span> <span class="o">+</span> <span class="nx">fY</span> <span class="o">&gt;=</span> <span class="nx">pYT</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">+</span> <span class="nx">fX</span> <span class="o">&gt;=</span> <span class="nx">pXL</span> <span class="o">&amp;&amp;</span> <span class="nx">bX</span> <span class="o">+</span> <span class="nx">fX</span> <span class="o">&lt;=</span> <span class="nx">pXR</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">return</span> <span class="mi">4</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
 </code></pre>
+</div>
+
 
 <p>另外，有个作者介绍的小技巧，就是在调试程序的时候可以用如下的Grid图来作为背景，方便坐标的测定和调整：</p>
 

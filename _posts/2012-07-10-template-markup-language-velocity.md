@@ -98,19 +98,19 @@ TL使用references来在web site内嵌套动态内容，一个变量就是一种
 
 在VTL中有三种类型的references：
 
-* 变量(variables)
-* 属性(properties)
-* 方法(methods)
+* 	变量(variables)
+* 	属性(properties)
+* 	方法(methods)
 
 作为一个使用VTL的页面设计者，你和你的工程师必须就references的名称达成共识，以便你可以在你的template中使用它们。
 
 > Everything coming to and from a reference被作为一个String对象处理。如果有一个对象$foo是一个Integer对象，那么Velocity将调用它的toString()方法将这个对象转型为String类型。 
 
-* 变量
+* 	变量
 	
 	要格式求同Java
 
-* 属性
+* 	属性
 
 	例子：
 	
@@ -120,7 +120,7 @@ TL使用references来在web site内嵌套动态内容，一个变量就是一种
    	$customer.Address有两种含义。它可以表示：查找hashtable对象customer中以Address为关键字的值；也可以表示调用customer对象的getAddress()方法。当你的页面被请求时，Velocity将确定以上两种方式选用那种，然后返回适当的值。 
 方法 	
 
-* 方法
+* 	方法
 
 	一个方法就是被定义在java中的一段代码，并且它有完成某些有用工作的能力，例如一个执行计算和判断条件是否成立、满足等。方法是一个由$开始并跟随VTL标识符组成的References，一般还包括一个VTL方法体。例如：
 		
@@ -137,9 +137,9 @@ VTL属性可以作为VTL方法的缩写。$customer.Address属性和使用$custo
 
 reference的正是格式如下： 
 
-* ${mudSlinger}        变量 
-* ${customer.Address}    属性 
-* ${purchase.getTotal()}    方法 
+* 	${mudSlinger}        变量 
+* 	${customer.Address}    属性 
+* 	${purchase.getTotal()}    方法 
 
 非正是格式更见常用，但是有时还是使用正是格式比较适合。例如：你希望通过一个变量$vice来动态的组织一个字符串。
  
@@ -250,12 +250,12 @@ Reference允许设计者使用动态的内容，而directive使得你可以应�
 	
 赋值左侧的（LHS）必须是一个变量或者属性reference。右侧（RHS）可以是以下类型中一种：
  
-*  变量reference 
-*  String literal 
-*  属性reference 
-*  方法reference 
-*  number literal 
-*  ArrayList 
+*  	变量reference 
+*  	String literal 
+*  	属性reference 
+*  	方法reference 
+*  	number literal 
+*  	ArrayList 
 
 下面是应用各种类型的RHS的例子： 
 
@@ -346,8 +346,8 @@ RHS也可以是一个简单的算术表达式：
 
 上例中的条件语句将在以下两种条件下成立：
  
-* $foo是一个boolean型的变量，且它的值为true 
-* $foo变量的值不为null 
+* 	$foo是一个boolean型的变量，且它的值为true 
+* 	$foo变量的值不为null 
 
 这里需要注意一点：Velocity context仅仅能够包含对象，所以当我们说“boolean”时实际上代表的时一个Boolean对象。即便某个方法返回的是一个boolean值，Velocity也会利用内省机制将它转换为一个Boolean的相同值。
 

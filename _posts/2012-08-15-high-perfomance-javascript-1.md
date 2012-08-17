@@ -1,5 +1,6 @@
 ---
 layout: post
+
 title: high performance JavaScript notes 1
 ---
 
@@ -65,8 +66,9 @@ JavaScript的阻塞特性使js性能问题变的复杂。大多数浏览器使�
 	</script>
 	{% endhighlight %}
 	
-一旦页面初始化的脚本加载完，就可以用loadScript函数去加载页面其他功能所需的脚本了。YUI3也使用类似的方法，引入一个种子文件，来加载丰富的功能组件：
+ 	一旦页面初始化的脚本加载完，就可以用loadScript函数去加载页面其他功能所需的脚本了。YUI3也使用类似的方法，引入一个种子文件，来加载丰富的功能组件：
 
+ 	
 	{% highlight html %}
 	<script type="text/javascript" src="http://yui.yahooapis.com/combo?3.0.0/build/yui/yui-min.js"></script>
 	<script type="text/javascript">
@@ -76,24 +78,20 @@ JavaScript的阻塞特性使js性能问题变的复杂。大多数浏览器使�
 	</script>
 	{% endhighlight %}
 
+ 
 ## Chapter 2 Data Access 数据访问 ##
 
 ### 四种基本的数据存储位置 ###
 
-* 	直接量
-
-	> 直接量只代表自身，不存储在特定的位置。js中直接量有：字符串，数字，布尔值，对象，数组，函数，正则表达式，以及特殊的null和undefinded值。
+* 	直接量* 	
+	> 直接量只代表自身，不存储在特定的位置。js中直接量有：字符串，数字，布尔值，对象，数组，函数，正则表达式，以及特殊的null和undefinde值。
 	
-* 	变量
-
-	> 开发者用关键字var定义的数据存储单元。
+* 	变量* 	
+	> 开发者用关键字var定义的数存储单元。
 	
-* 	数组元素
-
-	> 存储在js数组对象内部，以数字作为索引。
-
-* 	对象成员
-
+* 	数组元素* 	
+	> 存储在js数组对象内部，以数字作为索引。	
+* 	对象成员* 	
 	> 存储在js对象内部，以字符串作为索引。
 	
 总的来说，直接量和局部变量的访问速度快于数组项和对象成员的访问速度。

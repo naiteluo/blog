@@ -1,5 +1,6 @@
 ---
 layout: default
+
 title: Archlinux 安装配置问题
 ---
 
@@ -8,7 +9,7 @@ title: Archlinux 安装配置问题
 用的默认的network进行网络管理，开机启动特别慢，而且gnome启动后的networkmanager因为冲突而disabled。networkmanager是一个DAEMON,可以手动用/etc/rc.d/networkmanager start来启动它，更好地是将其加入/etc/rc.conf的DAEMON列表中，并将原来的network用’!'感叹号取消掉，即可。安装network-manager-applet后就能在gnome里显示图标方便使用。
 
 此后发现了一个很严重的问题，nerworkmanager连不上校园网，网上也很多说wifi无法连接的文章，与其自己修改到崩溃，不如早点换一个，就试用了wicd，目前尚且完美。安装：
-
+	
 	# pacman -S wicd
 	# pacman -S wicd-gtk
 
