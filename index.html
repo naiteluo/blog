@@ -3,16 +3,18 @@ layout: default
 title: I Want To Code With You
 ---
 
-<h1>{{ page.title }}</h1>
+<h2>{{ page.title }}</h2>
 {% for post in site.posts %}
-<h2>
-	<a href="{{ post.url }}">
-		{{ post.title }}
-	</a>
-</h2>
-<!-- {{ post.content ｜ strip_html | truncatewords: 50 }} -->
-<!-- {{ post.content }} -->
-<em>Posted on {{ post.date | date_to_long_string }}.</em>
-<hr/>
+<div>
+    <h3>
+        <a href="{{ post.url }}">
+            {{ post.title }}
+        </a>
+    </h3>
+    <!-- {{ post.content ｜ strip_html | truncatewords: 50 }} -->
+    <!-- {{ post.content }} -->
+    <em>Posted on {{ post.date | date_to_long_string }}.</em>
+    <hr/>
+</div>
 {% endfor %}
 
