@@ -16,19 +16,23 @@
 <body>
 	<div class="wrapper">
 		<header>
-			<h1>
-				<a href="http://naiteluo.net">MMNN</a>
-			</h1>
-			<p>
-				naiteluo's blog
-			</p>
-			<p class="view">
-				<a href="https://github.com/naiteluo"><small>Naiteluo</small> in Github.</a>
-			</p>
+			<div class="inner">
+				<ul class="nav">
+					<li class="logo">
+						<a href="http://naiteluo.net">MMNN</a>
+					</li>
+					<li class="aboutme">
+						<a href="http://naiteluo.net">ABOUT ME</a>
+					</li>
+				</ul>
+				<div class="view">
+					<a href="https://github.com/naiteluo"><small>NAITELUO</small> IN Github.</a>
+				</div>
+			</div>
 		</header>
-		<section>
+		<section class="container">
 			<div class="post-content">
-    <h2>Build a web chat room with Node.JS and Socket.IO</h2>
+    <h1>Build a web chat room with Node.JS and Socket.IO</h1>
     <h2>应用描述</h2>
 
 <p><em>WebSocket</em> 作为HTML5的一个新特性，它的目的是为需要双向通信的基于浏览器的应用提供一个机制，不需要依靠建立多个HTTP连接即可实现双向通信。以前，web应用要在客户端和服务器建立双向连接的话，需要发送大量的http请求向服务器进行轮询，这导致了一些问题：</p>

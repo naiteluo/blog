@@ -16,27 +16,32 @@
 <body>
 	<div class="wrapper">
 		<header>
-			<h1>
-				<a href="http://naiteluo.net">MMNN</a>
-			</h1>
-			<p>
-				naiteluo's blog
-			</p>
-			<p class="view">
-				<a href="https://github.com/naiteluo"><small>Naiteluo</small> in Github.</a>
-			</p>
+			<div class="inner">
+				<ul class="nav">
+					<li class="logo">
+						<a href="http://naiteluo.net">MMNN</a>
+					</li>
+					<li class="aboutme">
+						<a href="http://naiteluo.net">ABOUT ME</a>
+					</li>
+				</ul>
+				<div class="view">
+					<a href="https://github.com/naiteluo"><small>NAITELUO</small> IN Github.</a>
+				</div>
+			</div>
 		</header>
-		<section>
-			<h2>I Want To Code With You</h2>
-
-<div>
-    <h3>
-        <a href="/blog/2012/09/07/code-conventions-for-the-javascript-programming-language-translate.html">
-            Code Conventions for the JavaScript Programming Language
-        </a>
-    </h3>
-    <!-- <blockquote><p>本文翻譯自Douglas Crockford老先生的《<a href="http://javascript.crockford.com/code.html">Code Conventions for the JavaScript Programming Language</a>》，規範具有參考價值，但是不是真理，要經過自己的思考和理解，形成適合自己或團隊的編碼規範。文中若是以塊引用標誌的地方，則是我自己的理解和說明。如有任何翻譯不當或理解錯誤的地方，歡迎指正，謝謝。</p></blockquote> <p>這是一系列使用JavaScript編程的習慣和規則。它的靈感從Sun的<a href="http://"> Code Conventions for the Java Programming Language</a>而來。因為JavaScript不是Java， 所以其中很大的部分作出了改動。</p> <p>一個軟件對一個組織的長遠價值，與代碼庫的質量成正比。在一個程序的一生中，會被很多人修改和閱讀。如果程序能夠清晰地表達它的結構和特性，那它在不遠的未來中發生錯誤的可能性就會更小。</p> <p>編程習慣可以幫助提高程序的健壯性。</p> <p>我們所有的JavaScript代碼都是直接發佈的。它應該具備發佈的質量*。</p> <p>Neatness counts.</p> <h2>JavaScript文件</h2> <p>JavaScript程序應該存儲為<code>.js</code>文件，並通過<code>.js</code>文件傳輸。</p> <p>JavaScript最好不要內嵌在HTML文件中，除非該代碼是專門針對一個單獨的會話的。HTML中的js代碼會明顯地增加頁面的大小，這些增加的部分是無法通過緩存和壓縮HTML文件來減輕。</p> <p><code>&lt;script src="filename.js"&gt;</code>標籤應該盡可能地放在body的尾部。這樣減少因加載腳本而引起的頁面其他部分加載的延遲。不需要在標簽中使用language或者type屬性。MIME類型是由服務器決定的，而不是標簽本身。</p> <h2>縮進</h2> <p>縮進的單位是4個空格。避免使用tab。因為至今依然沒有tabstop放置的標準（本文在21世紀撰寫）。使用空格會增加文件的大小，但是這些增加對本地網絡來說不明顯，而且可以通過minification來減輕影響。</p> <h2>行的長度</h2> <p>避免一行超過80個字符。當一個語句一行寫不下的時候，就有必要折行。把換行位置放到一個操作符後面，最理想的情況是逗號後面*。在操作符後面的換行減少了復制粘貼帶來的錯誤被自動插入分號所掩蓋的可能性。下一行應該要縮進8個空格。</p> <blockquote><p>關於這裡的80個字符其實有個有趣的來源。1801年開始，計算機普遍使用打孔卡來作為處理媒介，後來打孔卡的標準行數是80行，這也是說打孔卡一次可以紀錄的字符是80個。這個尺寸限制至今仍在許多地方被使用。例如這裡。</p></blockquote> <h2>註釋</h2> <p>大方地使用註釋。留下信息以便供需要理解你做了什麼的人（很可能是你自己）閱讀。註釋要寫的認真明了，就跟它所注解的代碼一樣。加入適度的幽默會有益於你的註釋，挫折和不滿的情緒則反之。</p> <p>保持註釋是最新的十分重要。有錯誤的註釋會使程序更難閱讀和理解。</p> <p>註釋要有意義。集中於不能立刻顯現的問題。不要讓讀者的時間浪費在類似這樣的東西上：</p> <pre><code>i ＝ 0; // Set i to zero. </code></pre> <p>一般使用行註釋。塊註釋用於正式文檔和註釋掉代碼。</p> <h2>變量聲明</h2> <p>所有變量都要在使用前被聲明。JavaScript沒有要求要這樣，但是這樣做可以使得程序更易讀，而且可以更容易監查到未被聲明的變量不小心被聲明成全局變量。永遠也不要使用隱含的全局變量。</p>... -->
-    <!-- <blockquote><p>本文翻譯自Douglas Crockford老先生的《<a href="http://javascript.crockford.com/code.html">Code Conventions for the JavaScript Programming Language</a>》，規範具有參考價值，但是不是真理，要經過自己的思考和理解，形成適合自己或團隊的編碼規範。文中若是以塊引用標誌的地方，則是我自己的理解和說明。如有任何翻譯不當或理解錯誤的地方，歡迎指正，謝謝。</p></blockquote>
+		<section class="container">
+			<h1 style="display: none;">I Want To Code With You</h1>
+<div class="posts-list">
+    
+    <div class="post-item">
+        <h2 class="post-title">
+            <a href="/blog/2012/09/07/code-conventions-for-the-javascript-programming-language-translate.html">
+                Code Conventions for the JavaScript Programming Language
+            </a>
+        </h2>
+        <!-- <blockquote><p>本文翻譯自Douglas Crockford老先生的《<a href="http://javascript.crockford.com/code.html">Code Conventions for the JavaScript Programming Language</a>》，規範具有參考價值，但是不是真理，要經過自己的思考和理解，形成適合自己或團隊的編碼規範。文中若是以塊引用標誌的地方，則是我自己的理解和說明。如有任何翻譯不當或理解錯誤的地方，歡迎指正，謝謝。</p></blockquote> <p>這是一系列使用JavaScript編程的習慣和規則。它的靈感從Sun的<a href="http://"> Code Conventions for the Java Programming Language</a>而來。因為JavaScript不是Java， 所以其中很大的部分作出了改動。</p> <p>一個軟件對一個組織的長遠價值，與代碼庫的質量成正比。在一個程序的一生中，會被很多人修改和閱讀。如果程序能夠清晰地表達它的結構和特性，那它在不遠的未來中發生錯誤的可能性就會更小。</p> <p>編程習慣可以幫助提高程序的健壯性。</p> <p>我們所有的JavaScript代碼都是直接發佈的。它應該具備發佈的質量*。</p> <p>Neatness counts.</p> <h2>JavaScript文件</h2> <p>JavaScript程序應該存儲為<code>.js</code>文件，並通過<code>.js</code>文件傳輸。</p> <p>JavaScript最好不要內嵌在HTML文件中，除非該代碼是專門針對一個單獨的會話的。HTML中的js代碼會明顯地增加頁面的大小，這些增加的部分是無法通過緩存和壓縮HTML文件來減輕。</p> <p><code>&lt;script src="filename.js"&gt;</code>標籤應該盡可能地放在body的尾部。這樣減少因加載腳本而引起的頁面其他部分加載的延遲。不需要在標簽中使用language或者type屬性。MIME類型是由服務器決定的，而不是標簽本身。</p> <h2>縮進</h2> <p>縮進的單位是4個空格。避免使用tab。因為至今依然沒有tabstop放置的標準（本文在21世紀撰寫）。使用空格會增加文件的大小，但是這些增加對本地網絡來說不明顯，而且可以通過minification來減輕影響。</p> <h2>行的長度</h2> <p>避免一行超過80個字符。當一個語句一行寫不下的時候，就有必要折行。把換行位置放到一個操作符後面，最理想的情況是逗號後面*。在操作符後面的換行減少了復制粘貼帶來的錯誤被自動插入分號所掩蓋的可能性。下一行應該要縮進8個空格。</p> <blockquote><p>關於這裡的80個字符其實有個有趣的來源。1801年開始，計算機普遍使用打孔卡來作為處理媒介，後來打孔卡的標準行數是80行，這也是說打孔卡一次可以紀錄的字符是80個。這個尺寸限制至今仍在許多地方被使用。例如這裡。</p></blockquote> <h2>註釋</h2> <p>大方地使用註釋。留下信息以便供需要理解你做了什麼的人（很可能是你自己）閱讀。註釋要寫的認真明了，就跟它所注解的代碼一樣。加入適度的幽默會有益於你的註釋，挫折和不滿的情緒則反之。</p> <p>保持註釋是最新的十分重要。有錯誤的註釋會使程序更難閱讀和理解。</p> <p>註釋要有意義。集中於不能立刻顯現的問題。不要讓讀者的時間浪費在類似這樣的東西上：</p> <pre><code>i ＝ 0; // Set i to zero. </code></pre> <p>一般使用行註釋。塊註釋用於正式文檔和註釋掉代碼。</p> <h2>變量聲明</h2> <p>所有變量都要在使用前被聲明。JavaScript沒有要求要這樣，但是這樣做可以使得程序更易讀，而且可以更容易監查到未被聲明的變量不小心被聲明成全局變量。永遠也不要使用隱含的全局變量。</p>... -->
+        <!-- <blockquote><p>本文翻譯自Douglas Crockford老先生的《<a href="http://javascript.crockford.com/code.html">Code Conventions for the JavaScript Programming Language</a>》，規範具有參考價值，但是不是真理，要經過自己的思考和理解，形成適合自己或團隊的編碼規範。文中若是以塊引用標誌的地方，則是我自己的理解和說明。如有任何翻譯不當或理解錯誤的地方，歡迎指正，謝謝。</p></blockquote>
 
 <p>這是一系列使用JavaScript編程的習慣和規則。它的靈感從Sun的<a href="http://"> Code Conventions for the Java Programming Language</a>而來。因為JavaScript不是Java， 所以其中很大的部分作出了改動。</p>
 
@@ -433,34 +438,16 @@ try {
 
 <p><code>eval</code>有別名。例如不要使用<code>Function</code>構造器。不要傳字符串給<code>setTimeout</code>和<code>setInterval</code>。</p>
  -->
-    <em>Posted on 07 September 2012.</em>
-    <hr/>
-</div>
-
-<div>
-    <h3>
-        <a href="/blog/2012/09/03/high-perfomance-javascript-3.html">
-            high performance JavaScript notes 3
-        </a>
-    </h3>
-    <!-- <h2>Chapter 6 Responsive Interfaces 快速响应的用户界面</h2>
-
-<p>JavaScript 和用户界面更新在同一个进程中运行，一次只能处理一件事情。当JavaScript在运行时，用户界面处于“锁定”状态，不能响应输入。</p>
-
-<p>任何JavaScript任务都不应当执行超过100毫秒。过长的运行时间会导致UI更新出现明显的延迟，从而对用户体验产生负面影响。</p>
-
-<p>定時器可用來安排代碼延遲執行，使得你可以把長時間運行腳本分解成一系列的小任務，見以下gist，我們可以將複雜任務拆分成若干個原子任務，把原子任務放在定時器中調用：</p>
-
-<script src="https://gist.github.com/3549691.js?file=multiStep.js"></script>
-
-
-<p>第二個封裝的方法，加入了簡單的時間監測機制，使得每個定時期可以處理多個任務，避免把任務分解得過於零碎。</p>
-
-<p>Web Workders是新版瀏覽器支持的特性，它允許你在UI線程外部執行JavaScript代碼，從而避免鎖定UI。（稍後會補上實例與代碼）</p>
-
-<p>總而言之，沒有什麼JavaScript代碼會重要到可以影響用戶體驗的程度。</p>
- -->
-    <!-- <h2>Chapter 6 Responsive Interfaces 快速响应的用户界面</h2>
+        <em class="post-date">Posted on 07 September 2012.</em>
+    </div>
+    
+    <div class="post-item">
+        <h2 class="post-title">
+            <a href="/blog/2012/09/03/high-perfomance-javascript-3.html">
+                high performance JavaScript notes 3
+            </a>
+        </h2>
+        <!-- <h2>Chapter 6 Responsive Interfaces 快速响应的用户界面</h2>
 
 <p>JavaScript 和用户界面更新在同一个进程中运行，一次只能处理一件事情。当JavaScript在运行时，用户界面处于“锁定”状态，不能响应输入。</p>
 
@@ -477,18 +464,34 @@ try {
 
 <p>總而言之，沒有什麼JavaScript代碼會重要到可以影響用戶體驗的程度。</p>
  -->
-    <em>Posted on 03 September 2012.</em>
-    <hr/>
-</div>
+        <!-- <h2>Chapter 6 Responsive Interfaces 快速响应的用户界面</h2>
 
-<div>
-    <h3>
-        <a href="/blog/2012/08/19/high-perfomance-javascript-2.html">
-            high performance JavaScript notes 2
-        </a>
-    </h3>
-    <!-- <h2>Chapter 3 DOM Scripting DOM 编程</h2> <blockquote><p>用脚本进行DOM操作的代价很昂贵，它是富Web应用中最常见的性能瓶颈。</p></blockquote> <p>这章主要涉及一下三类问题：</p> <ul> <li>访问和修改DOM元素</li> <li>修改DOM元素的样式会导致<strong>重绘(repaint)</strong>和<strong>重排(reflow)</strong></li> <li>通过DOM事件处理与用户的交互</li> </ul> <p>文档对象模型是一个语言无关的，用于操作XML和HTML文档的应用程序借口API。虽然它是语言无关的，但是在浏览器中的接口却是用JavaScript实现的。浏览器中通常会把DOM和JavaScript独立实现，两个相互独立的功能只要通过接口彼此连接，就会产生消耗。</p> <h3>DOM访问与修改</h3> <p>对比一下两个实例：</p> <div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span> <span class="kd">function</span> <span class="nx">innerHTMLLoop1</span> <span class="p">()</span> <span class="p">{</span> <span class="lineno"> 2</span> <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">count</span> <span class="o">&lt;</span> <span class="mi">15000</span><span... -->
-    <!-- <h2>Chapter 3 DOM Scripting DOM 编程</h2>
+<p>JavaScript 和用户界面更新在同一个进程中运行，一次只能处理一件事情。当JavaScript在运行时，用户界面处于“锁定”状态，不能响应输入。</p>
+
+<p>任何JavaScript任务都不应当执行超过100毫秒。过长的运行时间会导致UI更新出现明显的延迟，从而对用户体验产生负面影响。</p>
+
+<p>定時器可用來安排代碼延遲執行，使得你可以把長時間運行腳本分解成一系列的小任務，見以下gist，我們可以將複雜任務拆分成若干個原子任務，把原子任務放在定時器中調用：</p>
+
+<script src="https://gist.github.com/3549691.js?file=multiStep.js"></script>
+
+
+<p>第二個封裝的方法，加入了簡單的時間監測機制，使得每個定時期可以處理多個任務，避免把任務分解得過於零碎。</p>
+
+<p>Web Workders是新版瀏覽器支持的特性，它允許你在UI線程外部執行JavaScript代碼，從而避免鎖定UI。（稍後會補上實例與代碼）</p>
+
+<p>總而言之，沒有什麼JavaScript代碼會重要到可以影響用戶體驗的程度。</p>
+ -->
+        <em class="post-date">Posted on 03 September 2012.</em>
+    </div>
+    
+    <div class="post-item">
+        <h2 class="post-title">
+            <a href="/blog/2012/08/19/high-perfomance-javascript-2.html">
+                high performance JavaScript notes 2
+            </a>
+        </h2>
+        <!-- <h2>Chapter 3 DOM Scripting DOM 编程</h2> <blockquote><p>用脚本进行DOM操作的代价很昂贵，它是富Web应用中最常见的性能瓶颈。</p></blockquote> <p>这章主要涉及一下三类问题：</p> <ul> <li>访问和修改DOM元素</li> <li>修改DOM元素的样式会导致<strong>重绘(repaint)</strong>和<strong>重排(reflow)</strong></li> <li>通过DOM事件处理与用户的交互</li> </ul> <p>文档对象模型是一个语言无关的，用于操作XML和HTML文档的应用程序借口API。虽然它是语言无关的，但是在浏览器中的接口却是用JavaScript实现的。浏览器中通常会把DOM和JavaScript独立实现，两个相互独立的功能只要通过接口彼此连接，就会产生消耗。</p> <h3>DOM访问与修改</h3> <p>对比一下两个实例：</p> <div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span> <span class="kd">function</span> <span class="nx">innerHTMLLoop1</span> <span class="p">()</span> <span class="p">{</span> <span class="lineno"> 2</span> <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">count</span> <span class="o">&lt;</span> <span class="mi">15000</span><span... -->
+        <!-- <h2>Chapter 3 DOM Scripting DOM 编程</h2>
 
 <blockquote><p>用脚本进行DOM操作的代价很昂贵，它是富Web应用中最常见的性能瓶颈。</p></blockquote>
 
@@ -886,36 +889,16 @@ try {
 </ul>
 
  -->
-    <em>Posted on 19 August 2012.</em>
-    <hr/>
-</div>
-
-<div>
-    <h3>
-        <a href="/blog/2012/08/18/debug-tools-for-the-evil-ie6.html">
-            IE6相关开发与debug工具
-        </a>
-    </h3>
-    <!-- <p>实习了一段时间，对ie6的厌恶感提升了不少。但脏活累活总得有人去干，ie6下出了盒子模型和各种布局样式的诡异bug外，在字符编码，还有js代码也有不少让人挠头的问题。本文不细说具体问题的原因和解决，列举几个最近用到的ie6下常用的开发和debug工具。</p>
-
-<ol>
-<li>IE6。对的，就是ie6。ie6下开发和兼容怎么能没有个ie6呢。似乎ietester是个很好东西，同时拥有ie6，7，8，9，但是在实际使用中发现ietester不能完整和真实地呈现出各版本的效果，会与实际有差异，甚至是出现一些实际版本没有错误扰乱我们发现实际的问题。所以个人还是比较推荐在用虚拟机装对应版本的系统使用对应版本的ie，这样比较能真实还原用户场景。</li>
-<li>Internet Explorer Developer Toolbar。比firebug，chrome和safari的开发者工具差得多的东西，但是嘛，在这么烂的浏览器上也别指望有特别优秀的的开发者工具了，凑合着可以查看一下dom，修改元素样式等。下载链接：<a href="http://www.microsoft.com/en-us/download/details.aspx?id=18359">M$官方下载传送门</a></li>
-<li>Debug Bar。javascript debug工具。会报告js错误，显示调用栈，错误文件以及代码所在行数；提供类似firebug的console API；一个javascript console。安装前需要先安装Microsofe Script Debugger, <a href="http://www.microsoft.com/zh-cn/download/details.aspx?id=23992">下载传送门</a>。官方地址：<a href="http://www.my-debugbar.com/wiki/CompanionJS/HomePage">传送门again</a>。</li>
-<li><p>Fiddler。fiddler是一个http/https调试器，不仅限于对ie使用，只是最近在ie6的调试中帮了很大的忙，才特别地列在这里。简单来说，fiddler做的事情就是以代理服务器的方式监听系统的网络数据，通过fiddler我们可以监控，更改这些请求。其中较常用的功能是auto response，我们可以用本地的文件来替代网络请求的结果，骗过浏览器，这样就方便我们做前端的调试，不用每次都修改服务器端的代码，直接就可以在前段进行代码修改调试了。
-下面是一些相关的教程和连接：</p>
-
-<ul>
-<li><a href="http://www.aliued.cn/2010/04/18/use-fiddler-to-improve-efficiency-of-front-development-introduction.html">使用Fiddler提高前端工作效率 (介绍篇)</a></li>
-<li><a href="http://www.aliued.cn/2010/04/25/use-fiddler-to-improve-efficiency-of-front-development-example.html">使用Fiddler提高前端工作效率 (实例篇)</a></li>
-<li><a href="http://www.fiddler2.com/fiddler2/">官方网站</a></li>
-</ul>
-</li>
-<li><p>另外，由于在xp中测试的ie6，虽然不是开发环境，但是调试过程中代码的修改工作量也不少，所以最还要下载个好用的文本编辑器。鉴于sublime text 2对gbk支持不太好，所以使用notepad++。另外由于从服务器下载的html文件一般内容都很多，代码量大，使用diff工具配合fiddler，对比线上和线下文件，效率会更高一些。推荐一个DiffMerge，下载地址自己google。</p></li>
-</ol>
-
- -->
-    <!-- <p>实习了一段时间，对ie6的厌恶感提升了不少。但脏活累活总得有人去干，ie6下出了盒子模型和各种布局样式的诡异bug外，在字符编码，还有js代码也有不少让人挠头的问题。本文不细说具体问题的原因和解决，列举几个最近用到的ie6下常用的开发和debug工具。</p>
+        <em class="post-date">Posted on 19 August 2012.</em>
+    </div>
+    
+    <div class="post-item">
+        <h2 class="post-title">
+            <a href="/blog/2012/08/18/debug-tools-for-the-evil-ie6.html">
+                IE6相关开发与debug工具
+            </a>
+        </h2>
+        <!-- <p>实习了一段时间，对ie6的厌恶感提升了不少。但脏活累活总得有人去干，ie6下出了盒子模型和各种布局样式的诡异bug外，在字符编码，还有js代码也有不少让人挠头的问题。本文不细说具体问题的原因和解决，列举几个最近用到的ie6下常用的开发和debug工具。</p>
 
 <ol>
 <li>IE6。对的，就是ie6。ie6下开发和兼容怎么能没有个ie6呢。似乎ietester是个很好东西，同时拥有ie6，7，8，9，但是在实际使用中发现ietester不能完整和真实地呈现出各版本的效果，会与实际有差异，甚至是出现一些实际版本没有错误扰乱我们发现实际的问题。所以个人还是比较推荐在用虚拟机装对应版本的系统使用对应版本的ie，这样比较能真实还原用户场景。</li>
@@ -934,18 +917,36 @@ try {
 </ol>
 
  -->
-    <em>Posted on 18 August 2012.</em>
-    <hr/>
-</div>
+        <!-- <p>实习了一段时间，对ie6的厌恶感提升了不少。但脏活累活总得有人去干，ie6下出了盒子模型和各种布局样式的诡异bug外，在字符编码，还有js代码也有不少让人挠头的问题。本文不细说具体问题的原因和解决，列举几个最近用到的ie6下常用的开发和debug工具。</p>
 
-<div>
-    <h3>
-        <a href="/blog/2012/08/15/high-perfomance-javascript-1.html">
-            high performance JavaScript notes 1
-        </a>
-    </h3>
-    <!-- <h2>Chapter 1 Loading and Execution 加载和执行</h2> <p>JavaScript的阻塞特性使js性能问题变的复杂。大多数浏览器使用单一进程来处理ui和执行脚本。代码的执行会阻塞浏览器的其他进程，例如用户界面绘制。</p> <p>将script标签放到页面的底部，</body>之前。能确保脚本执行前页面已经加载完毕。</p> <blockquote><p>浏览器在解析到&lt;body>前不会渲染页面</p> <p>把内嵌脚本放在引用外链样式表的&lt;link>标签后会导致页面阻塞去等待样式表的下载；是为了确保脚本执行时能获得最精准的样式信息；</p></blockquote> <p>合并脚本。页面中script标签越少，加载越快，响应更迅速。</p> <p>使用无阻塞方式下载代码：</p> <ul> <li>script标签的defer属性（不推荐）</li> <li><p>动态创建script元素来下载、执行代码；脚本文件在该元素被添加到页面时开始下载，且下载和执行过程不会阻塞页面其他进程。</p> <p>下面是一个封装好的加载方法：</p></li> </ul> <div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span> <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nb">window</span><span class="p">)</span> <span class="p">{</span> <span class="lineno"> 2</span> <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">loadScript</span><span class="p">)</span> <span class="lineno"> 3</span> <span class="k">throw</span> <span class="k">new</span> <span... -->
-    <!-- <h2>Chapter 1 Loading and Execution 加载和执行</h2>
+<ol>
+<li>IE6。对的，就是ie6。ie6下开发和兼容怎么能没有个ie6呢。似乎ietester是个很好东西，同时拥有ie6，7，8，9，但是在实际使用中发现ietester不能完整和真实地呈现出各版本的效果，会与实际有差异，甚至是出现一些实际版本没有错误扰乱我们发现实际的问题。所以个人还是比较推荐在用虚拟机装对应版本的系统使用对应版本的ie，这样比较能真实还原用户场景。</li>
+<li>Internet Explorer Developer Toolbar。比firebug，chrome和safari的开发者工具差得多的东西，但是嘛，在这么烂的浏览器上也别指望有特别优秀的的开发者工具了，凑合着可以查看一下dom，修改元素样式等。下载链接：<a href="http://www.microsoft.com/en-us/download/details.aspx?id=18359">M$官方下载传送门</a></li>
+<li>Debug Bar。javascript debug工具。会报告js错误，显示调用栈，错误文件以及代码所在行数；提供类似firebug的console API；一个javascript console。安装前需要先安装Microsofe Script Debugger, <a href="http://www.microsoft.com/zh-cn/download/details.aspx?id=23992">下载传送门</a>。官方地址：<a href="http://www.my-debugbar.com/wiki/CompanionJS/HomePage">传送门again</a>。</li>
+<li><p>Fiddler。fiddler是一个http/https调试器，不仅限于对ie使用，只是最近在ie6的调试中帮了很大的忙，才特别地列在这里。简单来说，fiddler做的事情就是以代理服务器的方式监听系统的网络数据，通过fiddler我们可以监控，更改这些请求。其中较常用的功能是auto response，我们可以用本地的文件来替代网络请求的结果，骗过浏览器，这样就方便我们做前端的调试，不用每次都修改服务器端的代码，直接就可以在前段进行代码修改调试了。
+下面是一些相关的教程和连接：</p>
+
+<ul>
+<li><a href="http://www.aliued.cn/2010/04/18/use-fiddler-to-improve-efficiency-of-front-development-introduction.html">使用Fiddler提高前端工作效率 (介绍篇)</a></li>
+<li><a href="http://www.aliued.cn/2010/04/25/use-fiddler-to-improve-efficiency-of-front-development-example.html">使用Fiddler提高前端工作效率 (实例篇)</a></li>
+<li><a href="http://www.fiddler2.com/fiddler2/">官方网站</a></li>
+</ul>
+</li>
+<li><p>另外，由于在xp中测试的ie6，虽然不是开发环境，但是调试过程中代码的修改工作量也不少，所以最还要下载个好用的文本编辑器。鉴于sublime text 2对gbk支持不太好，所以使用notepad++。另外由于从服务器下载的html文件一般内容都很多，代码量大，使用diff工具配合fiddler，对比线上和线下文件，效率会更高一些。推荐一个DiffMerge，下载地址自己google。</p></li>
+</ol>
+
+ -->
+        <em class="post-date">Posted on 18 August 2012.</em>
+    </div>
+    
+    <div class="post-item">
+        <h2 class="post-title">
+            <a href="/blog/2012/08/15/high-perfomance-javascript-1.html">
+                high performance JavaScript notes 1
+            </a>
+        </h2>
+        <!-- <h2>Chapter 1 Loading and Execution 加载和执行</h2> <p>JavaScript的阻塞特性使js性能问题变的复杂。大多数浏览器使用单一进程来处理ui和执行脚本。代码的执行会阻塞浏览器的其他进程，例如用户界面绘制。</p> <p>将script标签放到页面的底部，</body>之前。能确保脚本执行前页面已经加载完毕。</p> <blockquote><p>浏览器在解析到&lt;body>前不会渲染页面</p> <p>把内嵌脚本放在引用外链样式表的&lt;link>标签后会导致页面阻塞去等待样式表的下载；是为了确保脚本执行时能获得最精准的样式信息；</p></blockquote> <p>合并脚本。页面中script标签越少，加载越快，响应更迅速。</p> <p>使用无阻塞方式下载代码：</p> <ul> <li>script标签的defer属性（不推荐）</li> <li><p>动态创建script元素来下载、执行代码；脚本文件在该元素被添加到页面时开始下载，且下载和执行过程不会阻塞页面其他进程。</p> <p>下面是一个封装好的加载方法：</p></li> </ul> <div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span> <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nb">window</span><span class="p">)</span> <span class="p">{</span> <span class="lineno"> 2</span> <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">loadScript</span><span class="p">)</span> <span class="lineno"> 3</span> <span class="k">throw</span> <span class="k">new</span> <span... -->
+        <!-- <h2>Chapter 1 Loading and Execution 加载和执行</h2>
 
 <p>JavaScript的阻塞特性使js性能问题变的复杂。大多数浏览器使用单一进程来处理ui和执行脚本。代码的执行会阻塞浏览器的其他进程，例如用户界面绘制。</p>
 
@@ -1091,18 +1092,17 @@ try {
 </ul>
 
  -->
-    <em>Posted on 15 August 2012.</em>
-    <hr/>
-</div>
-
-<div>
-    <h3>
-        <a href="/blog/2012/07/26/problems-of-front-end-1.html">
-            problems of front end 1
-        </a>
-    </h3>
-    <!-- <h3>问题描述</h3> <p>在做一个有很多节点的菜单（最深有4层）的时候，我们一开始的步骤是从一个服务器生成的静态的js文件里面获取菜单的树内容，再将树的那内容生成dom。这样再普通浏览器上显示还比较正常，但是如果机子的性能比较差或者是在ie6等浏览器上，菜单部分则会显示空白，经过1～2秒的空白后，完成树的遍历和节点的生成后，才显示到页面中，体验极差。</p> <div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span> <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">menuData</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">elem</span><span class="p">)</span> <span class="p">{</span> <span class="lineno"> 2</span> <span class="lineno"> 3</span> <span class="c1">// blablabla ...</span> <span class="lineno"> 4</span> <span class="lineno"> 5</span> <span class="kd">var</span> <span class="nx">channel</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;div... -->
-    <!-- <h3>问题描述</h3>
+        <em class="post-date">Posted on 15 August 2012.</em>
+    </div>
+    
+    <div class="post-item">
+        <h2 class="post-title">
+            <a href="/blog/2012/07/26/problems-of-front-end-1.html">
+                problems of front end 1
+            </a>
+        </h2>
+        <!-- <h3>问题描述</h3> <p>在做一个有很多节点的菜单（最深有4层）的时候，我们一开始的步骤是从一个服务器生成的静态的js文件里面获取菜单的树内容，再将树的那内容生成dom。这样再普通浏览器上显示还比较正常，但是如果机子的性能比较差或者是在ie6等浏览器上，菜单部分则会显示空白，经过1～2秒的空白后，完成树的遍历和节点的生成后，才显示到页面中，体验极差。</p> <div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span> <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">menuData</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">elem</span><span class="p">)</span> <span class="p">{</span> <span class="lineno"> 2</span> <span class="lineno"> 3</span> <span class="c1">// blablabla ...</span> <span class="lineno"> 4</span> <span class="lineno"> 5</span> <span class="kd">var</span> <span class="nx">channel</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;div... -->
+        <!-- <h3>问题描述</h3>
 
 <p>在做一个有很多节点的菜单（最深有4层）的时候，我们一开始的步骤是从一个服务器生成的静态的js文件里面获取菜单的树内容，再将树的那内容生成dom。这样再普通浏览器上显示还比较正常，但是如果机子的性能比较差或者是在ie6等浏览器上，菜单部分则会显示空白，经过1～2秒的空白后，完成树的遍历和节点的生成后，才显示到页面中，体验极差。</p>
 
@@ -1194,18 +1194,17 @@ try {
 
 <p>实习一段时间了，感觉实际中遇到最多的问题都不是什么复杂的问题，都是些需要去仔细察觉的问题，例如怎么写才可以在代码可读性和代码的性能间取得平衡，怎么设计和保护代码，使它们不相互污染，多考虑一些容错情况，等等。</p>
  -->
-    <em>Posted on 26 July 2012.</em>
-    <hr/>
-</div>
-
-<div>
-    <h3>
-        <a href="/blog/2012/07/10/template-markup-language-velocity.html">
-            模板语言，Velocity
-        </a>
-    </h3>
-    <!-- <h2>什么是Velocity</h2> <p>Velocity是一个基于java的模板引擎（template engine）。它允许任何人仅仅简单的使用模板语言（template language）来引用由java代码定义的对象。</p> <p>当Velocity应用于web开发时，界面设计人员可以和java程序开发人员同步开发一个遵循MVC架构的web站点，也就是说，页面设计人员可以只关注页面的显示效果，而由java程序开发人员关注业务逻辑编码。Velocity将java代码从web页面中分离出来，这样为web站点的长期维护提供了便利，同时也为我们在JSP和PHP之外又提供了一种可选的方案。</p> <p>Velocity的能力远不止web站点开发这个领域，例如，它可以从模板（template）产生SQL和PostScript、XML，它也可以被当作一个独立工具来产生源代码和报告，或者作为其他系统的集成组件使用。Velocity也可以为Turbine web开发架构提供模板服务（template service）。Velocity+Turbine提供一个模板服务的方式允许一个web应用以一个真正的MVC模型进行开发。</p> <h2>Velocity能为我们作什么？</h2> <h3>The Mud Store Example</h3> <p>假设你是一家专门出售Mud的在线商店的页面设计人员，让我们暂且称它为“在线MUD商店”。你们的业务很旺，客户下了各种类型和数量的mud订单。他们都是通过输入用户名和密码后才登陆到你的网站，登陆后就允许他们查看订单并购买更多的mud。现在，一种非常流行的mud正在打折销售。另外有一些客户规律性的购买另外一种也在打折但是不是很流行的Bright Red Mud，由于购买的人并不多所以它被安置在页面的边缘。所有用户的信息都是被跟踪并存放于数据库中的，所以某天有一个问题可能会冒出来：为什么不使用velocity来使用户更好的浏览他们感兴趣的商品呢？</p> <p>Velocity使得web页面的客户化工作非常容易。作为一个web site的设计人员，你希望每个用户登陆时都拥有自己的页面。</p> <p>你会见了一些公司内的软件工程师，你发现他们每个人都同意客户应该拥有具有个性化的信息。那让我们把软件工程师应该作的事情发在一边，看一看你应该作些什么吧。</p> <p>你可能在页面内嵌套如下的VTL声明：</p> <pre><code>&lt;html&gt; &lt;body&gt; Hello $customer.Name! &lt;table&gt; #foreach( $mud in $nudsOnSpecial ) #if ( $customer.hasPurchased( $mud ) ) &lt;tr&gt;&lt;td&gt;$flogger.getPromo( $mud )&lt;/td&gt;&lt;/tr&gt; #end #end &lt;/table&gt; </code></pre> <h2>Velocity Template Language(VTL)</h2> <p>VTL意味着提供最简单、最容易并且最整洁的方式合并页面动态内容。</p> <h2>语法</h2> <h3>references and... -->
-    <!-- <h2>什么是Velocity</h2>
+        <em class="post-date">Posted on 26 July 2012.</em>
+    </div>
+    
+    <div class="post-item">
+        <h2 class="post-title">
+            <a href="/blog/2012/07/10/template-markup-language-velocity.html">
+                模板语言，Velocity
+            </a>
+        </h2>
+        <!-- <h2>什么是Velocity</h2> <p>Velocity是一个基于java的模板引擎（template engine）。它允许任何人仅仅简单的使用模板语言（template language）来引用由java代码定义的对象。</p> <p>当Velocity应用于web开发时，界面设计人员可以和java程序开发人员同步开发一个遵循MVC架构的web站点，也就是说，页面设计人员可以只关注页面的显示效果，而由java程序开发人员关注业务逻辑编码。Velocity将java代码从web页面中分离出来，这样为web站点的长期维护提供了便利，同时也为我们在JSP和PHP之外又提供了一种可选的方案。</p> <p>Velocity的能力远不止web站点开发这个领域，例如，它可以从模板（template）产生SQL和PostScript、XML，它也可以被当作一个独立工具来产生源代码和报告，或者作为其他系统的集成组件使用。Velocity也可以为Turbine web开发架构提供模板服务（template service）。Velocity+Turbine提供一个模板服务的方式允许一个web应用以一个真正的MVC模型进行开发。</p> <h2>Velocity能为我们作什么？</h2> <h3>The Mud Store Example</h3> <p>假设你是一家专门出售Mud的在线商店的页面设计人员，让我们暂且称它为“在线MUD商店”。你们的业务很旺，客户下了各种类型和数量的mud订单。他们都是通过输入用户名和密码后才登陆到你的网站，登陆后就允许他们查看订单并购买更多的mud。现在，一种非常流行的mud正在打折销售。另外有一些客户规律性的购买另外一种也在打折但是不是很流行的Bright Red Mud，由于购买的人并不多所以它被安置在页面的边缘。所有用户的信息都是被跟踪并存放于数据库中的，所以某天有一个问题可能会冒出来：为什么不使用velocity来使用户更好的浏览他们感兴趣的商品呢？</p> <p>Velocity使得web页面的客户化工作非常容易。作为一个web site的设计人员，你希望每个用户登陆时都拥有自己的页面。</p> <p>你会见了一些公司内的软件工程师，你发现他们每个人都同意客户应该拥有具有个性化的信息。那让我们把软件工程师应该作的事情发在一边，看一看你应该作些什么吧。</p> <p>你可能在页面内嵌套如下的VTL声明：</p> <pre><code>&lt;html&gt; &lt;body&gt; Hello $customer.Name! &lt;table&gt; #foreach( $mud in $nudsOnSpecial ) #if ( $customer.hasPurchased( $mud ) ) &lt;tr&gt;&lt;td&gt;$flogger.getPromo( $mud )&lt;/td&gt;&lt;/tr&gt; #end #end &lt;/table&gt; </code></pre> <h2>Velocity Template Language(VTL)</h2> <p>VTL意味着提供最简单、最容易并且最整洁的方式合并页面动态内容。</p> <h2>语法</h2> <h3>references and... -->
+        <!-- <h2>什么是Velocity</h2>
 
 <p>Velocity是一个基于java的模板引擎（template engine）。它允许任何人仅仅简单的使用模板语言（template language）来引用由java代码定义的对象。</p>
 
@@ -1872,18 +1871,17 @@ All done with dofoo.vm!
 Velocimacro必须被定义在他们被使用之前。也就是说，你的#macro()声明应该出现在使用Velocimacros之前。
 特别要注意的是，如果你试图#parse()一个包含#macro()的模板。因为#parse()发生在运行期，但是解析器在parsetiem决定一个看似VM元素的元素是否是一个VM元素，这样#parse()-ing一组VM声明将不按照预期的样子工作。为了得到预期的结果，只需要你简单的使用velocimacro.library使得Velocity在启动时加载你的VMs。</p>
  -->
-    <em>Posted on 10 July 2012.</em>
-    <hr/>
-</div>
-
-<div>
-    <h3>
-        <a href="/blog/2012/06/23/javascript-test-for-my-girl.html">
-            JavaScript 测试题
-        </a>
-    </h3>
-    <!-- <p>以下题目均应用原生态JavaScript完成：</p> <ol> <li><p>新建一个空页面，用一段JS在页面加载完后生成如下要求的页面：</p> <ul> <li>body背景颜色设为深绿色</li> <li>插入一个h1，白色，粗体，内容为：“Welcome”</li> <li>插入一个div，设置class为content</li> <li>在div内插入一个图片，设置右浮动</li> <li>在div内插入一个p，设置class为content，白色，内容为：“hello world!”</li> </ul> </li> <li><p>为以下列表：</p></li> </ol> <div class="highlight"><pre><code class="html"> <span class="nt">&lt;ul&gt;</span> <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&#39;#&#39;</span> <span class="na">title=</span><span class="s">&#39;page1&#39;</span><span class="nt">&gt;</span>page1<span class="nt">&lt;/a&gt;&lt;/li&gt;</span> <span class="nt">&lt;ul&gt;</span> </code></pre> </div> <pre><code>通过复制元素，为该列表增加5个li元素，最后获得6个li，设置每个a的title和内容为“page+序号” </code></pre> <ol> <li><p>在题目2结果的html代码基础下完成：为列表添加点击事件，弹出内容为a的title（可能要用到简单的闭包）</p></li> <li><p>完成页面，页面至少包含以下特征：一个横向导航栏，导航栏主体为一个矩形，导航栏菜单项为若干颜色方块，颜色包括（c7c6c2，be9323，932027，d84e0f，d78f83，fa8c01，1087c1，013e74，817a68，59b79d，09deec，1a1f25）。实现功能，点击导航栏相应项，页面背景颜色变成菜单项颜色。（页面基本结构和样式用html/css完成）</p></li> <li><p>一个简单的注册页面。包含用户名，邮箱，密码，性别，注册按钮。页面样式不作要求。完成以下验证功能：</p> <ul> <li>点击注册按钮进行检查，相应项不满足要求则在改项目下面显示一句红色提醒语句（可用包含在html中，默认隐藏）</li> <li>所有项不能为空</li> <li>用户名，长度4～12</li> <li>邮箱应符合邮箱的格式<code>(/^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i)</code></li> <li>密码长度6～16,两个密码框内的密码必须一致</li> <li>性别不能未选</li> <li>提醒语句内容自定</li> </ul> </li> </ol>... -->
-    <!-- <p>以下题目均应用原生态JavaScript完成：</p>
+        <em class="post-date">Posted on 10 July 2012.</em>
+    </div>
+    
+    <div class="post-item">
+        <h2 class="post-title">
+            <a href="/blog/2012/06/23/javascript-test-for-my-girl.html">
+                JavaScript 测试题
+            </a>
+        </h2>
+        <!-- <p>以下题目均应用原生态JavaScript完成：</p> <ol> <li><p>新建一个空页面，用一段JS在页面加载完后生成如下要求的页面：</p> <ul> <li>body背景颜色设为深绿色</li> <li>插入一个h1，白色，粗体，内容为：“Welcome”</li> <li>插入一个div，设置class为content</li> <li>在div内插入一个图片，设置右浮动</li> <li>在div内插入一个p，设置class为content，白色，内容为：“hello world!”</li> </ul> </li> <li><p>为以下列表：</p></li> </ol> <div class="highlight"><pre><code class="html"> <span class="nt">&lt;ul&gt;</span> <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&#39;#&#39;</span> <span class="na">title=</span><span class="s">&#39;page1&#39;</span><span class="nt">&gt;</span>page1<span class="nt">&lt;/a&gt;&lt;/li&gt;</span> <span class="nt">&lt;ul&gt;</span> </code></pre> </div> <pre><code>通过复制元素，为该列表增加5个li元素，最后获得6个li，设置每个a的title和内容为“page+序号” </code></pre> <ol> <li><p>在题目2结果的html代码基础下完成：为列表添加点击事件，弹出内容为a的title（可能要用到简单的闭包）</p></li> <li><p>完成页面，页面至少包含以下特征：一个横向导航栏，导航栏主体为一个矩形，导航栏菜单项为若干颜色方块，颜色包括（c7c6c2，be9323，932027，d84e0f，d78f83，fa8c01，1087c1，013e74，817a68，59b79d，09deec，1a1f25）。实现功能，点击导航栏相应项，页面背景颜色变成菜单项颜色。（页面基本结构和样式用html/css完成）</p></li> <li><p>一个简单的注册页面。包含用户名，邮箱，密码，性别，注册按钮。页面样式不作要求。完成以下验证功能：</p> <ul> <li>点击注册按钮进行检查，相应项不满足要求则在改项目下面显示一句红色提醒语句（可用包含在html中，默认隐藏）</li> <li>所有项不能为空</li> <li>用户名，长度4～12</li> <li>邮箱应符合邮箱的格式<code>(/^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i)</code></li> <li>密码长度6～16,两个密码框内的密码必须一致</li> <li>性别不能未选</li> <li>提醒语句内容自定</li> </ul> </li> </ol>... -->
+        <!-- <p>以下题目均应用原生态JavaScript完成：</p>
 
 <ol>
 <li><p>新建一个空页面，用一段JS在页面加载完后生成如下要求的页面：</p>
@@ -1941,52 +1939,49 @@ Velocimacro必须被定义在他们被使用之前。也就是说，你的#macro
 </ul>
 
  -->
-    <em>Posted on 23 June 2012.</em>
-    <hr/>
-</div>
-
-<div>
-    <h3>
-        <a href="/blog/2012/06/02/using-regular-expression-to-implement-at-some-like-weibo.html">
-            用正则表达式检测微博中的at人
-        </a>
-    </h3>
-    <!-- <pre><code>var msg = "@reelin @naiteluo 哈哈，六一儿童节快乐";
+        <em class="post-date">Posted on 23 June 2012.</em>
+    </div>
+    
+    <div class="post-item">
+        <h2 class="post-title">
+            <a href="/blog/2012/06/02/using-regular-expression-to-implement-at-some-like-weibo.html">
+                用正则表达式检测微博中的at人
+            </a>
+        </h2>
+        <!-- <pre><code>var msg = "@reelin @naiteluo 哈哈，六一儿童节快乐";
 var list = msg.match(/ *@([\u4e00-\u9fa5A-Za-z0-9_]*) ?/g);
 var msg = msg.replace(/ *@([\u4e00-\u9fa5A-Za-z0-9_]*) ?/g, '&lt;a href="#"&gt;$1&lt;/a&gt;');
 </code></pre>
  -->
-    <!-- <pre><code>var msg = "@reelin @naiteluo 哈哈，六一儿童节快乐";
+        <!-- <pre><code>var msg = "@reelin @naiteluo 哈哈，六一儿童节快乐";
 var list = msg.match(/ *@([\u4e00-\u9fa5A-Za-z0-9_]*) ?/g);
 var msg = msg.replace(/ *@([\u4e00-\u9fa5A-Za-z0-9_]*) ?/g, '&lt;a href="#"&gt;$1&lt;/a&gt;');
 </code></pre>
  -->
-    <em>Posted on 02 June 2012.</em>
-    <hr/>
-</div>
-
-<div>
-    <h3>
-        <a href="/blog/2012/06/02/javascript-the-definitive-guide-reading-notes-lexical-structure.html">
-            JavaScript the Definitive Guide Reading notes Lexical Structure
-        </a>
-    </h3>
-    <!-- 
+        <em class="post-date">Posted on 02 June 2012.</em>
+    </div>
+    
+    <div class="post-item">
+        <h2 class="post-title">
+            <a href="/blog/2012/06/02/javascript-the-definitive-guide-reading-notes-lexical-structure.html">
+                JavaScript the Definitive Guide Reading notes Lexical Structure
+            </a>
+        </h2>
+        <!-- 
  -->
-    <!-- 
+        <!-- 
  -->
-    <em>Posted on 02 June 2012.</em>
-    <hr/>
-</div>
-
-<div>
-    <h3>
-        <a href="/blog/2012/06/02/build-a-web-chat-room-with-nodejs-and-socketio.html">
-            Build a web chat room with Node.JS and Socket.IO
-        </a>
-    </h3>
-    <!-- <h2>应用描述</h2> <p><em>WebSocket</em> 作为HTML5的一个新特性，它的目的是为需要双向通信的基于浏览器的应用提供一个机制，不需要依靠建立多个HTTP连接即可实现双向通信。以前，web应用要在客户端和服务器建立双向连接的话，需要发送大量的http请求向服务器进行轮询，这导致了一些问题：</p> <ol> <li>为此，服务器需要为客户端使用多个的TCP连接；</li> <li>每个客户端给服务器端的请求都包含HTTP header，传输开销大；</li> <li>客户端编程复杂</li> </ol> <p>WebSocket是基于事件的，而Node.JS使用的则是事件驱动模型，直接使用javascript，代码编写更简单。另外，node.JS很高效，结合WebSocket，适合实时性要求很高的web应用，例如游戏，IM，监控程序等。</p> <p>我们的这次做的应用是使用Node.JS和Socket.IO实现的的Web聊天室，OnChat</p> <h2>开发环境及平台</h2> <p>开发环境： Mac OX X 10.7.3, Node.Js v0.6.11, npm v1.1.1<br/> 开发语言： JavaScript <br/> 开发框架： Express, Socket.IO <br/> 测试浏览器： Chrome 14+, Safari 5+</p> <h2>功能说明</h2> <p>主要实现功能： 登陆，即时聊天，类微博@人</p> <h3>应用界面</h3> <ul> <li><p>后台运行界面 <br/> <img src="https://github.com/naiteluo/Images/raw/master/snip/onchat1.png" alt="image" /></p></li> <li><p>程序前端界面 <br/> <img src="https://github.com/naiteluo/Images/raw/master/snip/onchat2.png" alt="image" /></p></li>... -->
-    <!-- <h2>应用描述</h2>
+        <em class="post-date">Posted on 02 June 2012.</em>
+    </div>
+    
+    <div class="post-item">
+        <h2 class="post-title">
+            <a href="/blog/2012/06/02/build-a-web-chat-room-with-nodejs-and-socketio.html">
+                Build a web chat room with Node.JS and Socket.IO
+            </a>
+        </h2>
+        <!-- <h2>应用描述</h2> <p><em>WebSocket</em> 作为HTML5的一个新特性，它的目的是为需要双向通信的基于浏览器的应用提供一个机制，不需要依靠建立多个HTTP连接即可实现双向通信。以前，web应用要在客户端和服务器建立双向连接的话，需要发送大量的http请求向服务器进行轮询，这导致了一些问题：</p> <ol> <li>为此，服务器需要为客户端使用多个的TCP连接；</li> <li>每个客户端给服务器端的请求都包含HTTP header，传输开销大；</li> <li>客户端编程复杂</li> </ol> <p>WebSocket是基于事件的，而Node.JS使用的则是事件驱动模型，直接使用javascript，代码编写更简单。另外，node.JS很高效，结合WebSocket，适合实时性要求很高的web应用，例如游戏，IM，监控程序等。</p> <p>我们的这次做的应用是使用Node.JS和Socket.IO实现的的Web聊天室，OnChat</p> <h2>开发环境及平台</h2> <p>开发环境： Mac OX X 10.7.3, Node.Js v0.6.11, npm v1.1.1<br/> 开发语言： JavaScript <br/> 开发框架： Express, Socket.IO <br/> 测试浏览器： Chrome 14+, Safari 5+</p> <h2>功能说明</h2> <p>主要实现功能： 登陆，即时聊天，类微博@人</p> <h3>应用界面</h3> <ul> <li><p>后台运行界面 <br/> <img src="https://github.com/naiteluo/Images/raw/master/snip/onchat1.png" alt="image" /></p></li> <li><p>程序前端界面 <br/> <img src="https://github.com/naiteluo/Images/raw/master/snip/onchat2.png" alt="image" /></p></li>... -->
+        <!-- <h2>应用描述</h2>
 
 <p><em>WebSocket</em> 作为HTML5的一个新特性，它的目的是为需要双向通信的基于浏览器的应用提供一个机制，不需要依靠建立多个HTTP连接即可实现双向通信。以前，web应用要在客户端和服务器建立双向连接的话，需要发送大量的http请求向服务器进行轮询，这导致了一些问题：</p>
 
@@ -2118,18 +2113,17 @@ $ node app.js
 
 <p>这次项目过程中使用了websocket这个HTML5的新特性，在效率和速度上的优势在聊天室这个对实时性要求不是很苛刻的应用上没有特别地体现，但是有一个很明显的优势体现出来了，就是在代码编写上面变的很简单。用以往轮询的方法实现起来，代码逻辑会比较复杂。而不管是直接用websocket或者是socket.io，应用起来的逻辑都比较简单，一个是on，监听message，另一个是send，发送message。这样我们就可以很容易地讲User封装起来，代码更简洁易懂。另外，websocket还可以扩展出很多应用，例如一些实时交互的游戏，服务器监控等。</p>
  -->
-    <em>Posted on 02 June 2012.</em>
-    <hr/>
-</div>
-
-<div>
-    <h3>
-        <a href="/blog/2012/05/28/build-your-blog-with-github-pages-and-jekyll.html">
-            Build your blog with github pages and jekyll
-        </a>
-    </h3>
-    <!-- <p>It is cool to have yout own blog. And it is really cool to have a blog built with github pages. Let learn about it together.</p> <h2>what I refer to</h2> <p>Fisrt i will follow the guide in <a href="http://help.github.com/pages">GitHub Pages help</a>. If you can easily read that guide, i strongly... -->
-    <!-- <p>It is cool to have yout own blog. And it is really cool to have a blog built with github pages. Let learn about it together.</p>
+        <em class="post-date">Posted on 02 June 2012.</em>
+    </div>
+    
+    <div class="post-item">
+        <h2 class="post-title">
+            <a href="/blog/2012/05/28/build-your-blog-with-github-pages-and-jekyll.html">
+                Build your blog with github pages and jekyll
+            </a>
+        </h2>
+        <!-- <p>It is cool to have yout own blog. And it is really cool to have a blog built with github pages. Let learn about it together.</p> <h2>what I refer to</h2> <p>Fisrt i will follow the guide in <a href="http://help.github.com/pages">GitHub Pages help</a>. If you can easily read that guide, i strongly... -->
+        <!-- <p>It is cool to have yout own blog. And it is really cool to have a blog built with github pages. Let learn about it together.</p>
 
 <h2>what I refer to</h2>
 
@@ -2144,18 +2138,17 @@ Second, you need some basic knowledge about <a href="https://github.com/mojombo/
 
 <p>To be continued...</p>
  -->
-    <em>Posted on 28 May 2012.</em>
-    <hr/>
-</div>
-
-<div>
-    <h3>
-        <a href="/blog/2012/05/27/javascript-the-definitive-guide-introduction-to-javascript.html">
-            JavaScript the Definitive Guide Reading Introduction to JavaScript
-        </a>
-    </h3>
-    <!-- <h2>Chapter 1, Introduction to JavaScript</h2> <blockquote><p>HTML to specify the content of web pages, css to specify the presentation of web pages, and JavaScript to specify the behavior of web pages.</p></blockquote> <p>High-level, dynamic, untyped interpreted(解释). Well-suited to object-oriented and functional programming styles.</p> <p>Minimal built-in API for working with text, arrays, dates,... -->
-    <!-- <h2>Chapter 1, Introduction to JavaScript</h2>
+        <em class="post-date">Posted on 28 May 2012.</em>
+    </div>
+    
+    <div class="post-item">
+        <h2 class="post-title">
+            <a href="/blog/2012/05/27/javascript-the-definitive-guide-introduction-to-javascript.html">
+                JavaScript the Definitive Guide Reading Introduction to JavaScript
+            </a>
+        </h2>
+        <!-- <h2>Chapter 1, Introduction to JavaScript</h2> <blockquote><p>HTML to specify the content of web pages, css to specify the presentation of web pages, and JavaScript to specify the behavior of web pages.</p></blockquote> <p>High-level, dynamic, untyped interpreted(解释). Well-suited to object-oriented and functional programming styles.</p> <p>Minimal built-in API for working with text, arrays, dates,... -->
+        <!-- <h2>Chapter 1, Introduction to JavaScript</h2>
 
 <blockquote><p>HTML to specify the content of web pages, css to specify the presentation of web pages, and JavaScript to specify the behavior of web pages.</p></blockquote>
 
@@ -2216,18 +2209,17 @@ Second, you need some basic knowledge about <a href="https://github.com/mojombo/
 </ul>
 
  -->
-    <em>Posted on 27 May 2012.</em>
-    <hr/>
-</div>
-
-<div>
-    <h3>
-        <a href="/blog/2012/05/25/steps-to-make-app-in-node-with-express.html">
-            Steps to make app in node with express
-        </a>
-    </h3>
-    <!-- <h2>Preparation</h2> <p>安装配置好node.js和npm。</p> <h2>Steps</h2> <ol> <li><p>创建App文件夹，进入文件夹</p> <pre><code>mkdir guess cd guess </code></pre></li> <li><p>用npm下载express</p> <pre><code>npm install express </code></pre></li> <li><p>用Express初始化App，可能会警告文件夹非空，选择y继续</p> <pre><code>./node_module/express/bin/express . </code></pre></li> <li><p>文件目录如下：</p> <pre><code>. ├── app.js # 应用的入口，主文件 ├── node_modules # node 模块 │   └── express ├── package.json # 配置文件 ├── public # 公共文件，静态文件 │   ├── images # 图片 │   ├── javascripts #... -->
-    <!-- <h2>Preparation</h2>
+        <em class="post-date">Posted on 27 May 2012.</em>
+    </div>
+    
+    <div class="post-item">
+        <h2 class="post-title">
+            <a href="/blog/2012/05/25/steps-to-make-app-in-node-with-express.html">
+                Steps to make app in node with express
+            </a>
+        </h2>
+        <!-- <h2>Preparation</h2> <p>安装配置好node.js和npm。</p> <h2>Steps</h2> <ol> <li><p>创建App文件夹，进入文件夹</p> <pre><code>mkdir guess cd guess </code></pre></li> <li><p>用npm下载express</p> <pre><code>npm install express </code></pre></li> <li><p>用Express初始化App，可能会警告文件夹非空，选择y继续</p> <pre><code>./node_module/express/bin/express . </code></pre></li> <li><p>文件目录如下：</p> <pre><code>. ├── app.js # 应用的入口，主文件 ├── node_modules # node 模块 │   └── express ├── package.json # 配置文件 ├── public # 公共文件，静态文件 │   ├── images # 图片 │   ├── javascripts #... -->
+        <!-- <h2>Preparation</h2>
 
 <p>安装配置好node.js和npm。</p>
 
@@ -2322,48 +2314,16 @@ Express server listening on port 3000 in development mode
 </ol>
 
  -->
-    <em>Posted on 25 May 2012.</em>
-    <hr/>
-</div>
-
-<div>
-    <h3>
-        <a href="/blog/2011/12/31/install-nodejs-in-ubuntu.html">
-            Ubuntu 11.04 Node.js 配置
-        </a>
-    </h3>
-    <!-- <p>实在是很折腾，冲着一个好的设计环境换回了windows7，但是感觉做开发的话还是linux下限值会比较小，于是用虚拟机，刚开始装回archlinux，发现vmware下装archlinux又是另外的折腾了，装不好gnome3，不能忍受难看的界面，另外也懒得折腾了，于是改装了ubuntu，10.10不太稳定，选择了10.04 lts。啥都不管了，直奔node的配置，找了篇国外的文章，一边操作一边翻译一下:</p>
-
-<p>由于直奔node而去，之前什么都没有配置过，所以可以直接按照一下来满足node.js的alias：</p>
-
-<pre><code>sudo apt-get install g++ curl libssl-dev apache2-utils
-</code></pre>
-
-<p>最简单的方法当然用git下载node的源码啦，先安装git</p>
-
-<pre><code>sudo apt-get install git-core
-git clone git://github.com/joyent/node.git
-</code></pre>
-
-<p>我这里直接在官网上下载了包：</p>
-
-<pre><code>tar -zxf node-v0.6.5.tar.gz
-cd node-v0.6.5
-./configure
-make
-sudo make install
-</code></pre>
-
-<p>接下来是npm，One Line Install</p>
-
-<pre><code>curl http://npmjs.org/install.sh | sh
-</code></pre>
-
-<p>作者还给喜欢很多行安装方法的人提供了方法，遇到如权限问题等，具体可以到<a href="http://npmjs.org">npm官网</a>上查看</p>
-
-<p>OK啦，又开始nodejs啦</p>
- -->
-    <!-- <p>实在是很折腾，冲着一个好的设计环境换回了windows7，但是感觉做开发的话还是linux下限值会比较小，于是用虚拟机，刚开始装回archlinux，发现vmware下装archlinux又是另外的折腾了，装不好gnome3，不能忍受难看的界面，另外也懒得折腾了，于是改装了ubuntu，10.10不太稳定，选择了10.04 lts。啥都不管了，直奔node的配置，找了篇国外的文章，一边操作一边翻译一下:</p>
+        <em class="post-date">Posted on 25 May 2012.</em>
+    </div>
+    
+    <div class="post-item">
+        <h2 class="post-title">
+            <a href="/blog/2011/12/31/install-nodejs-in-ubuntu.html">
+                Ubuntu 11.04 Node.js 配置
+            </a>
+        </h2>
+        <!-- <p>实在是很折腾，冲着一个好的设计环境换回了windows7，但是感觉做开发的话还是linux下限值会比较小，于是用虚拟机，刚开始装回archlinux，发现vmware下装archlinux又是另外的折腾了，装不好gnome3，不能忍受难看的界面，另外也懒得折腾了，于是改装了ubuntu，10.10不太稳定，选择了10.04 lts。啥都不管了，直奔node的配置，找了篇国外的文章，一边操作一边翻译一下:</p>
 
 <p>由于直奔node而去，之前什么都没有配置过，所以可以直接按照一下来满足node.js的alias：</p>
 
@@ -2394,18 +2354,48 @@ sudo make install
 
 <p>OK啦，又开始nodejs啦</p>
  -->
-    <em>Posted on 31 December 2011.</em>
-    <hr/>
-</div>
+        <!-- <p>实在是很折腾，冲着一个好的设计环境换回了windows7，但是感觉做开发的话还是linux下限值会比较小，于是用虚拟机，刚开始装回archlinux，发现vmware下装archlinux又是另外的折腾了，装不好gnome3，不能忍受难看的界面，另外也懒得折腾了，于是改装了ubuntu，10.10不太稳定，选择了10.04 lts。啥都不管了，直奔node的配置，找了篇国外的文章，一边操作一边翻译一下:</p>
 
-<div>
-    <h3>
-        <a href="/blog/2011/11/07/html5-game-notes-matching.html">
-            html5游戏笔记 matching game
-        </a>
-    </h3>
-    <!-- <p>我也不知道这个游戏的中文名叫什么，就是12张扑克，翻开两张如果不是一对就自动翻回来，一对的话就可以取走，最后所有牌都取走了游戏就结束。貌似挺无聊的游戏，不过不得不自愧设计功力之低，树上简单的几个css和几个图片，整个页面就变得很有质感和层次感。游戏主要通过CSS3来实现翻转，用javascript来改变DOM的类和整个游戏的逻辑。我觉得最主要吸收的精华是：用CSS3来实现页面元素的动画（效率是不是比cavans高？ 迟点再验证），用javascript控制逻辑。</p> <h2>CSS3实现元素动画</h2> <p>首先来看看CSS3的新的动画animation相关属性。 一开始还有点模糊，因为英文书上用了tween这个单词，查了一下单词的含义并仔细分析以下代码后，得知这动画的实现是利用transition属性来为transform属性的转化增加补间动画。有点绕，意思就是，本来transform属性的变化的是一个状态，是没有过程的，例如从一个位置translate到另一个位置，从一个角度rotate到另一个角度，一个跳跃式的变化。而transition的作用就是让这一切变得不那么突然，先看看CSS3 transition的W3C的解释</p> <blockquote><p>CSS transition allows property changes in CSS values to occur smoothly over a specified duration.</p></blockquote> <p>transition属性将瞬间的变化减慢，并附加指定的动画，它的用法如下：</p> <div class="highlight"><pre><code class="css"> <span class="c">/*</span> <span class="c"> * 值：应用属性名，可设为all，</span> <span class="c"> * 设置动画</span> <span class="c"> * 补间时长</span> <span class="c"> * 动画开始的延时</span> <span class="c"> */</span> <span class="nt">transition</span><span class="o">:</span> <span... -->
-    <!-- <p>我也不知道这个游戏的中文名叫什么，就是12张扑克，翻开两张如果不是一对就自动翻回来，一对的话就可以取走，最后所有牌都取走了游戏就结束。貌似挺无聊的游戏，不过不得不自愧设计功力之低，树上简单的几个css和几个图片，整个页面就变得很有质感和层次感。游戏主要通过CSS3来实现翻转，用javascript来改变DOM的类和整个游戏的逻辑。我觉得最主要吸收的精华是：用CSS3来实现页面元素的动画（效率是不是比cavans高？ 迟点再验证），用javascript控制逻辑。</p>
+<p>由于直奔node而去，之前什么都没有配置过，所以可以直接按照一下来满足node.js的alias：</p>
+
+<pre><code>sudo apt-get install g++ curl libssl-dev apache2-utils
+</code></pre>
+
+<p>最简单的方法当然用git下载node的源码啦，先安装git</p>
+
+<pre><code>sudo apt-get install git-core
+git clone git://github.com/joyent/node.git
+</code></pre>
+
+<p>我这里直接在官网上下载了包：</p>
+
+<pre><code>tar -zxf node-v0.6.5.tar.gz
+cd node-v0.6.5
+./configure
+make
+sudo make install
+</code></pre>
+
+<p>接下来是npm，One Line Install</p>
+
+<pre><code>curl http://npmjs.org/install.sh | sh
+</code></pre>
+
+<p>作者还给喜欢很多行安装方法的人提供了方法，遇到如权限问题等，具体可以到<a href="http://npmjs.org">npm官网</a>上查看</p>
+
+<p>OK啦，又开始nodejs啦</p>
+ -->
+        <em class="post-date">Posted on 31 December 2011.</em>
+    </div>
+    
+    <div class="post-item">
+        <h2 class="post-title">
+            <a href="/blog/2011/11/07/html5-game-notes-matching.html">
+                html5游戏笔记 matching game
+            </a>
+        </h2>
+        <!-- <p>我也不知道这个游戏的中文名叫什么，就是12张扑克，翻开两张如果不是一对就自动翻回来，一对的话就可以取走，最后所有牌都取走了游戏就结束。貌似挺无聊的游戏，不过不得不自愧设计功力之低，树上简单的几个css和几个图片，整个页面就变得很有质感和层次感。游戏主要通过CSS3来实现翻转，用javascript来改变DOM的类和整个游戏的逻辑。我觉得最主要吸收的精华是：用CSS3来实现页面元素的动画（效率是不是比cavans高？ 迟点再验证），用javascript控制逻辑。</p> <h2>CSS3实现元素动画</h2> <p>首先来看看CSS3的新的动画animation相关属性。 一开始还有点模糊，因为英文书上用了tween这个单词，查了一下单词的含义并仔细分析以下代码后，得知这动画的实现是利用transition属性来为transform属性的转化增加补间动画。有点绕，意思就是，本来transform属性的变化的是一个状态，是没有过程的，例如从一个位置translate到另一个位置，从一个角度rotate到另一个角度，一个跳跃式的变化。而transition的作用就是让这一切变得不那么突然，先看看CSS3 transition的W3C的解释</p> <blockquote><p>CSS transition allows property changes in CSS values to occur smoothly over a specified duration.</p></blockquote> <p>transition属性将瞬间的变化减慢，并附加指定的动画，它的用法如下：</p> <div class="highlight"><pre><code class="css"> <span class="c">/*</span> <span class="c"> * 值：应用属性名，可设为all，</span> <span class="c"> * 设置动画</span> <span class="c"> * 补间时长</span> <span class="c"> * 动画开始的延时</span> <span class="c"> */</span> <span class="nt">transition</span><span class="o">:</span> <span... -->
+        <!-- <p>我也不知道这个游戏的中文名叫什么，就是12张扑克，翻开两张如果不是一对就自动翻回来，一对的话就可以取走，最后所有牌都取走了游戏就结束。貌似挺无聊的游戏，不过不得不自愧设计功力之低，树上简单的几个css和几个图片，整个页面就变得很有质感和层次感。游戏主要通过CSS3来实现翻转，用javascript来改变DOM的类和整个游戏的逻辑。我觉得最主要吸收的精华是：用CSS3来实现页面元素的动画（效率是不是比cavans高？ 迟点再验证），用javascript控制逻辑。</p>
 
 <h2>CSS3实现元素动画</h2>
 
@@ -2549,18 +2539,17 @@ sudo make install
 
 <p>逻辑比较简单，不详细说了。</p>
  -->
-    <em>Posted on 07 November 2011.</em>
-    <hr/>
-</div>
-
-<div>
-    <h3>
-        <a href="/blog/2011/11/03/html5-game-notes-pingpong.html">
-            html5游戏笔记 pingpong ball
-        </a>
-    </h3>
-    <!-- <p>下载了本《html5 Game Development by Example》的书，看着很有趣，一些游戏的实例，用来熟悉html5/css3配合javascript的新特性。记录一下写一下blog增加记忆。</p> <p><a href="http://mmnn-wordpress.stor.sinaapp.com/uploads/2011/11/1.png"><img class="size-medium wp-image-51" title="pingpong" src="http://mmnn-wordpress.stor.sinaapp.com/uploads/2011/11/1-284x300.png" alt="pingpong" width="284" height="300" /></a></p> <p>书的第一章简单地介绍了html5和css3的一些新特性；第二章的example是一个pingpong的游戏，就是左右各一块板，中间一个小球弹来弹去的游戏。这本书已经完全不考虑html之前的版本了，所以还会介绍html的一些新标签；基本不涉及到css3的内容；使用jquery做游戏开发的基本方法。游戏链接：<a title="Pingpong" href="http://mmnn.sinaapp.com/demos/pingpong/">Pingpong game demo</a></p> <p>html5使用了跟简单的文件声明,取代了原来那一串重来都只是被copy的复杂文件声明，html标签也只需加入一个lang的语言属性即可，制定字符集的meta也得到简化:这次使用了header和footer标签，以前用得很多的这两个id名终于修成正果升级成了正式的标签，加入这种标签提高了html的语义。</p> <p>这里还说到一个js代码插入的位置，以前一般习惯会在head标签内插入script，而建议的将code放到页面的靠后，也就是body的结束标签之前。因为浏览器解析html代码是从上到下的，如果把js代码放到前面，延缓了内容的加载。</p> <p>主要只有三个对象，两挡板和球，对其使用</p> <div class="highlight"><pre><code class="css"> <span class="nt">position</span><span class="nd">:absolute</span><span class="o">;</span> </code></pre> </div> <p>布局，再通过</p> <div class="highlight"><pre><code class="javascript"><span class="lineno">1</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#xxx&quot;</span><span class="p">).</span><span class="nx">css</span><span class="p">({</span><span class="s2">&quot;top&quot;</span><span class="o">:</span> <span class="nx">xx</span><span class="p">,</span> <span... -->
-    <!-- <p>下载了本《html5 Game Development by Example》的书，看着很有趣，一些游戏的实例，用来熟悉html5/css3配合javascript的新特性。记录一下写一下blog增加记忆。</p>
+        <em class="post-date">Posted on 07 November 2011.</em>
+    </div>
+    
+    <div class="post-item">
+        <h2 class="post-title">
+            <a href="/blog/2011/11/03/html5-game-notes-pingpong.html">
+                html5游戏笔记 pingpong ball
+            </a>
+        </h2>
+        <!-- <p>下载了本《html5 Game Development by Example》的书，看着很有趣，一些游戏的实例，用来熟悉html5/css3配合javascript的新特性。记录一下写一下blog增加记忆。</p> <p><a href="http://mmnn-wordpress.stor.sinaapp.com/uploads/2011/11/1.png"><img class="size-medium wp-image-51" title="pingpong" src="http://mmnn-wordpress.stor.sinaapp.com/uploads/2011/11/1-284x300.png" alt="pingpong" width="284" height="300" /></a></p> <p>书的第一章简单地介绍了html5和css3的一些新特性；第二章的example是一个pingpong的游戏，就是左右各一块板，中间一个小球弹来弹去的游戏。这本书已经完全不考虑html之前的版本了，所以还会介绍html的一些新标签；基本不涉及到css3的内容；使用jquery做游戏开发的基本方法。游戏链接：<a title="Pingpong" href="http://mmnn.sinaapp.com/demos/pingpong/">Pingpong game demo</a></p> <p>html5使用了跟简单的文件声明,取代了原来那一串重来都只是被copy的复杂文件声明，html标签也只需加入一个lang的语言属性即可，制定字符集的meta也得到简化:这次使用了header和footer标签，以前用得很多的这两个id名终于修成正果升级成了正式的标签，加入这种标签提高了html的语义。</p> <p>这里还说到一个js代码插入的位置，以前一般习惯会在head标签内插入script，而建议的将code放到页面的靠后，也就是body的结束标签之前。因为浏览器解析html代码是从上到下的，如果把js代码放到前面，延缓了内容的加载。</p> <p>主要只有三个对象，两挡板和球，对其使用</p> <div class="highlight"><pre><code class="css"> <span class="nt">position</span><span class="nd">:absolute</span><span class="o">;</span> </code></pre> </div> <p>布局，再通过</p> <div class="highlight"><pre><code class="javascript"><span class="lineno">1</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#xxx&quot;</span><span class="p">).</span><span class="nx">css</span><span class="p">({</span><span class="s2">&quot;top&quot;</span><span class="o">:</span> <span class="nx">xx</span><span class="p">,</span> <span... -->
+        <!-- <p>下载了本《html5 Game Development by Example》的书，看着很有趣，一些游戏的实例，用来熟悉html5/css3配合javascript的新特性。记录一下写一下blog增加记忆。</p>
 
 <p><a href="http://mmnn-wordpress.stor.sinaapp.com/uploads/2011/11/1.png"><img class="size-medium wp-image-51" title="pingpong" src="http://mmnn-wordpress.stor.sinaapp.com/uploads/2011/11/1-284x300.png" alt="pingpong" width="284" height="300" /></a></p>
 
@@ -2663,18 +2652,17 @@ sudo make install
 
 <p>还可以利用chrome的developer工具中的js console对js进行调试.</p>
  -->
-    <em>Posted on 03 November 2011.</em>
-    <hr/>
-</div>
-
-<div>
-    <h3>
-        <a href="/blog/2011/10/19/network-config-in-archlinux.html">
-            archlinux简单网络配置与命令
-        </a>
-    </h3>
-    <!-- <p>这里只是给出简单的网络配置和常用命令，备忘。详细的可查阅官方wiki上的： Configuring Network</p> <p>首先是/etc/rc.conf的配置，动态获取ip的只需要选择一个接口：</p> <pre><code>interface="eth0" address= netmask= gateway= </code></pre> <p>想要自定义dns，在/etc/dhcpcd.conf</p> <pre><code>nohook resolv.conf </code></pre> <p>并将自己的dns服务器加入/etc/resolv.conf中。</p> <pre><code>/* * 静态ip的还不太了解， * 挖个坑以后再填。 */ </code></pre> <p>重启nerwork daemon，启用配置:</p> <pre><code># /etc/rc.d/network restart </code></pre> <p>通过ping看是否已成功连接</p> <pre><code>$ ping -c 3 www.google.com </code></pre> <p>手动连接或断开网络接口：</p> <pre><code># ip link set up/down </code></pre> <p>接下来是无线网络设置与连接，需要先安装wireless_tools和取得哦给相关软件包madwifi:</p> <pre><code># pacman -S wireless_tools # pacman -S madwifi... -->
-    <!-- <p>这里只是给出简单的网络配置和常用命令，备忘。详细的可查阅官方wiki上的：
+        <em class="post-date">Posted on 03 November 2011.</em>
+    </div>
+    
+    <div class="post-item">
+        <h2 class="post-title">
+            <a href="/blog/2011/10/19/network-config-in-archlinux.html">
+                archlinux简单网络配置与命令
+            </a>
+        </h2>
+        <!-- <p>这里只是给出简单的网络配置和常用命令，备忘。详细的可查阅官方wiki上的： Configuring Network</p> <p>首先是/etc/rc.conf的配置，动态获取ip的只需要选择一个接口：</p> <pre><code>interface="eth0" address= netmask= gateway= </code></pre> <p>想要自定义dns，在/etc/dhcpcd.conf</p> <pre><code>nohook resolv.conf </code></pre> <p>并将自己的dns服务器加入/etc/resolv.conf中。</p> <pre><code>/* * 静态ip的还不太了解， * 挖个坑以后再填。 */ </code></pre> <p>重启nerwork daemon，启用配置:</p> <pre><code># /etc/rc.d/network restart </code></pre> <p>通过ping看是否已成功连接</p> <pre><code>$ ping -c 3 www.google.com </code></pre> <p>手动连接或断开网络接口：</p> <pre><code># ip link set up/down </code></pre> <p>接下来是无线网络设置与连接，需要先安装wireless_tools和取得哦给相关软件包madwifi:</p> <pre><code># pacman -S wireless_tools # pacman -S madwifi... -->
+        <!-- <p>这里只是给出简单的网络配置和常用命令，备忘。详细的可查阅官方wiki上的：
 Configuring Network</p>
 
 <p>首先是/etc/rc.conf的配置，动态获取ip的只需要选择一个接口：</p>
@@ -2773,18 +2761,17 @@ gateway=
 
 <p>当然，最简单的还是用网络管理器如：Wicd,NetworkManager.不过我在连接校园网的wifi时用networkmanager未果，故推荐wicd。</p>
  -->
-    <em>Posted on 19 October 2011.</em>
-    <hr/>
-</div>
-
-<div>
-    <h3>
-        <a href="/blog/2011/10/16/problems-installing-archlinux.html">
-            Archlinux 安装配置问题
-        </a>
-    </h3>
-    <!-- <p>已经重装了6、7 archlinux了，每次都因为一些琐碎的问题无法解决而选择重装，这次静下心来读wiki，看帖子，总算把之前积累的问题大概都解决了。</p> <p>用的默认的network进行网络管理，开机启动特别慢，而且gnome启动后的networkmanager因为冲突而disabled。networkmanager是一个DAEMON,可以手动用/etc/rc.d/networkmanager start来启动它，更好地是将其加入/etc/rc.conf的DAEMON列表中，并将原来的network用’!'感叹号取消掉，即可。安装network-manager-applet后就能在gnome里显示图标方便使用。</p> <p>此后发现了一个很严重的问题，nerworkmanager连不上校园网，网上也很多说wifi无法连接的文章，与其自己修改到崩溃，不如早点换一个，就试用了wicd，目前尚且完美。安装：</p> <pre><code># pacman -S wicd # pacman -S wicd-gtk </code></pre> <p>开启前必须关闭所有网络的daemons,</p> <pre><code># rc.d stop network # rc.d stop dhcpcd # rc.d stop networkmanager </code></pre> <p>设置DAEMONS，依赖dbus，前面禁用其他网络管理软件：</p> <pre><code># vim /etc/rc.conf DAEMONS=(syslog-ng dbus !network !dhcdbd !networkmanager wicd ...) ~ ~ </code></pre> <p>后续工作咯</p> <p>ibus1.4安装完后无法显示输入法，google之网友们说是一个bug，修复方法如下：</p> <pre><code>sudo pacman -S abs sudo abs... -->
-    <!-- <p>已经重装了6、7 archlinux了，每次都因为一些琐碎的问题无法解决而选择重装，这次静下心来读wiki，看帖子，总算把之前积累的问题大概都解决了。</p>
+        <em class="post-date">Posted on 19 October 2011.</em>
+    </div>
+    
+    <div class="post-item">
+        <h2 class="post-title">
+            <a href="/blog/2011/10/16/problems-installing-archlinux.html">
+                Archlinux 安装配置问题
+            </a>
+        </h2>
+        <!-- <p>已经重装了6、7 archlinux了，每次都因为一些琐碎的问题无法解决而选择重装，这次静下心来读wiki，看帖子，总算把之前积累的问题大概都解决了。</p> <p>用的默认的network进行网络管理，开机启动特别慢，而且gnome启动后的networkmanager因为冲突而disabled。networkmanager是一个DAEMON,可以手动用/etc/rc.d/networkmanager start来启动它，更好地是将其加入/etc/rc.conf的DAEMON列表中，并将原来的network用’!'感叹号取消掉，即可。安装network-manager-applet后就能在gnome里显示图标方便使用。</p> <p>此后发现了一个很严重的问题，nerworkmanager连不上校园网，网上也很多说wifi无法连接的文章，与其自己修改到崩溃，不如早点换一个，就试用了wicd，目前尚且完美。安装：</p> <pre><code># pacman -S wicd # pacman -S wicd-gtk </code></pre> <p>开启前必须关闭所有网络的daemons,</p> <pre><code># rc.d stop network # rc.d stop dhcpcd # rc.d stop networkmanager </code></pre> <p>设置DAEMONS，依赖dbus，前面禁用其他网络管理软件：</p> <pre><code># vim /etc/rc.conf DAEMONS=(syslog-ng dbus !network !dhcdbd !networkmanager wicd ...) ~ ~ </code></pre> <p>后续工作咯</p> <p>ibus1.4安装完后无法显示输入法，google之网友们说是一个bug，修复方法如下：</p> <pre><code>sudo pacman -S abs sudo abs... -->
+        <!-- <p>已经重装了6、7 archlinux了，每次都因为一些琐碎的问题无法解决而选择重装，这次静下心来读wiki，看帖子，总算把之前积累的问题大概都解决了。</p>
 
 <p>用的默认的network进行网络管理，开机启动特别慢，而且gnome启动后的networkmanager因为冲突而disabled。networkmanager是一个DAEMON,可以手动用/etc/rc.d/networkmanager start来启动它，更好地是将其加入/etc/rc.conf的DAEMON列表中，并将原来的network用’!'感叹号取消掉，即可。安装network-manager-applet后就能在gnome里显示图标方便使用。</p>
 
@@ -2830,37 +2817,16 @@ export QT_IM_MODULE=ibus
 ibus-daemon -d -x
 </code></pre>
  -->
-    <em>Posted on 16 October 2011.</em>
-    <hr/>
-</div>
-
-<div>
-    <h3>
-        <a href="/blog/2011/10/01/install-LAMP-environment-in-ubuntu-1104.html">
-            Ubuntu 11.04 LAMP安装配置
-        </a>
-    </h3>
-    <!-- <p>11.04是lts的版本，以后用ubuntu的话可以作为首选，这里纪录一下LAMP的配置方法。</p>
-
-<ol>
-<li><p>首先是安装LAMP，一个命令：</p>
-
-<pre><code>sudo apt-get install apache2 php5 libapache2-mod-php5 mysql-server libapache2-mod-auth-mysql php5-mysql phpmyadmin 
-</code></pre>
-
-<p>期间会要求你输入mysql数据库的root用户密码，选择服务器类型［apache］，phpMyAdmin的密码等。</p></li>
-<li><p>装完之后重启一下apache，命令：</p>
-
-<pre><code>sudo /etc/init.d/apache2 restart
-</code></pre></li>
-<li><p>把安装的phpmyadmin 链接过来，在/var/www/下用命令：</p>
-
-<pre><code>ln -s /usr/share/phpmyadmin phpmyadmin
-</code></pre></li>
-</ol>
-
- -->
-    <!-- <p>11.04是lts的版本，以后用ubuntu的话可以作为首选，这里纪录一下LAMP的配置方法。</p>
+        <em class="post-date">Posted on 16 October 2011.</em>
+    </div>
+    
+    <div class="post-item">
+        <h2 class="post-title">
+            <a href="/blog/2011/10/01/install-LAMP-environment-in-ubuntu-1104.html">
+                Ubuntu 11.04 LAMP安装配置
+            </a>
+        </h2>
+        <!-- <p>11.04是lts的版本，以后用ubuntu的话可以作为首选，这里纪录一下LAMP的配置方法。</p>
 
 <ol>
 <li><p>首先是安装LAMP，一个命令：</p>
@@ -2880,12 +2846,30 @@ ibus-daemon -d -x
 </ol>
 
  -->
-    <em>Posted on 01 October 2011.</em>
-    <hr/>
+        <!-- <p>11.04是lts的版本，以后用ubuntu的话可以作为首选，这里纪录一下LAMP的配置方法。</p>
+
+<ol>
+<li><p>首先是安装LAMP，一个命令：</p>
+
+<pre><code>sudo apt-get install apache2 php5 libapache2-mod-php5 mysql-server libapache2-mod-auth-mysql php5-mysql phpmyadmin 
+</code></pre>
+
+<p>期间会要求你输入mysql数据库的root用户密码，选择服务器类型［apache］，phpMyAdmin的密码等。</p></li>
+<li><p>装完之后重启一下apache，命令：</p>
+
+<pre><code>sudo /etc/init.d/apache2 restart
+</code></pre></li>
+<li><p>把安装的phpmyadmin 链接过来，在/var/www/下用命令：</p>
+
+<pre><code>ln -s /usr/share/phpmyadmin phpmyadmin
+</code></pre></li>
+</ol>
+
+ -->
+        <em class="post-date">Posted on 01 October 2011.</em>
+    </div>
+    
 </div>
-
-
-
 		</section>
 		<footer>
 			<p>Maintained by <a href="https://github.com/naiteluo">naiteluo</a></p>

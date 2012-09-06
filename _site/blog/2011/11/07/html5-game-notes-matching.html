@@ -16,19 +16,23 @@
 <body>
 	<div class="wrapper">
 		<header>
-			<h1>
-				<a href="http://naiteluo.net">MMNN</a>
-			</h1>
-			<p>
-				naiteluo's blog
-			</p>
-			<p class="view">
-				<a href="https://github.com/naiteluo"><small>Naiteluo</small> in Github.</a>
-			</p>
+			<div class="inner">
+				<ul class="nav">
+					<li class="logo">
+						<a href="http://naiteluo.net">MMNN</a>
+					</li>
+					<li class="aboutme">
+						<a href="http://naiteluo.net">ABOUT ME</a>
+					</li>
+				</ul>
+				<div class="view">
+					<a href="https://github.com/naiteluo"><small>NAITELUO</small> IN Github.</a>
+				</div>
+			</div>
 		</header>
-		<section>
+		<section class="container">
 			<div class="post-content">
-    <h2>html5游戏笔记 matching game</h2>
+    <h1>html5游戏笔记 matching game</h1>
     <p>我也不知道这个游戏的中文名叫什么，就是12张扑克，翻开两张如果不是一对就自动翻回来，一对的话就可以取走，最后所有牌都取走了游戏就结束。貌似挺无聊的游戏，不过不得不自愧设计功力之低，树上简单的几个css和几个图片，整个页面就变得很有质感和层次感。游戏主要通过CSS3来实现翻转，用javascript来改变DOM的类和整个游戏的逻辑。我觉得最主要吸收的精华是：用CSS3来实现页面元素的动画（效率是不是比cavans高？ 迟点再验证），用javascript控制逻辑。</p>
 
 <h2>CSS3实现元素动画</h2>

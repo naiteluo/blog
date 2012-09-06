@@ -16,19 +16,23 @@
 <body>
 	<div class="wrapper">
 		<header>
-			<h1>
-				<a href="http://naiteluo.net">MMNN</a>
-			</h1>
-			<p>
-				naiteluo's blog
-			</p>
-			<p class="view">
-				<a href="https://github.com/naiteluo"><small>Naiteluo</small> in Github.</a>
-			</p>
+			<div class="inner">
+				<ul class="nav">
+					<li class="logo">
+						<a href="http://naiteluo.net">MMNN</a>
+					</li>
+					<li class="aboutme">
+						<a href="http://naiteluo.net">ABOUT ME</a>
+					</li>
+				</ul>
+				<div class="view">
+					<a href="https://github.com/naiteluo"><small>NAITELUO</small> IN Github.</a>
+				</div>
+			</div>
 		</header>
-		<section>
+		<section class="container">
 			<div class="post-content">
-    <h2>Code Conventions for the JavaScript Programming Language</h2>
+    <h1>Code Conventions for the JavaScript Programming Language</h1>
     <blockquote><p>本文翻譯自Douglas Crockford老先生的《<a href="http://javascript.crockford.com/code.html">Code Conventions for the JavaScript Programming Language</a>》，規範具有參考價值，但是不是真理，要經過自己的思考和理解，形成適合自己或團隊的編碼規範。文中若是以塊引用標誌的地方，則是我自己的理解和說明。如有任何翻譯不當或理解錯誤的地方，歡迎指正，謝謝。</p></blockquote>
 
 <p>這是一系列使用JavaScript編程的習慣和規則。它的靈感從Sun的<a href="http://"> Code Conventions for the Java Programming Language</a>而來。因為JavaScript不是Java， 所以其中很大的部分作出了改動。</p>

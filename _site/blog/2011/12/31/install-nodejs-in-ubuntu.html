@@ -16,19 +16,23 @@
 <body>
 	<div class="wrapper">
 		<header>
-			<h1>
-				<a href="http://naiteluo.net">MMNN</a>
-			</h1>
-			<p>
-				naiteluo's blog
-			</p>
-			<p class="view">
-				<a href="https://github.com/naiteluo"><small>Naiteluo</small> in Github.</a>
-			</p>
+			<div class="inner">
+				<ul class="nav">
+					<li class="logo">
+						<a href="http://naiteluo.net">MMNN</a>
+					</li>
+					<li class="aboutme">
+						<a href="http://naiteluo.net">ABOUT ME</a>
+					</li>
+				</ul>
+				<div class="view">
+					<a href="https://github.com/naiteluo"><small>NAITELUO</small> IN Github.</a>
+				</div>
+			</div>
 		</header>
-		<section>
+		<section class="container">
 			<div class="post-content">
-    <h2>Ubuntu 11.04 Node.js 配置</h2>
+    <h1>Ubuntu 11.04 Node.js 配置</h1>
     <p>实在是很折腾，冲着一个好的设计环境换回了windows7，但是感觉做开发的话还是linux下限值会比较小，于是用虚拟机，刚开始装回archlinux，发现vmware下装archlinux又是另外的折腾了，装不好gnome3，不能忍受难看的界面，另外也懒得折腾了，于是改装了ubuntu，10.10不太稳定，选择了10.04 lts。啥都不管了，直奔node的配置，找了篇国外的文章，一边操作一边翻译一下:</p>
 
 <p>由于直奔node而去，之前什么都没有配置过，所以可以直接按照一下来满足node.js的alias：</p>
