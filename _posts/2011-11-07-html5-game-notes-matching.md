@@ -109,7 +109,7 @@ CSS3实现动画的部分好像讲得太多了，不过那是比较陌生的东�
 
 洗牌发牌，随机排列预定义的数组，并复制.card元素，通过根据index来作绝对定位，增加css类改变牌底背景坐标，用attr函数给我们自定义的data-pattern属性赋值，用于辨别牌型。最后给每张牌都绑定一个oncli，触发selecCard函数,selectCard先判断现在翻开的牌数：
 
-	{% highlight javascript %}		
+	{% highlight javascript linenos %}		
 	// flip the card and schedule the checking function
 	function selectCard() {
 		// we do nothing if there are already two card flipped

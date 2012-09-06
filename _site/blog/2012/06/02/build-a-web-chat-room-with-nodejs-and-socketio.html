@@ -1,0 +1,190 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<title>
+		
+			Build a web chat room with Node.JS and Socket.IO
+		
+	</title>
+	<link rel="stylesheet" type="text/less" href="/stylesheets/style.less">
+	<script type="text/javascript" src="/javascripts/less-1.3.0.min.js"></script>
+	<!-- 代码着色 -->
+	<link rel="stylesheet" href="/stylesheets/pygment_trac.css">
+</head>
+<body>
+	<div class="wrapper">
+		<header>
+			<h1>
+				<a href="http://naiteluo.net">MMNN</a>
+			</h1>
+			<p>
+				naiteluo's blog
+			</p>
+			<p class="view">
+				<a href="https://github.com/naiteluo"><small>Naiteluo</small> in Github.</a>
+			</p>
+		</header>
+		<section>
+			<div class="post-content">
+    <h2>Build a web chat room with Node.JS and Socket.IO</h2>
+    <h2>应用描述</h2>
+
+<p><em>WebSocket</em> 作为HTML5的一个新特性，它的目的是为需要双向通信的基于浏览器的应用提供一个机制，不需要依靠建立多个HTTP连接即可实现双向通信。以前，web应用要在客户端和服务器建立双向连接的话，需要发送大量的http请求向服务器进行轮询，这导致了一些问题：</p>
+
+<ol>
+<li>为此，服务器需要为客户端使用多个的TCP连接；</li>
+<li>每个客户端给服务器端的请求都包含HTTP header，传输开销大；</li>
+<li>客户端编程复杂</li>
+</ol>
+
+
+<p>WebSocket是基于事件的，而Node.JS使用的则是事件驱动模型，直接使用javascript，代码编写更简单。另外，node.JS很高效，结合WebSocket，适合实时性要求很高的web应用，例如游戏，IM，监控程序等。</p>
+
+<p>我们的这次做的应用是使用Node.JS和Socket.IO实现的的Web聊天室，OnChat</p>
+
+<h2>开发环境及平台</h2>
+
+<p>开发环境： Mac OX X 10.7.3, Node.Js v0.6.11, npm v1.1.1<br/>
+开发语言： JavaScript <br/>
+开发框架： Express, Socket.IO <br/>
+测试浏览器： Chrome 14+, Safari 5+</p>
+
+<h2>功能说明</h2>
+
+<p>主要实现功能： 登陆，即时聊天，类微博@人</p>
+
+<h3>应用界面</h3>
+
+<ul>
+<li><p>后台运行界面  <br/>
+<img src="https://github.com/naiteluo/Images/raw/master/snip/onchat1.png" alt="image" /></p></li>
+<li><p>程序前端界面 <br/>
+<img src="https://github.com/naiteluo/Images/raw/master/snip/onchat2.png" alt="image" /></p></li>
+<li><p>登陆，及在线用户列表   <br/>
+<img src="https://github.com/naiteluo/Images/raw/master/snip/onchat3.png" alt="image" /></p></li>
+<li><p>聊天  <br/>
+<img src="https://github.com/naiteluo/Images/raw/master/snip/onchat4.png" alt="image" /></p></li>
+<li><p>at 人，私聊  <br/>
+<img src="https://github.com/naiteluo/Images/raw/master/snip/onchat5.png" alt="image" /></p></li>
+</ul>
+
+
+<h2>程序说明</h2>
+
+<h3>基本web框架</h3>
+
+<p>OnChat使用Expres框架作为基础搭建。用Express可以很快地搭建出一个包含健壮的路由、模板引擎等的轻量高效服务器，省去大量底层的工作，可以专注于应用的实现。主程序app.js主要添加一下部分以引入我们的聊天模块：</p>
+
+<pre><code>// Init chat room
+var chat = Chat(sio.listen(app));
+chat.start();
+</code></pre>
+
+<p>Socket.IO则是使用到的另一个重要的module。它封装了websocket的一些常用方法，还提供多浏览器支持。我们使用Socket.IO来实现websokcet的通信。聊天室封装成一个名为CR对象，一个CR对象包括一个Room。Room对象中有一个User的列表。每个User对象作为于Room的连接，处理每个Client对服务器的通信。代码在</p>
+
+<pre><code>./chat/index.js
+</code></pre>
+
+<p>由于同样使用JavaScript和Socket.IO，前端使用的js代码于后端基本类似。</p>
+
+<pre><code>./public/javascripts/chat.js
+</code></pre>
+
+<h3>文件目录</h3>
+
+<pre><code>.
+├── Procfile
+├── README.md
+├── app.js                    # 主程序
+├── chat                  # 聊天室模块
+│   └── index.js
+├── example
+│   ├── client.html
+│   └── server.js
+├── node_modules          # 其他依赖模块
+│   ├── express               # web 框架
+│   ├── jade
+│   └── socket.io         # websocket 框架
+├── npm-debug.log
+├── package.json          # npm 信息
+├── public                    # 公共文件
+│   ├── bootstrap
+│   ├── images
+│   ├── javascripts
+│   └── stylesheets
+├── routes                    # routes
+│   └── index.js
+└── views                 # 模板文件
+    ├── 404.jade
+    ├── index.jade
+    └── layout.jade
+</code></pre>
+
+<h3>安装使用说明</h3>
+
+<ol>
+<li>安装node.js 与 npm</li>
+<li><p>下载代码，进入项目根目录，使用npm进行依赖包下载，完成后运行</p>
+
+<pre><code>$ cd ./OnChat
+$ npm install
+$ node app.js
+</code></pre></li>
+<li><p>访问127.0.0.1:3000（使用chrome 14 + 或 safari 5 + 访问）</p></li>
+<li>安装配置有问题的，可以访问在线demo：<a href="http://onchat.herokuapp.com">OnChat on Heroku</a></li>
+</ol>
+
+
+<h2>缺点分析</h2>
+
+<p>一些缺点：</p>
+
+<ul>
+<li>Websocket只兼容版本较高的浏览器，当浏览器版本较低时，Socket.IO将转用传统的轮询方式</li>
+<li>没有用户注册，用户即时登陆</li>
+<li>只支持纯文本聊天</li>
+</ul>
+
+
+<p>计划修改与提高：</p>
+
+<ul>
+<li>增加微博绑定认证的注册机制</li>
+<li>增加表情</li>
+<li>增加画板</li>
+</ul>
+
+
+<h2>总结</h2>
+
+<p>这次项目过程中使用了websocket这个HTML5的新特性，在效率和速度上的优势在聊天室这个对实时性要求不是很苛刻的应用上没有特别地体现，但是有一个很明显的优势体现出来了，就是在代码编写上面变的很简单。用以往轮询的方法实现起来，代码逻辑会比较复杂。而不管是直接用websocket或者是socket.io，应用起来的逻辑都比较简单，一个是on，监听message，另一个是send，发送message。这样我们就可以很容易地讲User封装起来，代码更简洁易懂。另外，websocket还可以扩展出很多应用，例如一些实时交互的游戏，服务器监控等。</p>
+
+    <hr>
+    <p>尊重作者，所有原创文章，请注明出处。本站转载的文章请注明原文出处，谢谢！</p>
+    <em>Posted on 02 June 2012.</em> 
+</div>
+<div class="post-footer">
+    <a style="float:right" href="/blog/2012/06/02/build-a-web-chat-room-with-nodejs-and-socketio.html#disqus_thread">
+        View Comments
+    </a>
+    <hr>
+    <div id="disqus_thread"></div>
+    <script src="http://disqus.com/forums/mmnn/embed.js"></script>
+    <!-- paginate -->
+    <!-- 
+        <a class="paging" id="prev" href="/blog/2012/05/28/build-your-blog-with-github-pages-and-jekyll.html">Prev</a>
+    
+    
+        <a class="paging" id="next" href="/blog/2012/06/02/javascript-the-definitive-guide-reading-notes-lexical-structure.html">Next</a>
+     -->
+</div>
+		</section>
+		<footer>
+			<p>Maintained by <a href="https://github.com/naiteluo">naiteluo</a></p>
+			<p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/naiteluo">naiteluo</a></small></p>
+		</footer>
+	</div>
+</body>
+</html>

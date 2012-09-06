@@ -20,7 +20,7 @@ title: high performance JavaScript notes 2
 
 对比一下两个实例：
 
-	{% highlight javascript %}
+	{% highlight javascript linenos %}
 	function innerHTMLLoop1 () {
 	    for (var count = 0; count < 15000; count++) {
 	        document.getElementById('here').innerHTML += 'a';
@@ -65,7 +65,7 @@ HTML集合是包含了DOM节点引用的类数组对象，以下方法的返回�
 
 下面是一个有趣的死循环：
 
-	{% highlight javascript %}
+	{% highlight javascript linenos %}
 	// 一个意外的死循环
 	var alldivs = document.getElementsByTagName('div');
 	for (var i = 0; i < alldivs.length; i++) {
@@ -77,7 +77,7 @@ HTML集合是包含了DOM节点引用的类数组对象，以下方法的返回�
 
 优化方法有两种，一种是讲HTML集合拷贝到普通数组中：
 
-	{% highlight javascript %}
+	{% highlight javascript linenos %}
 	function toArray (collection) {
 	    for (var i = 0, a = [], len = collection.length; i < len; i++) {
 	        a[i] = collection[i];
@@ -90,7 +90,7 @@ HTML集合是包含了DOM节点引用的类数组对象，以下方法的返回�
 
 访问集合元素的时候也同样可以使用局部变量来缓存此成员，然后用局部变量去访问元素，下面是三个例子：
 	
-	{% highlight javascript %}
+	{% highlight javascript linenos %}
 	// 较慢
 	function collectionGlobal () {
 	    var collection = document.getElementsByTagName('div'),
@@ -161,7 +161,7 @@ HTML集合是包含了DOM节点引用的类数组对象，以下方法的返回�
 *	选择器API：`querySelectorAll()`和`querySelector()`
 	*	对比：
 
-			{% highlight javascript %}	
+			{% highlight javascript linenos %}	
 			// 返回值是一个NodeList：包含着匹配节点的类数组对象，
 			// 区别于HTML集合，它并不会对应实时的文档结构
 			var elements = document.querySelectorAll('#menu a');
@@ -172,7 +172,7 @@ HTML集合是包含了DOM节点引用的类数组对象，以下方法的返回�
 			
 		如果要处理大量组合查询，使用`querySelectorAll()`会更有效率，以下例子是很好的对比：
 			
-			{% highlight javascript %}
+			{% highlight javascript linenos %}
 			var errs = document.querySelectorAll('div.warning, div.notice');
 			
 			var errs = [],
@@ -234,7 +234,7 @@ HTML集合是包含了DOM节点引用的类数组对象，以下方法的返回�
 
 例子：
 
-	{% highlight javascript %}
+	{% highlight javascript linenos %}
 	// 可能触发多次重排
 	var el = document.getElementById('myDiv');
 	el.style.borderLeft = '1px';
@@ -279,7 +279,7 @@ HTML集合是包含了DOM节点引用的类数组对象，以下方法的返回�
 
 考虑一下代码
 
-	{% highlight javascript %}
+	{% highlight javascript linenos %}
 	// 低效的
 	myElement.style.left = 1 + myElement.offsetLeft + 'px';
 	myElement.style.top = 1 + myElement.offsetTop + 'px';

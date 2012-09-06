@@ -8,7 +8,7 @@ title: problems of front end 1
 
 在做一个有很多节点的菜单（最深有4层）的时候，我们一开始的步骤是从一个服务器生成的静态的js文件里面获取菜单的树内容，再将树的那内容生成dom。这样再普通浏览器上显示还比较正常，但是如果机子的性能比较差或者是在ie6等浏览器上，菜单部分则会显示空白，经过1～2秒的空白后，完成树的遍历和节点的生成后，才显示到页面中，体验极差。
 
-	{% highlight javascript %}
+	{% highlight javascript linenos %}
 	$.each(menuData, function(i, elem) {
 		
 		// blablabla ...
@@ -43,7 +43,7 @@ title: problems of front end 1
 
 最早的时候，同事建议给生成树的操作加一个setTimeout，延时设为0，这样就是树的加载是异步进行的，代码修改如下：
 
-	{% highlight javascript %}
+	{% highlight javascript linenos %}
 	setTimeout(function () {
 		tree.dynamictree({
 			source: elem.sub
@@ -57,7 +57,7 @@ title: problems of front end 1
 
 我们打算将所有子树生成的操作先放入一个队列中，再将激活当前版块的操作放入队列尾，最后只要再一级菜单生成后再顺序执行操作队列就可以了，代码如下：
 
-	{% highlight javascript %}
+	{% highlight javascript linenos %}
 	$.each(menuData, function(i, elem) {
 		
 		// blablabla ...

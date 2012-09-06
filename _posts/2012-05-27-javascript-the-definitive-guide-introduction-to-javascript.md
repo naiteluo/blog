@@ -18,7 +18,7 @@ blablabla…
 
 JavaScript is object-oriented, but it is quite different than most. Here show how to create class to represent 2D geometric points.
 
-	{% highlight javascript %}
+	{% highlight javascript linenos %}
 	// Define a construtor function to initialize a new Point object
 	function Point(x, y) {		// by convention, constructors start with capitals
 		this.x = x;				// this keyword is the new object being init

@@ -23,7 +23,7 @@ JavaScript的阻塞特性使js性能问题变的复杂。大多数浏览器使�
     
 	下面是一个封装好的加载方法：
 		 
-		{% highlight javascript %}
+		{% highlight javascript linenos %}
 		(function (window) {
 		    if (window.loadScript) 
 		        throw new Error('loadScript fails to be modefied.');
@@ -111,7 +111,7 @@ JavaScript的阻塞特性使js性能问题变的复杂。大多数浏览器使�
 
   	用hasOwnProperty()方法判断对象是否包含特定的实例成员，要确定对象是否包含特定的属性，可以使用in操作符。
   
-	{% highlight javascript %}
+	{% highlight javascript linenos %}
 	var book = {
 	    title: "High Performance JavaScript",
 	    publisher: "Yahoo! Press"

@@ -8,7 +8,8 @@
 			I Want To Code With You
 		
 	</title>
-	<link rel="stylesheet" href="/stylesheets/styles.css">
+	<link rel="stylesheet" type="text/less" href="/stylesheets/style.less">
+	<script type="text/javascript" src="/javascripts/less-1.3.0.min.js"></script>
 	<!-- 代码着色 -->
 	<link rel="stylesheet" href="/stylesheets/pygment_trac.css">
 </head>
@@ -30,7 +31,415 @@
 
 <div>
     <h3>
-        <a href="/2012-09-03/high-perfomance-javascript-3.html">
+        <a href="/blog/2012/09/07/code-conventions-for-the-javascript-programming-language-translate.html">
+            Code Conventions for the JavaScript Programming Language
+        </a>
+    </h3>
+    <!-- <blockquote><p>本文翻譯自Douglas Crockford老先生的《<a href="http://javascript.crockford.com/code.html">Code Conventions for the JavaScript Programming Language</a>》，規範具有參考價值，但是不是真理，要經過自己的思考和理解，形成適合自己或團隊的編碼規範。文中若是以塊引用標誌的地方，則是我自己的理解和說明。如有任何翻譯不當或理解錯誤的地方，歡迎指正，謝謝。</p></blockquote> <p>這是一系列使用JavaScript編程的習慣和規則。它的靈感從Sun的<a href="http://"> Code Conventions for the Java Programming Language</a>而來。因為JavaScript不是Java， 所以其中很大的部分作出了改動。</p> <p>一個軟件對一個組織的長遠價值，與代碼庫的質量成正比。在一個程序的一生中，會被很多人修改和閱讀。如果程序能夠清晰地表達它的結構和特性，那它在不遠的未來中發生錯誤的可能性就會更小。</p> <p>編程習慣可以幫助提高程序的健壯性。</p> <p>我們所有的JavaScript代碼都是直接發佈的。它應該具備發佈的質量*。</p> <p>Neatness counts.</p> <h2>JavaScript文件</h2> <p>JavaScript程序應該存儲為<code>.js</code>文件，並通過<code>.js</code>文件傳輸。</p> <p>JavaScript最好不要內嵌在HTML文件中，除非該代碼是專門針對一個單獨的會話的。HTML中的js代碼會明顯地增加頁面的大小，這些增加的部分是無法通過緩存和壓縮HTML文件來減輕。</p> <p><code>&lt;script src="filename.js"&gt;</code>標籤應該盡可能地放在body的尾部。這樣減少因加載腳本而引起的頁面其他部分加載的延遲。不需要在標簽中使用language或者type屬性。MIME類型是由服務器決定的，而不是標簽本身。</p> <h2>縮進</h2> <p>縮進的單位是4個空格。避免使用tab。因為至今依然沒有tabstop放置的標準（本文在21世紀撰寫）。使用空格會增加文件的大小，但是這些增加對本地網絡來說不明顯，而且可以通過minification來減輕影響。</p> <h2>行的長度</h2> <p>避免一行超過80個字符。當一個語句一行寫不下的時候，就有必要折行。把換行位置放到一個操作符後面，最理想的情況是逗號後面*。在操作符後面的換行減少了復制粘貼帶來的錯誤被自動插入分號所掩蓋的可能性。下一行應該要縮進8個空格。</p> <blockquote><p>關於這裡的80個字符其實有個有趣的來源。1801年開始，計算機普遍使用打孔卡來作為處理媒介，後來打孔卡的標準行數是80行，這也是說打孔卡一次可以紀錄的字符是80個。這個尺寸限制至今仍在許多地方被使用。例如這裡。</p></blockquote> <h2>註釋</h2> <p>大方地使用註釋。留下信息以便供需要理解你做了什麼的人（很可能是你自己）閱讀。註釋要寫的認真明了，就跟它所注解的代碼一樣。加入適度的幽默會有益於你的註釋，挫折和不滿的情緒則反之。</p> <p>保持註釋是最新的十分重要。有錯誤的註釋會使程序更難閱讀和理解。</p> <p>註釋要有意義。集中於不能立刻顯現的問題。不要讓讀者的時間浪費在類似這樣的東西上：</p> <pre><code>i ＝ 0; // Set i to zero. </code></pre> <p>一般使用行註釋。塊註釋用於正式文檔和註釋掉代碼。</p> <h2>變量聲明</h2> <p>所有變量都要在使用前被聲明。JavaScript沒有要求要這樣，但是這樣做可以使得程序更易讀，而且可以更容易監查到未被聲明的變量不小心被聲明成全局變量。永遠也不要使用隱含的全局變量。</p>... -->
+    <!-- <blockquote><p>本文翻譯自Douglas Crockford老先生的《<a href="http://javascript.crockford.com/code.html">Code Conventions for the JavaScript Programming Language</a>》，規範具有參考價值，但是不是真理，要經過自己的思考和理解，形成適合自己或團隊的編碼規範。文中若是以塊引用標誌的地方，則是我自己的理解和說明。如有任何翻譯不當或理解錯誤的地方，歡迎指正，謝謝。</p></blockquote>
+
+<p>這是一系列使用JavaScript編程的習慣和規則。它的靈感從Sun的<a href="http://"> Code Conventions for the Java Programming Language</a>而來。因為JavaScript不是Java， 所以其中很大的部分作出了改動。</p>
+
+<p>一個軟件對一個組織的長遠價值，與代碼庫的質量成正比。在一個程序的一生中，會被很多人修改和閱讀。如果程序能夠清晰地表達它的結構和特性，那它在不遠的未來中發生錯誤的可能性就會更小。</p>
+
+<p>編程習慣可以幫助提高程序的健壯性。</p>
+
+<p>我們所有的JavaScript代碼都是直接發佈的。它應該具備發佈的質量*。</p>
+
+<p>Neatness counts.</p>
+
+<h2>JavaScript文件</h2>
+
+<p>JavaScript程序應該存儲為<code>.js</code>文件，並通過<code>.js</code>文件傳輸。</p>
+
+<p>JavaScript最好不要內嵌在HTML文件中，除非該代碼是專門針對一個單獨的會話的。HTML中的js代碼會明顯地增加頁面的大小，這些增加的部分是無法通過緩存和壓縮HTML文件來減輕。</p>
+
+<p><code>&lt;script src="filename.js"&gt;</code>標籤應該盡可能地放在body的尾部。這樣減少因加載腳本而引起的頁面其他部分加載的延遲。不需要在標簽中使用language或者type屬性。MIME類型是由服務器決定的，而不是標簽本身。</p>
+
+<h2>縮進</h2>
+
+<p>縮進的單位是4個空格。避免使用tab。因為至今依然沒有tabstop放置的標準（本文在21世紀撰寫）。使用空格會增加文件的大小，但是這些增加對本地網絡來說不明顯，而且可以通過minification來減輕影響。</p>
+
+<h2>行的長度</h2>
+
+<p>避免一行超過80個字符。當一個語句一行寫不下的時候，就有必要折行。把換行位置放到一個操作符後面，最理想的情況是逗號後面*。在操作符後面的換行減少了復制粘貼帶來的錯誤被自動插入分號所掩蓋的可能性。下一行應該要縮進8個空格。</p>
+
+<blockquote><p>關於這裡的80個字符其實有個有趣的來源。1801年開始，計算機普遍使用打孔卡來作為處理媒介，後來打孔卡的標準行數是80行，這也是說打孔卡一次可以紀錄的字符是80個。這個尺寸限制至今仍在許多地方被使用。例如這裡。</p></blockquote>
+
+<h2>註釋</h2>
+
+<p>大方地使用註釋。留下信息以便供需要理解你做了什麼的人（很可能是你自己）閱讀。註釋要寫的認真明了，就跟它所注解的代碼一樣。加入適度的幽默會有益於你的註釋，挫折和不滿的情緒則反之。</p>
+
+<p>保持註釋是最新的十分重要。有錯誤的註釋會使程序更難閱讀和理解。</p>
+
+<p>註釋要有意義。集中於不能立刻顯現的問題。不要讓讀者的時間浪費在類似這樣的東西上：</p>
+
+<pre><code>i ＝ 0; // Set i to zero.
+</code></pre>
+
+<p>一般使用行註釋。塊註釋用於正式文檔和註釋掉代碼。</p>
+
+<h2>變量聲明</h2>
+
+<p>所有變量都要在使用前被聲明。JavaScript沒有要求要這樣，但是這樣做可以使得程序更易讀，而且可以更容易監查到未被聲明的變量不小心被聲明成全局變量。永遠也不要使用隱含的全局變量。</p>
+
+<p><code>var</code>聲明應該放在function主體的前面。</p>
+
+<p>最好每個變量都在單獨的一行內聲明和註釋，並按字典序排列。</p>
+
+<pre><code>var currentEntry;   // currenty selectd table entry
+var level;          // indentation level
+var size;           // size of table
+</code></pre>
+
+<p>JavaScript沒有塊作用域，所以在塊內聲明變量會讓其他習慣C家族語言的程序員產生困惑。所以應該在函數體的頂部就聲明好所有變量。</p>
+
+<p>減少使用全局變量。並永遠不要使用隱含的全局變量。</p>
+
+<h2>函數聲明</h2>
+
+<p>所有的函數都應該在被使用前聲明。 內部函數要在var聲明之後聲明。這使變量的作用域更易理解。</p>
+
+<p>函數名和參數列表的左括號之間應該沒有空格，又括號和函數聲明主體的左大括號間要留一個空格。主體本身要縮進4個空格。右大括號與包含函數聲明的那一行對齊。</p>
+
+<pre><code>function outer(c, d) {
+    var e = c * d;
+
+    function inner(a, b) {
+        return (e * a) + b;
+    }
+
+    return inner(0, 1);
+}
+</code></pre>
+
+<p>這個習慣在JavaScript中表現很好，因為在JavaScript中，函數和對象的字面量可以放在任何允許使用表達式的地方。這樣的習慣提高了行內的函數和複雜的結構的可讀性。</p>
+
+<pre><code>function getElementsByClassName(className) {
+    var results = [];
+    walkTheDom(document.body, function (node) {
+        var a;                      // array of class names
+        var cn = node.className;    // the node's classname
+        var i;                      // loop counter
+
+        if (cn) {
+            a = c.split(' ');
+            for (i = 0; i &lt; a.length; i += 1) {
+                if (a[i] === className) {
+                    results.push(node);
+                    break;
+                }
+            }
+        }   
+    });
+    return results;
+}
+</code></pre>
+
+<p>如果一個函數字面量使匿名的，那關鍵字<code>function</code>和左括號間應該要加一個空格，避免引起函數名是function的誤會。</p>
+
+<pre><code>div.onclick = function (e) {
+    return false;
+};
+
+that = {
+    method: function () {
+        return this.datum;
+    },
+    datum: 0
+};
+</code></pre>
+
+<p>減少使用全局函數。</p>
+
+<p>當一個函數在聲明後立即執行，整個調用表達式應該被包在一對括號中。這樣就清晰地表明獲取到的值是函數的返回值，而不是函數本身。</p>
+
+<pre><code>var collection = (function () {
+    var keys = [], values = [];
+
+    return {
+        get: function (key) {
+            var at = keys.indexOf(key);
+            if (at &gt;= 0) {
+                return values[at];
+            }
+        },
+        set: function (key, value) {
+            var at = keys.indexOf(key);
+            if (at &lt; 0) {
+                at = keys.length;
+            }
+            keys[at] = key;
+            values[at] = value;
+        },
+        remove: function (key) {
+            var at = keys.indexOf(key);
+            if (at &gt;= 0) {
+                keys.splice(at, 1);
+                values.splice(at, 1);
+            }
+        }
+    };
+}());
+</code></pre>
+
+<h2>命名</h2>
+
+<p>命名應由26個大寫和26個小寫字母(A..Z,a..z)，10個數字(0..9)，和下劃線<code>_</code>組成。避免使用國際的字符，因為它們可讀性沒那麼強而且可能不是所有地方都能理解。在命名中不要使用<code>$</code>美元符和<code>\</code>右下斜線。</p>
+
+<p>命名不要以下劃線開頭。有時下劃線開頭被用來表明變量是私有的，但是它本身並不提供這樣的功能。如果私有十分重要，則使用能提供私有成員的形式。避免表明能力不足的習慣。</p>
+
+<p>大部分變量與函數應該以小寫字母開頭。</p>
+
+<p>要與<code>new</code>操作符一起使用的構造器函數應該以大寫字母開頭。如果new是必要的，但是被遺漏了，JavaScript是不會發出編譯時警告和運行時警告的。這時如果沒有使用new的話，可能會引發問題，所以首字母大寫的習慣（是提醒我們真確使用構造器）的僅有的一道防線。</p>
+
+<p>全局變量應該全部大寫表示。（JavaScript中沒有宏和常量，所以使用大寫來表示一一個JavaScript中沒有的特性其實沒有多大的意義。）</p>
+
+<h2>語句</h2>
+
+<h3>簡單語句</h3>
+
+<p>每一行都應該至少包含一個語句。在每一個簡單語句後要以分號<code>;</code>結束。一個給變量賦函數字面量或者對象字面量的賦值語句也是一個賦值語句，也要以分號結束。</p>
+
+<p>JavaScript允許把任何表達式當作一個語句。這會掩蓋了一些錯誤，特別是在存在分號插入的情況下。所以能用作語句的只能是賦值和調用。</p>
+
+<h3>複合語句</h3>
+
+<p>複合語句是包含用大括號<code>{ }</code>括起多個語句的語句</p>
+
+<ul>
+<li>閉合的語句應該多縮進4個空格</li>
+<li>左大括號應該在複合語句開始行的結尾</li>
+<li>右大括號應該在一行的開頭，並且縮進要與複合語句包括了左大括號的開始行對齊</li>
+<li>當語句是控制結構（如<code>if</code>和<code>for</code>語句）的一部分時，不管是包括多條或者一條語句，都要用大括號括起來。這樣更容易添加新語句，且不會無意中引入bug</li>
+</ul>
+
+
+<h3>標簽</h3>
+
+<p>語句標簽是可選的。只有這些語句需要標記：<code>while</code>, <code>do</code>, <code>for</code>, <code>switch</code>.</p>
+
+<h3><code>return</code>語句</h3>
+
+<p>有返回值的return語句中返回值不需要被括號括住，返回值表達式要跟關鍵字<code>return</code>在同一行開始，以免分號插入帶來的錯誤。</p>
+
+<blockquote><p>一個因分號插入產生的錯誤:</p></blockquote>
+
+<pre><code>(function () {
+    var a = 'hello';
+    return 
+    {
+        word: a
+    };
+}());
+
+// 相當於
+
+(function () {
+    var a = 'hello';
+    return;
+    {
+        word: a
+    };
+}());
+
+// 結果返回值為undefined
+</code></pre>
+
+<h3><code>if</code>語句</h3>
+
+<p>if類的語句應該按照以下格式：</p>
+
+<pre><code>if (條件) {
+    語句
+}
+
+if (條件) {
+    語句
+} else {
+    語句
+}
+
+if (條件1) {
+    語句
+} else if (條件2) {
+    語句
+} else {
+    語句
+}
+</code></pre>
+
+<h3><code>for</code>語句</h3>
+
+<p>for類的語句應該按照以下格式：</p>
+
+<pre><code>for (賦初值; 條件; 更新值) {
+    語句
+}
+
+for (變量 in 對象) {
+    if (過濾器) {
+        語句
+    }
+}
+</code></pre>
+
+<p>第一種形式用在數組或者有已知相關參數的循環迭代中。</p>
+
+<p>第二種應該用於對象。要注意的是，有一些添加在對象原型(prototype)中的成員也會被枚舉。有必要主動地用<code>hasOwnProperty</code>方法去區分枚舉的是不是對象真正成員：</p>
+
+<pre><code>for (variable in object) {
+    if (object.hasOwnProperty(variable)) {
+        statements
+    }
+}
+</code></pre>
+
+<h3><code>while</code>語句</h3>
+
+<p>while語句應該按照以下格式：</p>
+
+<pre><code>while (條件) {
+    語句
+}
+</code></pre>
+
+<h3><code>do</code>語句</h3>
+
+<p>do語句應該按照以下格式：</p>
+
+<pre><code>do {
+    語句
+} while (條件);
+</code></pre>
+
+<p>跟其他複合語句不一樣，do語句一定要以分號結尾。</p>
+
+<h3><code>switch</code>語句</h3>
+
+<p>switch語句應該按照以下格式：</p>
+
+<pre><code>switch (表達式) {
+case 表達式:
+    語句
+default:
+    語句
+}
+</code></pre>
+
+<p>每個<code>case</code>都要與<code>switch</code>對齊。這避免了過度縮進。</p>
+
+<p>每組語句（除了<code>default</code>中的）都要以<code>break</code>, <code>return</code>或<code>throw</code>結尾，否則它會一直往下執行。</p>
+
+<h3><code>try</code>語句</h3>
+
+<p>try類語句應該按照以下格式：</p>
+
+<pre><code>try {
+    語句
+} catch (變量) {
+    語句
+}
+
+try {
+    語句
+} catch (變量) {
+    語句
+} finally {
+    語句
+}
+</code></pre>
+
+<h3><code>continue</code>語句</h3>
+
+<p>避免使用continue語句。它往往掩蓋了函數的控制流。</p>
+
+<h3><code>with</code>語句</h3>
+
+<p>不應該使用with語句。</p>
+
+<h3>空格</h3>
+
+<p>空行可以分開邏輯上關聯的代碼塊，提高代碼的可讀性。</p>
+
+<p>空格要在以下的情況使用：</p>
+
+<ul>
+<li><p>關鍵字與緊隨的左括號之間應該要加一個空格。</p>
+
+<pre><code>while (true) {
+</code></pre></li>
+<li><p>函數值和左括號間不要加空格。這樣幫助區分關鍵字和函數調用。</p></li>
+<li>所有二元操作符，除了<code>.</code>, <code>(</code> 和<code>[</code>，要用空格把兩個操作數都分開。</li>
+<li>一元操作符和它的操作數之間不應該加空格，除了像<code>typeof</code>這種一個詞語式的</li>
+<li>for語句中的控制部分里的分號後面都要加一個空格。</li>
+<li>所有的逗號後面都要跟一個空格。</li>
+</ul>
+
+
+<h2>額外建議</h2>
+
+<h3><code>{}</code>和<code>[]</code></h3>
+
+<p>用<code>{}</code>代替<code>new Object()</code>，用<code>[]</code>代替<code>new Array()</code>。</p>
+
+<p>當成員的命名是有序的整數，則用數組。當成員的命名是抽象的字符串或名字，則用對象。</p>
+
+<h3><code>,</code>操作符號</h3>
+
+<p>除了很有按規定地使用在for語句的控制部分中，其他地方都避免使用逗號操作符。（這不適用於作為分離符號的逗號，例如對象字面量，數組字面量，var語句，和參數列表。）</p>
+
+<h3>塊作用域</h3>
+
+<p>在JavaScript中塊不存在作用域。只有函數具有作用域。除了複合語句所需外，不要使用塊。</p>
+
+<h3>賦值表達式</h3>
+
+<p>避免在<code>if</code>和<code>while</code>的條件中使用賦值。</p>
+
+<p>例如</p>
+
+<pre><code>if (a = b) {
+</code></pre>
+
+<p>上面的是不是一個正確的語句呢？它是不是想要表達</p>
+
+<pre><code>if (a == b) {
+</code></pre>
+
+<p>避免使用這種容易產生誤解的結構。</p>
+
+<h3><code>===</code>和<code>!==</code>操作符</h3>
+
+<p>幾乎所有情況下，使用<code>===</code>和<code>!==</code>比使用<code>==</code>和<code>!=</code>好。<code>==</code>和<code>!=</code>會進行類型轉換。尤其不能使用<code>==</code>去比較假值。</p>
+
+<h3>難以理解的加或減</h3>
+
+<p>要注意不能在<code>+</code>後面緊跟<code>+</code>或者<code>++</code>。這種形式會讓人難以理解。加上括號，讓你的意圖更清晰。</p>
+
+<pre><code>total = subtotal + +myInput.value;
+</code></pre>
+
+<p>最好寫成下面的形式：</p>
+
+<pre><code>total = subtotal + (+myInput.value);
+</code></pre>
+
+<p>這樣<code>+ +</code>就不會被看成<code>++</code>了。</p>
+
+<h3><code>eval</code>是邪惡的</h3>
+
+<p><code>eval</code>是最常被誤用的JavaScript特性。避免使用它。</p>
+
+<p><code>eval</code>有別名。例如不要使用<code>Function</code>構造器。不要傳字符串給<code>setTimeout</code>和<code>setInterval</code>。</p>
+ -->
+    <em>Posted on 07 September 2012.</em>
+    <hr/>
+</div>
+
+<div>
+    <h3>
+        <a href="/blog/2012/09/03/high-perfomance-javascript-3.html">
             high performance JavaScript notes 3
         </a>
     </h3>
@@ -74,11 +483,11 @@
 
 <div>
     <h3>
-        <a href="/2012-08-19/high-perfomance-javascript-2.html">
+        <a href="/blog/2012/08/19/high-perfomance-javascript-2.html">
             high performance JavaScript notes 2
         </a>
     </h3>
-    <!-- <h2>Chapter 3 DOM Scripting DOM 编程</h2> <blockquote><p>用脚本进行DOM操作的代价很昂贵，它是富Web应用中最常见的性能瓶颈。</p></blockquote> <p>这章主要涉及一下三类问题：</p> <ul> <li>访问和修改DOM元素</li> <li>修改DOM元素的样式会导致<strong>重绘(repaint)</strong>和<strong>重排(reflow)</strong></li> <li>通过DOM事件处理与用户的交互</li> </ul> <p>文档对象模型是一个语言无关的，用于操作XML和HTML文档的应用程序借口API。虽然它是语言无关的，但是在浏览器中的接口却是用JavaScript实现的。浏览器中通常会把DOM和JavaScript独立实现，两个相互独立的功能只要通过接口彼此连接，就会产生消耗。</p> <h3>DOM访问与修改</h3> <p>对比一下两个实例：</p> <div class="highlight"><pre><code class="javascript"> <span class="kd">function</span> <span class="nx">innerHTMLLoop1</span> <span class="p">()</span> <span class="p">{</span> <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">count</span> <span class="o">&lt;</span> <span class="mi">15000</span><span class="p">;</span> <span class="nx">count</span><span class="o">++</span><span class="p">)</span>... -->
+    <!-- <h2>Chapter 3 DOM Scripting DOM 编程</h2> <blockquote><p>用脚本进行DOM操作的代价很昂贵，它是富Web应用中最常见的性能瓶颈。</p></blockquote> <p>这章主要涉及一下三类问题：</p> <ul> <li>访问和修改DOM元素</li> <li>修改DOM元素的样式会导致<strong>重绘(repaint)</strong>和<strong>重排(reflow)</strong></li> <li>通过DOM事件处理与用户的交互</li> </ul> <p>文档对象模型是一个语言无关的，用于操作XML和HTML文档的应用程序借口API。虽然它是语言无关的，但是在浏览器中的接口却是用JavaScript实现的。浏览器中通常会把DOM和JavaScript独立实现，两个相互独立的功能只要通过接口彼此连接，就会产生消耗。</p> <h3>DOM访问与修改</h3> <p>对比一下两个实例：</p> <div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span> <span class="kd">function</span> <span class="nx">innerHTMLLoop1</span> <span class="p">()</span> <span class="p">{</span> <span class="lineno"> 2</span> <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">count</span> <span class="o">&lt;</span> <span class="mi">15000</span><span... -->
     <!-- <h2>Chapter 3 DOM Scripting DOM 编程</h2>
 
 <blockquote><p>用脚本进行DOM操作的代价很昂贵，它是富Web应用中最常见的性能瓶颈。</p></blockquote>
@@ -98,20 +507,20 @@
 
 <p>对比一下两个实例：</p>
 
-<div class="highlight"><pre><code class="javascript">   <span class="kd">function</span> <span class="nx">innerHTMLLoop1</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">count</span> <span class="o">&lt;</span> <span class="mi">15000</span><span class="p">;</span> <span class="nx">count</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;here&#39;</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">+=</span> <span class="s1">&#39;a&#39;</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    
-    <span class="kd">function</span> <span class="nx">innerHTMLLoop2</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="kd">var</span> <span class="nx">content</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">count</span> <span class="o">&lt;</span> <span class="mi">15000</span><span class="p">;</span> <span class="nx">count</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">content</span> <span class="o">+=</span> <span class="s1">&#39;a&#39;</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;here&#39;</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">+=</span> <span class="nx">content</span><span class="p">;</span>
-    <span class="p">}</span>
-    
+<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span>     <span class="kd">function</span> <span class="nx">innerHTMLLoop1</span> <span class="p">()</span> <span class="p">{</span>
+<span class="lineno"> 2</span>      <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">count</span> <span class="o">&lt;</span> <span class="mi">15000</span><span class="p">;</span> <span class="nx">count</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 3</span>          <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;here&#39;</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">+=</span> <span class="s1">&#39;a&#39;</span><span class="p">;</span>
+<span class="lineno"> 4</span>      <span class="p">}</span>
+<span class="lineno"> 5</span>  <span class="p">}</span>
+<span class="lineno"> 6</span>  
+<span class="lineno"> 7</span>  <span class="kd">function</span> <span class="nx">innerHTMLLoop2</span> <span class="p">()</span> <span class="p">{</span>
+<span class="lineno"> 8</span>      <span class="kd">var</span> <span class="nx">content</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="lineno"> 9</span>      <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">count</span> <span class="o">&lt;</span> <span class="mi">15000</span><span class="p">;</span> <span class="nx">count</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">10</span>          <span class="nx">content</span> <span class="o">+=</span> <span class="s1">&#39;a&#39;</span><span class="p">;</span>
+<span class="lineno">11</span>      <span class="p">}</span>
+<span class="lineno">12</span>      <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;here&#39;</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">+=</span> <span class="nx">content</span><span class="p">;</span>
+<span class="lineno">13</span>  <span class="p">}</span>
+<span class="lineno">14</span>  
 </code></pre>
 </div>
 
@@ -151,12 +560,12 @@
 
 <p>下面是一个有趣的死循环：</p>
 
-<div class="highlight"><pre><code class="javascript">   <span class="c1">// 一个意外的死循环</span>
-    <span class="kd">var</span> <span class="nx">alldivs</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">);</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">alldivs</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">));</span>
-    <span class="p">}</span>
-    
+<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span>  <span class="c1">// 一个意外的死循环</span>
+<span class="lineno">2</span>   <span class="kd">var</span> <span class="nx">alldivs</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">);</span>
+<span class="lineno">3</span>   <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">alldivs</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">4</span>       <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">));</span>
+<span class="lineno">5</span>   <span class="p">}</span>
+<span class="lineno">6</span>   
 </code></pre>
 </div>
 
@@ -165,13 +574,13 @@
 
 <p>优化方法有两种，一种是讲HTML集合拷贝到普通数组中：</p>
 
-<div class="highlight"><pre><code class="javascript">   <span class="kd">function</span> <span class="nx">toArray</span> <span class="p">(</span><span class="nx">collection</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[],</span> <span class="nx">len</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">len</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">a</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="nx">a</span><span class="p">;</span>
-    <span class="p">}</span>
-    
+<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span>  <span class="kd">function</span> <span class="nx">toArray</span> <span class="p">(</span><span class="nx">collection</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">2</span>       <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[],</span> <span class="nx">len</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">len</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">3</span>           <span class="nx">a</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+<span class="lineno">4</span>       <span class="p">}</span>
+<span class="lineno">5</span>       <span class="k">return</span> <span class="nx">a</span><span class="p">;</span>
+<span class="lineno">6</span>   <span class="p">}</span>
+<span class="lineno">7</span>   
 </code></pre>
 </div>
 
@@ -180,47 +589,47 @@
 
 <p>访问集合元素的时候也同样可以使用局部变量来缓存此成员，然后用局部变量去访问元素，下面是三个例子：</p>
 
-<div class="highlight"><pre><code class="javascript">   <span class="c1">// 较慢</span>
-    <span class="kd">function</span> <span class="nx">collectionGlobal</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="kd">var</span> <span class="nx">collection</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">),</span>
-            <span class="nx">len</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span>
-            <span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">count</span> <span class="o">&lt;</span> <span class="nx">len</span><span class="p">;</span> <span class="nx">count</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">name</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">)[</span><span class="nx">count</span><span class="p">].</span><span class="nx">nodeName</span><span class="p">;</span>
-            <span class="nx">name</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">)[</span><span class="nx">count</span><span class="p">].</span><span class="nx">nodeType</span><span class="p">;</span>
-            <span class="nx">name</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">)[</span><span class="nx">count</span><span class="p">].</span><span class="nx">tagName</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="nx">name</span><span class="p">;</span>
-    <span class="p">}</span>
-    
-    <span class="c1">// 较快</span>
-    <span class="kd">function</span> <span class="nx">collectionLocal</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="kd">var</span> <span class="nx">collection</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">),</span>
-            <span class="nx">len</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span>
-            <span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">count</span> <span class="o">&lt;</span> <span class="nx">len</span><span class="p">;</span> <span class="nx">count</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">name</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">[</span><span class="nx">count</span><span class="p">].</span><span class="nx">nodeName</span><span class="p">;</span>
-            <span class="nx">name</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">[</span><span class="nx">count</span><span class="p">].</span><span class="nx">nodeType</span><span class="p">;</span>
-            <span class="nx">name</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">[</span><span class="nx">count</span><span class="p">].</span><span class="nx">tagName</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="nx">name</span><span class="p">;</span>
-    <span class="p">}</span>
-    
-    <span class="c1">// 最快</span>
-    <span class="kd">function</span> <span class="nx">collectionNodesLocal</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="kd">var</span> <span class="nx">collection</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">),</span>
-            <span class="nx">len</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span>
-            <span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-            <span class="nx">el</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">count</span> <span class="o">&lt;</span> <span class="nx">len</span><span class="p">;</span> <span class="nx">count</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">el</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">[</span><span class="nx">count</span><span class="p">];</span><span class="nx">el</span>
-            <span class="nx">name</span> <span class="o">=</span> <span class="nx">el</span><span class="p">.</span><span class="nx">nodeName</span><span class="p">;</span>
-            <span class="nx">name</span> <span class="o">=</span> <span class="nx">el</span><span class="p">.</span><span class="nx">nodeType</span><span class="p">;</span>
-            <span class="nx">name</span> <span class="o">=</span> <span class="nx">el</span><span class="p">.</span><span class="nx">tagName</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="nx">name</span><span class="p">;</span>
-    <span class="p">}</span>
-    
+<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span>     <span class="c1">// 较慢</span>
+<span class="lineno"> 2</span>  <span class="kd">function</span> <span class="nx">collectionGlobal</span> <span class="p">()</span> <span class="p">{</span>
+<span class="lineno"> 3</span>      <span class="kd">var</span> <span class="nx">collection</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">),</span>
+<span class="lineno"> 4</span>          <span class="nx">len</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span>
+<span class="lineno"> 5</span>          <span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="lineno"> 6</span>      <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">count</span> <span class="o">&lt;</span> <span class="nx">len</span><span class="p">;</span> <span class="nx">count</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 7</span>          <span class="nx">name</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">)[</span><span class="nx">count</span><span class="p">].</span><span class="nx">nodeName</span><span class="p">;</span>
+<span class="lineno"> 8</span>          <span class="nx">name</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">)[</span><span class="nx">count</span><span class="p">].</span><span class="nx">nodeType</span><span class="p">;</span>
+<span class="lineno"> 9</span>          <span class="nx">name</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">)[</span><span class="nx">count</span><span class="p">].</span><span class="nx">tagName</span><span class="p">;</span>
+<span class="lineno">10</span>      <span class="p">}</span>
+<span class="lineno">11</span>      <span class="k">return</span> <span class="nx">name</span><span class="p">;</span>
+<span class="lineno">12</span>  <span class="p">}</span>
+<span class="lineno">13</span>  
+<span class="lineno">14</span>  <span class="c1">// 较快</span>
+<span class="lineno">15</span>  <span class="kd">function</span> <span class="nx">collectionLocal</span> <span class="p">()</span> <span class="p">{</span>
+<span class="lineno">16</span>      <span class="kd">var</span> <span class="nx">collection</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">),</span>
+<span class="lineno">17</span>          <span class="nx">len</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span>
+<span class="lineno">18</span>          <span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="lineno">19</span>      <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">count</span> <span class="o">&lt;</span> <span class="nx">len</span><span class="p">;</span> <span class="nx">count</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">20</span>          <span class="nx">name</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">[</span><span class="nx">count</span><span class="p">].</span><span class="nx">nodeName</span><span class="p">;</span>
+<span class="lineno">21</span>          <span class="nx">name</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">[</span><span class="nx">count</span><span class="p">].</span><span class="nx">nodeType</span><span class="p">;</span>
+<span class="lineno">22</span>          <span class="nx">name</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">[</span><span class="nx">count</span><span class="p">].</span><span class="nx">tagName</span><span class="p">;</span>
+<span class="lineno">23</span>      <span class="p">}</span>
+<span class="lineno">24</span>      <span class="k">return</span> <span class="nx">name</span><span class="p">;</span>
+<span class="lineno">25</span>  <span class="p">}</span>
+<span class="lineno">26</span>  
+<span class="lineno">27</span>  <span class="c1">// 最快</span>
+<span class="lineno">28</span>  <span class="kd">function</span> <span class="nx">collectionNodesLocal</span> <span class="p">()</span> <span class="p">{</span>
+<span class="lineno">29</span>      <span class="kd">var</span> <span class="nx">collection</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">),</span>
+<span class="lineno">30</span>          <span class="nx">len</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span>
+<span class="lineno">31</span>          <span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="lineno">32</span>          <span class="nx">el</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<span class="lineno">33</span>      <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">count</span> <span class="o">&lt;</span> <span class="nx">len</span><span class="p">;</span> <span class="nx">count</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">34</span>          <span class="nx">el</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">[</span><span class="nx">count</span><span class="p">];</span><span class="nx">el</span>
+<span class="lineno">35</span>          <span class="nx">name</span> <span class="o">=</span> <span class="nx">el</span><span class="p">.</span><span class="nx">nodeName</span><span class="p">;</span>
+<span class="lineno">36</span>          <span class="nx">name</span> <span class="o">=</span> <span class="nx">el</span><span class="p">.</span><span class="nx">nodeType</span><span class="p">;</span>
+<span class="lineno">37</span>          <span class="nx">name</span> <span class="o">=</span> <span class="nx">el</span><span class="p">.</span><span class="nx">tagName</span><span class="p">;</span>
+<span class="lineno">38</span>      <span class="p">}</span>
+<span class="lineno">39</span>      <span class="k">return</span> <span class="nx">name</span><span class="p">;</span>
+<span class="lineno">40</span>  <span class="p">}</span>
+<span class="lineno">41</span>  
 </code></pre>
 </div>
 
@@ -289,14 +698,14 @@
 </ul>
 
 
-<div class="highlight"><pre><code class="javascript">   
-            <span class="c1">// 返回值是一个NodeList：包含着匹配节点的类数组对象，</span>
-            <span class="c1">// 区别于HTML集合，它并不会对应实时的文档结构</span>
-            <span class="kd">var</span> <span class="nx">elements</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">&#39;#menu a&#39;</span><span class="p">);</span>
-            
-            <span class="c1">// 返回值是HTML集合</span>
-            <span class="kd">var</span> <span class="nx">elements</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;menu&#39;</span><span class="p">).</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">);</span>
-            
+<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span>  
+<span class="lineno">2</span>           <span class="c1">// 返回值是一个NodeList：包含着匹配节点的类数组对象，</span>
+<span class="lineno">3</span>           <span class="c1">// 区别于HTML集合，它并不会对应实时的文档结构</span>
+<span class="lineno">4</span>           <span class="kd">var</span> <span class="nx">elements</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">&#39;#menu a&#39;</span><span class="p">);</span>
+<span class="lineno">5</span>           
+<span class="lineno">6</span>           <span class="c1">// 返回值是HTML集合</span>
+<span class="lineno">7</span>           <span class="kd">var</span> <span class="nx">elements</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;menu&#39;</span><span class="p">).</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">);</span>
+<span class="lineno">8</span>           
 </code></pre>
 </div>
 
@@ -304,18 +713,18 @@
 <pre><code>    如果要处理大量组合查询，使用`querySelectorAll()`会更有效率，以下例子是很好的对比：
 </code></pre>
 
-<div class="highlight"><pre><code class="javascript">           <span class="kd">var</span> <span class="nx">errs</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">&#39;div.warning, div.notice&#39;</span><span class="p">);</span>
-            
-            <span class="kd">var</span> <span class="nx">errs</span> <span class="o">=</span> <span class="p">[],</span>
-                <span class="nx">divs</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">),</span>
-                <span class="nx">classname</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
-            <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">len</span> <span class="o">=</span> <span class="nx">divs</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">len</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">classname</span> <span class="o">=</span> <span class="nx">divs</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">className</span><span class="p">;</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nx">classname</span> <span class="o">===</span> <span class="s1">&#39;notice&#39;</span> <span class="o">||</span> <span class="nx">classname</span> <span class="o">===</span> <span class="s1">&#39;warning&#39;</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="nx">errs</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">divs</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-            
+<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span>             <span class="kd">var</span> <span class="nx">errs</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">&#39;div.warning, div.notice&#39;</span><span class="p">);</span>
+<span class="lineno"> 2</span>          
+<span class="lineno"> 3</span>          <span class="kd">var</span> <span class="nx">errs</span> <span class="o">=</span> <span class="p">[],</span>
+<span class="lineno"> 4</span>              <span class="nx">divs</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">),</span>
+<span class="lineno"> 5</span>              <span class="nx">classname</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="lineno"> 6</span>          <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">len</span> <span class="o">=</span> <span class="nx">divs</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">len</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 7</span>              <span class="nx">classname</span> <span class="o">=</span> <span class="nx">divs</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">className</span><span class="p">;</span>
+<span class="lineno"> 8</span>              <span class="k">if</span> <span class="p">(</span><span class="nx">classname</span> <span class="o">===</span> <span class="s1">&#39;notice&#39;</span> <span class="o">||</span> <span class="nx">classname</span> <span class="o">===</span> <span class="s1">&#39;warning&#39;</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 9</span>                  <span class="nx">errs</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">divs</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+<span class="lineno">10</span>              <span class="p">}</span>
+<span class="lineno">11</span>          <span class="p">}</span>
+<span class="lineno">12</span>          
 </code></pre>
 </div>
 
@@ -376,18 +785,18 @@
 
 <p>例子：</p>
 
-<div class="highlight"><pre><code class="javascript">   <span class="c1">// 可能触发多次重排</span>
-    <span class="kd">var</span> <span class="nx">el</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;myDiv&#39;</span><span class="p">);</span>
-    <span class="nx">el</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">borderLeft</span> <span class="o">=</span> <span class="s1">&#39;1px&#39;</span><span class="p">;</span>
-    <span class="nx">el</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">borderRight</span> <span class="o">=</span> <span class="s1">&#39;2px&#39;</span><span class="p">;</span>
-    <span class="nx">el</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">padding</span> <span class="o">=</span> <span class="s1">&#39;5px&#39;</span><span class="p">;</span>
-    
-    <span class="c1">// 优化</span>
-    <span class="nx">el</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">cssText</span> <span class="o">+=</span> <span class="s1">&#39;border-left: 1px; border-right:2px; padding: 5px;&#39;</span><span class="p">;</span>
-    
-    <span class="c1">// 另一种优化, 将样式写到CSS的class中</span>
-    <span class="nx">el</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="s1">&#39;active&#39;</span><span class="p">;</span>
-    
+<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span>     <span class="c1">// 可能触发多次重排</span>
+<span class="lineno"> 2</span>  <span class="kd">var</span> <span class="nx">el</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;myDiv&#39;</span><span class="p">);</span>
+<span class="lineno"> 3</span>  <span class="nx">el</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">borderLeft</span> <span class="o">=</span> <span class="s1">&#39;1px&#39;</span><span class="p">;</span>
+<span class="lineno"> 4</span>  <span class="nx">el</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">borderRight</span> <span class="o">=</span> <span class="s1">&#39;2px&#39;</span><span class="p">;</span>
+<span class="lineno"> 5</span>  <span class="nx">el</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">padding</span> <span class="o">=</span> <span class="s1">&#39;5px&#39;</span><span class="p">;</span>
+<span class="lineno"> 6</span>  
+<span class="lineno"> 7</span>  <span class="c1">// 优化</span>
+<span class="lineno"> 8</span>  <span class="nx">el</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">cssText</span> <span class="o">+=</span> <span class="s1">&#39;border-left: 1px; border-right:2px; padding: 5px;&#39;</span><span class="p">;</span>
+<span class="lineno"> 9</span>  
+<span class="lineno">10</span>  <span class="c1">// 另一种优化, 将样式写到CSS的class中</span>
+<span class="lineno">11</span>  <span class="nx">el</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="s1">&#39;active&#39;</span><span class="p">;</span>
+<span class="lineno">12</span>  
 </code></pre>
 </div>
 
@@ -426,25 +835,25 @@
 
 <p>考虑一下代码</p>
 
-<div class="highlight"><pre><code class="javascript">   <span class="c1">// 低效的</span>
-    <span class="nx">myElement</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="nx">myElement</span><span class="p">.</span><span class="nx">offsetLeft</span> <span class="o">+</span> <span class="s1">&#39;px&#39;</span><span class="p">;</span>
-    <span class="nx">myElement</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">top</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="nx">myElement</span><span class="p">.</span><span class="nx">offsetTop</span> <span class="o">+</span> <span class="s1">&#39;px&#39;</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">myElement</span><span class="p">.</span><span class="nx">offsetLeft</span> <span class="o">&gt;=</span> <span class="mi">500</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">stopAnimation</span><span class="p">();</span>
-    <span class="p">}</span>
-    
-    <span class="c1">// 优化： 缓存offsets值</span>
-    <span class="kd">var</span> <span class="nx">current</span> <span class="o">=</span> <span class="nx">myElement</span><span class="p">.</span><span class="nx">offsetLeft</span><span class="p">;</span>
-    
-    <span class="c1">//...</span>
-    
-    <span class="nx">current</span><span class="o">++</span><span class="p">;</span>
-    <span class="nx">myElement</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="nx">current</span> <span class="o">+</span> <span class="s1">&#39;px&#39;</span><span class="p">;</span>
-    <span class="nx">myElement</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">top</span> <span class="o">=</span> <span class="nx">current</span> <span class="o">+</span> <span class="s1">&#39;px&#39;</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">current</span> <span class="o">&gt;=</span> <span class="mi">500</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">stopAnimation</span><span class="p">();</span>
-    <span class="p">}</span>
-    
+<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span>     <span class="c1">// 低效的</span>
+<span class="lineno"> 2</span>  <span class="nx">myElement</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="nx">myElement</span><span class="p">.</span><span class="nx">offsetLeft</span> <span class="o">+</span> <span class="s1">&#39;px&#39;</span><span class="p">;</span>
+<span class="lineno"> 3</span>  <span class="nx">myElement</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">top</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="nx">myElement</span><span class="p">.</span><span class="nx">offsetTop</span> <span class="o">+</span> <span class="s1">&#39;px&#39;</span><span class="p">;</span>
+<span class="lineno"> 4</span>  <span class="k">if</span> <span class="p">(</span><span class="nx">myElement</span><span class="p">.</span><span class="nx">offsetLeft</span> <span class="o">&gt;=</span> <span class="mi">500</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 5</span>      <span class="nx">stopAnimation</span><span class="p">();</span>
+<span class="lineno"> 6</span>  <span class="p">}</span>
+<span class="lineno"> 7</span>  
+<span class="lineno"> 8</span>  <span class="c1">// 优化： 缓存offsets值</span>
+<span class="lineno"> 9</span>  <span class="kd">var</span> <span class="nx">current</span> <span class="o">=</span> <span class="nx">myElement</span><span class="p">.</span><span class="nx">offsetLeft</span><span class="p">;</span>
+<span class="lineno">10</span>  
+<span class="lineno">11</span>  <span class="c1">//...</span>
+<span class="lineno">12</span>  
+<span class="lineno">13</span>  <span class="nx">current</span><span class="o">++</span><span class="p">;</span>
+<span class="lineno">14</span>  <span class="nx">myElement</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="nx">current</span> <span class="o">+</span> <span class="s1">&#39;px&#39;</span><span class="p">;</span>
+<span class="lineno">15</span>  <span class="nx">myElement</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">top</span> <span class="o">=</span> <span class="nx">current</span> <span class="o">+</span> <span class="s1">&#39;px&#39;</span><span class="p">;</span>
+<span class="lineno">16</span>  <span class="k">if</span> <span class="p">(</span><span class="nx">current</span> <span class="o">&gt;=</span> <span class="mi">500</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">17</span>      <span class="nx">stopAnimation</span><span class="p">();</span>
+<span class="lineno">18</span>  <span class="p">}</span>
+<span class="lineno">19</span>  
 </code></pre>
 </div>
 
@@ -483,7 +892,7 @@
 
 <div>
     <h3>
-        <a href="/2012-08-18/debug-tools-for-the-evil-ie6.html">
+        <a href="/blog/2012/08/18/debug-tools-for-the-evil-ie6.html">
             IE6相关开发与debug工具
         </a>
     </h3>
@@ -531,11 +940,11 @@
 
 <div>
     <h3>
-        <a href="/2012-08-15/high-perfomance-javascript-1.html">
+        <a href="/blog/2012/08/15/high-perfomance-javascript-1.html">
             high performance JavaScript notes 1
         </a>
     </h3>
-    <!-- <h2>Chapter 1 Loading and Execution 加载和执行</h2> <p>JavaScript的阻塞特性使js性能问题变的复杂。大多数浏览器使用单一进程来处理ui和执行脚本。代码的执行会阻塞浏览器的其他进程，例如用户界面绘制。</p> <p>将script标签放到页面的底部，</body>之前。能确保脚本执行前页面已经加载完毕。</p> <blockquote><p>浏览器在解析到&lt;body>前不会渲染页面</p> <p>把内嵌脚本放在引用外链样式表的&lt;link>标签后会导致页面阻塞去等待样式表的下载；是为了确保脚本执行时能获得最精准的样式信息；</p></blockquote> <p>合并脚本。页面中script标签越少，加载越快，响应更迅速。</p> <p>使用无阻塞方式下载代码：</p> <ul> <li>script标签的defer属性（不推荐）</li> <li><p>动态创建script元素来下载、执行代码；脚本文件在该元素被添加到页面时开始下载，且下载和执行过程不会阻塞页面其他进程。</p> <p>下面是一个封装好的加载方法：</p></li> </ul> <div class="highlight"><pre><code class="javascript"> <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nb">window</span><span class="p">)</span> <span class="p">{</span> <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">loadScript</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;loadScript fails to be modefied.&#39;</span><span class="p">);</span>... -->
+    <!-- <h2>Chapter 1 Loading and Execution 加载和执行</h2> <p>JavaScript的阻塞特性使js性能问题变的复杂。大多数浏览器使用单一进程来处理ui和执行脚本。代码的执行会阻塞浏览器的其他进程，例如用户界面绘制。</p> <p>将script标签放到页面的底部，</body>之前。能确保脚本执行前页面已经加载完毕。</p> <blockquote><p>浏览器在解析到&lt;body>前不会渲染页面</p> <p>把内嵌脚本放在引用外链样式表的&lt;link>标签后会导致页面阻塞去等待样式表的下载；是为了确保脚本执行时能获得最精准的样式信息；</p></blockquote> <p>合并脚本。页面中script标签越少，加载越快，响应更迅速。</p> <p>使用无阻塞方式下载代码：</p> <ul> <li>script标签的defer属性（不推荐）</li> <li><p>动态创建script元素来下载、执行代码；脚本文件在该元素被添加到页面时开始下载，且下载和执行过程不会阻塞页面其他进程。</p> <p>下面是一个封装好的加载方法：</p></li> </ul> <div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span> <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nb">window</span><span class="p">)</span> <span class="p">{</span> <span class="lineno"> 2</span> <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">loadScript</span><span class="p">)</span> <span class="lineno"> 3</span> <span class="k">throw</span> <span class="k">new</span> <span... -->
     <!-- <h2>Chapter 1 Loading and Execution 加载和执行</h2>
 
 <p>JavaScript的阻塞特性使js性能问题变的复杂。大多数浏览器使用单一进程来处理ui和执行脚本。代码的执行会阻塞浏览器的其他进程，例如用户界面绘制。</p>
@@ -558,33 +967,33 @@
 </ul>
 
 
-<div class="highlight"><pre><code class="javascript">       <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nb">window</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">loadScript</span><span class="p">)</span> 
-                <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;loadScript fails to be modefied.&#39;</span><span class="p">);</span>
-                
-            <span class="nb">window</span><span class="p">.</span><span class="nx">loadScript</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
-                <span class="kd">var</span> <span class="nx">script</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
-                <span class="nx">script</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s1">&#39;text/javascript&#39;</span><span class="p">;</span>
-        
-                <span class="k">if</span> <span class="p">(</span><span class="nx">script</span><span class="p">.</span><span class="nx">readyState</span><span class="p">)</span> <span class="p">{</span>    <span class="c1">// IE</span>
-                    <span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-                        <span class="k">if</span> <span class="p">(</span><span class="nx">script</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;loaded&#39;</span> <span class="o">||</span> <span class="nx">script</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;complete&#39;</span><span class="p">)</span> <span class="p">{</span>
-                            <span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
-                            <span class="nx">callback</span><span class="p">();</span>
-                        <span class="p">}</span>
-                    <span class="p">};</span>
-                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>    <span class="c1">// other browser</span>
-                    <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-                        <span class="nx">callback</span><span class="p">();</span>
-                    <span class="p">};</span>
-                <span class="p">}</span>
-        
-                <span class="nx">script</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nx">url</span><span class="p">;</span>
-                <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;head&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
-            <span class="p">};</span>
-        
-        <span class="p">}</span> <span class="p">(</span><span class="nb">window</span><span class="p">));</span>
-        
+<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span>         <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nb">window</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 2</span>          <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">loadScript</span><span class="p">)</span> 
+<span class="lineno"> 3</span>              <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;loadScript fails to be modefied.&#39;</span><span class="p">);</span>
+<span class="lineno"> 4</span>              
+<span class="lineno"> 5</span>          <span class="nb">window</span><span class="p">.</span><span class="nx">loadScript</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 6</span>              <span class="kd">var</span> <span class="nx">script</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
+<span class="lineno"> 7</span>              <span class="nx">script</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s1">&#39;text/javascript&#39;</span><span class="p">;</span>
+<span class="lineno"> 8</span>      
+<span class="lineno"> 9</span>              <span class="k">if</span> <span class="p">(</span><span class="nx">script</span><span class="p">.</span><span class="nx">readyState</span><span class="p">)</span> <span class="p">{</span>    <span class="c1">// IE</span>
+<span class="lineno">10</span>                  <span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<span class="lineno">11</span>                      <span class="k">if</span> <span class="p">(</span><span class="nx">script</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;loaded&#39;</span> <span class="o">||</span> <span class="nx">script</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;complete&#39;</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">12</span>                          <span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<span class="lineno">13</span>                          <span class="nx">callback</span><span class="p">();</span>
+<span class="lineno">14</span>                      <span class="p">}</span>
+<span class="lineno">15</span>                  <span class="p">};</span>
+<span class="lineno">16</span>              <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>    <span class="c1">// other browser</span>
+<span class="lineno">17</span>                  <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<span class="lineno">18</span>                      <span class="nx">callback</span><span class="p">();</span>
+<span class="lineno">19</span>                  <span class="p">};</span>
+<span class="lineno">20</span>              <span class="p">}</span>
+<span class="lineno">21</span>      
+<span class="lineno">22</span>              <span class="nx">script</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nx">url</span><span class="p">;</span>
+<span class="lineno">23</span>              <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;head&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
+<span class="lineno">24</span>          <span class="p">};</span>
+<span class="lineno">25</span>      
+<span class="lineno">26</span>      <span class="p">}</span> <span class="p">(</span><span class="nb">window</span><span class="p">));</span>
+<span class="lineno">27</span>      
 </code></pre>
 </div>
 
@@ -661,17 +1070,17 @@
 </ul>
 
 
-<div class="highlight"><pre><code class="javascript">   <span class="kd">var</span> <span class="nx">book</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="nx">title</span><span class="o">:</span> <span class="s2">&quot;High Performance JavaScript&quot;</span><span class="p">,</span>
-        <span class="nx">publisher</span><span class="o">:</span> <span class="s2">&quot;Yahoo! Press&quot;</span>
-    <span class="p">};</span>
-    
-    <span class="nx">alert</span><span class="p">(</span><span class="nx">book</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">));</span>    <span class="c1">// true</span>
-    <span class="nx">alert</span><span class="p">(</span><span class="nx">book</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s2">&quot;toString&quot;</span><span class="p">));</span> <span class="c1">// false</span>
-    
-    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;title&quot;</span> <span class="k">in</span> <span class="nx">book</span><span class="p">);</span>                 <span class="c1">// true</span>
-    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;toString&quot;</span> <span class="k">in</span> <span class="nx">book</span><span class="p">);</span>              <span class="c1">// true</span>
-    
+<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span>     <span class="kd">var</span> <span class="nx">book</span> <span class="o">=</span> <span class="p">{</span>
+<span class="lineno"> 2</span>      <span class="nx">title</span><span class="o">:</span> <span class="s2">&quot;High Performance JavaScript&quot;</span><span class="p">,</span>
+<span class="lineno"> 3</span>      <span class="nx">publisher</span><span class="o">:</span> <span class="s2">&quot;Yahoo! Press&quot;</span>
+<span class="lineno"> 4</span>  <span class="p">};</span>
+<span class="lineno"> 5</span>  
+<span class="lineno"> 6</span>  <span class="nx">alert</span><span class="p">(</span><span class="nx">book</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">));</span>    <span class="c1">// true</span>
+<span class="lineno"> 7</span>  <span class="nx">alert</span><span class="p">(</span><span class="nx">book</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s2">&quot;toString&quot;</span><span class="p">));</span> <span class="c1">// false</span>
+<span class="lineno"> 8</span>  
+<span class="lineno"> 9</span>  <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;title&quot;</span> <span class="k">in</span> <span class="nx">book</span><span class="p">);</span>                 <span class="c1">// true</span>
+<span class="lineno">10</span>  <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;toString&quot;</span> <span class="k">in</span> <span class="nx">book</span><span class="p">);</span>              <span class="c1">// true</span>
+<span class="lineno">11</span>  
 </code></pre>
 </div>
 
@@ -688,40 +1097,40 @@
 
 <div>
     <h3>
-        <a href="/2012-07-26/problems-of-front-end-1.html">
+        <a href="/blog/2012/07/26/problems-of-front-end-1.html">
             problems of front end 1
         </a>
     </h3>
-    <!-- <h3>问题描述</h3> <p>在做一个有很多节点的菜单（最深有4层）的时候，我们一开始的步骤是从一个服务器生成的静态的js文件里面获取菜单的树内容，再将树的那内容生成dom。这样再普通浏览器上显示还比较正常，但是如果机子的性能比较差或者是在ie6等浏览器上，菜单部分则会显示空白，经过1～2秒的空白后，完成树的遍历和节点的生成后，才显示到页面中，体验极差。</p> <div class="highlight"><pre><code class="javascript"> <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">menuData</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">elem</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// blablabla ...</span> <span class="kd">var</span> <span class="nx">channel</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;div class=&quot;channel&quot;&gt;&lt;/div&gt;&#39;</span><span class="p">),</span> <span class="nx">tree</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;&lt;/div&gt;&#39;</span><span class="p">);</span> <span class="nx">channel</span><span class="p">.</span><span... -->
+    <!-- <h3>问题描述</h3> <p>在做一个有很多节点的菜单（最深有4层）的时候，我们一开始的步骤是从一个服务器生成的静态的js文件里面获取菜单的树内容，再将树的那内容生成dom。这样再普通浏览器上显示还比较正常，但是如果机子的性能比较差或者是在ie6等浏览器上，菜单部分则会显示空白，经过1～2秒的空白后，完成树的遍历和节点的生成后，才显示到页面中，体验极差。</p> <div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span> <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">menuData</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">elem</span><span class="p">)</span> <span class="p">{</span> <span class="lineno"> 2</span> <span class="lineno"> 3</span> <span class="c1">// blablabla ...</span> <span class="lineno"> 4</span> <span class="lineno"> 5</span> <span class="kd">var</span> <span class="nx">channel</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;div... -->
     <!-- <h3>问题描述</h3>
 
 <p>在做一个有很多节点的菜单（最深有4层）的时候，我们一开始的步骤是从一个服务器生成的静态的js文件里面获取菜单的树内容，再将树的那内容生成dom。这样再普通浏览器上显示还比较正常，但是如果机子的性能比较差或者是在ie6等浏览器上，菜单部分则会显示空白，经过1～2秒的空白后，完成树的遍历和节点的生成后，才显示到页面中，体验极差。</p>
 
-<div class="highlight"><pre><code class="javascript">   <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">menuData</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">elem</span><span class="p">)</span> <span class="p">{</span>
-        
-        <span class="c1">// blablabla ...</span>
-                
-        <span class="kd">var</span> <span class="nx">channel</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;div class=&quot;channel&quot;&gt;&lt;/div&gt;&#39;</span><span class="p">),</span>
-            <span class="nx">tree</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;&lt;/div&gt;&#39;</span><span class="p">);</span>
-
-        <span class="nx">channel</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">tree</span><span class="p">);</span>
-
-        <span class="nx">menu</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s1">&#39;&lt;h3&gt;&lt;a href=&quot;#&quot; data-board=&quot;&#39;</span> <span class="o">+</span> <span class="nx">elem</span><span class="p">.</span><span class="nx">id</span> <span class="o">+</span> <span class="s1">&#39;&quot;&gt;&#39;</span> <span class="o">+</span> <span class="nx">elem</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">&#39;&lt;/a&gt;&lt;/h3&gt;&#39;</span><span class="p">)</span>
-            <span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">channel</span><span class="p">);</span>
-
-        <span class="c1">// 生成子树</span>
-        <span class="nx">tree</span><span class="p">.</span><span class="nx">dynamictree</span><span class="p">({</span>
-            <span class="nx">source</span><span class="o">:</span> <span class="nx">elem</span><span class="p">.</span><span class="nx">sub</span>
-        <span class="p">});</span>
-    <span class="p">});</span>
-
-    <span class="c1">// 初始化菜单</span>
-    <span class="nx">menu</span><span class="p">.</span><span class="nx">accordion</span><span class="p">({</span>
-        <span class="nx">autoHeight</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-        <span class="nx">collapsible</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nx">active</span><span class="o">:</span> <span class="kc">false</span>
-    <span class="p">});</span>
-    
+<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span>     <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">menuData</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">elem</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 2</span>      
+<span class="lineno"> 3</span>      <span class="c1">// blablabla ...</span>
+<span class="lineno"> 4</span>              
+<span class="lineno"> 5</span>      <span class="kd">var</span> <span class="nx">channel</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;div class=&quot;channel&quot;&gt;&lt;/div&gt;&#39;</span><span class="p">),</span>
+<span class="lineno"> 6</span>          <span class="nx">tree</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;&lt;/div&gt;&#39;</span><span class="p">);</span>
+<span class="lineno"> 7</span> 
+<span class="lineno"> 8</span>      <span class="nx">channel</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">tree</span><span class="p">);</span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span>      <span class="nx">menu</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s1">&#39;&lt;h3&gt;&lt;a href=&quot;#&quot; data-board=&quot;&#39;</span> <span class="o">+</span> <span class="nx">elem</span><span class="p">.</span><span class="nx">id</span> <span class="o">+</span> <span class="s1">&#39;&quot;&gt;&#39;</span> <span class="o">+</span> <span class="nx">elem</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">&#39;&lt;/a&gt;&lt;/h3&gt;&#39;</span><span class="p">)</span>
+<span class="lineno">11</span>          <span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">channel</span><span class="p">);</span>
+<span class="lineno">12</span> 
+<span class="lineno">13</span>      <span class="c1">// 生成子树</span>
+<span class="lineno">14</span>      <span class="nx">tree</span><span class="p">.</span><span class="nx">dynamictree</span><span class="p">({</span>
+<span class="lineno">15</span>          <span class="nx">source</span><span class="o">:</span> <span class="nx">elem</span><span class="p">.</span><span class="nx">sub</span>
+<span class="lineno">16</span>      <span class="p">});</span>
+<span class="lineno">17</span>  <span class="p">});</span>
+<span class="lineno">18</span> 
+<span class="lineno">19</span>  <span class="c1">// 初始化菜单</span>
+<span class="lineno">20</span>  <span class="nx">menu</span><span class="p">.</span><span class="nx">accordion</span><span class="p">({</span>
+<span class="lineno">21</span>      <span class="nx">autoHeight</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+<span class="lineno">22</span>      <span class="nx">collapsible</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="lineno">23</span>      <span class="nx">active</span><span class="o">:</span> <span class="kc">false</span>
+<span class="lineno">24</span>  <span class="p">});</span>
+<span class="lineno">25</span>  
 </code></pre>
 </div>
 
@@ -734,12 +1143,12 @@
 
 <p>最早的时候，同事建议给生成树的操作加一个setTimeout，延时设为0，这样就是树的加载是异步进行的，代码修改如下：</p>
 
-<div class="highlight"><pre><code class="javascript">   <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="nx">tree</span><span class="p">.</span><span class="nx">dynamictree</span><span class="p">({</span>
-            <span class="nx">source</span><span class="o">:</span> <span class="nx">elem</span><span class="p">.</span><span class="nx">sub</span>
-        <span class="p">});</span>
-    <span class="p">},</span> <span class="mi">0</span><span class="p">);</span>
-    
+<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span>  <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<span class="lineno">2</span>       <span class="nx">tree</span><span class="p">.</span><span class="nx">dynamictree</span><span class="p">({</span>
+<span class="lineno">3</span>           <span class="nx">source</span><span class="o">:</span> <span class="nx">elem</span><span class="p">.</span><span class="nx">sub</span>
+<span class="lineno">4</span>       <span class="p">});</span>
+<span class="lineno">5</span>   <span class="p">},</span> <span class="mi">0</span><span class="p">);</span>
+<span class="lineno">6</span>   
 </code></pre>
 </div>
 
@@ -750,35 +1159,35 @@
 
 <p>我们打算将所有子树生成的操作先放入一个队列中，再将激活当前版块的操作放入队列尾，最后只要再一级菜单生成后再顺序执行操作队列就可以了，代码如下：</p>
 
-<div class="highlight"><pre><code class="javascript">   <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">menuData</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">elem</span><span class="p">)</span> <span class="p">{</span>
-        
-        <span class="c1">// blablabla ...</span>
-
-        <span class="c1">// 将生成子树的操作放入事件队列，延后执行</span>
-        <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-            <span class="nx">tree</span><span class="p">.</span><span class="nx">dynamictree</span><span class="p">({</span>
-                <span class="nx">source</span><span class="o">:</span> <span class="nx">elem</span><span class="p">.</span><span class="nx">sub</span><span class="p">,</span>
-                <span class="nx">itemRendered</span><span class="o">:</span> <span class="nx">itemRendered</span>
-            <span class="p">});</span>
-        <span class="p">});</span>
-    <span class="p">}</span>
-    
-    <span class="c1">// 所有子树生成后激活当前版块</span>
-    <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">activeCurrentBoard</span><span class="p">);</span>
-
-    <span class="nx">menu</span><span class="p">.</span><span class="nx">accordion</span><span class="p">({</span>
-        <span class="nx">autoHeight</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-        <span class="nx">collapsible</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nx">active</span><span class="o">:</span> <span class="kc">false</span>
-    <span class="p">});</span>
-
-    <span class="c1">// 异步执行，解决ie6卡顿bug</span>
-    <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">queue</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">func</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">func</span><span class="p">();</span>
-        <span class="p">});</span>
-    <span class="p">},</span> <span class="mi">0</span><span class="p">);</span>
-    
+<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span>     <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">menuData</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">elem</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 2</span>      
+<span class="lineno"> 3</span>      <span class="c1">// blablabla ...</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span>      <span class="c1">// 将生成子树的操作放入事件队列，延后执行</span>
+<span class="lineno"> 6</span>      <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<span class="lineno"> 7</span>          <span class="nx">tree</span><span class="p">.</span><span class="nx">dynamictree</span><span class="p">({</span>
+<span class="lineno"> 8</span>              <span class="nx">source</span><span class="o">:</span> <span class="nx">elem</span><span class="p">.</span><span class="nx">sub</span><span class="p">,</span>
+<span class="lineno"> 9</span>              <span class="nx">itemRendered</span><span class="o">:</span> <span class="nx">itemRendered</span>
+<span class="lineno">10</span>          <span class="p">});</span>
+<span class="lineno">11</span>      <span class="p">});</span>
+<span class="lineno">12</span>  <span class="p">}</span>
+<span class="lineno">13</span>  
+<span class="lineno">14</span>  <span class="c1">// 所有子树生成后激活当前版块</span>
+<span class="lineno">15</span>  <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">activeCurrentBoard</span><span class="p">);</span>
+<span class="lineno">16</span> 
+<span class="lineno">17</span>  <span class="nx">menu</span><span class="p">.</span><span class="nx">accordion</span><span class="p">({</span>
+<span class="lineno">18</span>      <span class="nx">autoHeight</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+<span class="lineno">19</span>      <span class="nx">collapsible</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="lineno">20</span>      <span class="nx">active</span><span class="o">:</span> <span class="kc">false</span>
+<span class="lineno">21</span>  <span class="p">});</span>
+<span class="lineno">22</span> 
+<span class="lineno">23</span>  <span class="c1">// 异步执行，解决ie6卡顿bug</span>
+<span class="lineno">24</span>  <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<span class="lineno">25</span>      <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">queue</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">func</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">26</span>          <span class="nx">func</span><span class="p">();</span>
+<span class="lineno">27</span>      <span class="p">});</span>
+<span class="lineno">28</span>  <span class="p">},</span> <span class="mi">0</span><span class="p">);</span>
+<span class="lineno">29</span>  
 </code></pre>
 </div>
 
@@ -791,7 +1200,7 @@
 
 <div>
     <h3>
-        <a href="/2012-07-10/template-markup-language-velocity.html">
+        <a href="/blog/2012/07/10/template-markup-language-velocity.html">
             模板语言，Velocity
         </a>
     </h3>
@@ -1469,11 +1878,11 @@ Velocimacro必须被定义在他们被使用之前。也就是说，你的#macro
 
 <div>
     <h3>
-        <a href="/2012-06-23/javascript-test-for-my-girl.html">
+        <a href="/blog/2012/06/23/javascript-test-for-my-girl.html">
             JavaScript 测试题
         </a>
     </h3>
-    <!-- <p>以下题目均应用原生态JavaScript完成：</p> <ol> <li><p>新建一个空页面，用一段JS在页面加载完后生成如下要求的页面：</p> <ul> <li>body背景颜色设为深绿色</li> <li>插入一个h1，白色，粗体，内容为：“Welcome”</li> <li>插入一个div，设置class为content</li> <li>在div内插入一个图片，设置右浮动</li> <li>在div内插入一个p，设置class为content，白色，内容为：“hello world!”</li> </ul> </li> <li><p>为以下列表：</p></li> </ol> <div class="highlight"><pre><code class="html"> <span class="nt">&lt;ul&gt;</span> <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&#39;#&#39;</span> <span class="na">title=</span><span class="s">&#39;page1&#39;</span><span class="nt">&gt;</span>page1<span class="nt">&lt;/a&gt;&lt;/li&gt;</span> <span class="nt">&lt;ul&gt;</span> </code></pre> </div> <pre><code>通过复制元素，为该列表增加5个li元素，最后获得6个li，设置每个a的title和内容为“page+序号” </code></pre> <ol> <li><p>在题目2结果的html代码基础下完成：为列表添加点击事件，弹出内容为a的title（可能要用到简单的闭包）</p></li> <li><p>完成页面，页面至少包含以下特征：一个横向导航栏，导航栏主体为一个矩形，导航栏菜单项为若干颜色方块，颜色包括（c7c6c2，be9323，932027，d84e0f，d78f83，fa8c01，1087c1，013e74，817a68，59b79d，09deec，1a1f25）。实现功能，点击导航栏相应项，页面背景颜色变成菜单项颜色。（页面基本结构和样式用html/css完成）</p></li> <li><p>一个简单的注册页面。包含用户名，邮箱，密码，性别，注册按钮。页面样式不作要求。完成以下验证功能：</p> <ul> <li>点击注册按钮进行检查，相应项不满足要求则在改项目下面显示一句红色提醒语句（可用包含在html中，默认隐藏）</li> <li>所有项不能为空</li> <li>用户名，长度4～12</li> <li>邮箱应符合邮箱的格式(/<sup>([<sup>@\s]+)@((?:[-a-z0-9]+.)+[a-z]{2,})$/i)</sup></sup></li> <li>密码长度6～16,两个密码框内的密码必须一致</li> <li>性别不能未选</li> <li>提醒语句内容自定</li> </ul> </li> </ol>... -->
+    <!-- <p>以下题目均应用原生态JavaScript完成：</p> <ol> <li><p>新建一个空页面，用一段JS在页面加载完后生成如下要求的页面：</p> <ul> <li>body背景颜色设为深绿色</li> <li>插入一个h1，白色，粗体，内容为：“Welcome”</li> <li>插入一个div，设置class为content</li> <li>在div内插入一个图片，设置右浮动</li> <li>在div内插入一个p，设置class为content，白色，内容为：“hello world!”</li> </ul> </li> <li><p>为以下列表：</p></li> </ol> <div class="highlight"><pre><code class="html"> <span class="nt">&lt;ul&gt;</span> <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&#39;#&#39;</span> <span class="na">title=</span><span class="s">&#39;page1&#39;</span><span class="nt">&gt;</span>page1<span class="nt">&lt;/a&gt;&lt;/li&gt;</span> <span class="nt">&lt;ul&gt;</span> </code></pre> </div> <pre><code>通过复制元素，为该列表增加5个li元素，最后获得6个li，设置每个a的title和内容为“page+序号” </code></pre> <ol> <li><p>在题目2结果的html代码基础下完成：为列表添加点击事件，弹出内容为a的title（可能要用到简单的闭包）</p></li> <li><p>完成页面，页面至少包含以下特征：一个横向导航栏，导航栏主体为一个矩形，导航栏菜单项为若干颜色方块，颜色包括（c7c6c2，be9323，932027，d84e0f，d78f83，fa8c01，1087c1，013e74，817a68，59b79d，09deec，1a1f25）。实现功能，点击导航栏相应项，页面背景颜色变成菜单项颜色。（页面基本结构和样式用html/css完成）</p></li> <li><p>一个简单的注册页面。包含用户名，邮箱，密码，性别，注册按钮。页面样式不作要求。完成以下验证功能：</p> <ul> <li>点击注册按钮进行检查，相应项不满足要求则在改项目下面显示一句红色提醒语句（可用包含在html中，默认隐藏）</li> <li>所有项不能为空</li> <li>用户名，长度4～12</li> <li>邮箱应符合邮箱的格式<code>(/^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i)</code></li> <li>密码长度6～16,两个密码框内的密码必须一致</li> <li>性别不能未选</li> <li>提醒语句内容自定</li> </ul> </li> </ol>... -->
     <!-- <p>以下题目均应用原生态JavaScript完成：</p>
 
 <ol>
@@ -1511,7 +1920,7 @@ Velocimacro必须被定义在他们被使用之前。也就是说，你的#macro
 <li>点击注册按钮进行检查，相应项不满足要求则在改项目下面显示一句红色提醒语句（可用包含在html中，默认隐藏）</li>
 <li>所有项不能为空</li>
 <li>用户名，长度4～12</li>
-<li>邮箱应符合邮箱的格式(/<sup>([<sup>@\s]+)@((?:[-a-z0-9]+.)+[a-z]{2,})$/i)</sup></sup></li>
+<li>邮箱应符合邮箱的格式<code>(/^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i)</code></li>
 <li>密码长度6～16,两个密码框内的密码必须一致</li>
 <li>性别不能未选</li>
 <li>提醒语句内容自定</li>
@@ -1538,7 +1947,7 @@ Velocimacro必须被定义在他们被使用之前。也就是说，你的#macro
 
 <div>
     <h3>
-        <a href="/2012-06-02/using-regular-expression-to-implement-at-some-like-weibo.html">
+        <a href="/blog/2012/06/02/using-regular-expression-to-implement-at-some-like-weibo.html">
             用正则表达式检测微博中的at人
         </a>
     </h3>
@@ -1558,7 +1967,7 @@ var msg = msg.replace(/ *@([\u4e00-\u9fa5A-Za-z0-9_]*) ?/g, '&lt;a href="#"&gt;$
 
 <div>
     <h3>
-        <a href="/2012-06-02/javascript-the-definitive-guide-reading-notes-lexical-structure.html">
+        <a href="/blog/2012/06/02/javascript-the-definitive-guide-reading-notes-lexical-structure.html">
             JavaScript the Definitive Guide Reading notes Lexical Structure
         </a>
     </h3>
@@ -1572,7 +1981,7 @@ var msg = msg.replace(/ *@([\u4e00-\u9fa5A-Za-z0-9_]*) ?/g, '&lt;a href="#"&gt;$
 
 <div>
     <h3>
-        <a href="/2012-06-02/build-a-web-chat-room-with-nodejs-and-socketio.html">
+        <a href="/blog/2012/06/02/build-a-web-chat-room-with-nodejs-and-socketio.html">
             Build a web chat room with Node.JS and Socket.IO
         </a>
     </h3>
@@ -1715,7 +2124,7 @@ $ node app.js
 
 <div>
     <h3>
-        <a href="/2012-05-28/build-your-blog-with-github-pages-and-jekyll.html">
+        <a href="/blog/2012/05/28/build-your-blog-with-github-pages-and-jekyll.html">
             Build your blog with github pages and jekyll
         </a>
     </h3>
@@ -1741,7 +2150,7 @@ Second, you need some basic knowledge about <a href="https://github.com/mojombo/
 
 <div>
     <h3>
-        <a href="/2012-05-27/javascript-the-definitive-guide-introduction-to-javascript.html">
+        <a href="/blog/2012/05/27/javascript-the-definitive-guide-introduction-to-javascript.html">
             JavaScript the Definitive Guide Reading Introduction to JavaScript
         </a>
     </h3>
@@ -1760,24 +2169,24 @@ Second, you need some basic knowledge about <a href="https://github.com/mojombo/
 
 <p>JavaScript is object-oriented, but it is quite different than most. Here show how to create class to represent 2D geometric points.</p>
 
-<div class="highlight"><pre><code class="javascript">   <span class="c1">// Define a construtor function to initialize a new Point object</span>
-    <span class="kd">function</span> <span class="nx">Point</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>      <span class="c1">// by convention, constructors start with capitals</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">x</span> <span class="o">=</span> <span class="nx">x</span><span class="p">;</span>             <span class="c1">// this keyword is the new object being init</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">y</span> <span class="o">=</span> <span class="nx">y</span><span class="p">;</span>             
-    <span class="p">}</span>                            <span class="c1">// no return is necessary</span>
-
-    <span class="c1">// Use a constructor function with the keyword &quot;new&quot; to create instances</span>
-    <span class="kd">var</span> <span class="nx">p</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-
-    <span class="c1">// Define methods for Point objects by assigning them to the prototype</span>
-    <span class="c1">// object associated with constructor function.</span>
-    <span class="nx">Point</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">r</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sqrt</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">x</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">x</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">y</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">y</span><span class="p">);</span>
-    <span class="p">};</span>
-
-    <span class="c1">// Now instances of Point object inherits the method r()</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">r</span><span class="p">());</span>
-    
+<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span>     <span class="c1">// Define a construtor function to initialize a new Point object</span>
+<span class="lineno"> 2</span>  <span class="kd">function</span> <span class="nx">Point</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>      <span class="c1">// by convention, constructors start with capitals</span>
+<span class="lineno"> 3</span>      <span class="k">this</span><span class="p">.</span><span class="nx">x</span> <span class="o">=</span> <span class="nx">x</span><span class="p">;</span>             <span class="c1">// this keyword is the new object being init</span>
+<span class="lineno"> 4</span>      <span class="k">this</span><span class="p">.</span><span class="nx">y</span> <span class="o">=</span> <span class="nx">y</span><span class="p">;</span>             
+<span class="lineno"> 5</span>  <span class="p">}</span>                            <span class="c1">// no return is necessary</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span>  <span class="c1">// Use a constructor function with the keyword &quot;new&quot; to create instances</span>
+<span class="lineno"> 8</span>  <span class="kd">var</span> <span class="nx">p</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span>  <span class="c1">// Define methods for Point objects by assigning them to the prototype</span>
+<span class="lineno">11</span>  <span class="c1">// object associated with constructor function.</span>
+<span class="lineno">12</span>  <span class="nx">Point</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">r</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<span class="lineno">13</span>      <span class="k">return</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sqrt</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">x</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">x</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">y</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">y</span><span class="p">);</span>
+<span class="lineno">14</span>  <span class="p">};</span>
+<span class="lineno">15</span> 
+<span class="lineno">16</span>  <span class="c1">// Now instances of Point object inherits the method r()</span>
+<span class="lineno">17</span>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">r</span><span class="p">());</span>
+<span class="lineno">18</span>  
 </code></pre>
 </div>
 
@@ -1813,7 +2222,7 @@ Second, you need some basic knowledge about <a href="https://github.com/mojombo/
 
 <div>
     <h3>
-        <a href="/2012-05-25/steps-to-make-app-in-node-with-express.html">
+        <a href="/blog/2012/05/25/steps-to-make-app-in-node-with-express.html">
             Steps to make app in node with express
         </a>
     </h3>
@@ -1859,17 +2268,17 @@ cd guess
 </ol>
 
 
-<div class="highlight"><pre><code class="javascript">       <span class="p">{</span>
-            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;guess&quot;</span>
-          <span class="p">,</span> <span class="s2">&quot;version&quot;</span><span class="o">:</span> <span class="s2">&quot;0.0.1&quot;</span>
-          <span class="p">,</span> <span class="s2">&quot;private&quot;</span><span class="o">:</span> <span class="kc">true</span>
-          <span class="p">,</span> <span class="s2">&quot;dependencies&quot;</span><span class="o">:</span> <span class="p">{</span>
-              <span class="s2">&quot;express&quot;</span><span class="o">:</span> <span class="s2">&quot;2.5.8&quot;</span>
-            <span class="p">,</span> <span class="s2">&quot;jade&quot;</span><span class="o">:</span> <span class="s2">&quot;&gt;= 0.0.1&quot;</span>
-            <span class="p">,</span> <span class="s2">&quot;socket.io&quot;</span> <span class="o">:</span> <span class="s2">&quot;&gt;= 0.0.1&quot;</span>
-          <span class="p">}</span>
-        <span class="p">}</span>
-        
+<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span>         <span class="p">{</span>
+<span class="lineno"> 2</span>          <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;guess&quot;</span>
+<span class="lineno"> 3</span>        <span class="p">,</span> <span class="s2">&quot;version&quot;</span><span class="o">:</span> <span class="s2">&quot;0.0.1&quot;</span>
+<span class="lineno"> 4</span>        <span class="p">,</span> <span class="s2">&quot;private&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="lineno"> 5</span>        <span class="p">,</span> <span class="s2">&quot;dependencies&quot;</span><span class="o">:</span> <span class="p">{</span>
+<span class="lineno"> 6</span>            <span class="s2">&quot;express&quot;</span><span class="o">:</span> <span class="s2">&quot;2.5.8&quot;</span>
+<span class="lineno"> 7</span>          <span class="p">,</span> <span class="s2">&quot;jade&quot;</span><span class="o">:</span> <span class="s2">&quot;&gt;= 0.0.1&quot;</span>
+<span class="lineno"> 8</span>          <span class="p">,</span> <span class="s2">&quot;socket.io&quot;</span> <span class="o">:</span> <span class="s2">&quot;&gt;= 0.0.1&quot;</span>
+<span class="lineno"> 9</span>        <span class="p">}</span>
+<span class="lineno">10</span>      <span class="p">}</span>
+<span class="lineno">11</span>      
 </code></pre>
 </div>
 
@@ -1884,14 +2293,14 @@ cd guess
 </ol>
 
 
-<div class="highlight"><pre><code class="javascript">       <span class="cm">/*</span>
-<span class="cm">        * GET home page.</span>
-<span class="cm">        */</span>
-        
-        <span class="nx">exports</span><span class="p">.</span><span class="nx">index</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">){</span>
-          <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Guess&#39;</span> <span class="p">})</span>
-        <span class="p">};</span>
-        
+<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span>      <span class="cm">/*</span>
+<span class="lineno">2</span> <span class="cm">      * GET home page.</span>
+<span class="lineno">3</span> <span class="cm">      */</span>
+<span class="lineno">4</span>       
+<span class="lineno">5</span>       <span class="nx">exports</span><span class="p">.</span><span class="nx">index</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">){</span>
+<span class="lineno">6</span>         <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Guess&#39;</span> <span class="p">})</span>
+<span class="lineno">7</span>       <span class="p">};</span>
+<span class="lineno">8</span>       
 </code></pre>
 </div>
 
@@ -1919,7 +2328,7 @@ Express server listening on port 3000 in development mode
 
 <div>
     <h3>
-        <a href="/2011-12-31/install-nodejs-in-ubuntu.html">
+        <a href="/blog/2011/12/31/install-nodejs-in-ubuntu.html">
             Ubuntu 11.04 Node.js 配置
         </a>
     </h3>
@@ -1991,7 +2400,7 @@ sudo make install
 
 <div>
     <h3>
-        <a href="/2011-11-07/html5-game-notes-matching.html">
+        <a href="/blog/2011/11/07/html5-game-notes-matching.html">
             html5游戏笔记 matching game
         </a>
     </h3>
@@ -2118,20 +2527,20 @@ sudo make install
 
 <p>洗牌发牌，随机排列预定义的数组，并复制.card元素，通过根据index来作绝对定位，增加css类改变牌底背景坐标，用attr函数给我们自定义的data-pattern属性赋值，用于辨别牌型。最后给每张牌都绑定一个oncli，触发selecCard函数,selectCard先判断现在翻开的牌数：</p>
 
-<div class="highlight"><pre><code class="javascript">       
-    <span class="c1">// flip the card and schedule the checking function</span>
-    <span class="kd">function</span> <span class="nx">selectCard</span><span class="p">()</span> <span class="p">{</span>
-        <span class="c1">// we do nothing if there are already two card flipped</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.card-flipped&quot;</span><span class="p">).</span><span class="nx">size</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;card-flipped&quot;</span><span class="p">);</span>
-        <span class="c1">// check the pattern of both flipped card 0.7s later</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.card-flipped&quot;</span><span class="p">).</span><span class="nx">size</span><span class="p">()</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">checkPattern</span><span class="p">,</span> <span class="mi">300</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    
+<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span>         
+<span class="lineno"> 2</span>  <span class="c1">// flip the card and schedule the checking function</span>
+<span class="lineno"> 3</span>  <span class="kd">function</span> <span class="nx">selectCard</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno"> 4</span>      <span class="c1">// we do nothing if there are already two card flipped</span>
+<span class="lineno"> 5</span>      <span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.card-flipped&quot;</span><span class="p">).</span><span class="nx">size</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 6</span>          <span class="k">return</span><span class="p">;</span>
+<span class="lineno"> 7</span>      <span class="p">}</span>
+<span class="lineno"> 8</span>      <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;card-flipped&quot;</span><span class="p">);</span>
+<span class="lineno"> 9</span>      <span class="c1">// check the pattern of both flipped card 0.7s later</span>
+<span class="lineno">10</span>      <span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.card-flipped&quot;</span><span class="p">).</span><span class="nx">size</span><span class="p">()</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">11</span>          <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">checkPattern</span><span class="p">,</span> <span class="mi">300</span><span class="p">);</span>
+<span class="lineno">12</span>      <span class="p">}</span>
+<span class="lineno">13</span>  <span class="p">}</span>
+<span class="lineno">14</span>  
 </code></pre>
 </div>
 
@@ -2146,11 +2555,11 @@ sudo make install
 
 <div>
     <h3>
-        <a href="/2011-11-03/html5-game-notes-pingpong.html">
+        <a href="/blog/2011/11/03/html5-game-notes-pingpong.html">
             html5游戏笔记 pingpong ball
         </a>
     </h3>
-    <!-- <p>下载了本《html5 Game Development by Example》的书，看着很有趣，一些游戏的实例，用来熟悉html5/css3配合javascript的新特性。记录一下写一下blog增加记忆。</p> <p><a href="http://mmnn-wordpress.stor.sinaapp.com/uploads/2011/11/1.png"><img class="size-medium wp-image-51" title="pingpong" src="http://mmnn-wordpress.stor.sinaapp.com/uploads/2011/11/1-284x300.png" alt="pingpong" width="284" height="300" /></a></p> <p>书的第一章简单地介绍了html5和css3的一些新特性；第二章的example是一个pingpong的游戏，就是左右各一块板，中间一个小球弹来弹去的游戏。这本书已经完全不考虑html之前的版本了，所以还会介绍html的一些新标签；基本不涉及到css3的内容；使用jquery做游戏开发的基本方法。游戏链接：<a title="Pingpong" href="http://mmnn.sinaapp.com/demos/pingpong/">Pingpong game demo</a></p> <p>html5使用了跟简单的文件声明,取代了原来那一串重来都只是被copy的复杂文件声明，html标签也只需加入一个lang的语言属性即可，制定字符集的meta也得到简化:这次使用了header和footer标签，以前用得很多的这两个id名终于修成正果升级成了正式的标签，加入这种标签提高了html的语义。</p> <p>这里还说到一个js代码插入的位置，以前一般习惯会在head标签内插入script，而建议的将code放到页面的靠后，也就是body的结束标签之前。因为浏览器解析html代码是从上到下的，如果把js代码放到前面，延缓了内容的加载。</p> <p>主要只有三个对象，两挡板和球，对其使用</p> <div class="highlight"><pre><code class="css"> <span class="nt">position</span><span class="nd">:absolute</span><span class="o">;</span> </code></pre> </div> <p>布局，再通过</p> <div class="highlight"><pre><code class="javascript"> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#xxx&quot;</span><span class="p">).</span><span class="nx">css</span><span class="p">({</span><span class="s2">&quot;top&quot;</span><span class="o">:</span> <span class="nx">xx</span><span class="p">,</span> <span class="s2">&quot;left&quot;</span><span... -->
+    <!-- <p>下载了本《html5 Game Development by Example》的书，看着很有趣，一些游戏的实例，用来熟悉html5/css3配合javascript的新特性。记录一下写一下blog增加记忆。</p> <p><a href="http://mmnn-wordpress.stor.sinaapp.com/uploads/2011/11/1.png"><img class="size-medium wp-image-51" title="pingpong" src="http://mmnn-wordpress.stor.sinaapp.com/uploads/2011/11/1-284x300.png" alt="pingpong" width="284" height="300" /></a></p> <p>书的第一章简单地介绍了html5和css3的一些新特性；第二章的example是一个pingpong的游戏，就是左右各一块板，中间一个小球弹来弹去的游戏。这本书已经完全不考虑html之前的版本了，所以还会介绍html的一些新标签；基本不涉及到css3的内容；使用jquery做游戏开发的基本方法。游戏链接：<a title="Pingpong" href="http://mmnn.sinaapp.com/demos/pingpong/">Pingpong game demo</a></p> <p>html5使用了跟简单的文件声明,取代了原来那一串重来都只是被copy的复杂文件声明，html标签也只需加入一个lang的语言属性即可，制定字符集的meta也得到简化:这次使用了header和footer标签，以前用得很多的这两个id名终于修成正果升级成了正式的标签，加入这种标签提高了html的语义。</p> <p>这里还说到一个js代码插入的位置，以前一般习惯会在head标签内插入script，而建议的将code放到页面的靠后，也就是body的结束标签之前。因为浏览器解析html代码是从上到下的，如果把js代码放到前面，延缓了内容的加载。</p> <p>主要只有三个对象，两挡板和球，对其使用</p> <div class="highlight"><pre><code class="css"> <span class="nt">position</span><span class="nd">:absolute</span><span class="o">;</span> </code></pre> </div> <p>布局，再通过</p> <div class="highlight"><pre><code class="javascript"><span class="lineno">1</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#xxx&quot;</span><span class="p">).</span><span class="nx">css</span><span class="p">({</span><span class="s2">&quot;top&quot;</span><span class="o">:</span> <span class="nx">xx</span><span class="p">,</span> <span... -->
     <!-- <p>下载了本《html5 Game Development by Example》的书，看着很有趣，一些游戏的实例，用来熟悉html5/css3配合javascript的新特性。记录一下写一下blog增加记忆。</p>
 
 <p><a href="http://mmnn-wordpress.stor.sinaapp.com/uploads/2011/11/1.png"><img class="size-medium wp-image-51" title="pingpong" src="http://mmnn-wordpress.stor.sinaapp.com/uploads/2011/11/1-284x300.png" alt="pingpong" width="284" height="300" /></a></p>
@@ -2171,8 +2580,8 @@ sudo make install
 
 <p>布局，再通过</p>
 
-<div class="highlight"><pre><code class="javascript">   <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#xxx&quot;</span><span class="p">).</span><span class="nx">css</span><span class="p">({</span><span class="s2">&quot;top&quot;</span><span class="o">:</span> <span class="nx">xx</span><span class="p">,</span> <span class="s2">&quot;left&quot;</span><span class="o">:</span> <span class="nx">yy</span><span class="p">});</span>
-    
+<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span>  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#xxx&quot;</span><span class="p">).</span><span class="nx">css</span><span class="p">({</span><span class="s2">&quot;top&quot;</span><span class="o">:</span> <span class="nx">xx</span><span class="p">,</span> <span class="s2">&quot;left&quot;</span><span class="o">:</span> <span class="nx">yy</span><span class="p">});</span>
+<span class="lineno">2</span>   
 </code></pre>
 </div>
 
@@ -2181,69 +2590,69 @@ sudo make install
 
 <p>动起来就是让他们重复第进行位置改变，对于两挡板来说，位置的改变还需要按键的触发。设置一个interval，间隔为30ms，执行gameloop函数：</p>
 
-<div class="highlight"><pre><code class="javascript">   <span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span> <span class="c1">// set interval to call gameloop every 20 milliseconds         pingpong.timer = setInterval(gameloop, 30); // mark down what key is down and up into an array called &quot;pressedKeys&quot; </span>
-        <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">keydown</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span> 
-            <span class="nx">pingpong</span><span class="p">.</span><span class="nx">pressedKeys</span><span class="p">[</span><span class="nx">e</span><span class="p">.</span><span class="nx">which</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span> 
-        <span class="p">});</span> 
-        <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">keyup</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span> 
-            <span class="nx">pingpong</span><span class="p">.</span><span class="nx">pressedKeys</span><span class="p">[</span><span class="nx">e</span><span class="p">.</span><span class="nx">which</span><span class="p">]</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span> 
-        <span class="p">});</span> 
-    <span class="p">});</span> 
-    <span class="kd">function</span> <span class="nx">gameloop</span><span class="p">()</span> <span class="p">{</span> 
-        <span class="nx">moveBall</span><span class="p">();</span> 
-        <span class="nx">movePaddles</span><span class="p">();</span> 
-    <span class="p">}</span>
-    
+<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span>     <span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span> <span class="c1">// set interval to call gameloop every 20 milliseconds         pingpong.timer = setInterval(gameloop, 30); // mark down what key is down and up into an array called &quot;pressedKeys&quot; </span>
+<span class="lineno"> 2</span>      <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">keydown</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span> 
+<span class="lineno"> 3</span>          <span class="nx">pingpong</span><span class="p">.</span><span class="nx">pressedKeys</span><span class="p">[</span><span class="nx">e</span><span class="p">.</span><span class="nx">which</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span> 
+<span class="lineno"> 4</span>      <span class="p">});</span> 
+<span class="lineno"> 5</span>      <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">keyup</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span> 
+<span class="lineno"> 6</span>          <span class="nx">pingpong</span><span class="p">.</span><span class="nx">pressedKeys</span><span class="p">[</span><span class="nx">e</span><span class="p">.</span><span class="nx">which</span><span class="p">]</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span> 
+<span class="lineno"> 7</span>      <span class="p">});</span> 
+<span class="lineno"> 8</span>  <span class="p">});</span> 
+<span class="lineno"> 9</span>  <span class="kd">function</span> <span class="nx">gameloop</span><span class="p">()</span> <span class="p">{</span> 
+<span class="lineno">10</span>      <span class="nx">moveBall</span><span class="p">();</span> 
+<span class="lineno">11</span>      <span class="nx">movePaddles</span><span class="p">();</span> 
+<span class="lineno">12</span>  <span class="p">}</span>
+<span class="lineno">13</span>  
 </code></pre>
 </div>
 
 
 <p>其中，movePaddles()通过上面的keyup()获取键值，触发paddle的移动，最后只需要加上球的位置判断函数，根据位置来改变运动方向了。实例中没有考虑板的两端和背部对球的反弹，这里一并用一个inFiled()函数判断球的位置再根据板来判定反弹方向，</p>
 
-<div class="highlight"><pre><code class="javascript">   <span class="kd">function</span> <span class="nx">inField</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span> <span class="p">{</span> 
-        <span class="kd">var</span> <span class="nx">pXL</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;left&quot;</span><span class="p">));</span> 
-        <span class="kd">var</span> <span class="nx">pXR</span> <span class="o">=</span> <span class="nx">pXL</span> <span class="o">+</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;width&quot;</span><span class="p">));</span> 
-        <span class="kd">var</span> <span class="nx">pYT</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;top&quot;</span><span class="p">));</span> 
-        <span class="kd">var</span> <span class="nx">pYB</span> <span class="o">=</span> <span class="nx">pYT</span> <span class="o">+</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">));</span> 
-        <span class="kd">var</span> <span class="nx">bX</span> <span class="o">=</span> <span class="nx">pingpong</span><span class="p">.</span><span class="nx">ball</span><span class="p">.</span><span class="nx">x</span><span class="p">;</span> 
-        <span class="kd">var</span> <span class="nx">bY</span> <span class="o">=</span> <span class="nx">pingpong</span><span class="p">.</span><span class="nx">ball</span><span class="p">.</span><span class="nx">y</span><span class="p">;</span> 
-        <span class="kd">var</span> <span class="nx">bD</span> <span class="o">=</span> <span class="nx">pingpong</span><span class="p">.</span><span class="nx">ball</span><span class="p">.</span><span class="nx">d</span><span class="p">;</span> 
-        <span class="kd">var</span> <span class="nx">fX</span> <span class="o">=</span> <span class="nx">pingpong</span><span class="p">.</span><span class="nx">ball</span><span class="p">.</span><span class="nx">speed</span> <span class="o">*</span> <span class="nx">pingpong</span><span class="p">.</span><span class="nx">ball</span><span class="p">.</span><span class="nx">directionX</span><span class="p">;</span> 
-        <span class="kd">var</span> <span class="nx">fY</span> <span class="o">=</span> <span class="nx">pingpong</span><span class="p">.</span><span class="nx">ball</span><span class="p">.</span><span class="nx">speed</span> <span class="o">*</span> <span class="nx">pingpong</span><span class="p">.</span><span class="nx">ball</span><span class="p">.</span><span class="nx">directionY</span><span class="p">;</span> 
-            <span class="c1">// right field, return 1</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">&gt;=</span> <span class="nx">pXR</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">&gt;=</span> <span class="nx">pYT</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">&lt;=</span> <span class="nx">pYB</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">+</span> <span class="nx">fX</span> <span class="o">&lt;=</span> <span class="nx">pXR</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nx">bY</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">+</span> <span class="nx">fY</span> <span class="o">&gt;=</span> <span class="nx">pYT</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">+</span> <span class="nx">fY</span> <span class="o">&lt;=</span> <span class="nx">pYB</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-        <span class="c1">// left field, return 2</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">&lt;=</span> <span class="nx">pXL</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">&gt;=</span> <span class="nx">pYT</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">&lt;=</span> <span class="nx">pYB</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">+</span> <span class="nx">fX</span> <span class="o">&gt;=</span> <span class="nx">pXL</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nx">bY</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">+</span> <span class="nx">fY</span> <span class="o">&gt;=</span> <span class="nx">pYT</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">+</span> <span class="nx">fY</span> <span class="o">&lt;=</span> <span class="nx">pYB</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="k">return</span> <span class="mi">2</span><span class="p">;</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-        <span class="c1">// top field, return 3</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">&gt;=</span> <span class="nx">pXL</span> <span class="o">&amp;&amp;</span> <span class="nx">bX</span> <span class="o">&lt;=</span> <span class="nx">pXR</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">&lt;=</span> <span class="nx">pYT</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">bY</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">+</span> <span class="nx">fY</span> <span class="o">&gt;=</span> <span class="nx">pYT</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">+</span> <span class="nx">fX</span> <span class="o">&gt;=</span> <span class="nx">pXL</span> <span class="o">&amp;&amp;</span> <span class="nx">bX</span> <span class="o">+</span> <span class="nx">fX</span> <span class="o">&lt;=</span> <span class="nx">pXR</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="k">return</span> <span class="mi">3</span><span class="p">;</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-        <span class="c1">// bottom field, return 4</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">&gt;=</span> <span class="nx">pXL</span> <span class="o">&amp;&amp;</span> <span class="nx">bX</span> <span class="o">&lt;=</span> <span class="nx">pXR</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">&gt;=</span> <span class="nx">pYB</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">bY</span> <span class="o">+</span> <span class="nx">fY</span> <span class="o">&gt;=</span> <span class="nx">pYT</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">+</span> <span class="nx">fX</span> <span class="o">&gt;=</span> <span class="nx">pXL</span> <span class="o">&amp;&amp;</span> <span class="nx">bX</span> <span class="o">+</span> <span class="nx">fX</span> <span class="o">&lt;=</span> <span class="nx">pXR</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="k">return</span> <span class="mi">4</span><span class="p">;</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    
+<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span>     <span class="kd">function</span> <span class="nx">inField</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span> <span class="p">{</span> 
+<span class="lineno"> 2</span>      <span class="kd">var</span> <span class="nx">pXL</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;left&quot;</span><span class="p">));</span> 
+<span class="lineno"> 3</span>      <span class="kd">var</span> <span class="nx">pXR</span> <span class="o">=</span> <span class="nx">pXL</span> <span class="o">+</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;width&quot;</span><span class="p">));</span> 
+<span class="lineno"> 4</span>      <span class="kd">var</span> <span class="nx">pYT</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;top&quot;</span><span class="p">));</span> 
+<span class="lineno"> 5</span>      <span class="kd">var</span> <span class="nx">pYB</span> <span class="o">=</span> <span class="nx">pYT</span> <span class="o">+</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">));</span> 
+<span class="lineno"> 6</span>      <span class="kd">var</span> <span class="nx">bX</span> <span class="o">=</span> <span class="nx">pingpong</span><span class="p">.</span><span class="nx">ball</span><span class="p">.</span><span class="nx">x</span><span class="p">;</span> 
+<span class="lineno"> 7</span>      <span class="kd">var</span> <span class="nx">bY</span> <span class="o">=</span> <span class="nx">pingpong</span><span class="p">.</span><span class="nx">ball</span><span class="p">.</span><span class="nx">y</span><span class="p">;</span> 
+<span class="lineno"> 8</span>      <span class="kd">var</span> <span class="nx">bD</span> <span class="o">=</span> <span class="nx">pingpong</span><span class="p">.</span><span class="nx">ball</span><span class="p">.</span><span class="nx">d</span><span class="p">;</span> 
+<span class="lineno"> 9</span>      <span class="kd">var</span> <span class="nx">fX</span> <span class="o">=</span> <span class="nx">pingpong</span><span class="p">.</span><span class="nx">ball</span><span class="p">.</span><span class="nx">speed</span> <span class="o">*</span> <span class="nx">pingpong</span><span class="p">.</span><span class="nx">ball</span><span class="p">.</span><span class="nx">directionX</span><span class="p">;</span> 
+<span class="lineno">10</span>      <span class="kd">var</span> <span class="nx">fY</span> <span class="o">=</span> <span class="nx">pingpong</span><span class="p">.</span><span class="nx">ball</span><span class="p">.</span><span class="nx">speed</span> <span class="o">*</span> <span class="nx">pingpong</span><span class="p">.</span><span class="nx">ball</span><span class="p">.</span><span class="nx">directionY</span><span class="p">;</span> 
+<span class="lineno">11</span>          <span class="c1">// right field, return 1</span>
+<span class="lineno">12</span>      <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">&gt;=</span> <span class="nx">pXR</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">&gt;=</span> <span class="nx">pYT</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">&lt;=</span> <span class="nx">pYB</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">13</span>          <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">+</span> <span class="nx">fX</span> <span class="o">&lt;=</span> <span class="nx">pXR</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">14</span>              <span class="k">if</span> <span class="p">(</span><span class="nx">bY</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">+</span> <span class="nx">fY</span> <span class="o">&gt;=</span> <span class="nx">pYT</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">+</span> <span class="nx">fY</span> <span class="o">&lt;=</span> <span class="nx">pYB</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">15</span>                  <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+<span class="lineno">16</span>              <span class="p">}</span>
+<span class="lineno">17</span>          <span class="p">}</span>
+<span class="lineno">18</span>      <span class="p">}</span>
+<span class="lineno">19</span>      <span class="c1">// left field, return 2</span>
+<span class="lineno">20</span>      <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">&lt;=</span> <span class="nx">pXL</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">&gt;=</span> <span class="nx">pYT</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">&lt;=</span> <span class="nx">pYB</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">21</span>          <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">+</span> <span class="nx">fX</span> <span class="o">&gt;=</span> <span class="nx">pXL</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">22</span>              <span class="k">if</span> <span class="p">(</span><span class="nx">bY</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">+</span> <span class="nx">fY</span> <span class="o">&gt;=</span> <span class="nx">pYT</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">+</span> <span class="nx">fY</span> <span class="o">&lt;=</span> <span class="nx">pYB</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">23</span>                  <span class="k">return</span> <span class="mi">2</span><span class="p">;</span>
+<span class="lineno">24</span>              <span class="p">}</span>
+<span class="lineno">25</span>          <span class="p">}</span>
+<span class="lineno">26</span>      <span class="p">}</span>
+<span class="lineno">27</span>      <span class="c1">// top field, return 3</span>
+<span class="lineno">28</span>      <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">&gt;=</span> <span class="nx">pXL</span> <span class="o">&amp;&amp;</span> <span class="nx">bX</span> <span class="o">&lt;=</span> <span class="nx">pXR</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">&lt;=</span> <span class="nx">pYT</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">29</span>          <span class="k">if</span> <span class="p">(</span><span class="nx">bY</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">+</span> <span class="nx">fY</span> <span class="o">&gt;=</span> <span class="nx">pYT</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">30</span>              <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">+</span> <span class="nx">fX</span> <span class="o">&gt;=</span> <span class="nx">pXL</span> <span class="o">&amp;&amp;</span> <span class="nx">bX</span> <span class="o">+</span> <span class="nx">fX</span> <span class="o">&lt;=</span> <span class="nx">pXR</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">31</span>                  <span class="k">return</span> <span class="mi">3</span><span class="p">;</span>
+<span class="lineno">32</span>              <span class="p">}</span>
+<span class="lineno">33</span>          <span class="p">}</span>
+<span class="lineno">34</span>      <span class="p">}</span>
+<span class="lineno">35</span>      <span class="c1">// bottom field, return 4</span>
+<span class="lineno">36</span>      <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">&gt;=</span> <span class="nx">pXL</span> <span class="o">&amp;&amp;</span> <span class="nx">bX</span> <span class="o">&lt;=</span> <span class="nx">pXR</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">&gt;=</span> <span class="nx">pYB</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">37</span>          <span class="k">if</span> <span class="p">(</span><span class="nx">bY</span> <span class="o">+</span> <span class="nx">fY</span> <span class="o">&gt;=</span> <span class="nx">pYT</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">38</span>              <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">+</span> <span class="nx">fX</span> <span class="o">&gt;=</span> <span class="nx">pXL</span> <span class="o">&amp;&amp;</span> <span class="nx">bX</span> <span class="o">+</span> <span class="nx">fX</span> <span class="o">&lt;=</span> <span class="nx">pXR</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">39</span>                  <span class="k">return</span> <span class="mi">4</span><span class="p">;</span>
+<span class="lineno">40</span>              <span class="p">}</span>
+<span class="lineno">41</span>          <span class="p">}</span>
+<span class="lineno">42</span>      <span class="p">}</span>
+<span class="lineno">43</span>  <span class="p">}</span>
+<span class="lineno">44</span>  
 </code></pre>
 </div>
 
@@ -2260,7 +2669,7 @@ sudo make install
 
 <div>
     <h3>
-        <a href="/2011-10-19/network-config-in-archlinux.html">
+        <a href="/blog/2011/10/19/network-config-in-archlinux.html">
             archlinux简单网络配置与命令
         </a>
     </h3>
@@ -2370,7 +2779,7 @@ gateway=
 
 <div>
     <h3>
-        <a href="/2011-10-16/problems-installing-archlinux.html">
+        <a href="/blog/2011/10/16/problems-installing-archlinux.html">
             Archlinux 安装配置问题
         </a>
     </h3>
@@ -2427,7 +2836,7 @@ ibus-daemon -d -x
 
 <div>
     <h3>
-        <a href="/2011-10-01/install-LAMP-environment-in-ubuntu-1104.html">
+        <a href="/blog/2011/10/01/install-LAMP-environment-in-ubuntu-1104.html">
             Ubuntu 11.04 LAMP安装配置
         </a>
     </h3>

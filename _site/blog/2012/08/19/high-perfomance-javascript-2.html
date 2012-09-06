@@ -1,0 +1,456 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<title>
+		
+			high performance JavaScript notes 2
+		
+	</title>
+	<link rel="stylesheet" type="text/less" href="/stylesheets/style.less">
+	<script type="text/javascript" src="/javascripts/less-1.3.0.min.js"></script>
+	<!-- 代码着色 -->
+	<link rel="stylesheet" href="/stylesheets/pygment_trac.css">
+</head>
+<body>
+	<div class="wrapper">
+		<header>
+			<h1>
+				<a href="http://naiteluo.net">MMNN</a>
+			</h1>
+			<p>
+				naiteluo's blog
+			</p>
+			<p class="view">
+				<a href="https://github.com/naiteluo"><small>Naiteluo</small> in Github.</a>
+			</p>
+		</header>
+		<section>
+			<div class="post-content">
+    <h2>high performance JavaScript notes 2</h2>
+    <h2>Chapter 3 DOM Scripting DOM 编程</h2>
+
+<blockquote><p>用脚本进行DOM操作的代价很昂贵，它是富Web应用中最常见的性能瓶颈。</p></blockquote>
+
+<p>这章主要涉及一下三类问题：</p>
+
+<ul>
+<li>访问和修改DOM元素</li>
+<li>修改DOM元素的样式会导致<strong>重绘(repaint)</strong>和<strong>重排(reflow)</strong></li>
+<li>通过DOM事件处理与用户的交互</li>
+</ul>
+
+
+<p>文档对象模型是一个语言无关的，用于操作XML和HTML文档的应用程序借口API。虽然它是语言无关的，但是在浏览器中的接口却是用JavaScript实现的。浏览器中通常会把DOM和JavaScript独立实现，两个相互独立的功能只要通过接口彼此连接，就会产生消耗。</p>
+
+<h3>DOM访问与修改</h3>
+
+<p>对比一下两个实例：</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span>     <span class="kd">function</span> <span class="nx">innerHTMLLoop1</span> <span class="p">()</span> <span class="p">{</span>
+<span class="lineno"> 2</span>      <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">count</span> <span class="o">&lt;</span> <span class="mi">15000</span><span class="p">;</span> <span class="nx">count</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 3</span>          <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;here&#39;</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">+=</span> <span class="s1">&#39;a&#39;</span><span class="p">;</span>
+<span class="lineno"> 4</span>      <span class="p">}</span>
+<span class="lineno"> 5</span>  <span class="p">}</span>
+<span class="lineno"> 6</span>  
+<span class="lineno"> 7</span>  <span class="kd">function</span> <span class="nx">innerHTMLLoop2</span> <span class="p">()</span> <span class="p">{</span>
+<span class="lineno"> 8</span>      <span class="kd">var</span> <span class="nx">content</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="lineno"> 9</span>      <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">count</span> <span class="o">&lt;</span> <span class="mi">15000</span><span class="p">;</span> <span class="nx">count</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">10</span>          <span class="nx">content</span> <span class="o">+=</span> <span class="s1">&#39;a&#39;</span><span class="p">;</span>
+<span class="lineno">11</span>      <span class="p">}</span>
+<span class="lineno">12</span>      <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;here&#39;</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">+=</span> <span class="nx">content</span><span class="p">;</span>
+<span class="lineno">13</span>  <span class="p">}</span>
+<span class="lineno">14</span>  
+</code></pre>
+</div>
+
+
+<p>第一个实例中多次访问修改DOM，第二个实例中则在javascript中循环处理好内容之后，一次性访问修改DOM.所以：<strong>减少访问DOM的次数，把运算尽量留在ECMAScript这一端处理</strong>。</p>
+
+<p>innerHTML与原生DOM方法对比实验表明，在旧版浏览器中innerHTML的优势较明显，但在新版本中则不那么明显，在基于webkit内核的新版本浏览器中DOM方法反而略胜一筹。</p>
+
+<p>使用DOM方法更新页面内容的另一个途径是克隆已有元素，即使用 <code>element.cloneNode()</code> 替代 <code>document.createElement()</code> ，效率会稍有提高。</p>
+
+<h4>HTML Collections HTML集合 <strong>*</strong></h4>
+
+<p>HTML集合是包含了DOM节点引用的类数组对象，以下方法的返回值就是一个集合：</p>
+
+<ul>
+<li><code>document.getElementByName()</code></li>
+<li><code>document.getElementsByClassName()</code></li>
+<li><code>document.getElementsByTagName()</code></li>
+</ul>
+
+
+<p>下面的属性同样返回HTML集合：</p>
+
+<ul>
+<li><code>document.images // 页面中所有img元素</code></li>
+<li><code>document.links // 所有a元素</code></li>
+<li><code>document.forms // 所有表单元素</code></li>
+<li><code>document.forms[0].elements // 页面中第一个表单的所有字段</code></li>
+</ul>
+
+
+<p>以上返回的都是HTML集合对象，是个类似数组的列表。它们并不是真的数组，但提供了一个类似数组中的length属性，而且可以以数字索引的方式访问列表里的元素。其中一个重要的特性：</p>
+
+<blockquote><p>正如DOM标准中所定义的，HTML集处于一种“实时状态”实时存在，这意味着当底层文档对象更新时，它也会自动更新（<a href="http://www.w3.org/TR/DOM-Level-2-HTML/html.html#ID-75708506">参考</a>）。</p></blockquote>
+
+<p>这就意味着集合是一直和文档保持连接的，每次需要更新信息时，都会重复查询文档，哪怕只是获取它的length属性。这就是它低效的原因。</p>
+
+<p>下面是一个有趣的死循环：</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span>  <span class="c1">// 一个意外的死循环</span>
+<span class="lineno">2</span>   <span class="kd">var</span> <span class="nx">alldivs</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">);</span>
+<span class="lineno">3</span>   <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">alldivs</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">4</span>       <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">));</span>
+<span class="lineno">5</span>   <span class="p">}</span>
+<span class="lineno">6</span>   
+</code></pre>
+</div>
+
+
+<p>代码中的alldivs.length反映出的底层文档的当前状态。这样的遍历操作不仅可能会导致逻辑错误，而且很慢，每次迭代都要执行查询操作。</p>
+
+<p>优化方法有两种，一种是讲HTML集合拷贝到普通数组中：</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span>  <span class="kd">function</span> <span class="nx">toArray</span> <span class="p">(</span><span class="nx">collection</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">2</span>       <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[],</span> <span class="nx">len</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">len</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">3</span>           <span class="nx">a</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+<span class="lineno">4</span>       <span class="p">}</span>
+<span class="lineno">5</span>       <span class="k">return</span> <span class="nx">a</span><span class="p">;</span>
+<span class="lineno">6</span>   <span class="p">}</span>
+<span class="lineno">7</span>   
+</code></pre>
+</div>
+
+
+<p>另一种方法是将collection的长度缓存到局部变量中。一般来说遍历较小的集合加入了缓存就可以了。在相同的内容和数量下，遍历一个数组的速度是明显快于遍历一个HTML集合的。但是将集合放到数组中又需要额外的一次遍历，所以应该进行衡量评估，再选用合适的方法。</p>
+
+<p>访问集合元素的时候也同样可以使用局部变量来缓存此成员，然后用局部变量去访问元素，下面是三个例子：</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span>     <span class="c1">// 较慢</span>
+<span class="lineno"> 2</span>  <span class="kd">function</span> <span class="nx">collectionGlobal</span> <span class="p">()</span> <span class="p">{</span>
+<span class="lineno"> 3</span>      <span class="kd">var</span> <span class="nx">collection</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">),</span>
+<span class="lineno"> 4</span>          <span class="nx">len</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span>
+<span class="lineno"> 5</span>          <span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="lineno"> 6</span>      <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">count</span> <span class="o">&lt;</span> <span class="nx">len</span><span class="p">;</span> <span class="nx">count</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 7</span>          <span class="nx">name</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">)[</span><span class="nx">count</span><span class="p">].</span><span class="nx">nodeName</span><span class="p">;</span>
+<span class="lineno"> 8</span>          <span class="nx">name</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">)[</span><span class="nx">count</span><span class="p">].</span><span class="nx">nodeType</span><span class="p">;</span>
+<span class="lineno"> 9</span>          <span class="nx">name</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">)[</span><span class="nx">count</span><span class="p">].</span><span class="nx">tagName</span><span class="p">;</span>
+<span class="lineno">10</span>      <span class="p">}</span>
+<span class="lineno">11</span>      <span class="k">return</span> <span class="nx">name</span><span class="p">;</span>
+<span class="lineno">12</span>  <span class="p">}</span>
+<span class="lineno">13</span>  
+<span class="lineno">14</span>  <span class="c1">// 较快</span>
+<span class="lineno">15</span>  <span class="kd">function</span> <span class="nx">collectionLocal</span> <span class="p">()</span> <span class="p">{</span>
+<span class="lineno">16</span>      <span class="kd">var</span> <span class="nx">collection</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">),</span>
+<span class="lineno">17</span>          <span class="nx">len</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span>
+<span class="lineno">18</span>          <span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="lineno">19</span>      <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">count</span> <span class="o">&lt;</span> <span class="nx">len</span><span class="p">;</span> <span class="nx">count</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">20</span>          <span class="nx">name</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">[</span><span class="nx">count</span><span class="p">].</span><span class="nx">nodeName</span><span class="p">;</span>
+<span class="lineno">21</span>          <span class="nx">name</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">[</span><span class="nx">count</span><span class="p">].</span><span class="nx">nodeType</span><span class="p">;</span>
+<span class="lineno">22</span>          <span class="nx">name</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">[</span><span class="nx">count</span><span class="p">].</span><span class="nx">tagName</span><span class="p">;</span>
+<span class="lineno">23</span>      <span class="p">}</span>
+<span class="lineno">24</span>      <span class="k">return</span> <span class="nx">name</span><span class="p">;</span>
+<span class="lineno">25</span>  <span class="p">}</span>
+<span class="lineno">26</span>  
+<span class="lineno">27</span>  <span class="c1">// 最快</span>
+<span class="lineno">28</span>  <span class="kd">function</span> <span class="nx">collectionNodesLocal</span> <span class="p">()</span> <span class="p">{</span>
+<span class="lineno">29</span>      <span class="kd">var</span> <span class="nx">collection</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">),</span>
+<span class="lineno">30</span>          <span class="nx">len</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span>
+<span class="lineno">31</span>          <span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="lineno">32</span>          <span class="nx">el</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<span class="lineno">33</span>      <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">count</span> <span class="o">&lt;</span> <span class="nx">len</span><span class="p">;</span> <span class="nx">count</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">34</span>          <span class="nx">el</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">[</span><span class="nx">count</span><span class="p">];</span><span class="nx">el</span>
+<span class="lineno">35</span>          <span class="nx">name</span> <span class="o">=</span> <span class="nx">el</span><span class="p">.</span><span class="nx">nodeName</span><span class="p">;</span>
+<span class="lineno">36</span>          <span class="nx">name</span> <span class="o">=</span> <span class="nx">el</span><span class="p">.</span><span class="nx">nodeType</span><span class="p">;</span>
+<span class="lineno">37</span>          <span class="nx">name</span> <span class="o">=</span> <span class="nx">el</span><span class="p">.</span><span class="nx">tagName</span><span class="p">;</span>
+<span class="lineno">38</span>      <span class="p">}</span>
+<span class="lineno">39</span>      <span class="k">return</span> <span class="nx">name</span><span class="p">;</span>
+<span class="lineno">40</span>  <span class="p">}</span>
+<span class="lineno">41</span>  
+</code></pre>
+</div>
+
+
+<h4>遍历DOM</h4>
+
+<ul>
+<li><p>爬行的两种方式</p>
+
+<ul>
+<li>使用<code>childNodes</code>得到元素集合（childNodes是HTML集合，使用时谨记缓存length属性）</li>
+<li>使用<code>nextSiblig</code>来获取每个相邻元素</li>
+</ul>
+
+
+<p>再不同浏览器中两种方法运行时间几乎相等，但是在IE6，7中nextSibling要快很多倍（16、105倍）。</p></li>
+<li><p>元素节点</p>
+
+<p><code>childNode</code>,<code>firstChild</code>,<code>nextSibling</code>都是不区分元素节点和其他类型节点的，比如注释和文本。</p>
+
+<p>能区分元素机节点和其他节点的DOM属性</p>
+
+<table>
+<thead>
+<tr>
+<th>属性名                  </th>
+<th> 被替换属性            </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>children               </td>
+<td> childNodes          </td>
+</tr>
+<tr>
+<td>childElementCount      </td>
+<td> childNodes.length          </td>
+</tr>
+<tr>
+<td>firstElementChild      </td>
+<td> firstChild          </td>
+</tr>
+<tr>
+<td>lastElementChild       </td>
+<td> lastChild          </td>
+</tr>
+<tr>
+<td>nextElementSibling     </td>
+<td> childNodes          </td>
+</tr>
+<tr>
+<td>previousElementSibling </td>
+<td> previousSibling</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>IE6、7、8只支持<code>children</code>属性。在所有浏览器中<code>children</code>替代<code>childNodes</code>会更快，因为集合项更少。而且在IE中遍历children集合的速度要明显快于遍历childNodes。</p></li>
+<li><p>选择器API：<code>querySelectorAll()</code>和<code>querySelector()</code></p>
+
+<ul>
+<li>对比：</li>
+</ul>
+</li>
+</ul>
+
+
+<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span>  
+<span class="lineno">2</span>           <span class="c1">// 返回值是一个NodeList：包含着匹配节点的类数组对象，</span>
+<span class="lineno">3</span>           <span class="c1">// 区别于HTML集合，它并不会对应实时的文档结构</span>
+<span class="lineno">4</span>           <span class="kd">var</span> <span class="nx">elements</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">&#39;#menu a&#39;</span><span class="p">);</span>
+<span class="lineno">5</span>           
+<span class="lineno">6</span>           <span class="c1">// 返回值是HTML集合</span>
+<span class="lineno">7</span>           <span class="kd">var</span> <span class="nx">elements</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;menu&#39;</span><span class="p">).</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">);</span>
+<span class="lineno">8</span>           
+</code></pre>
+</div>
+
+
+<pre><code>    如果要处理大量组合查询，使用`querySelectorAll()`会更有效率，以下例子是很好的对比：
+</code></pre>
+
+<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span>             <span class="kd">var</span> <span class="nx">errs</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">&#39;div.warning, div.notice&#39;</span><span class="p">);</span>
+<span class="lineno"> 2</span>          
+<span class="lineno"> 3</span>          <span class="kd">var</span> <span class="nx">errs</span> <span class="o">=</span> <span class="p">[],</span>
+<span class="lineno"> 4</span>              <span class="nx">divs</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">),</span>
+<span class="lineno"> 5</span>              <span class="nx">classname</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="lineno"> 6</span>          <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">len</span> <span class="o">=</span> <span class="nx">divs</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">len</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 7</span>              <span class="nx">classname</span> <span class="o">=</span> <span class="nx">divs</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">className</span><span class="p">;</span>
+<span class="lineno"> 8</span>              <span class="k">if</span> <span class="p">(</span><span class="nx">classname</span> <span class="o">===</span> <span class="s1">&#39;notice&#39;</span> <span class="o">||</span> <span class="nx">classname</span> <span class="o">===</span> <span class="s1">&#39;warning&#39;</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 9</span>                  <span class="nx">errs</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">divs</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+<span class="lineno">10</span>              <span class="p">}</span>
+<span class="lineno">11</span>          <span class="p">}</span>
+<span class="lineno">12</span>          
+</code></pre>
+</div>
+
+
+<pre><code>    第一段代码出了更简洁之外，效率还比第二段高2～6倍。
+
+*   支持的浏览器： IE8, Firefox 3.5+, Safari 3.1+, Chrome1+, Opera 10+
+</code></pre>
+
+<h3>重绘与重排</h3>
+
+<blockquote><p>浏览器下载完成页面中的所有组件：HTML标记，JavaScript,CSS,图片，之后会解析并生成两个内部数据结构：</p></blockquote>
+
+<ul>
+<li><p>DOM树</p>
+
+<p>表示页面结构</p></li>
+<li><p>渲染树</p>
+
+<p>表示DOM节点如何显示</p></li>
+</ul>
+
+
+<p>当DOM的变化影响了元素的集合属性（宽高），浏览器需要重新计算元素的集合属性，同样其他元素的集合属性和位置也会因此受到影响。浏览器会使渲染树中受到影响的部分失效，并重新构造渲染树，这个过程称为“<strong>重排(reflow)</strong>”；完成重排后，浏览器会重新绘制受影响的部分到屏幕中，该过程称为“<strong>重绘(repaint)</strong>”。</p>
+
+<p>重绘和重排操作都是代价昂高的操作，导致UI反应迟钝，要尽量减少。</p>
+
+<h4>重排何时发生？</h4>
+
+<p>页面布局和几何属性发生改变：</p>
+
+<ul>
+<li>添加或删除可见的DOM元素。</li>
+<li>元素位置改变。</li>
+<li>元素尺寸改变（margin, padding, border, width, height）。</li>
+<li>页面渲染器初始化。</li>
+<li>浏览器窗口尺寸改变。</li>
+</ul>
+
+
+<h4>渲染树变化的排列与刷新</h4>
+
+<p>获取布局信息的操作会导致队列刷新</p>
+
+<ul>
+<li>offsetTop, offsetLeft, offsetWidth, offsetHeight</li>
+<li>scrollTop, scrollLeft, scrollWidth, scrollHeight</li>
+<li>clientTop, clientLeft, clientWidth, clientHeight</li>
+<li>getComputedStyle() (currentStyle in IE)</li>
+</ul>
+
+
+<p>在修改样式的过程中，最好避免使用上面列出的属性，因为不管它本身有没有改变，使用以上属性都会刷新渲染队列。<strong>*</strong></p>
+
+<h4>最小化重绘和重排</h4>
+
+<p>优化方法：合并多次对DOM和样式的修改，然后一次性处理掉。</p>
+
+<p>例子：</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span>     <span class="c1">// 可能触发多次重排</span>
+<span class="lineno"> 2</span>  <span class="kd">var</span> <span class="nx">el</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;myDiv&#39;</span><span class="p">);</span>
+<span class="lineno"> 3</span>  <span class="nx">el</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">borderLeft</span> <span class="o">=</span> <span class="s1">&#39;1px&#39;</span><span class="p">;</span>
+<span class="lineno"> 4</span>  <span class="nx">el</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">borderRight</span> <span class="o">=</span> <span class="s1">&#39;2px&#39;</span><span class="p">;</span>
+<span class="lineno"> 5</span>  <span class="nx">el</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">padding</span> <span class="o">=</span> <span class="s1">&#39;5px&#39;</span><span class="p">;</span>
+<span class="lineno"> 6</span>  
+<span class="lineno"> 7</span>  <span class="c1">// 优化</span>
+<span class="lineno"> 8</span>  <span class="nx">el</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">cssText</span> <span class="o">+=</span> <span class="s1">&#39;border-left: 1px; border-right:2px; padding: 5px;&#39;</span><span class="p">;</span>
+<span class="lineno"> 9</span>  
+<span class="lineno">10</span>  <span class="c1">// 另一种优化, 将样式写到CSS的class中</span>
+<span class="lineno">11</span>  <span class="nx">el</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="s1">&#39;active&#39;</span><span class="p">;</span>
+<span class="lineno">12</span>  
+</code></pre>
+</div>
+
+
+<p>要对DOM元素进行一系列操作时，可通过一下步骤来减少重绘和重排的次数：</p>
+
+<ol>
+<li>使元素脱离文档流</li>
+<li>对其应用多重改变</li>
+<li>把元素带回文档中</li>
+</ol>
+
+
+<p>其中第1，3步各触发一次重排。</p>
+
+<p>三种基本方法可以使DOM脱离文档：</p>
+
+<ul>
+<li><p>隐藏元素，应用修改，重新显示</p>
+
+<p>通过改变display属性来实现</p></li>
+<li><p>使用文档片段（document fragment）在当前DOM之外构建一个子树，再把它拷贝回文档</p>
+
+<p>这就用到一个叫文档片段fragment的轻量级document对象，它的设计初衷就是为了完成更新和移动节点的任务，使用方法见下面的gist：</p>
+
+<p><script src="https://gist.github.com/3549691.js?file=文档片段fragment.js"></script></p></li>
+<li><p>将原始元素拷贝到一个脱离文档的节点中，修改副本，完成后再替换原始元素</p></li>
+</ul>
+
+
+<h4>缓存布局信息</h4>
+
+<p>查询布局信息，例如： offsets，scroll values或computedstyle values的时候，浏览器为了返回最新的值，会刷新队列并应用所有变更。</p>
+
+<p>优化犯法：用局部变量缓存布局信息，减少布局信息的获取次数</p>
+
+<p>考虑一下代码</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span>     <span class="c1">// 低效的</span>
+<span class="lineno"> 2</span>  <span class="nx">myElement</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="nx">myElement</span><span class="p">.</span><span class="nx">offsetLeft</span> <span class="o">+</span> <span class="s1">&#39;px&#39;</span><span class="p">;</span>
+<span class="lineno"> 3</span>  <span class="nx">myElement</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">top</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="nx">myElement</span><span class="p">.</span><span class="nx">offsetTop</span> <span class="o">+</span> <span class="s1">&#39;px&#39;</span><span class="p">;</span>
+<span class="lineno"> 4</span>  <span class="k">if</span> <span class="p">(</span><span class="nx">myElement</span><span class="p">.</span><span class="nx">offsetLeft</span> <span class="o">&gt;=</span> <span class="mi">500</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 5</span>      <span class="nx">stopAnimation</span><span class="p">();</span>
+<span class="lineno"> 6</span>  <span class="p">}</span>
+<span class="lineno"> 7</span>  
+<span class="lineno"> 8</span>  <span class="c1">// 优化： 缓存offsets值</span>
+<span class="lineno"> 9</span>  <span class="kd">var</span> <span class="nx">current</span> <span class="o">=</span> <span class="nx">myElement</span><span class="p">.</span><span class="nx">offsetLeft</span><span class="p">;</span>
+<span class="lineno">10</span>  
+<span class="lineno">11</span>  <span class="c1">//...</span>
+<span class="lineno">12</span>  
+<span class="lineno">13</span>  <span class="nx">current</span><span class="o">++</span><span class="p">;</span>
+<span class="lineno">14</span>  <span class="nx">myElement</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="nx">current</span> <span class="o">+</span> <span class="s1">&#39;px&#39;</span><span class="p">;</span>
+<span class="lineno">15</span>  <span class="nx">myElement</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">top</span> <span class="o">=</span> <span class="nx">current</span> <span class="o">+</span> <span class="s1">&#39;px&#39;</span><span class="p">;</span>
+<span class="lineno">16</span>  <span class="k">if</span> <span class="p">(</span><span class="nx">current</span> <span class="o">&gt;=</span> <span class="mi">500</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">17</span>      <span class="nx">stopAnimation</span><span class="p">();</span>
+<span class="lineno">18</span>  <span class="p">}</span>
+<span class="lineno">19</span>  
+</code></pre>
+</div>
+
+
+<h4>让元素脱离动画流</h4>
+
+<p>动画中使用绝对定位，使用拖放代理</p>
+
+<h4>IE和hover</h4>
+
+<p>在IE中如果大量元素使用了:hover，会降低响应速度。IE8尤其明显。</p>
+
+<h4>事件委托</h4>
+
+<p>使用事件委托来减少事件处理器的数量。</p>
+
+<p>原理：事件逐层冒泡并能被父级元素捕获</p>
+
+<p>参考以下gist：</p>
+
+<script src="https://gist.github.com/3549691.js?file=事件委托.js"></script>
+
+
+<p>其中要注意跨浏览器的部分，包括：</p>
+
+<ul>
+<li>访问事件对象，并判断事件源</li>
+<li>取消文档树中的冒泡</li>
+<li>阻止默认动作</li>
+</ul>
+
+
+    <hr>
+    <p>尊重作者，所有原创文章，请注明出处。本站转载的文章请注明原文出处，谢谢！</p>
+    <em>Posted on 19 August 2012.</em> 
+</div>
+<div class="post-footer">
+    <a style="float:right" href="/blog/2012/08/19/high-perfomance-javascript-2.html#disqus_thread">
+        View Comments
+    </a>
+    <hr>
+    <div id="disqus_thread"></div>
+    <script src="http://disqus.com/forums/mmnn/embed.js"></script>
+    <!-- paginate -->
+    <!-- 
+        <a class="paging" id="prev" href="/blog/2012/08/18/debug-tools-for-the-evil-ie6.html">Prev</a>
+    
+    
+        <a class="paging" id="next" href="/blog/2012/09/03/high-perfomance-javascript-3.html">Next</a>
+     -->
+</div>
+		</section>
+		<footer>
+			<p>Maintained by <a href="https://github.com/naiteluo">naiteluo</a></p>
+			<p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/naiteluo">naiteluo</a></small></p>
+		</footer>
+	</div>
+</body>
+</html>

@@ -42,7 +42,7 @@ title: Steps to make app in node with express
 
 5. 	打开package.json文件，这个文件是npm用来获取app的信息和相关依赖module信息的，修改如下：
 
-		{% highlight javascript %}
+		{% highlight javascript linenos %}
 		{
 		    "name": "guess"
 		  , "version": "0.0.1"
@@ -61,7 +61,7 @@ title: Steps to make app in node with express
 
 6. 	基本的配置已经完成了，接下来我们编辑./views/index.js
 
-		{% highlight javascript %}
+		{% highlight javascript linenos %}
 		/*
 		 * GET home page.
 		 */

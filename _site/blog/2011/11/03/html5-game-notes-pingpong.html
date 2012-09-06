@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<title>
+		
+			html5游戏笔记 pingpong ball
+		
+	</title>
+	<link rel="stylesheet" type="text/less" href="/stylesheets/style.less">
+	<script type="text/javascript" src="/javascripts/less-1.3.0.min.js"></script>
+	<!-- 代码着色 -->
+	<link rel="stylesheet" href="/stylesheets/pygment_trac.css">
+</head>
+<body>
+	<div class="wrapper">
+		<header>
+			<h1>
+				<a href="http://naiteluo.net">MMNN</a>
+			</h1>
+			<p>
+				naiteluo's blog
+			</p>
+			<p class="view">
+				<a href="https://github.com/naiteluo"><small>Naiteluo</small> in Github.</a>
+			</p>
+		</header>
+		<section>
+			<div class="post-content">
+    <h2>html5游戏笔记 pingpong ball</h2>
+    <p>下载了本《html5 Game Development by Example》的书，看着很有趣，一些游戏的实例，用来熟悉html5/css3配合javascript的新特性。记录一下写一下blog增加记忆。</p>
+
+<p><a href="http://mmnn-wordpress.stor.sinaapp.com/uploads/2011/11/1.png"><img class="size-medium wp-image-51" title="pingpong" src="http://mmnn-wordpress.stor.sinaapp.com/uploads/2011/11/1-284x300.png" alt="pingpong" width="284" height="300" /></a></p>
+
+<p>书的第一章简单地介绍了html5和css3的一些新特性；第二章的example是一个pingpong的游戏，就是左右各一块板，中间一个小球弹来弹去的游戏。这本书已经完全不考虑html之前的版本了，所以还会介绍html的一些新标签；基本不涉及到css3的内容；使用jquery做游戏开发的基本方法。游戏链接：<a title="Pingpong" href="http://mmnn.sinaapp.com/demos/pingpong/">Pingpong game demo</a></p>
+
+<p>html5使用了跟简单的文件声明,取代了原来那一串重来都只是被copy的复杂文件声明，html标签也只需加入一个lang的语言属性即可，制定字符集的meta也得到简化:这次使用了header和footer标签，以前用得很多的这两个id名终于修成正果升级成了正式的标签，加入这种标签提高了html的语义。</p>
+
+<p>这里还说到一个js代码插入的位置，以前一般习惯会在head标签内插入script，而建议的将code放到页面的靠后，也就是body的结束标签之前。因为浏览器解析html代码是从上到下的，如果把js代码放到前面，延缓了内容的加载。</p>
+
+<p>主要只有三个对象，两挡板和球，对其使用</p>
+
+<div class="highlight"><pre><code class="css">  <span class="nt">position</span><span class="nd">:absolute</span><span class="o">;</span>
+    
+</code></pre>
+</div>
+
+
+<p>布局，再通过</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span>  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#xxx&quot;</span><span class="p">).</span><span class="nx">css</span><span class="p">({</span><span class="s2">&quot;top&quot;</span><span class="o">:</span> <span class="nx">xx</span><span class="p">,</span> <span class="s2">&quot;left&quot;</span><span class="o">:</span> <span class="nx">yy</span><span class="p">});</span>
+<span class="lineno">2</span>   
+</code></pre>
+</div>
+
+
+<p>来改变球的位置,基本上就是用元素的top和left这两个css属性来作为x,y坐标，对三个对象进行操作。基本操作的方法就是这样，接下来要让东西动起来了。</p>
+
+<p>动起来就是让他们重复第进行位置改变，对于两挡板来说，位置的改变还需要按键的触发。设置一个interval，间隔为30ms，执行gameloop函数：</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span>     <span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span> <span class="c1">// set interval to call gameloop every 20 milliseconds         pingpong.timer = setInterval(gameloop, 30); // mark down what key is down and up into an array called &quot;pressedKeys&quot; </span>
+<span class="lineno"> 2</span>      <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">keydown</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span> 
+<span class="lineno"> 3</span>          <span class="nx">pingpong</span><span class="p">.</span><span class="nx">pressedKeys</span><span class="p">[</span><span class="nx">e</span><span class="p">.</span><span class="nx">which</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span> 
+<span class="lineno"> 4</span>      <span class="p">});</span> 
+<span class="lineno"> 5</span>      <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">keyup</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span> 
+<span class="lineno"> 6</span>          <span class="nx">pingpong</span><span class="p">.</span><span class="nx">pressedKeys</span><span class="p">[</span><span class="nx">e</span><span class="p">.</span><span class="nx">which</span><span class="p">]</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span> 
+<span class="lineno"> 7</span>      <span class="p">});</span> 
+<span class="lineno"> 8</span>  <span class="p">});</span> 
+<span class="lineno"> 9</span>  <span class="kd">function</span> <span class="nx">gameloop</span><span class="p">()</span> <span class="p">{</span> 
+<span class="lineno">10</span>      <span class="nx">moveBall</span><span class="p">();</span> 
+<span class="lineno">11</span>      <span class="nx">movePaddles</span><span class="p">();</span> 
+<span class="lineno">12</span>  <span class="p">}</span>
+<span class="lineno">13</span>  
+</code></pre>
+</div>
+
+
+<p>其中，movePaddles()通过上面的keyup()获取键值，触发paddle的移动，最后只需要加上球的位置判断函数，根据位置来改变运动方向了。实例中没有考虑板的两端和背部对球的反弹，这里一并用一个inFiled()函数判断球的位置再根据板来判定反弹方向，</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span>     <span class="kd">function</span> <span class="nx">inField</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span> <span class="p">{</span> 
+<span class="lineno"> 2</span>      <span class="kd">var</span> <span class="nx">pXL</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;left&quot;</span><span class="p">));</span> 
+<span class="lineno"> 3</span>      <span class="kd">var</span> <span class="nx">pXR</span> <span class="o">=</span> <span class="nx">pXL</span> <span class="o">+</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;width&quot;</span><span class="p">));</span> 
+<span class="lineno"> 4</span>      <span class="kd">var</span> <span class="nx">pYT</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;top&quot;</span><span class="p">));</span> 
+<span class="lineno"> 5</span>      <span class="kd">var</span> <span class="nx">pYB</span> <span class="o">=</span> <span class="nx">pYT</span> <span class="o">+</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">));</span> 
+<span class="lineno"> 6</span>      <span class="kd">var</span> <span class="nx">bX</span> <span class="o">=</span> <span class="nx">pingpong</span><span class="p">.</span><span class="nx">ball</span><span class="p">.</span><span class="nx">x</span><span class="p">;</span> 
+<span class="lineno"> 7</span>      <span class="kd">var</span> <span class="nx">bY</span> <span class="o">=</span> <span class="nx">pingpong</span><span class="p">.</span><span class="nx">ball</span><span class="p">.</span><span class="nx">y</span><span class="p">;</span> 
+<span class="lineno"> 8</span>      <span class="kd">var</span> <span class="nx">bD</span> <span class="o">=</span> <span class="nx">pingpong</span><span class="p">.</span><span class="nx">ball</span><span class="p">.</span><span class="nx">d</span><span class="p">;</span> 
+<span class="lineno"> 9</span>      <span class="kd">var</span> <span class="nx">fX</span> <span class="o">=</span> <span class="nx">pingpong</span><span class="p">.</span><span class="nx">ball</span><span class="p">.</span><span class="nx">speed</span> <span class="o">*</span> <span class="nx">pingpong</span><span class="p">.</span><span class="nx">ball</span><span class="p">.</span><span class="nx">directionX</span><span class="p">;</span> 
+<span class="lineno">10</span>      <span class="kd">var</span> <span class="nx">fY</span> <span class="o">=</span> <span class="nx">pingpong</span><span class="p">.</span><span class="nx">ball</span><span class="p">.</span><span class="nx">speed</span> <span class="o">*</span> <span class="nx">pingpong</span><span class="p">.</span><span class="nx">ball</span><span class="p">.</span><span class="nx">directionY</span><span class="p">;</span> 
+<span class="lineno">11</span>          <span class="c1">// right field, return 1</span>
+<span class="lineno">12</span>      <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">&gt;=</span> <span class="nx">pXR</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">&gt;=</span> <span class="nx">pYT</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">&lt;=</span> <span class="nx">pYB</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">13</span>          <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">+</span> <span class="nx">fX</span> <span class="o">&lt;=</span> <span class="nx">pXR</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">14</span>              <span class="k">if</span> <span class="p">(</span><span class="nx">bY</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">+</span> <span class="nx">fY</span> <span class="o">&gt;=</span> <span class="nx">pYT</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">+</span> <span class="nx">fY</span> <span class="o">&lt;=</span> <span class="nx">pYB</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">15</span>                  <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+<span class="lineno">16</span>              <span class="p">}</span>
+<span class="lineno">17</span>          <span class="p">}</span>
+<span class="lineno">18</span>      <span class="p">}</span>
+<span class="lineno">19</span>      <span class="c1">// left field, return 2</span>
+<span class="lineno">20</span>      <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">&lt;=</span> <span class="nx">pXL</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">&gt;=</span> <span class="nx">pYT</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">&lt;=</span> <span class="nx">pYB</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">21</span>          <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">+</span> <span class="nx">fX</span> <span class="o">&gt;=</span> <span class="nx">pXL</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">22</span>              <span class="k">if</span> <span class="p">(</span><span class="nx">bY</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">+</span> <span class="nx">fY</span> <span class="o">&gt;=</span> <span class="nx">pYT</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">+</span> <span class="nx">fY</span> <span class="o">&lt;=</span> <span class="nx">pYB</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">23</span>                  <span class="k">return</span> <span class="mi">2</span><span class="p">;</span>
+<span class="lineno">24</span>              <span class="p">}</span>
+<span class="lineno">25</span>          <span class="p">}</span>
+<span class="lineno">26</span>      <span class="p">}</span>
+<span class="lineno">27</span>      <span class="c1">// top field, return 3</span>
+<span class="lineno">28</span>      <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">&gt;=</span> <span class="nx">pXL</span> <span class="o">&amp;&amp;</span> <span class="nx">bX</span> <span class="o">&lt;=</span> <span class="nx">pXR</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">&lt;=</span> <span class="nx">pYT</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">29</span>          <span class="k">if</span> <span class="p">(</span><span class="nx">bY</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">+</span> <span class="nx">fY</span> <span class="o">&gt;=</span> <span class="nx">pYT</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">30</span>              <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">+</span> <span class="nx">fX</span> <span class="o">&gt;=</span> <span class="nx">pXL</span> <span class="o">&amp;&amp;</span> <span class="nx">bX</span> <span class="o">+</span> <span class="nx">fX</span> <span class="o">&lt;=</span> <span class="nx">pXR</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">31</span>                  <span class="k">return</span> <span class="mi">3</span><span class="p">;</span>
+<span class="lineno">32</span>              <span class="p">}</span>
+<span class="lineno">33</span>          <span class="p">}</span>
+<span class="lineno">34</span>      <span class="p">}</span>
+<span class="lineno">35</span>      <span class="c1">// bottom field, return 4</span>
+<span class="lineno">36</span>      <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">&gt;=</span> <span class="nx">pXL</span> <span class="o">&amp;&amp;</span> <span class="nx">bX</span> <span class="o">&lt;=</span> <span class="nx">pXR</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">&gt;=</span> <span class="nx">pYB</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">37</span>          <span class="k">if</span> <span class="p">(</span><span class="nx">bY</span> <span class="o">+</span> <span class="nx">fY</span> <span class="o">&gt;=</span> <span class="nx">pYT</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">38</span>              <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">+</span> <span class="nx">fX</span> <span class="o">&gt;=</span> <span class="nx">pXL</span> <span class="o">&amp;&amp;</span> <span class="nx">bX</span> <span class="o">+</span> <span class="nx">fX</span> <span class="o">&lt;=</span> <span class="nx">pXR</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">39</span>                  <span class="k">return</span> <span class="mi">4</span><span class="p">;</span>
+<span class="lineno">40</span>              <span class="p">}</span>
+<span class="lineno">41</span>          <span class="p">}</span>
+<span class="lineno">42</span>      <span class="p">}</span>
+<span class="lineno">43</span>  <span class="p">}</span>
+<span class="lineno">44</span>  
+</code></pre>
+</div>
+
+
+<p>另外，有个作者介绍的小技巧，就是在调试程序的时候可以用如下的Grid图来作为背景，方便坐标的测定和调整：</p>
+
+<p><a href="http://mmnn-wordpress.stor.sinaapp.com/uploads/2011/11/pixel_grid.jpg"><img class="size-medium wp-image-55" title="pixel_grid" src="http://mmnn-wordpress.stor.sinaapp.com/uploads/2011/11/pixel_grid-300x300.jpg" alt="pixel_grid" width="300" height="300" /></a></p>
+
+<p>还可以利用chrome的developer工具中的js console对js进行调试.</p>
+
+    <hr>
+    <p>尊重作者，所有原创文章，请注明出处。本站转载的文章请注明原文出处，谢谢！</p>
+    <em>Posted on 03 November 2011.</em> 
+</div>
+<div class="post-footer">
+    <a style="float:right" href="/blog/2011/11/03/html5-game-notes-pingpong.html#disqus_thread">
+        View Comments
+    </a>
+    <hr>
+    <div id="disqus_thread"></div>
+    <script src="http://disqus.com/forums/mmnn/embed.js"></script>
+    <!-- paginate -->
+    <!-- 
+        <a class="paging" id="prev" href="/blog/2011/10/19/network-config-in-archlinux.html">Prev</a>
+    
+    
+        <a class="paging" id="next" href="/blog/2011/11/07/html5-game-notes-matching.html">Next</a>
+     -->
+</div>
+		</section>
+		<footer>
+			<p>Maintained by <a href="https://github.com/naiteluo">naiteluo</a></p>
+			<p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/naiteluo">naiteluo</a></small></p>
+		</footer>
+	</div>
+</body>
+</html>
