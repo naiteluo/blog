@@ -296,7 +296,7 @@ pre {
 <p><a href="/">返回首页</a></p>
 
 <ol>
-<li><p>实现walkTheDom函数，接受两个参数，一个是根节点，另一个是回调函数。结构如下：</p>
+<li><p>实现<code>walkTheDom</code>函数，接受两个参数，一个是根节点，另一个是回调函数。结构如下：</p>
 
 <pre><code>function walkTheDom(root, callback) {
     // todo
@@ -320,14 +320,45 @@ pre {
 <li>函数作为参数</li>
 <li>怎么判断</li>
 </ul>
-</li>
+
+
+<p>答案：</p>
+
+<pre><code>function walkTheDom(root, callback) {
+    var children = root.children;
+    var length = children.length;
+
+    callback(root);
+
+    if (length === 0) {
+        return;
+    } else {
+        for (var i = 0; i &lt; length; i++) {
+            walkTheDom(children[i], callback);
+        }
+    }
+}
+</code></pre></li>
 <li><p>解密：</p>
 
 <p><code>var code = "l,m,t,h,.,f,d,s,a,j,k,l,f,d,a,8,9,3,2,1,l,k,k,j,s,a,/,t,e,n,.,o,u,l,e,t,i,a,n,/,/,:,p,t,t,h"</code></p>
 
 <p>code是一个经过加密的秘密网址，用JavaScript进行解密吧！</p>
 
-<p>提示：用到String和Array的操作</p></li>
+<p>提示：用到String和Array的操作</p>
+
+<p>答案：</p>
+
+<pre><code>code.split(',').reverse().join('');
+</code></pre></li>
+<li><p>实现<code>getSecondToZero</code>函数，返回距离当天凌晨的毫秒数：</p>
+
+<pre><code>function getSecondToZero() {
+    // todo
+}
+</code></pre>
+
+<p>提示: <code>+new Date</code>可以很简单地获取到此刻的毫秒数。</p></li>
 </ol>
 
 </body>
