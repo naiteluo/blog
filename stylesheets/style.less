@@ -6,6 +6,7 @@ body {
     font-family: Helvetica, arial, sans-serif;
     font-size: 14px;
     min-width: 700px;
+    background-color: #fdfdfd;
 }
 
 a {
@@ -24,6 +25,12 @@ a {
     }
 }
 
+span.tip {
+    font-size: 12px;
+    font-weight: normal;
+    color: #de0000;
+}
+
 header {
     position: fixed;
     top: 0;
@@ -38,17 +45,21 @@ header {
         .nav-item () {
             display: inline-block;
             .left;
-            padding: 10px 15px 10px 0;
+            padding: 10px 20px 10px 0;
             font-size: 18px;
             font-weight: bold;
             a {
                 color: white;
             }
+            .transition ();
         }
         ul.nav {
             .left;
             li {
-                .nav-item;                
+                .nav-item;
+                &:hover {
+                    text-shadow: 0px 0px 5px rgba(255,255,255,0.3);
+                }              
             }
             .clearfix;
         }
@@ -63,37 +74,47 @@ header {
 section.container {
     padding-top: 40px;
     margin: 0 10%;
-    border-left: 2px solid black;
-    .posts-list {
-        padding: 20px 0;
-        .post-item {
-            padding: 10px 0 10px 15px;
-            .post-title {
+    .posts {
+        padding: 20px;
+        .posts-item {
+            background-color: white;
+            margin-bottom: 20px;
+            border: 1px solid white;
+            .border-radius (4px);
+            box-shadow: 0px 0px 1px 1px rgba(100, 100, 100, 0.1) inset;
+            .posts-item-title {
+                margin: 2px;
+                border-radius: 4px 4px 0px 0px;
                 a {
                     font-size: 1.4em;
                     font-weight: bold;
-                    color: black;
+                    color: #000000;
                 }
-                padding: 10px 10px 15px 10px;
+                padding: 5px 20px;
+                border-bottom: 1px solid rgba(0,0,0,0.1);
             }
-            .post-date {
-                color: #8f8f8f;
+            .posts-item-body {
+                padding: 20px;
             }
-            &:first-child {
-                .post-title {
-                    padding-top: 0px;
+            .posts-item-footer {
+                padding: 5px 20px;
+                .posts-item-footer-date {
+                    color: #8f8f8f;
                 }
-                padding-top: 0px;
-            }
-            &:hover {
-                padding-left: 10px;
-                border-left: 5px solid black;
             }
         }
-
+    }
+    .post {
+        .post-content {
+            .github-markdown-style;
+        }
+        .post-footer {
+            padding: 20px;
+        }
     }
 }
 
-.post-content {
-    .github-markdown-style;
+footer {
+    padding: 30px; 
+    text-align: center;
 }

@@ -22,7 +22,13 @@
 						<a href="http://naiteluo.net">MMNN</a>
 					</li>
 					<li class="aboutme">
-						<a href="http://naiteluo.net">ABOUT ME</a>
+						<a href="#">ABOUT ME</a>
+					</li>
+					<li class="exam">
+						<a href="/exam.html">EXAM</a>
+						<span class="tip">
+							new!!
+						</span>
 					</li>
 				</ul>
 				<div class="view">
@@ -31,2845 +37,483 @@
 			</div>
 		</header>
 		<section class="container">
-			<h1 style="display: none;">I Want To Code With You</h1>
-<div class="posts-list">
-    
-    <div class="post-item">
-        <h2 class="post-title">
-            <a href="/blog/2012/09/07/code-conventions-for-the-javascript-programming-language-translate.html">
-                Code Conventions for the JavaScript Programming Language
-            </a>
-        </h2>
-        <!-- <blockquote><p>本文翻譯自Douglas Crockford老先生的《<a href="http://javascript.crockford.com/code.html">Code Conventions for the JavaScript Programming Language</a>》，規範具有參考價值，但是不是真理，要經過自己的思考和理解，形成適合自己或團隊的編碼規範。文中若是以塊引用標誌的地方，則是我自己的理解和說明。如有任何翻譯不當或理解錯誤的地方，歡迎指正，謝謝。</p></blockquote> <p>這是一系列使用JavaScript編程的習慣和規則。它的靈感從Sun的<a href="http://"> Code Conventions for the Java Programming Language</a>而來。因為JavaScript不是Java， 所以其中很大的部分作出了改動。</p> <p>一個軟件對一個組織的長遠價值，與代碼庫的質量成正比。在一個程序的一生中，會被很多人修改和閱讀。如果程序能夠清晰地表達它的結構和特性，那它在不遠的未來中發生錯誤的可能性就會更小。</p> <p>編程習慣可以幫助提高程序的健壯性。</p> <p>我們所有的JavaScript代碼都是直接發佈的。它應該具備發佈的質量*。</p> <p>Neatness counts.</p> <h2>JavaScript文件</h2> <p>JavaScript程序應該存儲為<code>.js</code>文件，並通過<code>.js</code>文件傳輸。</p> <p>JavaScript最好不要內嵌在HTML文件中，除非該代碼是專門針對一個單獨的會話的。HTML中的js代碼會明顯地增加頁面的大小，這些增加的部分是無法通過緩存和壓縮HTML文件來減輕。</p> <p><code>&lt;script src="filename.js"&gt;</code>標籤應該盡可能地放在body的尾部。這樣減少因加載腳本而引起的頁面其他部分加載的延遲。不需要在標簽中使用language或者type屬性。MIME類型是由服務器決定的，而不是標簽本身。</p> <h2>縮進</h2> <p>縮進的單位是4個空格。避免使用tab。因為至今依然沒有tabstop放置的標準（本文在21世紀撰寫）。使用空格會增加文件的大小，但是這些增加對本地網絡來說不明顯，而且可以通過minification來減輕影響。</p> <h2>行的長度</h2> <p>避免一行超過80個字符。當一個語句一行寫不下的時候，就有必要折行。把換行位置放到一個操作符後面，最理想的情況是逗號後面*。在操作符後面的換行減少了復制粘貼帶來的錯誤被自動插入分號所掩蓋的可能性。下一行應該要縮進8個空格。</p> <blockquote><p>關於這裡的80個字符其實有個有趣的來源。1801年開始，計算機普遍使用打孔卡來作為處理媒介，後來打孔卡的標準行數是80行，這也是說打孔卡一次可以紀錄的字符是80個。這個尺寸限制至今仍在許多地方被使用。例如這裡。</p></blockquote> <h2>註釋</h2> <p>大方地使用註釋。留下信息以便供需要理解你做了什麼的人（很可能是你自己）閱讀。註釋要寫的認真明了，就跟它所注解的代碼一樣。加入適度的幽默會有益於你的註釋，挫折和不滿的情緒則反之。</p> <p>保持註釋是最新的十分重要。有錯誤的註釋會使程序更難閱讀和理解。</p> <p>註釋要有意義。集中於不能立刻顯現的問題。不要讓讀者的時間浪費在類似這樣的東西上：</p> <pre><code>i ＝ 0; // Set i to zero. </code></pre> <p>一般使用行註釋。塊註釋用於正式文檔和註釋掉代碼。</p> <h2>變量聲明</h2> <p>所有變量都要在使用前被聲明。JavaScript沒有要求要這樣，但是這樣做可以使得程序更易讀，而且可以更容易監查到未被聲明的變量不小心被聲明成全局變量。永遠也不要使用隱含的全局變量。</p>... -->
-        <!-- <blockquote><p>本文翻譯自Douglas Crockford老先生的《<a href="http://javascript.crockford.com/code.html">Code Conventions for the JavaScript Programming Language</a>》，規範具有參考價值，但是不是真理，要經過自己的思考和理解，形成適合自己或團隊的編碼規範。文中若是以塊引用標誌的地方，則是我自己的理解和說明。如有任何翻譯不當或理解錯誤的地方，歡迎指正，謝謝。</p></blockquote>
-
-<p>這是一系列使用JavaScript編程的習慣和規則。它的靈感從Sun的<a href="http://"> Code Conventions for the Java Programming Language</a>而來。因為JavaScript不是Java， 所以其中很大的部分作出了改動。</p>
-
-<p>一個軟件對一個組織的長遠價值，與代碼庫的質量成正比。在一個程序的一生中，會被很多人修改和閱讀。如果程序能夠清晰地表達它的結構和特性，那它在不遠的未來中發生錯誤的可能性就會更小。</p>
-
-<p>編程習慣可以幫助提高程序的健壯性。</p>
-
-<p>我們所有的JavaScript代碼都是直接發佈的。它應該具備發佈的質量*。</p>
-
-<p>Neatness counts.</p>
-
-<h2>JavaScript文件</h2>
-
-<p>JavaScript程序應該存儲為<code>.js</code>文件，並通過<code>.js</code>文件傳輸。</p>
-
-<p>JavaScript最好不要內嵌在HTML文件中，除非該代碼是專門針對一個單獨的會話的。HTML中的js代碼會明顯地增加頁面的大小，這些增加的部分是無法通過緩存和壓縮HTML文件來減輕。</p>
-
-<p><code>&lt;script src="filename.js"&gt;</code>標籤應該盡可能地放在body的尾部。這樣減少因加載腳本而引起的頁面其他部分加載的延遲。不需要在標簽中使用language或者type屬性。MIME類型是由服務器決定的，而不是標簽本身。</p>
-
-<h2>縮進</h2>
-
-<p>縮進的單位是4個空格。避免使用tab。因為至今依然沒有tabstop放置的標準（本文在21世紀撰寫）。使用空格會增加文件的大小，但是這些增加對本地網絡來說不明顯，而且可以通過minification來減輕影響。</p>
-
-<h2>行的長度</h2>
-
-<p>避免一行超過80個字符。當一個語句一行寫不下的時候，就有必要折行。把換行位置放到一個操作符後面，最理想的情況是逗號後面*。在操作符後面的換行減少了復制粘貼帶來的錯誤被自動插入分號所掩蓋的可能性。下一行應該要縮進8個空格。</p>
-
-<blockquote><p>關於這裡的80個字符其實有個有趣的來源。1801年開始，計算機普遍使用打孔卡來作為處理媒介，後來打孔卡的標準行數是80行，這也是說打孔卡一次可以紀錄的字符是80個。這個尺寸限制至今仍在許多地方被使用。例如這裡。</p></blockquote>
-
-<h2>註釋</h2>
-
-<p>大方地使用註釋。留下信息以便供需要理解你做了什麼的人（很可能是你自己）閱讀。註釋要寫的認真明了，就跟它所注解的代碼一樣。加入適度的幽默會有益於你的註釋，挫折和不滿的情緒則反之。</p>
-
-<p>保持註釋是最新的十分重要。有錯誤的註釋會使程序更難閱讀和理解。</p>
-
-<p>註釋要有意義。集中於不能立刻顯現的問題。不要讓讀者的時間浪費在類似這樣的東西上：</p>
-
-<pre><code>i ＝ 0; // Set i to zero.
-</code></pre>
-
-<p>一般使用行註釋。塊註釋用於正式文檔和註釋掉代碼。</p>
-
-<h2>變量聲明</h2>
-
-<p>所有變量都要在使用前被聲明。JavaScript沒有要求要這樣，但是這樣做可以使得程序更易讀，而且可以更容易監查到未被聲明的變量不小心被聲明成全局變量。永遠也不要使用隱含的全局變量。</p>
-
-<p><code>var</code>聲明應該放在function主體的前面。</p>
-
-<p>最好每個變量都在單獨的一行內聲明和註釋，並按字典序排列。</p>
-
-<pre><code>var currentEntry;   // currenty selectd table entry
-var level;          // indentation level
-var size;           // size of table
-</code></pre>
-
-<p>JavaScript沒有塊作用域，所以在塊內聲明變量會讓其他習慣C家族語言的程序員產生困惑。所以應該在函數體的頂部就聲明好所有變量。</p>
-
-<p>減少使用全局變量。並永遠不要使用隱含的全局變量。</p>
-
-<h2>函數聲明</h2>
-
-<p>所有的函數都應該在被使用前聲明。 內部函數要在var聲明之後聲明。這使變量的作用域更易理解。</p>
-
-<p>函數名和參數列表的左括號之間應該沒有空格，又括號和函數聲明主體的左大括號間要留一個空格。主體本身要縮進4個空格。右大括號與包含函數聲明的那一行對齊。</p>
-
-<pre><code>function outer(c, d) {
-    var e = c * d;
-
-    function inner(a, b) {
-        return (e * a) + b;
-    }
-
-    return inner(0, 1);
-}
-</code></pre>
-
-<p>這個習慣在JavaScript中表現很好，因為在JavaScript中，函數和對象的字面量可以放在任何允許使用表達式的地方。這樣的習慣提高了行內的函數和複雜的結構的可讀性。</p>
-
-<pre><code>function getElementsByClassName(className) {
-    var results = [];
-    walkTheDom(document.body, function (node) {
-        var a;                      // array of class names
-        var cn = node.className;    // the node's classname
-        var i;                      // loop counter
-
-        if (cn) {
-            a = c.split(' ');
-            for (i = 0; i &lt; a.length; i += 1) {
-                if (a[i] === className) {
-                    results.push(node);
-                    break;
-                }
-            }
-        }   
-    });
-    return results;
-}
-</code></pre>
-
-<p>如果一個函數字面量使匿名的，那關鍵字<code>function</code>和左括號間應該要加一個空格，避免引起函數名是function的誤會。</p>
-
-<pre><code>div.onclick = function (e) {
-    return false;
-};
-
-that = {
-    method: function () {
-        return this.datum;
-    },
-    datum: 0
-};
-</code></pre>
-
-<p>減少使用全局函數。</p>
-
-<p>當一個函數在聲明後立即執行，整個調用表達式應該被包在一對括號中。這樣就清晰地表明獲取到的值是函數的返回值，而不是函數本身。</p>
-
-<pre><code>var collection = (function () {
-    var keys = [], values = [];
-
-    return {
-        get: function (key) {
-            var at = keys.indexOf(key);
-            if (at &gt;= 0) {
-                return values[at];
-            }
-        },
-        set: function (key, value) {
-            var at = keys.indexOf(key);
-            if (at &lt; 0) {
-                at = keys.length;
-            }
-            keys[at] = key;
-            values[at] = value;
-        },
-        remove: function (key) {
-            var at = keys.indexOf(key);
-            if (at &gt;= 0) {
-                keys.splice(at, 1);
-                values.splice(at, 1);
-            }
-        }
-    };
-}());
-</code></pre>
-
-<h2>命名</h2>
-
-<p>命名應由26個大寫和26個小寫字母(A..Z,a..z)，10個數字(0..9)，和下劃線<code>_</code>組成。避免使用國際的字符，因為它們可讀性沒那麼強而且可能不是所有地方都能理解。在命名中不要使用<code>$</code>美元符和<code>\</code>右下斜線。</p>
-
-<p>命名不要以下劃線開頭。有時下劃線開頭被用來表明變量是私有的，但是它本身並不提供這樣的功能。如果私有十分重要，則使用能提供私有成員的形式。避免表明能力不足的習慣。</p>
-
-<p>大部分變量與函數應該以小寫字母開頭。</p>
-
-<p>要與<code>new</code>操作符一起使用的構造器函數應該以大寫字母開頭。如果new是必要的，但是被遺漏了，JavaScript是不會發出編譯時警告和運行時警告的。這時如果沒有使用new的話，可能會引發問題，所以首字母大寫的習慣（是提醒我們真確使用構造器）的僅有的一道防線。</p>
-
-<p>全局變量應該全部大寫表示。（JavaScript中沒有宏和常量，所以使用大寫來表示一一個JavaScript中沒有的特性其實沒有多大的意義。）</p>
-
-<h2>語句</h2>
-
-<h3>簡單語句</h3>
-
-<p>每一行都應該至少包含一個語句。在每一個簡單語句後要以分號<code>;</code>結束。一個給變量賦函數字面量或者對象字面量的賦值語句也是一個賦值語句，也要以分號結束。</p>
-
-<p>JavaScript允許把任何表達式當作一個語句。這會掩蓋了一些錯誤，特別是在存在分號插入的情況下。所以能用作語句的只能是賦值和調用。</p>
-
-<h3>複合語句</h3>
-
-<p>複合語句是包含用大括號<code>{ }</code>括起多個語句的語句</p>
-
-<ul>
-<li>閉合的語句應該多縮進4個空格</li>
-<li>左大括號應該在複合語句開始行的結尾</li>
-<li>右大括號應該在一行的開頭，並且縮進要與複合語句包括了左大括號的開始行對齊</li>
-<li>當語句是控制結構（如<code>if</code>和<code>for</code>語句）的一部分時，不管是包括多條或者一條語句，都要用大括號括起來。這樣更容易添加新語句，且不會無意中引入bug</li>
-</ul>
-
-
-<h3>標簽</h3>
-
-<p>語句標簽是可選的。只有這些語句需要標記：<code>while</code>, <code>do</code>, <code>for</code>, <code>switch</code>.</p>
-
-<h3><code>return</code>語句</h3>
-
-<p>有返回值的return語句中返回值不需要被括號括住，返回值表達式要跟關鍵字<code>return</code>在同一行開始，以免分號插入帶來的錯誤。</p>
-
-<blockquote><p>一個因分號插入產生的錯誤:</p></blockquote>
-
-<pre><code>(function () {
-    var a = 'hello';
-    return 
-    {
-        word: a
-    };
-}());
-
-// 相當於
-
-(function () {
-    var a = 'hello';
-    return;
-    {
-        word: a
-    };
-}());
-
-// 結果返回值為undefined
-</code></pre>
-
-<h3><code>if</code>語句</h3>
-
-<p>if類的語句應該按照以下格式：</p>
-
-<pre><code>if (條件) {
-    語句
-}
-
-if (條件) {
-    語句
-} else {
-    語句
-}
-
-if (條件1) {
-    語句
-} else if (條件2) {
-    語句
-} else {
-    語句
-}
-</code></pre>
-
-<h3><code>for</code>語句</h3>
-
-<p>for類的語句應該按照以下格式：</p>
-
-<pre><code>for (賦初值; 條件; 更新值) {
-    語句
-}
-
-for (變量 in 對象) {
-    if (過濾器) {
-        語句
-    }
-}
-</code></pre>
-
-<p>第一種形式用在數組或者有已知相關參數的循環迭代中。</p>
-
-<p>第二種應該用於對象。要注意的是，有一些添加在對象原型(prototype)中的成員也會被枚舉。有必要主動地用<code>hasOwnProperty</code>方法去區分枚舉的是不是對象真正成員：</p>
-
-<pre><code>for (variable in object) {
-    if (object.hasOwnProperty(variable)) {
-        statements
-    }
-}
-</code></pre>
-
-<h3><code>while</code>語句</h3>
-
-<p>while語句應該按照以下格式：</p>
-
-<pre><code>while (條件) {
-    語句
-}
-</code></pre>
-
-<h3><code>do</code>語句</h3>
-
-<p>do語句應該按照以下格式：</p>
-
-<pre><code>do {
-    語句
-} while (條件);
-</code></pre>
-
-<p>跟其他複合語句不一樣，do語句一定要以分號結尾。</p>
-
-<h3><code>switch</code>語句</h3>
-
-<p>switch語句應該按照以下格式：</p>
-
-<pre><code>switch (表達式) {
-case 表達式:
-    語句
-default:
-    語句
-}
-</code></pre>
-
-<p>每個<code>case</code>都要與<code>switch</code>對齊。這避免了過度縮進。</p>
-
-<p>每組語句（除了<code>default</code>中的）都要以<code>break</code>, <code>return</code>或<code>throw</code>結尾，否則它會一直往下執行。</p>
-
-<h3><code>try</code>語句</h3>
-
-<p>try類語句應該按照以下格式：</p>
-
-<pre><code>try {
-    語句
-} catch (變量) {
-    語句
-}
-
-try {
-    語句
-} catch (變量) {
-    語句
-} finally {
-    語句
-}
-</code></pre>
-
-<h3><code>continue</code>語句</h3>
-
-<p>避免使用continue語句。它往往掩蓋了函數的控制流。</p>
-
-<h3><code>with</code>語句</h3>
-
-<p>不應該使用with語句。</p>
-
-<h3>空格</h3>
-
-<p>空行可以分開邏輯上關聯的代碼塊，提高代碼的可讀性。</p>
-
-<p>空格要在以下的情況使用：</p>
-
-<ul>
-<li><p>關鍵字與緊隨的左括號之間應該要加一個空格。</p>
-
-<pre><code>while (true) {
-</code></pre></li>
-<li><p>函數值和左括號間不要加空格。這樣幫助區分關鍵字和函數調用。</p></li>
-<li>所有二元操作符，除了<code>.</code>, <code>(</code> 和<code>[</code>，要用空格把兩個操作數都分開。</li>
-<li>一元操作符和它的操作數之間不應該加空格，除了像<code>typeof</code>這種一個詞語式的</li>
-<li>for語句中的控制部分里的分號後面都要加一個空格。</li>
-<li>所有的逗號後面都要跟一個空格。</li>
-</ul>
-
-
-<h2>額外建議</h2>
-
-<h3><code>{}</code>和<code>[]</code></h3>
-
-<p>用<code>{}</code>代替<code>new Object()</code>，用<code>[]</code>代替<code>new Array()</code>。</p>
-
-<p>當成員的命名是有序的整數，則用數組。當成員的命名是抽象的字符串或名字，則用對象。</p>
-
-<h3><code>,</code>操作符號</h3>
-
-<p>除了很有按規定地使用在for語句的控制部分中，其他地方都避免使用逗號操作符。（這不適用於作為分離符號的逗號，例如對象字面量，數組字面量，var語句，和參數列表。）</p>
-
-<h3>塊作用域</h3>
-
-<p>在JavaScript中塊不存在作用域。只有函數具有作用域。除了複合語句所需外，不要使用塊。</p>
-
-<h3>賦值表達式</h3>
-
-<p>避免在<code>if</code>和<code>while</code>的條件中使用賦值。</p>
-
-<p>例如</p>
-
-<pre><code>if (a = b) {
-</code></pre>
-
-<p>上面的是不是一個正確的語句呢？它是不是想要表達</p>
-
-<pre><code>if (a == b) {
-</code></pre>
-
-<p>避免使用這種容易產生誤解的結構。</p>
-
-<h3><code>===</code>和<code>!==</code>操作符</h3>
-
-<p>幾乎所有情況下，使用<code>===</code>和<code>!==</code>比使用<code>==</code>和<code>!=</code>好。<code>==</code>和<code>!=</code>會進行類型轉換。尤其不能使用<code>==</code>去比較假值。</p>
-
-<h3>難以理解的加或減</h3>
-
-<p>要注意不能在<code>+</code>後面緊跟<code>+</code>或者<code>++</code>。這種形式會讓人難以理解。加上括號，讓你的意圖更清晰。</p>
-
-<pre><code>total = subtotal + +myInput.value;
-</code></pre>
-
-<p>最好寫成下面的形式：</p>
-
-<pre><code>total = subtotal + (+myInput.value);
-</code></pre>
-
-<p>這樣<code>+ +</code>就不會被看成<code>++</code>了。</p>
-
-<h3><code>eval</code>是邪惡的</h3>
-
-<p><code>eval</code>是最常被誤用的JavaScript特性。避免使用它。</p>
-
-<p><code>eval</code>有別名。例如不要使用<code>Function</code>構造器。不要傳字符串給<code>setTimeout</code>和<code>setInterval</code>。</p>
- -->
-        <em class="post-date">Posted on 07 September 2012.</em>
-    </div>
-    
-    <div class="post-item">
-        <h2 class="post-title">
-            <a href="/blog/2012/09/03/high-perfomance-javascript-3.html">
-                high performance JavaScript notes 3
-            </a>
-        </h2>
-        <!-- <h2>Chapter 6 Responsive Interfaces 快速响应的用户界面</h2>
-
-<p>JavaScript 和用户界面更新在同一个进程中运行，一次只能处理一件事情。当JavaScript在运行时，用户界面处于“锁定”状态，不能响应输入。</p>
-
-<p>任何JavaScript任务都不应当执行超过100毫秒。过长的运行时间会导致UI更新出现明显的延迟，从而对用户体验产生负面影响。</p>
-
-<p>定時器可用來安排代碼延遲執行，使得你可以把長時間運行腳本分解成一系列的小任務，見以下gist，我們可以將複雜任務拆分成若干個原子任務，把原子任務放在定時器中調用：</p>
-
-<script src="https://gist.github.com/3549691.js?file=multiStep.js"></script>
-
-
-<p>第二個封裝的方法，加入了簡單的時間監測機制，使得每個定時期可以處理多個任務，避免把任務分解得過於零碎。</p>
-
-<p>Web Workders是新版瀏覽器支持的特性，它允許你在UI線程外部執行JavaScript代碼，從而避免鎖定UI。（稍後會補上實例與代碼）</p>
-
-<p>總而言之，沒有什麼JavaScript代碼會重要到可以影響用戶體驗的程度。</p>
- -->
-        <!-- <h2>Chapter 6 Responsive Interfaces 快速响应的用户界面</h2>
-
-<p>JavaScript 和用户界面更新在同一个进程中运行，一次只能处理一件事情。当JavaScript在运行时，用户界面处于“锁定”状态，不能响应输入。</p>
-
-<p>任何JavaScript任务都不应当执行超过100毫秒。过长的运行时间会导致UI更新出现明显的延迟，从而对用户体验产生负面影响。</p>
-
-<p>定時器可用來安排代碼延遲執行，使得你可以把長時間運行腳本分解成一系列的小任務，見以下gist，我們可以將複雜任務拆分成若干個原子任務，把原子任務放在定時器中調用：</p>
-
-<script src="https://gist.github.com/3549691.js?file=multiStep.js"></script>
-
-
-<p>第二個封裝的方法，加入了簡單的時間監測機制，使得每個定時期可以處理多個任務，避免把任務分解得過於零碎。</p>
-
-<p>Web Workders是新版瀏覽器支持的特性，它允許你在UI線程外部執行JavaScript代碼，從而避免鎖定UI。（稍後會補上實例與代碼）</p>
-
-<p>總而言之，沒有什麼JavaScript代碼會重要到可以影響用戶體驗的程度。</p>
- -->
-        <em class="post-date">Posted on 03 September 2012.</em>
-    </div>
-    
-    <div class="post-item">
-        <h2 class="post-title">
-            <a href="/blog/2012/08/19/high-perfomance-javascript-2.html">
-                high performance JavaScript notes 2
-            </a>
-        </h2>
-        <!-- <h2>Chapter 3 DOM Scripting DOM 编程</h2> <blockquote><p>用脚本进行DOM操作的代价很昂贵，它是富Web应用中最常见的性能瓶颈。</p></blockquote> <p>这章主要涉及一下三类问题：</p> <ul> <li>访问和修改DOM元素</li> <li>修改DOM元素的样式会导致<strong>重绘(repaint)</strong>和<strong>重排(reflow)</strong></li> <li>通过DOM事件处理与用户的交互</li> </ul> <p>文档对象模型是一个语言无关的，用于操作XML和HTML文档的应用程序借口API。虽然它是语言无关的，但是在浏览器中的接口却是用JavaScript实现的。浏览器中通常会把DOM和JavaScript独立实现，两个相互独立的功能只要通过接口彼此连接，就会产生消耗。</p> <h3>DOM访问与修改</h3> <p>对比一下两个实例：</p> <div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span> <span class="kd">function</span> <span class="nx">innerHTMLLoop1</span> <span class="p">()</span> <span class="p">{</span> <span class="lineno"> 2</span> <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">count</span> <span class="o">&lt;</span> <span class="mi">15000</span><span... -->
-        <!-- <h2>Chapter 3 DOM Scripting DOM 编程</h2>
-
-<blockquote><p>用脚本进行DOM操作的代价很昂贵，它是富Web应用中最常见的性能瓶颈。</p></blockquote>
-
-<p>这章主要涉及一下三类问题：</p>
-
-<ul>
-<li>访问和修改DOM元素</li>
-<li>修改DOM元素的样式会导致<strong>重绘(repaint)</strong>和<strong>重排(reflow)</strong></li>
-<li>通过DOM事件处理与用户的交互</li>
-</ul>
-
-
-<p>文档对象模型是一个语言无关的，用于操作XML和HTML文档的应用程序借口API。虽然它是语言无关的，但是在浏览器中的接口却是用JavaScript实现的。浏览器中通常会把DOM和JavaScript独立实现，两个相互独立的功能只要通过接口彼此连接，就会产生消耗。</p>
-
-<h3>DOM访问与修改</h3>
-
-<p>对比一下两个实例：</p>
-
-<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span>     <span class="kd">function</span> <span class="nx">innerHTMLLoop1</span> <span class="p">()</span> <span class="p">{</span>
-<span class="lineno"> 2</span>      <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">count</span> <span class="o">&lt;</span> <span class="mi">15000</span><span class="p">;</span> <span class="nx">count</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 3</span>          <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;here&#39;</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">+=</span> <span class="s1">&#39;a&#39;</span><span class="p">;</span>
-<span class="lineno"> 4</span>      <span class="p">}</span>
-<span class="lineno"> 5</span>  <span class="p">}</span>
-<span class="lineno"> 6</span>  
-<span class="lineno"> 7</span>  <span class="kd">function</span> <span class="nx">innerHTMLLoop2</span> <span class="p">()</span> <span class="p">{</span>
-<span class="lineno"> 8</span>      <span class="kd">var</span> <span class="nx">content</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
-<span class="lineno"> 9</span>      <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">count</span> <span class="o">&lt;</span> <span class="mi">15000</span><span class="p">;</span> <span class="nx">count</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">10</span>          <span class="nx">content</span> <span class="o">+=</span> <span class="s1">&#39;a&#39;</span><span class="p">;</span>
-<span class="lineno">11</span>      <span class="p">}</span>
-<span class="lineno">12</span>      <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;here&#39;</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">+=</span> <span class="nx">content</span><span class="p">;</span>
-<span class="lineno">13</span>  <span class="p">}</span>
-<span class="lineno">14</span>  
-</code></pre>
-</div>
-
-
-<p>第一个实例中多次访问修改DOM，第二个实例中则在javascript中循环处理好内容之后，一次性访问修改DOM.所以：<strong>减少访问DOM的次数，把运算尽量留在ECMAScript这一端处理</strong>。</p>
-
-<p>innerHTML与原生DOM方法对比实验表明，在旧版浏览器中innerHTML的优势较明显，但在新版本中则不那么明显，在基于webkit内核的新版本浏览器中DOM方法反而略胜一筹。</p>
-
-<p>使用DOM方法更新页面内容的另一个途径是克隆已有元素，即使用 <code>element.cloneNode()</code> 替代 <code>document.createElement()</code> ，效率会稍有提高。</p>
-
-<h4>HTML Collections HTML集合 <strong>*</strong></h4>
-
-<p>HTML集合是包含了DOM节点引用的类数组对象，以下方法的返回值就是一个集合：</p>
-
-<ul>
-<li><code>document.getElementByName()</code></li>
-<li><code>document.getElementsByClassName()</code></li>
-<li><code>document.getElementsByTagName()</code></li>
-</ul>
-
-
-<p>下面的属性同样返回HTML集合：</p>
-
-<ul>
-<li><code>document.images // 页面中所有img元素</code></li>
-<li><code>document.links // 所有a元素</code></li>
-<li><code>document.forms // 所有表单元素</code></li>
-<li><code>document.forms[0].elements // 页面中第一个表单的所有字段</code></li>
-</ul>
-
-
-<p>以上返回的都是HTML集合对象，是个类似数组的列表。它们并不是真的数组，但提供了一个类似数组中的length属性，而且可以以数字索引的方式访问列表里的元素。其中一个重要的特性：</p>
-
-<blockquote><p>正如DOM标准中所定义的，HTML集处于一种“实时状态”实时存在，这意味着当底层文档对象更新时，它也会自动更新（<a href="http://www.w3.org/TR/DOM-Level-2-HTML/html.html#ID-75708506">参考</a>）。</p></blockquote>
-
-<p>这就意味着集合是一直和文档保持连接的，每次需要更新信息时，都会重复查询文档，哪怕只是获取它的length属性。这就是它低效的原因。</p>
-
-<p>下面是一个有趣的死循环：</p>
-
-<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span>  <span class="c1">// 一个意外的死循环</span>
-<span class="lineno">2</span>   <span class="kd">var</span> <span class="nx">alldivs</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">);</span>
-<span class="lineno">3</span>   <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">alldivs</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">4</span>       <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">));</span>
-<span class="lineno">5</span>   <span class="p">}</span>
-<span class="lineno">6</span>   
-</code></pre>
-</div>
-
-
-<p>代码中的alldivs.length反映出的底层文档的当前状态。这样的遍历操作不仅可能会导致逻辑错误，而且很慢，每次迭代都要执行查询操作。</p>
-
-<p>优化方法有两种，一种是讲HTML集合拷贝到普通数组中：</p>
-
-<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span>  <span class="kd">function</span> <span class="nx">toArray</span> <span class="p">(</span><span class="nx">collection</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">2</span>       <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[],</span> <span class="nx">len</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">len</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">3</span>           <span class="nx">a</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
-<span class="lineno">4</span>       <span class="p">}</span>
-<span class="lineno">5</span>       <span class="k">return</span> <span class="nx">a</span><span class="p">;</span>
-<span class="lineno">6</span>   <span class="p">}</span>
-<span class="lineno">7</span>   
-</code></pre>
-</div>
-
-
-<p>另一种方法是将collection的长度缓存到局部变量中。一般来说遍历较小的集合加入了缓存就可以了。在相同的内容和数量下，遍历一个数组的速度是明显快于遍历一个HTML集合的。但是将集合放到数组中又需要额外的一次遍历，所以应该进行衡量评估，再选用合适的方法。</p>
-
-<p>访问集合元素的时候也同样可以使用局部变量来缓存此成员，然后用局部变量去访问元素，下面是三个例子：</p>
-
-<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span>     <span class="c1">// 较慢</span>
-<span class="lineno"> 2</span>  <span class="kd">function</span> <span class="nx">collectionGlobal</span> <span class="p">()</span> <span class="p">{</span>
-<span class="lineno"> 3</span>      <span class="kd">var</span> <span class="nx">collection</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">),</span>
-<span class="lineno"> 4</span>          <span class="nx">len</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span>
-<span class="lineno"> 5</span>          <span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
-<span class="lineno"> 6</span>      <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">count</span> <span class="o">&lt;</span> <span class="nx">len</span><span class="p">;</span> <span class="nx">count</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 7</span>          <span class="nx">name</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">)[</span><span class="nx">count</span><span class="p">].</span><span class="nx">nodeName</span><span class="p">;</span>
-<span class="lineno"> 8</span>          <span class="nx">name</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">)[</span><span class="nx">count</span><span class="p">].</span><span class="nx">nodeType</span><span class="p">;</span>
-<span class="lineno"> 9</span>          <span class="nx">name</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">)[</span><span class="nx">count</span><span class="p">].</span><span class="nx">tagName</span><span class="p">;</span>
-<span class="lineno">10</span>      <span class="p">}</span>
-<span class="lineno">11</span>      <span class="k">return</span> <span class="nx">name</span><span class="p">;</span>
-<span class="lineno">12</span>  <span class="p">}</span>
-<span class="lineno">13</span>  
-<span class="lineno">14</span>  <span class="c1">// 较快</span>
-<span class="lineno">15</span>  <span class="kd">function</span> <span class="nx">collectionLocal</span> <span class="p">()</span> <span class="p">{</span>
-<span class="lineno">16</span>      <span class="kd">var</span> <span class="nx">collection</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">),</span>
-<span class="lineno">17</span>          <span class="nx">len</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span>
-<span class="lineno">18</span>          <span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
-<span class="lineno">19</span>      <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">count</span> <span class="o">&lt;</span> <span class="nx">len</span><span class="p">;</span> <span class="nx">count</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">20</span>          <span class="nx">name</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">[</span><span class="nx">count</span><span class="p">].</span><span class="nx">nodeName</span><span class="p">;</span>
-<span class="lineno">21</span>          <span class="nx">name</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">[</span><span class="nx">count</span><span class="p">].</span><span class="nx">nodeType</span><span class="p">;</span>
-<span class="lineno">22</span>          <span class="nx">name</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">[</span><span class="nx">count</span><span class="p">].</span><span class="nx">tagName</span><span class="p">;</span>
-<span class="lineno">23</span>      <span class="p">}</span>
-<span class="lineno">24</span>      <span class="k">return</span> <span class="nx">name</span><span class="p">;</span>
-<span class="lineno">25</span>  <span class="p">}</span>
-<span class="lineno">26</span>  
-<span class="lineno">27</span>  <span class="c1">// 最快</span>
-<span class="lineno">28</span>  <span class="kd">function</span> <span class="nx">collectionNodesLocal</span> <span class="p">()</span> <span class="p">{</span>
-<span class="lineno">29</span>      <span class="kd">var</span> <span class="nx">collection</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">),</span>
-<span class="lineno">30</span>          <span class="nx">len</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span>
-<span class="lineno">31</span>          <span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-<span class="lineno">32</span>          <span class="nx">el</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
-<span class="lineno">33</span>      <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">count</span> <span class="o">&lt;</span> <span class="nx">len</span><span class="p">;</span> <span class="nx">count</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">34</span>          <span class="nx">el</span> <span class="o">=</span> <span class="nx">collection</span><span class="p">[</span><span class="nx">count</span><span class="p">];</span><span class="nx">el</span>
-<span class="lineno">35</span>          <span class="nx">name</span> <span class="o">=</span> <span class="nx">el</span><span class="p">.</span><span class="nx">nodeName</span><span class="p">;</span>
-<span class="lineno">36</span>          <span class="nx">name</span> <span class="o">=</span> <span class="nx">el</span><span class="p">.</span><span class="nx">nodeType</span><span class="p">;</span>
-<span class="lineno">37</span>          <span class="nx">name</span> <span class="o">=</span> <span class="nx">el</span><span class="p">.</span><span class="nx">tagName</span><span class="p">;</span>
-<span class="lineno">38</span>      <span class="p">}</span>
-<span class="lineno">39</span>      <span class="k">return</span> <span class="nx">name</span><span class="p">;</span>
-<span class="lineno">40</span>  <span class="p">}</span>
-<span class="lineno">41</span>  
-</code></pre>
-</div>
-
-
-<h4>遍历DOM</h4>
-
-<ul>
-<li><p>爬行的两种方式</p>
-
-<ul>
-<li>使用<code>childNodes</code>得到元素集合（childNodes是HTML集合，使用时谨记缓存length属性）</li>
-<li>使用<code>nextSiblig</code>来获取每个相邻元素</li>
-</ul>
-
-
-<p>再不同浏览器中两种方法运行时间几乎相等，但是在IE6，7中nextSibling要快很多倍（16、105倍）。</p></li>
-<li><p>元素节点</p>
-
-<p><code>childNode</code>,<code>firstChild</code>,<code>nextSibling</code>都是不区分元素节点和其他类型节点的，比如注释和文本。</p>
-
-<p>能区分元素机节点和其他节点的DOM属性</p>
-
-<table>
-<thead>
-<tr>
-<th>属性名                  </th>
-<th> 被替换属性            </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>children               </td>
-<td> childNodes          </td>
-</tr>
-<tr>
-<td>childElementCount      </td>
-<td> childNodes.length          </td>
-</tr>
-<tr>
-<td>firstElementChild      </td>
-<td> firstChild          </td>
-</tr>
-<tr>
-<td>lastElementChild       </td>
-<td> lastChild          </td>
-</tr>
-<tr>
-<td>nextElementSibling     </td>
-<td> childNodes          </td>
-</tr>
-<tr>
-<td>previousElementSibling </td>
-<td> previousSibling</td>
-</tr>
-</tbody>
-</table>
-
-
-<p>IE6、7、8只支持<code>children</code>属性。在所有浏览器中<code>children</code>替代<code>childNodes</code>会更快，因为集合项更少。而且在IE中遍历children集合的速度要明显快于遍历childNodes。</p></li>
-<li><p>选择器API：<code>querySelectorAll()</code>和<code>querySelector()</code></p>
-
-<ul>
-<li>对比：</li>
-</ul>
-</li>
-</ul>
-
-
-<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span>  
-<span class="lineno">2</span>           <span class="c1">// 返回值是一个NodeList：包含着匹配节点的类数组对象，</span>
-<span class="lineno">3</span>           <span class="c1">// 区别于HTML集合，它并不会对应实时的文档结构</span>
-<span class="lineno">4</span>           <span class="kd">var</span> <span class="nx">elements</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">&#39;#menu a&#39;</span><span class="p">);</span>
-<span class="lineno">5</span>           
-<span class="lineno">6</span>           <span class="c1">// 返回值是HTML集合</span>
-<span class="lineno">7</span>           <span class="kd">var</span> <span class="nx">elements</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;menu&#39;</span><span class="p">).</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">);</span>
-<span class="lineno">8</span>           
-</code></pre>
-</div>
-
-
-<pre><code>    如果要处理大量组合查询，使用`querySelectorAll()`会更有效率，以下例子是很好的对比：
-</code></pre>
-
-<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span>             <span class="kd">var</span> <span class="nx">errs</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">&#39;div.warning, div.notice&#39;</span><span class="p">);</span>
-<span class="lineno"> 2</span>          
-<span class="lineno"> 3</span>          <span class="kd">var</span> <span class="nx">errs</span> <span class="o">=</span> <span class="p">[],</span>
-<span class="lineno"> 4</span>              <span class="nx">divs</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">),</span>
-<span class="lineno"> 5</span>              <span class="nx">classname</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
-<span class="lineno"> 6</span>          <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">len</span> <span class="o">=</span> <span class="nx">divs</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">len</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 7</span>              <span class="nx">classname</span> <span class="o">=</span> <span class="nx">divs</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">className</span><span class="p">;</span>
-<span class="lineno"> 8</span>              <span class="k">if</span> <span class="p">(</span><span class="nx">classname</span> <span class="o">===</span> <span class="s1">&#39;notice&#39;</span> <span class="o">||</span> <span class="nx">classname</span> <span class="o">===</span> <span class="s1">&#39;warning&#39;</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 9</span>                  <span class="nx">errs</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">divs</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
-<span class="lineno">10</span>              <span class="p">}</span>
-<span class="lineno">11</span>          <span class="p">}</span>
-<span class="lineno">12</span>          
-</code></pre>
-</div>
-
-
-<pre><code>    第一段代码出了更简洁之外，效率还比第二段高2～6倍。
-
-*   支持的浏览器： IE8, Firefox 3.5+, Safari 3.1+, Chrome1+, Opera 10+
-</code></pre>
-
-<h3>重绘与重排</h3>
-
-<blockquote><p>浏览器下载完成页面中的所有组件：HTML标记，JavaScript,CSS,图片，之后会解析并生成两个内部数据结构：</p></blockquote>
-
-<ul>
-<li><p>DOM树</p>
-
-<p>表示页面结构</p></li>
-<li><p>渲染树</p>
-
-<p>表示DOM节点如何显示</p></li>
-</ul>
-
-
-<p>当DOM的变化影响了元素的集合属性（宽高），浏览器需要重新计算元素的集合属性，同样其他元素的集合属性和位置也会因此受到影响。浏览器会使渲染树中受到影响的部分失效，并重新构造渲染树，这个过程称为“<strong>重排(reflow)</strong>”；完成重排后，浏览器会重新绘制受影响的部分到屏幕中，该过程称为“<strong>重绘(repaint)</strong>”。</p>
-
-<p>重绘和重排操作都是代价昂高的操作，导致UI反应迟钝，要尽量减少。</p>
-
-<h4>重排何时发生？</h4>
-
-<p>页面布局和几何属性发生改变：</p>
-
-<ul>
-<li>添加或删除可见的DOM元素。</li>
-<li>元素位置改变。</li>
-<li>元素尺寸改变（margin, padding, border, width, height）。</li>
-<li>页面渲染器初始化。</li>
-<li>浏览器窗口尺寸改变。</li>
-</ul>
-
-
-<h4>渲染树变化的排列与刷新</h4>
-
-<p>获取布局信息的操作会导致队列刷新</p>
-
-<ul>
-<li>offsetTop, offsetLeft, offsetWidth, offsetHeight</li>
-<li>scrollTop, scrollLeft, scrollWidth, scrollHeight</li>
-<li>clientTop, clientLeft, clientWidth, clientHeight</li>
-<li>getComputedStyle() (currentStyle in IE)</li>
-</ul>
-
-
-<p>在修改样式的过程中，最好避免使用上面列出的属性，因为不管它本身有没有改变，使用以上属性都会刷新渲染队列。<strong>*</strong></p>
-
-<h4>最小化重绘和重排</h4>
-
-<p>优化方法：合并多次对DOM和样式的修改，然后一次性处理掉。</p>
-
-<p>例子：</p>
-
-<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span>     <span class="c1">// 可能触发多次重排</span>
-<span class="lineno"> 2</span>  <span class="kd">var</span> <span class="nx">el</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;myDiv&#39;</span><span class="p">);</span>
-<span class="lineno"> 3</span>  <span class="nx">el</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">borderLeft</span> <span class="o">=</span> <span class="s1">&#39;1px&#39;</span><span class="p">;</span>
-<span class="lineno"> 4</span>  <span class="nx">el</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">borderRight</span> <span class="o">=</span> <span class="s1">&#39;2px&#39;</span><span class="p">;</span>
-<span class="lineno"> 5</span>  <span class="nx">el</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">padding</span> <span class="o">=</span> <span class="s1">&#39;5px&#39;</span><span class="p">;</span>
-<span class="lineno"> 6</span>  
-<span class="lineno"> 7</span>  <span class="c1">// 优化</span>
-<span class="lineno"> 8</span>  <span class="nx">el</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">cssText</span> <span class="o">+=</span> <span class="s1">&#39;border-left: 1px; border-right:2px; padding: 5px;&#39;</span><span class="p">;</span>
-<span class="lineno"> 9</span>  
-<span class="lineno">10</span>  <span class="c1">// 另一种优化, 将样式写到CSS的class中</span>
-<span class="lineno">11</span>  <span class="nx">el</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="s1">&#39;active&#39;</span><span class="p">;</span>
-<span class="lineno">12</span>  
-</code></pre>
-</div>
-
-
-<p>要对DOM元素进行一系列操作时，可通过一下步骤来减少重绘和重排的次数：</p>
-
-<ol>
-<li>使元素脱离文档流</li>
-<li>对其应用多重改变</li>
-<li>把元素带回文档中</li>
-</ol>
-
-
-<p>其中第1，3步各触发一次重排。</p>
-
-<p>三种基本方法可以使DOM脱离文档：</p>
-
-<ul>
-<li><p>隐藏元素，应用修改，重新显示</p>
-
-<p>通过改变display属性来实现</p></li>
-<li><p>使用文档片段（document fragment）在当前DOM之外构建一个子树，再把它拷贝回文档</p>
-
-<p>这就用到一个叫文档片段fragment的轻量级document对象，它的设计初衷就是为了完成更新和移动节点的任务，使用方法见下面的gist：</p>
-
-<p><script src="https://gist.github.com/3549691.js?file=文档片段fragment.js"></script></p></li>
-<li><p>将原始元素拷贝到一个脱离文档的节点中，修改副本，完成后再替换原始元素</p></li>
-</ul>
-
-
-<h4>缓存布局信息</h4>
-
-<p>查询布局信息，例如： offsets，scroll values或computedstyle values的时候，浏览器为了返回最新的值，会刷新队列并应用所有变更。</p>
-
-<p>优化犯法：用局部变量缓存布局信息，减少布局信息的获取次数</p>
-
-<p>考虑一下代码</p>
-
-<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span>     <span class="c1">// 低效的</span>
-<span class="lineno"> 2</span>  <span class="nx">myElement</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="nx">myElement</span><span class="p">.</span><span class="nx">offsetLeft</span> <span class="o">+</span> <span class="s1">&#39;px&#39;</span><span class="p">;</span>
-<span class="lineno"> 3</span>  <span class="nx">myElement</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">top</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="nx">myElement</span><span class="p">.</span><span class="nx">offsetTop</span> <span class="o">+</span> <span class="s1">&#39;px&#39;</span><span class="p">;</span>
-<span class="lineno"> 4</span>  <span class="k">if</span> <span class="p">(</span><span class="nx">myElement</span><span class="p">.</span><span class="nx">offsetLeft</span> <span class="o">&gt;=</span> <span class="mi">500</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 5</span>      <span class="nx">stopAnimation</span><span class="p">();</span>
-<span class="lineno"> 6</span>  <span class="p">}</span>
-<span class="lineno"> 7</span>  
-<span class="lineno"> 8</span>  <span class="c1">// 优化： 缓存offsets值</span>
-<span class="lineno"> 9</span>  <span class="kd">var</span> <span class="nx">current</span> <span class="o">=</span> <span class="nx">myElement</span><span class="p">.</span><span class="nx">offsetLeft</span><span class="p">;</span>
-<span class="lineno">10</span>  
-<span class="lineno">11</span>  <span class="c1">//...</span>
-<span class="lineno">12</span>  
-<span class="lineno">13</span>  <span class="nx">current</span><span class="o">++</span><span class="p">;</span>
-<span class="lineno">14</span>  <span class="nx">myElement</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="nx">current</span> <span class="o">+</span> <span class="s1">&#39;px&#39;</span><span class="p">;</span>
-<span class="lineno">15</span>  <span class="nx">myElement</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">top</span> <span class="o">=</span> <span class="nx">current</span> <span class="o">+</span> <span class="s1">&#39;px&#39;</span><span class="p">;</span>
-<span class="lineno">16</span>  <span class="k">if</span> <span class="p">(</span><span class="nx">current</span> <span class="o">&gt;=</span> <span class="mi">500</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">17</span>      <span class="nx">stopAnimation</span><span class="p">();</span>
-<span class="lineno">18</span>  <span class="p">}</span>
-<span class="lineno">19</span>  
-</code></pre>
-</div>
-
-
-<h4>让元素脱离动画流</h4>
-
-<p>动画中使用绝对定位，使用拖放代理</p>
-
-<h4>IE和hover</h4>
-
-<p>在IE中如果大量元素使用了:hover，会降低响应速度。IE8尤其明显。</p>
-
-<h4>事件委托</h4>
-
-<p>使用事件委托来减少事件处理器的数量。</p>
-
-<p>原理：事件逐层冒泡并能被父级元素捕获</p>
-
-<p>参考以下gist：</p>
-
-<script src="https://gist.github.com/3549691.js?file=事件委托.js"></script>
-
-
-<p>其中要注意跨浏览器的部分，包括：</p>
-
-<ul>
-<li>访问事件对象，并判断事件源</li>
-<li>取消文档树中的冒泡</li>
-<li>阻止默认动作</li>
-</ul>
-
- -->
-        <em class="post-date">Posted on 19 August 2012.</em>
-    </div>
-    
-    <div class="post-item">
-        <h2 class="post-title">
-            <a href="/blog/2012/08/18/debug-tools-for-the-evil-ie6.html">
-                IE6相关开发与debug工具
-            </a>
-        </h2>
-        <!-- <p>实习了一段时间，对ie6的厌恶感提升了不少。但脏活累活总得有人去干，ie6下出了盒子模型和各种布局样式的诡异bug外，在字符编码，还有js代码也有不少让人挠头的问题。本文不细说具体问题的原因和解决，列举几个最近用到的ie6下常用的开发和debug工具。</p>
-
-<ol>
-<li>IE6。对的，就是ie6。ie6下开发和兼容怎么能没有个ie6呢。似乎ietester是个很好东西，同时拥有ie6，7，8，9，但是在实际使用中发现ietester不能完整和真实地呈现出各版本的效果，会与实际有差异，甚至是出现一些实际版本没有错误扰乱我们发现实际的问题。所以个人还是比较推荐在用虚拟机装对应版本的系统使用对应版本的ie，这样比较能真实还原用户场景。</li>
-<li>Internet Explorer Developer Toolbar。比firebug，chrome和safari的开发者工具差得多的东西，但是嘛，在这么烂的浏览器上也别指望有特别优秀的的开发者工具了，凑合着可以查看一下dom，修改元素样式等。下载链接：<a href="http://www.microsoft.com/en-us/download/details.aspx?id=18359">M$官方下载传送门</a></li>
-<li>Debug Bar。javascript debug工具。会报告js错误，显示调用栈，错误文件以及代码所在行数；提供类似firebug的console API；一个javascript console。安装前需要先安装Microsofe Script Debugger, <a href="http://www.microsoft.com/zh-cn/download/details.aspx?id=23992">下载传送门</a>。官方地址：<a href="http://www.my-debugbar.com/wiki/CompanionJS/HomePage">传送门again</a>。</li>
-<li><p>Fiddler。fiddler是一个http/https调试器，不仅限于对ie使用，只是最近在ie6的调试中帮了很大的忙，才特别地列在这里。简单来说，fiddler做的事情就是以代理服务器的方式监听系统的网络数据，通过fiddler我们可以监控，更改这些请求。其中较常用的功能是auto response，我们可以用本地的文件来替代网络请求的结果，骗过浏览器，这样就方便我们做前端的调试，不用每次都修改服务器端的代码，直接就可以在前段进行代码修改调试了。
-下面是一些相关的教程和连接：</p>
-
-<ul>
-<li><a href="http://www.aliued.cn/2010/04/18/use-fiddler-to-improve-efficiency-of-front-development-introduction.html">使用Fiddler提高前端工作效率 (介绍篇)</a></li>
-<li><a href="http://www.aliued.cn/2010/04/25/use-fiddler-to-improve-efficiency-of-front-development-example.html">使用Fiddler提高前端工作效率 (实例篇)</a></li>
-<li><a href="http://www.fiddler2.com/fiddler2/">官方网站</a></li>
-</ul>
-</li>
-<li><p>另外，由于在xp中测试的ie6，虽然不是开发环境，但是调试过程中代码的修改工作量也不少，所以最还要下载个好用的文本编辑器。鉴于sublime text 2对gbk支持不太好，所以使用notepad++。另外由于从服务器下载的html文件一般内容都很多，代码量大，使用diff工具配合fiddler，对比线上和线下文件，效率会更高一些。推荐一个DiffMerge，下载地址自己google。</p></li>
-</ol>
-
- -->
-        <!-- <p>实习了一段时间，对ie6的厌恶感提升了不少。但脏活累活总得有人去干，ie6下出了盒子模型和各种布局样式的诡异bug外，在字符编码，还有js代码也有不少让人挠头的问题。本文不细说具体问题的原因和解决，列举几个最近用到的ie6下常用的开发和debug工具。</p>
-
-<ol>
-<li>IE6。对的，就是ie6。ie6下开发和兼容怎么能没有个ie6呢。似乎ietester是个很好东西，同时拥有ie6，7，8，9，但是在实际使用中发现ietester不能完整和真实地呈现出各版本的效果，会与实际有差异，甚至是出现一些实际版本没有错误扰乱我们发现实际的问题。所以个人还是比较推荐在用虚拟机装对应版本的系统使用对应版本的ie，这样比较能真实还原用户场景。</li>
-<li>Internet Explorer Developer Toolbar。比firebug，chrome和safari的开发者工具差得多的东西，但是嘛，在这么烂的浏览器上也别指望有特别优秀的的开发者工具了，凑合着可以查看一下dom，修改元素样式等。下载链接：<a href="http://www.microsoft.com/en-us/download/details.aspx?id=18359">M$官方下载传送门</a></li>
-<li>Debug Bar。javascript debug工具。会报告js错误，显示调用栈，错误文件以及代码所在行数；提供类似firebug的console API；一个javascript console。安装前需要先安装Microsofe Script Debugger, <a href="http://www.microsoft.com/zh-cn/download/details.aspx?id=23992">下载传送门</a>。官方地址：<a href="http://www.my-debugbar.com/wiki/CompanionJS/HomePage">传送门again</a>。</li>
-<li><p>Fiddler。fiddler是一个http/https调试器，不仅限于对ie使用，只是最近在ie6的调试中帮了很大的忙，才特别地列在这里。简单来说，fiddler做的事情就是以代理服务器的方式监听系统的网络数据，通过fiddler我们可以监控，更改这些请求。其中较常用的功能是auto response，我们可以用本地的文件来替代网络请求的结果，骗过浏览器，这样就方便我们做前端的调试，不用每次都修改服务器端的代码，直接就可以在前段进行代码修改调试了。
-下面是一些相关的教程和连接：</p>
-
-<ul>
-<li><a href="http://www.aliued.cn/2010/04/18/use-fiddler-to-improve-efficiency-of-front-development-introduction.html">使用Fiddler提高前端工作效率 (介绍篇)</a></li>
-<li><a href="http://www.aliued.cn/2010/04/25/use-fiddler-to-improve-efficiency-of-front-development-example.html">使用Fiddler提高前端工作效率 (实例篇)</a></li>
-<li><a href="http://www.fiddler2.com/fiddler2/">官方网站</a></li>
-</ul>
-</li>
-<li><p>另外，由于在xp中测试的ie6，虽然不是开发环境，但是调试过程中代码的修改工作量也不少，所以最还要下载个好用的文本编辑器。鉴于sublime text 2对gbk支持不太好，所以使用notepad++。另外由于从服务器下载的html文件一般内容都很多，代码量大，使用diff工具配合fiddler，对比线上和线下文件，效率会更高一些。推荐一个DiffMerge，下载地址自己google。</p></li>
-</ol>
-
- -->
-        <em class="post-date">Posted on 18 August 2012.</em>
-    </div>
-    
-    <div class="post-item">
-        <h2 class="post-title">
-            <a href="/blog/2012/08/15/high-perfomance-javascript-1.html">
-                high performance JavaScript notes 1
-            </a>
-        </h2>
-        <!-- <h2>Chapter 1 Loading and Execution 加载和执行</h2> <p>JavaScript的阻塞特性使js性能问题变的复杂。大多数浏览器使用单一进程来处理ui和执行脚本。代码的执行会阻塞浏览器的其他进程，例如用户界面绘制。</p> <p>将script标签放到页面的底部，</body>之前。能确保脚本执行前页面已经加载完毕。</p> <blockquote><p>浏览器在解析到&lt;body>前不会渲染页面</p> <p>把内嵌脚本放在引用外链样式表的&lt;link>标签后会导致页面阻塞去等待样式表的下载；是为了确保脚本执行时能获得最精准的样式信息；</p></blockquote> <p>合并脚本。页面中script标签越少，加载越快，响应更迅速。</p> <p>使用无阻塞方式下载代码：</p> <ul> <li>script标签的defer属性（不推荐）</li> <li><p>动态创建script元素来下载、执行代码；脚本文件在该元素被添加到页面时开始下载，且下载和执行过程不会阻塞页面其他进程。</p> <p>下面是一个封装好的加载方法：</p></li> </ul> <div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span> <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nb">window</span><span class="p">)</span> <span class="p">{</span> <span class="lineno"> 2</span> <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">loadScript</span><span class="p">)</span> <span class="lineno"> 3</span> <span class="k">throw</span> <span class="k">new</span> <span... -->
-        <!-- <h2>Chapter 1 Loading and Execution 加载和执行</h2>
-
-<p>JavaScript的阻塞特性使js性能问题变的复杂。大多数浏览器使用单一进程来处理ui和执行脚本。代码的执行会阻塞浏览器的其他进程，例如用户界面绘制。</p>
-
-<p>将script标签放到页面的底部，</body>之前。能确保脚本执行前页面已经加载完毕。</p>
-
-<blockquote><p>浏览器在解析到&lt;body>前不会渲染页面</p>
-
-<p>把内嵌脚本放在引用外链样式表的&lt;link>标签后会导致页面阻塞去等待样式表的下载；是为了确保脚本执行时能获得最精准的样式信息；</p></blockquote>
-
-<p>合并脚本。页面中script标签越少，加载越快，响应更迅速。</p>
-
-<p>使用无阻塞方式下载代码：</p>
-
-<ul>
-<li>script标签的defer属性（不推荐）</li>
-<li><p>动态创建script元素来下载、执行代码；脚本文件在该元素被添加到页面时开始下载，且下载和执行过程不会阻塞页面其他进程。</p>
-
-<p>下面是一个封装好的加载方法：</p></li>
-</ul>
-
-
-<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span>         <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nb">window</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 2</span>          <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">loadScript</span><span class="p">)</span> 
-<span class="lineno"> 3</span>              <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;loadScript fails to be modefied.&#39;</span><span class="p">);</span>
-<span class="lineno"> 4</span>              
-<span class="lineno"> 5</span>          <span class="nb">window</span><span class="p">.</span><span class="nx">loadScript</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 6</span>              <span class="kd">var</span> <span class="nx">script</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
-<span class="lineno"> 7</span>              <span class="nx">script</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s1">&#39;text/javascript&#39;</span><span class="p">;</span>
-<span class="lineno"> 8</span>      
-<span class="lineno"> 9</span>              <span class="k">if</span> <span class="p">(</span><span class="nx">script</span><span class="p">.</span><span class="nx">readyState</span><span class="p">)</span> <span class="p">{</span>    <span class="c1">// IE</span>
-<span class="lineno">10</span>                  <span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-<span class="lineno">11</span>                      <span class="k">if</span> <span class="p">(</span><span class="nx">script</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;loaded&#39;</span> <span class="o">||</span> <span class="nx">script</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;complete&#39;</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">12</span>                          <span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
-<span class="lineno">13</span>                          <span class="nx">callback</span><span class="p">();</span>
-<span class="lineno">14</span>                      <span class="p">}</span>
-<span class="lineno">15</span>                  <span class="p">};</span>
-<span class="lineno">16</span>              <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>    <span class="c1">// other browser</span>
-<span class="lineno">17</span>                  <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-<span class="lineno">18</span>                      <span class="nx">callback</span><span class="p">();</span>
-<span class="lineno">19</span>                  <span class="p">};</span>
-<span class="lineno">20</span>              <span class="p">}</span>
-<span class="lineno">21</span>      
-<span class="lineno">22</span>              <span class="nx">script</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nx">url</span><span class="p">;</span>
-<span class="lineno">23</span>              <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;head&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
-<span class="lineno">24</span>          <span class="p">};</span>
-<span class="lineno">25</span>      
-<span class="lineno">26</span>      <span class="p">}</span> <span class="p">(</span><span class="nb">window</span><span class="p">));</span>
-<span class="lineno">27</span>      
-</code></pre>
-</div>
-
-
-<ul>
-<li>用XHR对象下载代码，注入页面中</li>
-<li><p>推荐的无阻塞模式：先添加动态加载所需的代码，再加载初始化页面所需要的剩下的代码。</p>
-
-<p>如:</p></li>
-</ul>
-
-
-<div class="highlight"><pre><code class="html"> <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;loader.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
-        <span class="nx">loadScript</span><span class="p">(</span><span class="s2">&quot;the-rest.js&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-            <span class="nx">app</span><span class="p">.</span><span class="nx">init</span><span class="p">();</span>
-        <span class="p">});</span>
-    <span class="nt">&lt;/script&gt;</span>
-    
-</code></pre>
-</div>
-
-
-<pre><code>一旦页面初始化的脚本加载完，就可以用loadScript函数去加载页面其他功能所需的脚本了。YUI3也使用类似的方法，引入一个种子文件，来加载丰富的功能组件：
-</code></pre>
-
-<div class="highlight"><pre><code class="html"> <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://yui.yahooapis.com/combo?3.0.0/build/yui/yui-min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
-        <span class="nx">YUI</span><span class="p">().</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;dom&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">Y</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">Y</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">addClass</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">,</span> <span class="s1">&#39;loaded&#39;</span><span class="p">);</span>
-        <span class="p">});</span>
-    <span class="nt">&lt;/script&gt;</span>
-    
-</code></pre>
-</div>
-
-
-<h2>Chapter 2 Data Access 数据访问</h2>
-
-<h3>四种基本的数据存储位置</h3>
-
-<ul>
-<li><p>直接量*</p>
-
-<blockquote><p>直接量只代表自身，不存储在特定的位置。js中直接量有：字符串，数字，布尔值，对象，数组，函数，正则表达式，以及特殊的null和undefinde值。</p></blockquote></li>
-<li><p>变量*</p>
-
-<blockquote><p>开发者用关键字var定义的数存储单元。</p></blockquote></li>
-<li><p>数组元素*</p>
-
-<blockquote><p>存储在js数组对象内部，以数字作为索引。</p></blockquote></li>
-<li>对象成员*
-
-<blockquote><p>存储在js对象内部，以字符串作为索引。</p></blockquote></li>
-</ul>
-
-
-<p>总的来说，直接量和局部变量的访问速度快于数组项和对象成员的访问速度。</p>
-
-<h3>作用域链与标志符解析</h3>
-
-<ul>
-<li><p>局部变量位于作用域链的其实位置，访问速度比跨作用域的变量要快。变量在作用域链中的位置越深，访问时间越长。全局变量总出于作用域链的末端，所以访问速度最慢</p>
-
-<blockquote><p>在函数执行过程中，每遇到一个变量，都会经历一次标志符解析过程，决定从哪里获取或存储数据。搜索的过程类似dfs，从作用域链头部开始。</p>
-
-<p>标志符的解析是有代价的，所处位置越深越往作用域链后，读写速度越慢；因此，通常函数中读写局部变量总是最快的，读写全局变量较慢。</p></blockquote></li>
-<li><p>避免使用with语句，因为它会改变运行期上下文的作用域链，使的局部变量访问速度变慢。使用try-catch语句中的catch子句也有同样的影响。</p>
-
-<blockquote><p>经过优化的js引擎可能会通过分析代码来确定那些变量可以在特定时候被访问，试图避开传统作用域链的查找，取代以标志符索引的方式进行快速查找。但当设计eval等动态作用域时，优化方法失效，要转回传统的作用域链查找方式。</p></blockquote></li>
-<li><p>嵌套的对象成员会明显地影响性能，尽量少用。</p>
-
-<p>用hasOwnProperty()方法判断对象是否包含特定的实例成员，要确定对象是否包含特定的属性，可以使用in操作符。</p></li>
-</ul>
-
-
-<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span>     <span class="kd">var</span> <span class="nx">book</span> <span class="o">=</span> <span class="p">{</span>
-<span class="lineno"> 2</span>      <span class="nx">title</span><span class="o">:</span> <span class="s2">&quot;High Performance JavaScript&quot;</span><span class="p">,</span>
-<span class="lineno"> 3</span>      <span class="nx">publisher</span><span class="o">:</span> <span class="s2">&quot;Yahoo! Press&quot;</span>
-<span class="lineno"> 4</span>  <span class="p">};</span>
-<span class="lineno"> 5</span>  
-<span class="lineno"> 6</span>  <span class="nx">alert</span><span class="p">(</span><span class="nx">book</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">));</span>    <span class="c1">// true</span>
-<span class="lineno"> 7</span>  <span class="nx">alert</span><span class="p">(</span><span class="nx">book</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s2">&quot;toString&quot;</span><span class="p">));</span> <span class="c1">// false</span>
-<span class="lineno"> 8</span>  
-<span class="lineno"> 9</span>  <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;title&quot;</span> <span class="k">in</span> <span class="nx">book</span><span class="p">);</span>                 <span class="c1">// true</span>
-<span class="lineno">10</span>  <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;toString&quot;</span> <span class="k">in</span> <span class="nx">book</span><span class="p">);</span>              <span class="c1">// true</span>
-<span class="lineno">11</span>  
-</code></pre>
-</div>
-
-
-<ul>
-<li><p>对象成员嵌套得越深，访问速度就会越慢；可以通过缓存对象成员值来优化，讲需要多次读取的同一个对象属性值保存到局部变量中。<strong>这种技术不适用与对象的方法；许多对象方法使用this来判断执行上下文，缓存这些方法的话会导致this绑定到错误的对象上</strong></p></li>
-<li><p>通常来说，可以通过把常用的对象成员，数组元素，跨域变量保存到局部变量中改善JavaScript的性能，因为局部变量的访问速度更快。</p></li>
-</ul>
-
- -->
-        <em class="post-date">Posted on 15 August 2012.</em>
-    </div>
-    
-    <div class="post-item">
-        <h2 class="post-title">
-            <a href="/blog/2012/07/26/problems-of-front-end-1.html">
-                problems of front end 1
-            </a>
-        </h2>
-        <!-- <h3>问题描述</h3> <p>在做一个有很多节点的菜单（最深有4层）的时候，我们一开始的步骤是从一个服务器生成的静态的js文件里面获取菜单的树内容，再将树的那内容生成dom。这样再普通浏览器上显示还比较正常，但是如果机子的性能比较差或者是在ie6等浏览器上，菜单部分则会显示空白，经过1～2秒的空白后，完成树的遍历和节点的生成后，才显示到页面中，体验极差。</p> <div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span> <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">menuData</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">elem</span><span class="p">)</span> <span class="p">{</span> <span class="lineno"> 2</span> <span class="lineno"> 3</span> <span class="c1">// blablabla ...</span> <span class="lineno"> 4</span> <span class="lineno"> 5</span> <span class="kd">var</span> <span class="nx">channel</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;div... -->
-        <!-- <h3>问题描述</h3>
-
-<p>在做一个有很多节点的菜单（最深有4层）的时候，我们一开始的步骤是从一个服务器生成的静态的js文件里面获取菜单的树内容，再将树的那内容生成dom。这样再普通浏览器上显示还比较正常，但是如果机子的性能比较差或者是在ie6等浏览器上，菜单部分则会显示空白，经过1～2秒的空白后，完成树的遍历和节点的生成后，才显示到页面中，体验极差。</p>
-
-<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span>     <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">menuData</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">elem</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 2</span>      
-<span class="lineno"> 3</span>      <span class="c1">// blablabla ...</span>
-<span class="lineno"> 4</span>              
-<span class="lineno"> 5</span>      <span class="kd">var</span> <span class="nx">channel</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;div class=&quot;channel&quot;&gt;&lt;/div&gt;&#39;</span><span class="p">),</span>
-<span class="lineno"> 6</span>          <span class="nx">tree</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;&lt;/div&gt;&#39;</span><span class="p">);</span>
-<span class="lineno"> 7</span> 
-<span class="lineno"> 8</span>      <span class="nx">channel</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">tree</span><span class="p">);</span>
-<span class="lineno"> 9</span> 
-<span class="lineno">10</span>      <span class="nx">menu</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s1">&#39;&lt;h3&gt;&lt;a href=&quot;#&quot; data-board=&quot;&#39;</span> <span class="o">+</span> <span class="nx">elem</span><span class="p">.</span><span class="nx">id</span> <span class="o">+</span> <span class="s1">&#39;&quot;&gt;&#39;</span> <span class="o">+</span> <span class="nx">elem</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">&#39;&lt;/a&gt;&lt;/h3&gt;&#39;</span><span class="p">)</span>
-<span class="lineno">11</span>          <span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">channel</span><span class="p">);</span>
-<span class="lineno">12</span> 
-<span class="lineno">13</span>      <span class="c1">// 生成子树</span>
-<span class="lineno">14</span>      <span class="nx">tree</span><span class="p">.</span><span class="nx">dynamictree</span><span class="p">({</span>
-<span class="lineno">15</span>          <span class="nx">source</span><span class="o">:</span> <span class="nx">elem</span><span class="p">.</span><span class="nx">sub</span>
-<span class="lineno">16</span>      <span class="p">});</span>
-<span class="lineno">17</span>  <span class="p">});</span>
-<span class="lineno">18</span> 
-<span class="lineno">19</span>  <span class="c1">// 初始化菜单</span>
-<span class="lineno">20</span>  <span class="nx">menu</span><span class="p">.</span><span class="nx">accordion</span><span class="p">({</span>
-<span class="lineno">21</span>      <span class="nx">autoHeight</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-<span class="lineno">22</span>      <span class="nx">collapsible</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-<span class="lineno">23</span>      <span class="nx">active</span><span class="o">:</span> <span class="kc">false</span>
-<span class="lineno">24</span>  <span class="p">});</span>
-<span class="lineno">25</span>  
-</code></pre>
-</div>
-
-
-<h3>解决方案</h3>
-
-<p>可以考虑先生成显示一级的菜单，一级菜单加载显示了之后，再去生成子菜单。</p>
-
-<h3>代码实现</h3>
-
-<p>最早的时候，同事建议给生成树的操作加一个setTimeout，延时设为0，这样就是树的加载是异步进行的，代码修改如下：</p>
-
-<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span>  <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-<span class="lineno">2</span>       <span class="nx">tree</span><span class="p">.</span><span class="nx">dynamictree</span><span class="p">({</span>
-<span class="lineno">3</span>           <span class="nx">source</span><span class="o">:</span> <span class="nx">elem</span><span class="p">.</span><span class="nx">sub</span>
-<span class="lineno">4</span>       <span class="p">});</span>
-<span class="lineno">5</span>   <span class="p">},</span> <span class="mi">0</span><span class="p">);</span>
-<span class="lineno">6</span>   
-</code></pre>
-</div>
-
-
-<p>这个解决方法很立杆见效，加载树的操作异步执行了，但是有一个问题，我们需要在整个菜单都加载完之后，激活当前所在版块。这样的话我们还必须保证激活当前版块的操作在树加载完成的操作后执行。</p>
-
-<p>中间有考虑过用jquery的deferred对象来实现，将最后激活当前版块的操作写成一个回调函数，但是阅读文档和搜索相关资料后发现，deferred多用在ajax的异步操作，而且现在的ajax操作都返回一个deferred对象，而setTimeout等timer函数则很难使用用deferred对象和方法。</p>
-
-<p>我们打算将所有子树生成的操作先放入一个队列中，再将激活当前版块的操作放入队列尾，最后只要再一级菜单生成后再顺序执行操作队列就可以了，代码如下：</p>
-
-<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span>     <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">menuData</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">elem</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 2</span>      
-<span class="lineno"> 3</span>      <span class="c1">// blablabla ...</span>
-<span class="lineno"> 4</span> 
-<span class="lineno"> 5</span>      <span class="c1">// 将生成子树的操作放入事件队列，延后执行</span>
-<span class="lineno"> 6</span>      <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-<span class="lineno"> 7</span>          <span class="nx">tree</span><span class="p">.</span><span class="nx">dynamictree</span><span class="p">({</span>
-<span class="lineno"> 8</span>              <span class="nx">source</span><span class="o">:</span> <span class="nx">elem</span><span class="p">.</span><span class="nx">sub</span><span class="p">,</span>
-<span class="lineno"> 9</span>              <span class="nx">itemRendered</span><span class="o">:</span> <span class="nx">itemRendered</span>
-<span class="lineno">10</span>          <span class="p">});</span>
-<span class="lineno">11</span>      <span class="p">});</span>
-<span class="lineno">12</span>  <span class="p">}</span>
-<span class="lineno">13</span>  
-<span class="lineno">14</span>  <span class="c1">// 所有子树生成后激活当前版块</span>
-<span class="lineno">15</span>  <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">activeCurrentBoard</span><span class="p">);</span>
-<span class="lineno">16</span> 
-<span class="lineno">17</span>  <span class="nx">menu</span><span class="p">.</span><span class="nx">accordion</span><span class="p">({</span>
-<span class="lineno">18</span>      <span class="nx">autoHeight</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-<span class="lineno">19</span>      <span class="nx">collapsible</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-<span class="lineno">20</span>      <span class="nx">active</span><span class="o">:</span> <span class="kc">false</span>
-<span class="lineno">21</span>  <span class="p">});</span>
-<span class="lineno">22</span> 
-<span class="lineno">23</span>  <span class="c1">// 异步执行，解决ie6卡顿bug</span>
-<span class="lineno">24</span>  <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-<span class="lineno">25</span>      <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">queue</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">func</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">26</span>          <span class="nx">func</span><span class="p">();</span>
-<span class="lineno">27</span>      <span class="p">});</span>
-<span class="lineno">28</span>  <span class="p">},</span> <span class="mi">0</span><span class="p">);</span>
-<span class="lineno">29</span>  
-</code></pre>
-</div>
-
-
-<p>实习一段时间了，感觉实际中遇到最多的问题都不是什么复杂的问题，都是些需要去仔细察觉的问题，例如怎么写才可以在代码可读性和代码的性能间取得平衡，怎么设计和保护代码，使它们不相互污染，多考虑一些容错情况，等等。</p>
- -->
-        <em class="post-date">Posted on 26 July 2012.</em>
-    </div>
-    
-    <div class="post-item">
-        <h2 class="post-title">
-            <a href="/blog/2012/07/10/template-markup-language-velocity.html">
-                模板语言，Velocity
-            </a>
-        </h2>
-        <!-- <h2>什么是Velocity</h2> <p>Velocity是一个基于java的模板引擎（template engine）。它允许任何人仅仅简单的使用模板语言（template language）来引用由java代码定义的对象。</p> <p>当Velocity应用于web开发时，界面设计人员可以和java程序开发人员同步开发一个遵循MVC架构的web站点，也就是说，页面设计人员可以只关注页面的显示效果，而由java程序开发人员关注业务逻辑编码。Velocity将java代码从web页面中分离出来，这样为web站点的长期维护提供了便利，同时也为我们在JSP和PHP之外又提供了一种可选的方案。</p> <p>Velocity的能力远不止web站点开发这个领域，例如，它可以从模板（template）产生SQL和PostScript、XML，它也可以被当作一个独立工具来产生源代码和报告，或者作为其他系统的集成组件使用。Velocity也可以为Turbine web开发架构提供模板服务（template service）。Velocity+Turbine提供一个模板服务的方式允许一个web应用以一个真正的MVC模型进行开发。</p> <h2>Velocity能为我们作什么？</h2> <h3>The Mud Store Example</h3> <p>假设你是一家专门出售Mud的在线商店的页面设计人员，让我们暂且称它为“在线MUD商店”。你们的业务很旺，客户下了各种类型和数量的mud订单。他们都是通过输入用户名和密码后才登陆到你的网站，登陆后就允许他们查看订单并购买更多的mud。现在，一种非常流行的mud正在打折销售。另外有一些客户规律性的购买另外一种也在打折但是不是很流行的Bright Red Mud，由于购买的人并不多所以它被安置在页面的边缘。所有用户的信息都是被跟踪并存放于数据库中的，所以某天有一个问题可能会冒出来：为什么不使用velocity来使用户更好的浏览他们感兴趣的商品呢？</p> <p>Velocity使得web页面的客户化工作非常容易。作为一个web site的设计人员，你希望每个用户登陆时都拥有自己的页面。</p> <p>你会见了一些公司内的软件工程师，你发现他们每个人都同意客户应该拥有具有个性化的信息。那让我们把软件工程师应该作的事情发在一边，看一看你应该作些什么吧。</p> <p>你可能在页面内嵌套如下的VTL声明：</p> <pre><code>&lt;html&gt; &lt;body&gt; Hello $customer.Name! &lt;table&gt; #foreach( $mud in $nudsOnSpecial ) #if ( $customer.hasPurchased( $mud ) ) &lt;tr&gt;&lt;td&gt;$flogger.getPromo( $mud )&lt;/td&gt;&lt;/tr&gt; #end #end &lt;/table&gt; </code></pre> <h2>Velocity Template Language(VTL)</h2> <p>VTL意味着提供最简单、最容易并且最整洁的方式合并页面动态内容。</p> <h2>语法</h2> <h3>references and... -->
-        <!-- <h2>什么是Velocity</h2>
-
-<p>Velocity是一个基于java的模板引擎（template engine）。它允许任何人仅仅简单的使用模板语言（template language）来引用由java代码定义的对象。</p>
-
-<p>当Velocity应用于web开发时，界面设计人员可以和java程序开发人员同步开发一个遵循MVC架构的web站点，也就是说，页面设计人员可以只关注页面的显示效果，而由java程序开发人员关注业务逻辑编码。Velocity将java代码从web页面中分离出来，这样为web站点的长期维护提供了便利，同时也为我们在JSP和PHP之外又提供了一种可选的方案。</p>
-
-<p>Velocity的能力远不止web站点开发这个领域，例如，它可以从模板（template）产生SQL和PostScript、XML，它也可以被当作一个独立工具来产生源代码和报告，或者作为其他系统的集成组件使用。Velocity也可以为Turbine web开发架构提供模板服务（template service）。Velocity+Turbine提供一个模板服务的方式允许一个web应用以一个真正的MVC模型进行开发。</p>
-
-<h2>Velocity能为我们作什么？</h2>
-
-<h3>The Mud Store Example</h3>
-
-<p>假设你是一家专门出售Mud的在线商店的页面设计人员，让我们暂且称它为“在线MUD商店”。你们的业务很旺，客户下了各种类型和数量的mud订单。他们都是通过输入用户名和密码后才登陆到你的网站，登陆后就允许他们查看订单并购买更多的mud。现在，一种非常流行的mud正在打折销售。另外有一些客户规律性的购买另外一种也在打折但是不是很流行的Bright Red Mud，由于购买的人并不多所以它被安置在页面的边缘。所有用户的信息都是被跟踪并存放于数据库中的，所以某天有一个问题可能会冒出来：为什么不使用velocity来使用户更好的浏览他们感兴趣的商品呢？</p>
-
-<p>Velocity使得web页面的客户化工作非常容易。作为一个web site的设计人员，你希望每个用户登陆时都拥有自己的页面。</p>
-
-<p>你会见了一些公司内的软件工程师，你发现他们每个人都同意客户应该拥有具有个性化的信息。那让我们把软件工程师应该作的事情发在一边，看一看你应该作些什么吧。</p>
-
-<p>你可能在页面内嵌套如下的VTL声明：</p>
-
-<pre><code>&lt;html&gt; 
-&lt;body&gt; 
-    Hello $customer.Name! 
-&lt;table&gt; 
-#foreach( $mud in $nudsOnSpecial ) 
-    #if ( $customer.hasPurchased( $mud ) ) 
-        &lt;tr&gt;&lt;td&gt;$flogger.getPromo( $mud )&lt;/td&gt;&lt;/tr&gt; 
-    #end 
-#end 
-&lt;/table&gt; 
-</code></pre>
-
-<h2>Velocity Template Language(VTL)</h2>
-
-<p>VTL意味着提供最简单、最容易并且最整洁的方式合并页面动态内容。</p>
-
-<h2>语法</h2>
-
-<h3>references and directives overview</h3>
-
-<p>TL使用references来在web site内嵌套动态内容，一个变量就是一种类型的reference。变量是某种类型的refreence，它可以指向java代码中的定义，或者从当前页面内定义的VTL statement得到值。下面是一个VTL statement的例子，它可以被嵌套到HTML代码中：</p>
-
-<pre><code>#set ( $a = “Velocity” ) 
-</code></pre>
-
-<p>和所有的VTL statement一样，这个statement以<strong>＃</strong>字符开始并且包含一个指令（directive）：set。当一个在线用户请求你的页面时，Velocity Templating Engine将查询整个页面以便发现所有＃字符，然后确定哪些是VTL statement，哪些不需要VTL作任何事情。</p>
-
-<p>＃字符后紧跟一个directive：set时，这个set directive使用一个表达式（使用括号封闭）――一个方程式分配一个值给变量。变量被列在左边，而它的值被列在右边，最后他们之间使用＝号分割。</p>
-
-<p>在上面的例子中，变量是$a，而它的值是Velocity。和其他的references一样以$字符开始，而值总是以双引号封闭。Velocity中仅有String可以被赋值给变量。</p>
-
-<p>记住以下的规则：</p>
-
-<blockquote><p>使用$字符开始的references用于得到什么；使用#字符开始的directives用于作些什么。</p></blockquote>
-
-<p>一旦某个变量被分配了一个值，那么你就可以在HTML文件的任何地方引用它。在下面的例子中，一个值被分配给$foo变量，并在其后被引用。</p>
-
-<pre><code>&lt;html&gt; 
-&lt;body&gt; 
-#set ( $foo = “Velocity” ) 
-Hello $foo World! 
-&lt;/body&gt; 
-&lt;/html&gt; 
-</code></pre>
-
-<p>上面的实现结果是在页面上打印“Hello Velocity World！”</p>
-
-<p>为了使包含VTL directives的statement更具有可读性，我们鼓励你在新行开始每个VTL statement，尽管你不是必须这么作。Set directive将在后面详细描述。</p>
-
-<h3>注释</h3>
-
-<p>单行注释：</p>
-
-<pre><code> ## This is a single line comment. 
-</code></pre>
-
-<p>多行注释：</p>
-
-<pre><code>#* 
-    Thus begins a multi-line comment. Online visitors won’t 
-    see this text because the Velocity Templating Engine will 
-    ignore it. 
-*# 
-</code></pre>
-
-<p>文档格式：</p>
-
-<pre><code>#** 
-    This is a VTL comment block and 
-    may be used to store such information 
-    as the document author and versioning 
-    information: 
-    @version 5 
-    @author 
-*# 
-</code></pre>
-
-<h3>References</h3>
-
-<p>在VTL中有三种类型的references：</p>
-
-<ul>
-<li>变量(variables)</li>
-<li>属性(properties)</li>
-<li>方法(methods)</li>
-</ul>
-
-
-<p>作为一个使用VTL的页面设计者，你和你的工程师必须就references的名称达成共识，以便你可以在你的template中使用它们。</p>
-
-<blockquote><p>Everything coming to and from a reference被作为一个String对象处理。如果有一个对象$foo是一个Integer对象，那么Velocity将调用它的toString()方法将这个对象转型为String类型。</p></blockquote>
-
-<ul>
-<li><p>变量</p>
-
-<p>要格式求同Java</p></li>
-<li><p>属性</p>
-
-<p>例子：</p>
-
-<pre><code>$customer.Address 
-$purchase.Total 
-</code></pre>
-
-<p>$customer.Address有两种含义。它可以表示：查找hashtable对象customer中以Address为关键字的值；也可以表示调用customer对象的getAddress()方法。当你的页面被请求时，Velocity将确定以上两种方式选用那种，然后返回适当的值。
-方法</p></li>
-<li><p>方法</p>
-
-<p>一个方法就是被定义在java中的一段代码，并且它有完成某些有用工作的能力，例如一个执行计算和判断条件是否成立、满足等。方法是一个由$开始并跟随VTL标识符组成的References，一般还包括一个VTL方法体。例如：</p>
-
-<pre><code> $customer.getAddress() 
- $purchase.getTotal() 
- $page.setTitle( “My Home Page” ) 
- $person.setAttributes( [“Strange”, “Weird”, “Excited”] ) 
-</code></pre></li>
-</ul>
-
-
-<p>前两个例子$customer.getAddress()和$purchase.getTotal()看起来挺想上面的属性$customer.Address 和 $purchase.Total。如果你觉得他们之间有某种联系的话，那你是正确的。</p>
-
-<p>VTL属性可以作为VTL方法的缩写。$customer.Address属性和使用$customer.getAddress()方法具有相同的效果。如果可能的话使用属性的方式是比较合理的。属性和方法的不同点在于你能够给一个方法指定一个参数列表。</p>
-
-<h4>正式reference标记</h4>
-
-<p>reference的正是格式如下：</p>
-
-<ul>
-<li>${mudSlinger}        变量</li>
-<li>${customer.Address}    属性</li>
-<li>${purchase.getTotal()}    方法</li>
-</ul>
-
-
-<p>非正是格式更见常用，但是有时还是使用正是格式比较适合。例如：你希望通过一个变量$vice来动态的组织一个字符串。</p>
-
-<pre><code>Jack is a $vicemaniac. 
-</code></pre>
-
-<p>本来变量是$vice现在却变成了$vicemaniac，这样Veloctiy就不知道您到底要什么了。所以，应该使用正是格式书写</p>
-
-<pre><code>Jack is a ${vice}maniac 
-</code></pre>
-
-<p>现在Velocity知道变量是$vice而不是$vicemaniac。</p>
-
-<h4>Quiet reference notation</h4>
-
-<p>例如：</p>
-
-<pre><code>&lt;input type=”text” name=”email” value=”$email” /&gt; 
-</code></pre>
-
-<p>当页面的form被初始加载时，变量$email还没有值，这时你肯定是希望它能够显示一个blank text来代替输出”$email”这样的字段。那么使用quiet reference notation就比较合适。</p>
-
-<pre><code>&lt;input type=”text” name=”email” value=”$!email”/&gt; 
-</code></pre>
-
-<p>这样文本框的初始值就不会是email而是空值了。</p>
-
-<p>正式和quiet格式的reference notation也可一同使用，像下面这样：</p>
-
-<pre><code>&lt;input type=”text” name=”email” value=”$!{email}”/&gt; 
-</code></pre>
-
-<h3>Getting literal</h3>
-
-<p>Velocity使用特殊字符$和#来帮助它工作，所以如果要在template里使用这些特殊字符要格外小心。本节将讨论$字符。</p>
-
-<h4>货币字符</h4>
-
-<p>在VTL中使用$2.5这样的货币标识是没有问题得的，VTL不会将它错认为是一个reference，因为VTL中的reference总是以一个大写或者小写的字母开始。</p>
-
-<h4>Escaping valid VTL reference</h4>
-
-<p>VTL中使用“\”作为逃逸符。例如：</p>
-
-<pre><code>#set( $email = “foo” ) 
-$email 
-\$email 
-\\$email 
-\\\$email 
-</code></pre>
-
-<p>将render为：</p>
-
-<pre><code>foo 
-$email 
-\foo 
-\\$email
-</code></pre>
-
-<p>如果email变量没有被定义则</p>
-
-<pre><code>$email 
-\$email 
-\\$email 
-\\\$email
-</code></pre>
-
-<p>将被render为：</p>
-
-<pre><code>$email 
-\$email 
-\\$email 
-\\\$email 
-</code></pre>
-
-<p>注意：VTL中未被定义的变量将被认为是一个字符串，所以以下例子：</p>
-
-<pre><code>#set( $foo = “gibbous” ) 
-$moon = $foo 
-</code></pre>
-
-<p>的输出结果是：</p>
-
-<pre><code>$moon = gibbous 
-</code></pre>
-
-<h3>Case substitution</h3>
-
-<p>现在你已经对reference比较熟悉了，你可以将他们高效的应用于你的template了。Velocity利用了很多java规范以方便了设计人员的使用。例如：</p>
-
-<pre><code>$foo 
-$foo.getBar() 
-## is the same as 
-$foo.Bar 
-
-$data.getUser(“jon”) 
-## is the same as 
-$data.User(“jon”) 
-
-$data.getRequest().getServerName() 
-# is the same as 
-$data.Request.ServerName 
-## is the same as 
-${data.Request.ServerName} 
-</code></pre>
-
-<p><strong>???</strong> 但是，注意VTL中不会将reference解释为对象的实例变量。例如：
-$foo.Name将被解释为Foo对象的getName（）方法，而不是Foo对象的Name实例变量。</p>
-
-<h3>Directives</h3>
-
-<p>Reference允许设计者使用动态的内容，而directive使得你可以应用java代码来控制你的显示逻辑，从而达到你所期望的显示效果。</p>
-
-<h4>#set</h4>
-
-<p>#set directive被用于设置一个reference的值。例如：</p>
-
-<pre><code>#set ( $primate = “monkey” ) 
-#set ( $customer.Behavior = $primate ) 
-</code></pre>
-
-<p>赋值左侧的（LHS）必须是一个变量或者属性reference。右侧（RHS）可以是以下类型中一种：</p>
-
-<ul>
-<li>变量reference</li>
-<li>String literal</li>
-<li>属性reference</li>
-<li>方法reference</li>
-<li>number literal</li>
-<li>ArrayList</li>
-</ul>
-
-
-<p>下面是应用各种类型的RHS的例子：</p>
-
-<pre><code>＃set ( $monkey = $bill ) ##变量reference 
-＃set ( $monkey.Friend = “monica” ) ##String literal 
-＃set ( $monkey.Blame = $whitehouse.Leak )##属性reference 
-＃set ( $monkey.Plan = $spindoctor.weave($web) )##方法reference 
-＃set ( $monkey.Number = 123 )##Number literal 
-＃set ( $monkey.Say = [“Not”, $my, “fault”] )##ArrayList 
-</code></pre>
-
-<blockquote><p>注意：最后一个例子的取值方法为：$monkey.Say.get(0)</p></blockquote>
-
-<p>RHS也可以是一个简单的算术表达式：</p>
-
-<pre><code>#set ( $value = $foo + 1 ) 
-#set ( $value = $bar -1 ) 
-#set ( $value = $foo * $bar ) 
-#set ( $value = $foo / $bar ) 
-</code></pre>
-
-<p>如果你的RHS是一个null，VTL的处理将比较特殊：它将指向一个已经存在的reference，这对初学者来讲可能是比较费解的。例如：</p>
-
-<pre><code>#set ( $resut = $query.criteria(“name”) ) 
-The result of the first query is $result 
-
-#set ( $resut = $query.criteria(“address”) ) 
-The result of the second query is $result 
-</code></pre>
-
-<p>如果$query.criteria(“name”)返回一个“bill”，而$query.criteria(“address”)返回的是null，则显示的结果如下：</p>
-
-<pre><code>The result of the first query is bill 
-The result of the first query is bill 
-</code></pre>
-
-<p>看看下面的例子：</p>
-
-<pre><code>#set( $criteria = ["name", "address"] ) 
-#foreach( $criterion in $criteria ) 
-    #set( $result = $query.criteria($criterion) ) 
-    #if( $result ) 
-        Query was successful 
-    #end 
-#end
-</code></pre>
-
-<p>在上面的例子中，程序将不能智能的根据$result的值决定查询是否成功。在$result被#set后（added to the context），它不能被设置回null（removed from the context）。打印的结果将显示两次查询结果都成功了，但是实际上有一个查询是失败的。
-为了解决以上问题我们可以通过预先定义的方式：</p>
-
-<pre><code>#set( $criteria = [“name”, “address”] ) 
-#foreach( $criterion in $criteria ) 
-    #set( $result = false ) 
-    #set( $result = $query.criteria( $criterion ) ) 
-    #if( $result ) 
-        Query was successful 
-    #end 
-#end 
-</code></pre>
-
-<h4>String Literals</h4>
-
-<p>当你使用#set directive，String literal封闭在一对双引号内。</p>
-
-<pre><code>#set ( $directoryRoot = “www” ) 
-#set ( $templateName = “index.vm” ) 
-#set ( $template = “$directoryRoot/$tempateName” ) 
-$template 
-</code></pre>
-
-<p>上面这段代码的输出结果为：www/index.vm</p>
-
-<p>但是，当string literal被封装在单引号内时，它将不被解析：</p>
-
-<pre><code>#set ( $foo = “bar” ) 
-$foo 
-#set ( $blargh = ‘$foo’ ) 
-</code></pre>
-
-<p>结果：</p>
-
-<pre><code>bar 
-$foo 
-</code></pre>
-
-<p>上面这个特性可以通过修改velocity.properties文件的stringliterals.interpolate = false的值来改变上面的特性是否有效。</p>
-
-<h3>条件语句</h3>
-
-<h4>if/elseif/else</h4>
-
-<p>当一个web页面被生成时使用Velocity的#if directrive，如果条件成立的话可以在页面内嵌入文字。例如：</p>
-
-<pre><code>#if ( $foo ) 
-  &lt;strong&gt;Velocity!&lt;/strong&gt; 
-#end 
-</code></pre>
-
-<p>上例中的条件语句将在以下两种条件下成立：</p>
-
-<ul>
-<li>$foo是一个boolean型的变量，且它的值为true</li>
-<li>$foo变量的值不为null</li>
-</ul>
-
-
-<p>这里需要注意一点：Velocity context仅仅能够包含对象，所以当我们说“boolean”时实际上代表的时一个Boolean对象。即便某个方法返回的是一个boolean值，Velocity也会利用内省机制将它转换为一个Boolean的相同值。</p>
-
-<p>如果条件成立，那么#if和#end之间的内容将被显示。</p>
-
-<p>#elseif和#else元素可以同#if一同使用。例如：</p>
-
-<pre><code>#if( $foo &lt; 10 ) 
-  &lt;strong&gt; Go North &lt;/strong&gt; 
-#elseif( $foo == 10 ) 
-  &lt;strong&gt; Go East &lt;/strong&gt; 
-#elseif( $foo == 6 ) 
-  &lt;strong&gt; Go South &lt;/strong&gt; 
-#else 
-  &lt;strong&gt; Go West &lt;/strong&gt; 
-#end
-</code></pre>
-
-<p>注意这里的Velocity的数字是作为Integer来比较的――其他类型的对象将使得条件为false，但是与java不同它使用“＝＝”来比较两个值，而且<strong>velocity要求等号两边的值类型相同</strong>。</p>
-
-<h4>关系、逻辑运算符</h4>
-
-<p>Velocity中使用等号操作符判断两个变量的关系。例如：</p>
-
-<pre><code>#set ( $foo = “deoxyribonucleic acid” ) 
-#set ( $bar = “ribonucleic acid” ) 
-#if ( $foo == $foo ) 
-  In this case it’s clear they aren’t equivalent.So… 
-#else 
-  They are not equivalent and this will be the output. 
-#end 
-</code></pre>
-
-<p>Velocity有AND、OR和NOT逻辑运算符。下面是一些例子：</p>
-
-<pre><code>## logical AND 
-#if( $foo &amp;&amp; $bar ) 
-  &lt;strong&gt; This AND that &lt;/strong&gt; 
-#end 
-
-## logical OR 
-#if ( $foo || $bar ) 
-  &lt;strong&gt;This OR That &lt;/strong&gt; 
-#end 
-
-##logical NOT 
-#if ( !$foo ) 
-  &lt;strong&gt; NOT that &lt;/strong&gt; 
-#end 
-</code></pre>
-
-<h3>循环</h3>
-
-<h4>Foreach循环</h4>
-
-<p>例子：</p>
-
-<pre><code>&lt;ul&gt; 
-  #foreach ( $product in $allProducts ) 
-    &lt;li&gt; $product &lt;/li&gt; 
-  #end 
-&lt;/ul&gt; 
-</code></pre>
-
-<p>每次循环$allProducts中的一个值都会赋给$product变量。
-$allProducts可以是一个Vector、Hashtable或者Array。分配给$product的值是一个java对象，并且可以通过变量被引用。例如：如果$product是一个java的Product类，并且这个产品的名字可以通过调用他的getName（）方法得到。</p>
-
-<p>现在我们假设$allProducts是一个Hashtable，如果你希望得到它的key应该像下面这样：</p>
-
-<pre><code>&lt;ul&gt; 
-#foreach ( $key in $allProducts.keySet() ) 
-&lt;li&gt;Key: $key -&gt; Value: $allProducts.get($key) &lt;/li&gt; 
-#end 
-&lt;/ul&gt; 
-</code></pre>
-
-<p>Velocity还特别提供了得到循环次数的方法，以便你可以像下面这样作：</p>
-
-<pre><code>&lt;table&gt; 
-#foreach ( $customer in $customerList ) 
-&lt;tr&gt;&lt;td&gt;$velocityCount&lt;/td&gt;&lt;td&gt;$customer.Name&lt;/td&gt;&lt;/tr&gt; 
-#end 
-&lt;/table&gt; 
-</code></pre>
-
-<p>$velocityCount变量的名字是Velocity默认的名字，你也可以通过修改velocity.properties文件来改变它。默认情况下，计数从“1”开始，但是你可以在velocity.properties设置它是从“1”还是从“0”开始。下面就是文件中的配置：</p>
-
-<pre><code># Default name of loop counter 
-# variable reference 
-directive.foreach.counter.name = velocityCount 
-
-# Default starting value of the loop 
-# counter variable reference 
-directive.foreach.counter.initial.value = 1 
-</code></pre>
-
-<h3>Include</h3>
-
-<p>#include script element允许模板设计者引入本地文件。被引入文件的内容将不会通过模板引擎被render。为了安全的原因，被引入的本地文件只能在TEMPLATE_ROOT目录下。</p>
-
-<pre><code>#inclued ( “one.txt” ) 
-</code></pre>
-
-<p>如果您需要引入多个文件，可以用逗号分隔就行：</p>
-
-<pre><code>#include ( “one.gif”, “two.txt”, “three.htm” ) 
-</code></pre>
-
-<p>在括号内可以是文件名，但是更多的时候是使用变量的：</p>
-
-<pre><code>#inclue ( “greetings.txt”, $seasonalstock ) 
-</code></pre>
-
-<h3>Parse</h3>
-
-<p>#parse script element允许模板设计者一个包含VTL的本地文件。Velocity将解析其中的VTL并render模板。</p>
-
-<pre><code>#parse( “me.vm” ) 
-</code></pre>
-
-<p>就像#include，#parse接受一个变量而不是一个模板。任何由#parse指向的模板都必须包含在TEMPLATE_ROOT目录下。与#include不同的是，#parse只能指定单个对象。
-你可以通过修改velocity.properties文件的parse_direcive.maxdepth的值来控制一个template可以包含的最多#parse的个数――默认值是10。#parse是可以递归调用的，例如：如果dofoo.vm包含如下行：</p>
-
-<pre><code>Count down. 
-#set ( $count = 8 ) 
-#parse ( “parsefoo.vm” ) 
-All done with dofoo.vm! 
-</code></pre>
-
-<p>那么在parsefoo.vm模板中，你可以包含如下VTL：</p>
-
-<pre><code>$count 
-#set ( $count = $count – 1 ) 
-#if ( $count &gt; 0 ) 
-  #parse( “parsefoo.vm” ) 
-#else 
-  All done with parsefoo.vm! 
-#end 
-</code></pre>
-
-<p>的显示结果为：</p>
-
-<pre><code>Count down. 
-8 
-7 
-6 
-5 
-4 
-3 
-2 
-1 
-0    
-All done with parsefoo.vm! 
-All done with dofoo.vm! 
-</code></pre>
-
-<h3>Stop</h3>
-
-<p>#stop script element允许模板设计者停止执行模板引擎并返回。把它应用于debug是很有帮助的。</p>
-
-<pre><code>#stop 
-</code></pre>
-
-<h3>Velocimacros</h3>
-
-<p>#macro script element允许模板设计者定义一段可重用的VTL template。例如：</p>
-
-<pre><code>#macro ( d ) 
-    &lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt; 
-#end 
-</code></pre>
-
-<p>在上面的例子中Velocimacro被定义为d，然后你就可以在任何VTL directive中以如下方式调用它：</p>
-
-<pre><code>#d() 
-</code></pre>
-
-<p>当你的template被调用时，Velocity将用<tr><td></td></tr>替换为#d()。
-每个Velocimacro可以拥有任意数量的参数――甚至0个参数，虽然定义时可以随意设置参数数量，但是调用这个Velocimacro时必须指定正确的参数。下面是一个拥有两个参数的Velocimacro，一个参数是color另一个参数是array：</p>
-
-<pre><code>#macro ( tablerows $color $somelist ) 
-#foreach ( $something in $somelist ) 
-    &lt;tr&gt;&lt;td bgcolor=$color&gt;$something&lt;/td&lt;/tr&gt; 
-#end 
-#end 
-</code></pre>
-
-<p>调用#tablerows Velocimacro：</p>
-
-<pre><code>#set ( $greatlakes = [ “Superior”, “Michigan”, “Huron”, “Erie”, “Ontario” ] ) 
-#set ( $color = “blue” ) 
-&lt;table&gt; 
-    #tablerows( $color $greatlakes ) 
-&lt;/table&gt; 
-</code></pre>
-
-<p>经过以上的调用将产生如下的显示结果：</p>
-
-<pre><code>&lt;table&gt; 
-    &lt;tr&gt;&lt;td bgcolor=” blue”&gt; Superior &lt;/td&gt;&lt;/tr&gt; 
-    &lt;tr&gt;&lt;td bgcolor=” blue”&gt; Michigan &lt;/td&gt;&lt;/tr&gt; 
-    &lt;tr&gt;&lt;td bgcolor=” blue”&gt; Huron &lt;/td&gt;&lt;/tr&gt; 
-    &lt;tr&gt;&lt;td bgcolor=” blue”&gt; Erie &lt;/td&gt;&lt;/tr&gt; 
-    &lt;tr&gt;&lt;td bgcolor=” blue”&gt; Ontario &lt;/td&gt;&lt;/tr&gt; 
-&lt;/table&gt;
-</code></pre>
-
-<p>Velocimacros可以在Velocity模板内实现行内定义（inline），也就意味着同一个web site内的其他Velocity模板不可以获得Velocimacros的定义。定义一个可以被所有模板共享的Velocimacro显然是有很多好处的：它减少了在一大堆模板中重复定义的数量、节省了工作时间、减少了出错的几率、保证了单点修改。</p>
-
-<p>上面定义的#tablerows( $color $list )Velocimacro被定义在一个Velocimacros模板库(在velocity.properties中定义)里，所以这个macro可以在任何规范的模板中被调用。它可以被多次应用并且可以应用于不同的目的。例如下面的调用：</p>
-
-<pre><code>#set ( $parts = [ “volva”, “stipe”, “annulus”, “gills”, “pileus” ] ) 
-#set ( $cellbgcol = “#CC00FF” ) 
-&lt;table&gt; 
-    #tablerows( $cellbgcol $parts ) 
-&lt;/table&gt;
-</code></pre>
-
-<p>上面VTL将产生如下的输出：</p>
-
-<pre><code>&lt;table&gt; 
-  &lt;tr&gt;&lt;td bgcolor=”#CC00FF”&gt; volva &lt;/td&lt;/tr&gt; 
-  &lt;tr&gt;&lt;td bgcolor=”#CC00FF”&gt; stipe &lt;/td&lt;/tr&gt; 
-  &lt;tr&gt;&lt;td bgcolor=”#CC00FF”&gt; annulus &lt;/td&lt;/tr&gt; 
-  &lt;tr&gt;&lt;td bgcolor=”#CC00FF”&gt; gills &lt;/td&lt;/tr&gt; 
-  &lt;tr&gt;&lt;td bgcolor=”#CC00FF”&gt; pileus &lt;/td&lt;/tr&gt; 
-&lt;/table&gt; 
-</code></pre>
-
-<h4>Velocimacro arguments</h4>
-
-<p>Velocimacro可以使用以下任何元素作为参数：</p>
-
-<ul>
-<li>Reference：任何以$开头的reference</li>
-<li>String literal：</li>
-<li>Number literal：</li>
-<li>IntegerRange：[1….3]或者[$foo….$bar]</li>
-<li>对象数组：[“a”,”b”,”c”]</li>
-<li>boolean值：true、false</li>
-</ul>
-
-
-<p>当将一个reference作为参数传递给Velocimacro时，请注意reference作为参数时是以名字的形式传递的。这就意味着参数的值在每次Velocimacro内执行时才会被产生。这个特性使得你可以将一个方法调用作为参数传递给Velocimacro，而每次Velocimacro执行时都是通过这个方法调用产生不同的值来执行的。例如：</p>
-
-<pre><code>#macro ( callme $a ) 
-  $a $a $a 
-#end 
-#callme( $foo.bar() ) 
-</code></pre>
-
-<p>执行的结果是：reference $foo的bar（）方法被执行了三次。
-如果你不需要这样的特性可以通过以下方法：</p>
-
-<pre><code>#set ( $myval = $foo.bar() ) 
-#callme ( $myval ) 
-</code></pre>
-
-<h4>Velocimacro properties</h4>
-
-<p>Velocity.properties文件中的某几行能够使Velocimacros的实现更加灵活。注意更多的内容可以看Developer Guide。</p>
-
-<p>Velocity.properties文件中的velocimacro.libraary：一个以逗号分隔的模板库列表。默认情况下，velocity查找唯一的一个库：VM_global_library.vm。你可以通过配置这个属性来指定自己的模板库。</p>
-
-<p>Velocity.properties文件中的velocimacro.permissions.allow.inline属性：有两个可选的值true或者false，通过它可以确定Velocimacros是否可以被定义在regular template内。默认值是ture――允许设计者在他们自己的模板中定义Velocimacros。</p>
-
-<p>Velocity.properties文件中的velocimacro.permissions.allow.inline.replace.global属性有两个可选值true和false，这个属性允许使用者确定inline的Velocimacro定义是否可以替代全局Velocimacro定义（比如在velocimacro.library属性中指定的文件内定义的Velocimacro）。默认情况下，此值为false。这样就阻止本地Velocimacro定义覆盖全局定义。</p>
-
-<p>Velocity.properties文件中的velocimacro.permissions.allow.inline.local.scale属性也是有true和false两个可选值，默认是false。它的作用是用于确定你inline定义的Velocimacros是否仅仅在被定义的template内可见。换句话说，如果这个属性设置为true，一个inline定义的Velocimacros只能在定义它的template内使用。你可以使用此设置实现一个奇妙的VM敲门：a template can define a private implementation of the second VM that will be called by the first VM when invoked by that template. All other templates are unaffected。</p>
-
-<p>Velocity.properties文件中的velocimacro.context.localscope属性有true和false两个可选值，默认值为false。当设置为true时，任何在Velocimacro内通过#set()对context的修改被认为是针对此velocimacro的本地设置，而不会永久的影响内容。</p>
-
-<p>Velocity.properties文件中的velocimacro.library.autoreload属性控制Velocimacro库的自动加载。默认是false。当设置为ture时，对于一个Velocimacro的调用将自动检查原始库是否发生了变化，如果变化将重新加载它。这个属性使得你可以不用重新启动servlet容器而达到重新加载的效果，就像你使用regular模板一样。这个属性可以使用的前提就是resource loader缓存是off状态（file.resource.loader.cache = false）。注意这个属性实际上是针对开发而非产品的。</p>
-
-<p>Velocimacro Trivia
-Velocimacro必须被定义在他们被使用之前。也就是说，你的#macro()声明应该出现在使用Velocimacros之前。
-特别要注意的是，如果你试图#parse()一个包含#macro()的模板。因为#parse()发生在运行期，但是解析器在parsetiem决定一个看似VM元素的元素是否是一个VM元素，这样#parse()-ing一组VM声明将不按照预期的样子工作。为了得到预期的结果，只需要你简单的使用velocimacro.library使得Velocity在启动时加载你的VMs。</p>
- -->
-        <em class="post-date">Posted on 10 July 2012.</em>
-    </div>
-    
-    <div class="post-item">
-        <h2 class="post-title">
-            <a href="/blog/2012/06/23/javascript-test-for-my-girl.html">
-                JavaScript 测试题
-            </a>
-        </h2>
-        <!-- <p>以下题目均应用原生态JavaScript完成：</p> <ol> <li><p>新建一个空页面，用一段JS在页面加载完后生成如下要求的页面：</p> <ul> <li>body背景颜色设为深绿色</li> <li>插入一个h1，白色，粗体，内容为：“Welcome”</li> <li>插入一个div，设置class为content</li> <li>在div内插入一个图片，设置右浮动</li> <li>在div内插入一个p，设置class为content，白色，内容为：“hello world!”</li> </ul> </li> <li><p>为以下列表：</p></li> </ol> <div class="highlight"><pre><code class="html"> <span class="nt">&lt;ul&gt;</span> <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&#39;#&#39;</span> <span class="na">title=</span><span class="s">&#39;page1&#39;</span><span class="nt">&gt;</span>page1<span class="nt">&lt;/a&gt;&lt;/li&gt;</span> <span class="nt">&lt;ul&gt;</span> </code></pre> </div> <pre><code>通过复制元素，为该列表增加5个li元素，最后获得6个li，设置每个a的title和内容为“page+序号” </code></pre> <ol> <li><p>在题目2结果的html代码基础下完成：为列表添加点击事件，弹出内容为a的title（可能要用到简单的闭包）</p></li> <li><p>完成页面，页面至少包含以下特征：一个横向导航栏，导航栏主体为一个矩形，导航栏菜单项为若干颜色方块，颜色包括（c7c6c2，be9323，932027，d84e0f，d78f83，fa8c01，1087c1，013e74，817a68，59b79d，09deec，1a1f25）。实现功能，点击导航栏相应项，页面背景颜色变成菜单项颜色。（页面基本结构和样式用html/css完成）</p></li> <li><p>一个简单的注册页面。包含用户名，邮箱，密码，性别，注册按钮。页面样式不作要求。完成以下验证功能：</p> <ul> <li>点击注册按钮进行检查，相应项不满足要求则在改项目下面显示一句红色提醒语句（可用包含在html中，默认隐藏）</li> <li>所有项不能为空</li> <li>用户名，长度4～12</li> <li>邮箱应符合邮箱的格式<code>(/^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i)</code></li> <li>密码长度6～16,两个密码框内的密码必须一致</li> <li>性别不能未选</li> <li>提醒语句内容自定</li> </ul> </li> </ol>... -->
-        <!-- <p>以下题目均应用原生态JavaScript完成：</p>
-
-<ol>
-<li><p>新建一个空页面，用一段JS在页面加载完后生成如下要求的页面：</p>
-
-<ul>
-<li>body背景颜色设为深绿色</li>
-<li>插入一个h1，白色，粗体，内容为：“Welcome”</li>
-<li>插入一个div，设置class为content</li>
-<li>在div内插入一个图片，设置右浮动</li>
-<li>在div内插入一个p，设置class为content，白色，内容为：“hello world!”</li>
-</ul>
-</li>
-<li><p>为以下列表：</p></li>
-</ol>
-
-
-<div class="highlight"><pre><code class="html">     <span class="nt">&lt;ul&gt;</span>
-            <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&#39;#&#39;</span> <span class="na">title=</span><span class="s">&#39;page1&#39;</span><span class="nt">&gt;</span>page1<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-        <span class="nt">&lt;ul&gt;</span>
+			<!-- .col-left -->
+<div class="col-left">
+    <h1 style="display: none;">
+        I Want to Code with You.
+    </h1>
+    <div class="posts">
         
-</code></pre>
-</div>
-
-
-<pre><code>通过复制元素，为该列表增加5个li元素，最后获得6个li，设置每个a的title和内容为“page+序号”
-</code></pre>
-
-<ol>
-<li><p>在题目2结果的html代码基础下完成：为列表添加点击事件，弹出内容为a的title（可能要用到简单的闭包）</p></li>
-<li><p>完成页面，页面至少包含以下特征：一个横向导航栏，导航栏主体为一个矩形，导航栏菜单项为若干颜色方块，颜色包括（c7c6c2，be9323，932027，d84e0f，d78f83，fa8c01，1087c1，013e74，817a68，59b79d，09deec，1a1f25）。实现功能，点击导航栏相应项，页面背景颜色变成菜单项颜色。（页面基本结构和样式用html/css完成）</p></li>
-<li><p>一个简单的注册页面。包含用户名，邮箱，密码，性别，注册按钮。页面样式不作要求。完成以下验证功能：</p>
-
-<ul>
-<li>点击注册按钮进行检查，相应项不满足要求则在改项目下面显示一句红色提醒语句（可用包含在html中，默认隐藏）</li>
-<li>所有项不能为空</li>
-<li>用户名，长度4～12</li>
-<li>邮箱应符合邮箱的格式<code>(/^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i)</code></li>
-<li>密码长度6～16,两个密码框内的密码必须一致</li>
-<li>性别不能未选</li>
-<li>提醒语句内容自定</li>
-</ul>
-</li>
-</ol>
-
-
-<hr />
-
-<p><strong>题目提交说明：</strong></p>
-
-<ul>
-<li>形式：开卷</li>
-<li>时间：3小时</li>
-<li>命名规范：总文件夹名js-test-你的名字，子文件夹名js-test-题号</li>
-<li>要求： 缩进良好，较难处有适当注释说明</li>
-</ul>
-
- -->
-        <em class="post-date">Posted on 23 June 2012.</em>
+        <div class="posts-item">
+            <div class="posts-item-title">
+                <h2>
+                    <a href="/blog/2012/09/07/code-conventions-for-the-javascript-programming-language-translate.html">
+                        Code Conventions for the JavaScript Programming Language
+                    </a>
+                </h2>
+            </div>
+            <div class="posts-item-body">
+                <p>
+                    
+                        No preview.
+                    
+                </p>
+            </div>
+            <div class="posts-item-footer">
+                <em class="posts-item-footer-date">
+                    Posted on 07 September 2012.
+                </em>
+            </div>
+        </div>
+        
+        <div class="posts-item">
+            <div class="posts-item-title">
+                <h2>
+                    <a href="/blog/2012/09/03/high-perfomance-javascript-3.html">
+                        high performance JavaScript notes 3
+                    </a>
+                </h2>
+            </div>
+            <div class="posts-item-body">
+                <p>
+                    
+                        No preview.
+                    
+                </p>
+            </div>
+            <div class="posts-item-footer">
+                <em class="posts-item-footer-date">
+                    Posted on 03 September 2012.
+                </em>
+            </div>
+        </div>
+        
+        <div class="posts-item">
+            <div class="posts-item-title">
+                <h2>
+                    <a href="/blog/2012/08/19/high-perfomance-javascript-2.html">
+                        high performance JavaScript notes 2
+                    </a>
+                </h2>
+            </div>
+            <div class="posts-item-body">
+                <p>
+                    
+                        No preview.
+                    
+                </p>
+            </div>
+            <div class="posts-item-footer">
+                <em class="posts-item-footer-date">
+                    Posted on 19 August 2012.
+                </em>
+            </div>
+        </div>
+        
+        <div class="posts-item">
+            <div class="posts-item-title">
+                <h2>
+                    <a href="/blog/2012/08/18/debug-tools-for-the-evil-ie6.html">
+                        IE6相关开发与debug工具
+                    </a>
+                </h2>
+            </div>
+            <div class="posts-item-body">
+                <p>
+                    
+                        No preview.
+                    
+                </p>
+            </div>
+            <div class="posts-item-footer">
+                <em class="posts-item-footer-date">
+                    Posted on 18 August 2012.
+                </em>
+            </div>
+        </div>
+        
+        <div class="posts-item">
+            <div class="posts-item-title">
+                <h2>
+                    <a href="/blog/2012/08/15/high-perfomance-javascript-1.html">
+                        high performance JavaScript notes 1
+                    </a>
+                </h2>
+            </div>
+            <div class="posts-item-body">
+                <p>
+                    
+                        No preview.
+                    
+                </p>
+            </div>
+            <div class="posts-item-footer">
+                <em class="posts-item-footer-date">
+                    Posted on 15 August 2012.
+                </em>
+            </div>
+        </div>
+        
+        <div class="posts-item">
+            <div class="posts-item-title">
+                <h2>
+                    <a href="/blog/2012/07/26/problems-of-front-end-1.html">
+                        problems of front end 1
+                    </a>
+                </h2>
+            </div>
+            <div class="posts-item-body">
+                <p>
+                    
+                        No preview.
+                    
+                </p>
+            </div>
+            <div class="posts-item-footer">
+                <em class="posts-item-footer-date">
+                    Posted on 26 July 2012.
+                </em>
+            </div>
+        </div>
+        
+        <div class="posts-item">
+            <div class="posts-item-title">
+                <h2>
+                    <a href="/blog/2012/07/10/template-markup-language-velocity.html">
+                        模板语言，Velocity
+                    </a>
+                </h2>
+            </div>
+            <div class="posts-item-body">
+                <p>
+                    
+                        No preview.
+                    
+                </p>
+            </div>
+            <div class="posts-item-footer">
+                <em class="posts-item-footer-date">
+                    Posted on 10 July 2012.
+                </em>
+            </div>
+        </div>
+        
+        <div class="posts-item">
+            <div class="posts-item-title">
+                <h2>
+                    <a href="/blog/2012/06/23/javascript-test-for-my-girl.html">
+                        JavaScript 测试题
+                    </a>
+                </h2>
+            </div>
+            <div class="posts-item-body">
+                <p>
+                    
+                        No preview.
+                    
+                </p>
+            </div>
+            <div class="posts-item-footer">
+                <em class="posts-item-footer-date">
+                    Posted on 23 June 2012.
+                </em>
+            </div>
+        </div>
+        
+        <div class="posts-item">
+            <div class="posts-item-title">
+                <h2>
+                    <a href="/blog/2012/06/02/using-regular-expression-to-implement-at-some-like-weibo.html">
+                        用正则表达式检测微博中的at人
+                    </a>
+                </h2>
+            </div>
+            <div class="posts-item-body">
+                <p>
+                    
+                        No preview.
+                    
+                </p>
+            </div>
+            <div class="posts-item-footer">
+                <em class="posts-item-footer-date">
+                    Posted on 02 June 2012.
+                </em>
+            </div>
+        </div>
+        
+        <div class="posts-item">
+            <div class="posts-item-title">
+                <h2>
+                    <a href="/blog/2012/06/02/javascript-the-definitive-guide-reading-notes-lexical-structure.html">
+                        JavaScript the Definitive Guide Reading notes Lexical Structure
+                    </a>
+                </h2>
+            </div>
+            <div class="posts-item-body">
+                <p>
+                    
+                        No preview.
+                    
+                </p>
+            </div>
+            <div class="posts-item-footer">
+                <em class="posts-item-footer-date">
+                    Posted on 02 June 2012.
+                </em>
+            </div>
+        </div>
+        
+        <div class="posts-item">
+            <div class="posts-item-title">
+                <h2>
+                    <a href="/blog/2012/06/02/build-a-web-chat-room-with-nodejs-and-socketio.html">
+                        Build a web chat room with Node.JS and Socket.IO
+                    </a>
+                </h2>
+            </div>
+            <div class="posts-item-body">
+                <p>
+                    
+                        No preview.
+                    
+                </p>
+            </div>
+            <div class="posts-item-footer">
+                <em class="posts-item-footer-date">
+                    Posted on 02 June 2012.
+                </em>
+            </div>
+        </div>
+        
+        <div class="posts-item">
+            <div class="posts-item-title">
+                <h2>
+                    <a href="/blog/2012/05/28/build-your-blog-with-github-pages-and-jekyll.html">
+                        Build your blog with github pages and jekyll
+                    </a>
+                </h2>
+            </div>
+            <div class="posts-item-body">
+                <p>
+                    
+                        No preview.
+                    
+                </p>
+            </div>
+            <div class="posts-item-footer">
+                <em class="posts-item-footer-date">
+                    Posted on 28 May 2012.
+                </em>
+            </div>
+        </div>
+        
+        <div class="posts-item">
+            <div class="posts-item-title">
+                <h2>
+                    <a href="/blog/2012/05/27/javascript-the-definitive-guide-introduction-to-javascript.html">
+                        JavaScript the Definitive Guide Reading Introduction to JavaScript
+                    </a>
+                </h2>
+            </div>
+            <div class="posts-item-body">
+                <p>
+                    
+                        No preview.
+                    
+                </p>
+            </div>
+            <div class="posts-item-footer">
+                <em class="posts-item-footer-date">
+                    Posted on 27 May 2012.
+                </em>
+            </div>
+        </div>
+        
+        <div class="posts-item">
+            <div class="posts-item-title">
+                <h2>
+                    <a href="/blog/2012/05/25/steps-to-make-app-in-node-with-express.html">
+                        Steps to make app in node with express
+                    </a>
+                </h2>
+            </div>
+            <div class="posts-item-body">
+                <p>
+                    
+                        No preview.
+                    
+                </p>
+            </div>
+            <div class="posts-item-footer">
+                <em class="posts-item-footer-date">
+                    Posted on 25 May 2012.
+                </em>
+            </div>
+        </div>
+        
+        <div class="posts-item">
+            <div class="posts-item-title">
+                <h2>
+                    <a href="/blog/2011/12/31/install-nodejs-in-ubuntu.html">
+                        Ubuntu 11.04 Node.js 配置
+                    </a>
+                </h2>
+            </div>
+            <div class="posts-item-body">
+                <p>
+                    
+                        No preview.
+                    
+                </p>
+            </div>
+            <div class="posts-item-footer">
+                <em class="posts-item-footer-date">
+                    Posted on 31 December 2011.
+                </em>
+            </div>
+        </div>
+        
+        <div class="posts-item">
+            <div class="posts-item-title">
+                <h2>
+                    <a href="/blog/2011/11/07/html5-game-notes-matching.html">
+                        html5游戏笔记 matching game
+                    </a>
+                </h2>
+            </div>
+            <div class="posts-item-body">
+                <p>
+                    
+                        No preview.
+                    
+                </p>
+            </div>
+            <div class="posts-item-footer">
+                <em class="posts-item-footer-date">
+                    Posted on 07 November 2011.
+                </em>
+            </div>
+        </div>
+        
+        <div class="posts-item">
+            <div class="posts-item-title">
+                <h2>
+                    <a href="/blog/2011/11/03/html5-game-notes-pingpong.html">
+                        html5游戏笔记 pingpong ball
+                    </a>
+                </h2>
+            </div>
+            <div class="posts-item-body">
+                <p>
+                    
+                        No preview.
+                    
+                </p>
+            </div>
+            <div class="posts-item-footer">
+                <em class="posts-item-footer-date">
+                    Posted on 03 November 2011.
+                </em>
+            </div>
+        </div>
+        
+        <div class="posts-item">
+            <div class="posts-item-title">
+                <h2>
+                    <a href="/blog/2011/10/19/network-config-in-archlinux.html">
+                        archlinux简单网络配置与命令
+                    </a>
+                </h2>
+            </div>
+            <div class="posts-item-body">
+                <p>
+                    
+                        No preview.
+                    
+                </p>
+            </div>
+            <div class="posts-item-footer">
+                <em class="posts-item-footer-date">
+                    Posted on 19 October 2011.
+                </em>
+            </div>
+        </div>
+        
+        <div class="posts-item">
+            <div class="posts-item-title">
+                <h2>
+                    <a href="/blog/2011/10/16/problems-installing-archlinux.html">
+                        Archlinux 安装配置问题
+                    </a>
+                </h2>
+            </div>
+            <div class="posts-item-body">
+                <p>
+                    
+                        No preview.
+                    
+                </p>
+            </div>
+            <div class="posts-item-footer">
+                <em class="posts-item-footer-date">
+                    Posted on 16 October 2011.
+                </em>
+            </div>
+        </div>
+        
+        <div class="posts-item">
+            <div class="posts-item-title">
+                <h2>
+                    <a href="/blog/2011/10/01/install-LAMP-environment-in-ubuntu-1104.html">
+                        Ubuntu 11.04 LAMP安装配置
+                    </a>
+                </h2>
+            </div>
+            <div class="posts-item-body">
+                <p>
+                    
+                        No preview.
+                    
+                </p>
+            </div>
+            <div class="posts-item-footer">
+                <em class="posts-item-footer-date">
+                    Posted on 01 October 2011.
+                </em>
+            </div>
+        </div>
+        
+        <div class="posts-item">
+            <div class="posts-item-title">
+                <h2>
+                    <a href="/blog/2011/01/01/markdown-style-preview.html">
+                        All Markdown Style
+                    </a>
+                </h2>
+            </div>
+            <div class="posts-item-body">
+                <p>
+                    
+                        Basic markdown style in this blog.
+                    
+                </p>
+            </div>
+            <div class="posts-item-footer">
+                <em class="posts-item-footer-date">
+                    Posted on 01 January 2011.
+                </em>
+            </div>
+        </div>
+        
     </div>
-    
-    <div class="post-item">
-        <h2 class="post-title">
-            <a href="/blog/2012/06/02/using-regular-expression-to-implement-at-some-like-weibo.html">
-                用正则表达式检测微博中的at人
-            </a>
-        </h2>
-        <!-- <pre><code>var msg = "@reelin @naiteluo 哈哈，六一儿童节快乐";
-var list = msg.match(/ *@([\u4e00-\u9fa5A-Za-z0-9_]*) ?/g);
-var msg = msg.replace(/ *@([\u4e00-\u9fa5A-Za-z0-9_]*) ?/g, '&lt;a href="#"&gt;$1&lt;/a&gt;');
-</code></pre>
- -->
-        <!-- <pre><code>var msg = "@reelin @naiteluo 哈哈，六一儿童节快乐";
-var list = msg.match(/ *@([\u4e00-\u9fa5A-Za-z0-9_]*) ?/g);
-var msg = msg.replace(/ *@([\u4e00-\u9fa5A-Za-z0-9_]*) ?/g, '&lt;a href="#"&gt;$1&lt;/a&gt;');
-</code></pre>
- -->
-        <em class="post-date">Posted on 02 June 2012.</em>
-    </div>
-    
-    <div class="post-item">
-        <h2 class="post-title">
-            <a href="/blog/2012/06/02/javascript-the-definitive-guide-reading-notes-lexical-structure.html">
-                JavaScript the Definitive Guide Reading notes Lexical Structure
-            </a>
-        </h2>
-        <!-- 
- -->
-        <!-- 
- -->
-        <em class="post-date">Posted on 02 June 2012.</em>
-    </div>
-    
-    <div class="post-item">
-        <h2 class="post-title">
-            <a href="/blog/2012/06/02/build-a-web-chat-room-with-nodejs-and-socketio.html">
-                Build a web chat room with Node.JS and Socket.IO
-            </a>
-        </h2>
-        <!-- <h2>应用描述</h2> <p><em>WebSocket</em> 作为HTML5的一个新特性，它的目的是为需要双向通信的基于浏览器的应用提供一个机制，不需要依靠建立多个HTTP连接即可实现双向通信。以前，web应用要在客户端和服务器建立双向连接的话，需要发送大量的http请求向服务器进行轮询，这导致了一些问题：</p> <ol> <li>为此，服务器需要为客户端使用多个的TCP连接；</li> <li>每个客户端给服务器端的请求都包含HTTP header，传输开销大；</li> <li>客户端编程复杂</li> </ol> <p>WebSocket是基于事件的，而Node.JS使用的则是事件驱动模型，直接使用javascript，代码编写更简单。另外，node.JS很高效，结合WebSocket，适合实时性要求很高的web应用，例如游戏，IM，监控程序等。</p> <p>我们的这次做的应用是使用Node.JS和Socket.IO实现的的Web聊天室，OnChat</p> <h2>开发环境及平台</h2> <p>开发环境： Mac OX X 10.7.3, Node.Js v0.6.11, npm v1.1.1<br/> 开发语言： JavaScript <br/> 开发框架： Express, Socket.IO <br/> 测试浏览器： Chrome 14+, Safari 5+</p> <h2>功能说明</h2> <p>主要实现功能： 登陆，即时聊天，类微博@人</p> <h3>应用界面</h3> <ul> <li><p>后台运行界面 <br/> <img src="https://github.com/naiteluo/Images/raw/master/snip/onchat1.png" alt="image" /></p></li> <li><p>程序前端界面 <br/> <img src="https://github.com/naiteluo/Images/raw/master/snip/onchat2.png" alt="image" /></p></li>... -->
-        <!-- <h2>应用描述</h2>
-
-<p><em>WebSocket</em> 作为HTML5的一个新特性，它的目的是为需要双向通信的基于浏览器的应用提供一个机制，不需要依靠建立多个HTTP连接即可实现双向通信。以前，web应用要在客户端和服务器建立双向连接的话，需要发送大量的http请求向服务器进行轮询，这导致了一些问题：</p>
-
-<ol>
-<li>为此，服务器需要为客户端使用多个的TCP连接；</li>
-<li>每个客户端给服务器端的请求都包含HTTP header，传输开销大；</li>
-<li>客户端编程复杂</li>
-</ol>
-
-
-<p>WebSocket是基于事件的，而Node.JS使用的则是事件驱动模型，直接使用javascript，代码编写更简单。另外，node.JS很高效，结合WebSocket，适合实时性要求很高的web应用，例如游戏，IM，监控程序等。</p>
-
-<p>我们的这次做的应用是使用Node.JS和Socket.IO实现的的Web聊天室，OnChat</p>
-
-<h2>开发环境及平台</h2>
-
-<p>开发环境： Mac OX X 10.7.3, Node.Js v0.6.11, npm v1.1.1<br/>
-开发语言： JavaScript <br/>
-开发框架： Express, Socket.IO <br/>
-测试浏览器： Chrome 14+, Safari 5+</p>
-
-<h2>功能说明</h2>
-
-<p>主要实现功能： 登陆，即时聊天，类微博@人</p>
-
-<h3>应用界面</h3>
-
-<ul>
-<li><p>后台运行界面  <br/>
-<img src="https://github.com/naiteluo/Images/raw/master/snip/onchat1.png" alt="image" /></p></li>
-<li><p>程序前端界面 <br/>
-<img src="https://github.com/naiteluo/Images/raw/master/snip/onchat2.png" alt="image" /></p></li>
-<li><p>登陆，及在线用户列表   <br/>
-<img src="https://github.com/naiteluo/Images/raw/master/snip/onchat3.png" alt="image" /></p></li>
-<li><p>聊天  <br/>
-<img src="https://github.com/naiteluo/Images/raw/master/snip/onchat4.png" alt="image" /></p></li>
-<li><p>at 人，私聊  <br/>
-<img src="https://github.com/naiteluo/Images/raw/master/snip/onchat5.png" alt="image" /></p></li>
-</ul>
-
-
-<h2>程序说明</h2>
-
-<h3>基本web框架</h3>
-
-<p>OnChat使用Expres框架作为基础搭建。用Express可以很快地搭建出一个包含健壮的路由、模板引擎等的轻量高效服务器，省去大量底层的工作，可以专注于应用的实现。主程序app.js主要添加一下部分以引入我们的聊天模块：</p>
-
-<pre><code>// Init chat room
-var chat = Chat(sio.listen(app));
-chat.start();
-</code></pre>
-
-<p>Socket.IO则是使用到的另一个重要的module。它封装了websocket的一些常用方法，还提供多浏览器支持。我们使用Socket.IO来实现websokcet的通信。聊天室封装成一个名为CR对象，一个CR对象包括一个Room。Room对象中有一个User的列表。每个User对象作为于Room的连接，处理每个Client对服务器的通信。代码在</p>
-
-<pre><code>./chat/index.js
-</code></pre>
-
-<p>由于同样使用JavaScript和Socket.IO，前端使用的js代码于后端基本类似。</p>
-
-<pre><code>./public/javascripts/chat.js
-</code></pre>
-
-<h3>文件目录</h3>
-
-<pre><code>.
-├── Procfile
-├── README.md
-├── app.js                    # 主程序
-├── chat                  # 聊天室模块
-│   └── index.js
-├── example
-│   ├── client.html
-│   └── server.js
-├── node_modules          # 其他依赖模块
-│   ├── express               # web 框架
-│   ├── jade
-│   └── socket.io         # websocket 框架
-├── npm-debug.log
-├── package.json          # npm 信息
-├── public                    # 公共文件
-│   ├── bootstrap
-│   ├── images
-│   ├── javascripts
-│   └── stylesheets
-├── routes                    # routes
-│   └── index.js
-└── views                 # 模板文件
-    ├── 404.jade
-    ├── index.jade
-    └── layout.jade
-</code></pre>
-
-<h3>安装使用说明</h3>
-
-<ol>
-<li>安装node.js 与 npm</li>
-<li><p>下载代码，进入项目根目录，使用npm进行依赖包下载，完成后运行</p>
-
-<pre><code>$ cd ./OnChat
-$ npm install
-$ node app.js
-</code></pre></li>
-<li><p>访问127.0.0.1:3000（使用chrome 14 + 或 safari 5 + 访问）</p></li>
-<li>安装配置有问题的，可以访问在线demo：<a href="http://onchat.herokuapp.com">OnChat on Heroku</a></li>
-</ol>
-
-
-<h2>缺点分析</h2>
-
-<p>一些缺点：</p>
-
-<ul>
-<li>Websocket只兼容版本较高的浏览器，当浏览器版本较低时，Socket.IO将转用传统的轮询方式</li>
-<li>没有用户注册，用户即时登陆</li>
-<li>只支持纯文本聊天</li>
-</ul>
-
-
-<p>计划修改与提高：</p>
-
-<ul>
-<li>增加微博绑定认证的注册机制</li>
-<li>增加表情</li>
-<li>增加画板</li>
-</ul>
-
-
-<h2>总结</h2>
-
-<p>这次项目过程中使用了websocket这个HTML5的新特性，在效率和速度上的优势在聊天室这个对实时性要求不是很苛刻的应用上没有特别地体现，但是有一个很明显的优势体现出来了，就是在代码编写上面变的很简单。用以往轮询的方法实现起来，代码逻辑会比较复杂。而不管是直接用websocket或者是socket.io，应用起来的逻辑都比较简单，一个是on，监听message，另一个是send，发送message。这样我们就可以很容易地讲User封装起来，代码更简洁易懂。另外，websocket还可以扩展出很多应用，例如一些实时交互的游戏，服务器监控等。</p>
- -->
-        <em class="post-date">Posted on 02 June 2012.</em>
-    </div>
-    
-    <div class="post-item">
-        <h2 class="post-title">
-            <a href="/blog/2012/05/28/build-your-blog-with-github-pages-and-jekyll.html">
-                Build your blog with github pages and jekyll
-            </a>
-        </h2>
-        <!-- <p>It is cool to have yout own blog. And it is really cool to have a blog built with github pages. Let learn about it together.</p> <h2>what I refer to</h2> <p>Fisrt i will follow the guide in <a href="http://help.github.com/pages">GitHub Pages help</a>. If you can easily read that guide, i strongly... -->
-        <!-- <p>It is cool to have yout own blog. And it is really cool to have a blog built with github pages. Let learn about it together.</p>
-
-<h2>what I refer to</h2>
-
-<p>Fisrt i will follow the guide in <a href="http://help.github.com/pages">GitHub Pages help</a>. If you can easily read that guide, i strongly recommend you to read it fisrt. I write this article as a reading note.
-Second, you need some basic knowledge about <a href="https://github.com/mojombo/jekyll/wiki/Usage">jekyll</a>.</p>
-
-<h2>What is GitHub Pages</h2>
-
-<p>It is a feature that allow you to publish content to web by pushing them to yout GitHub hosted repositories. Some people use it to make blog and some use Pages to create a project intro website. I am going to use it to make a personal Blog.</p>
-
-<h2>Steps</h2>
-
-<p>To be continued...</p>
- -->
-        <em class="post-date">Posted on 28 May 2012.</em>
-    </div>
-    
-    <div class="post-item">
-        <h2 class="post-title">
-            <a href="/blog/2012/05/27/javascript-the-definitive-guide-introduction-to-javascript.html">
-                JavaScript the Definitive Guide Reading Introduction to JavaScript
-            </a>
-        </h2>
-        <!-- <h2>Chapter 1, Introduction to JavaScript</h2> <blockquote><p>HTML to specify the content of web pages, css to specify the presentation of web pages, and JavaScript to specify the behavior of web pages.</p></blockquote> <p>High-level, dynamic, untyped interpreted(解释). Well-suited to object-oriented and functional programming styles.</p> <p>Minimal built-in API for working with text, arrays, dates,... -->
-        <!-- <h2>Chapter 1, Introduction to JavaScript</h2>
-
-<blockquote><p>HTML to specify the content of web pages, css to specify the presentation of web pages, and JavaScript to specify the behavior of web pages.</p></blockquote>
-
-<p>High-level, dynamic, untyped interpreted(解释). Well-suited to object-oriented and functional programming styles.</p>
-
-<p>Minimal built-in API for working with text, arrays, dates, and regular expressions but does not include any input or output functionality. I, O are the responsibility of the "host environment", usually web browser.</p>
-
-<h3>1.1 Core JavaScript</h3>
-
-<p>blablabla…</p>
-
-<p>JavaScript is object-oriented, but it is quite different than most. Here show how to create class to represent 2D geometric points.</p>
-
-<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span>     <span class="c1">// Define a construtor function to initialize a new Point object</span>
-<span class="lineno"> 2</span>  <span class="kd">function</span> <span class="nx">Point</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>      <span class="c1">// by convention, constructors start with capitals</span>
-<span class="lineno"> 3</span>      <span class="k">this</span><span class="p">.</span><span class="nx">x</span> <span class="o">=</span> <span class="nx">x</span><span class="p">;</span>             <span class="c1">// this keyword is the new object being init</span>
-<span class="lineno"> 4</span>      <span class="k">this</span><span class="p">.</span><span class="nx">y</span> <span class="o">=</span> <span class="nx">y</span><span class="p">;</span>             
-<span class="lineno"> 5</span>  <span class="p">}</span>                            <span class="c1">// no return is necessary</span>
-<span class="lineno"> 6</span> 
-<span class="lineno"> 7</span>  <span class="c1">// Use a constructor function with the keyword &quot;new&quot; to create instances</span>
-<span class="lineno"> 8</span>  <span class="kd">var</span> <span class="nx">p</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-<span class="lineno"> 9</span> 
-<span class="lineno">10</span>  <span class="c1">// Define methods for Point objects by assigning them to the prototype</span>
-<span class="lineno">11</span>  <span class="c1">// object associated with constructor function.</span>
-<span class="lineno">12</span>  <span class="nx">Point</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">r</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-<span class="lineno">13</span>      <span class="k">return</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sqrt</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">x</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">x</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">y</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">y</span><span class="p">);</span>
-<span class="lineno">14</span>  <span class="p">};</span>
-<span class="lineno">15</span> 
-<span class="lineno">16</span>  <span class="c1">// Now instances of Point object inherits the method r()</span>
-<span class="lineno">17</span>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">r</span><span class="p">());</span>
-<span class="lineno">18</span>  
-</code></pre>
 </div>
-
-
-<h3>1.2 Client-Side JavaScript</h3>
-
-<p>About web pages:</p>
-
-<ul>
-<li>JavaScript in Web Browser</li>
-<li>Scripting Documents</li>
-<li>Scripting CSS</li>
-<li><p>Handling Events</p>
-
-<p>(addEventListener or attachEvent ? Compatibility with IE?)</p></li>
-<li><p>The jQuery Library</p></li>
-</ul>
-
-
-<p>Focus on web applications:</p>
-
-<ul>
-<li>Scripted HTTP</li>
-<li>Client-Side Storage</li>
-<li>Scripted Media and Graphics</li>
-<li>HTML5 APIs, OS typed</li>
-</ul>
-
- -->
-        <em class="post-date">Posted on 27 May 2012.</em>
-    </div>
-    
-    <div class="post-item">
-        <h2 class="post-title">
-            <a href="/blog/2012/05/25/steps-to-make-app-in-node-with-express.html">
-                Steps to make app in node with express
-            </a>
-        </h2>
-        <!-- <h2>Preparation</h2> <p>安装配置好node.js和npm。</p> <h2>Steps</h2> <ol> <li><p>创建App文件夹，进入文件夹</p> <pre><code>mkdir guess cd guess </code></pre></li> <li><p>用npm下载express</p> <pre><code>npm install express </code></pre></li> <li><p>用Express初始化App，可能会警告文件夹非空，选择y继续</p> <pre><code>./node_module/express/bin/express . </code></pre></li> <li><p>文件目录如下：</p> <pre><code>. ├── app.js # 应用的入口，主文件 ├── node_modules # node 模块 │   └── express ├── package.json # 配置文件 ├── public # 公共文件，静态文件 │   ├── images # 图片 │   ├── javascripts #... -->
-        <!-- <h2>Preparation</h2>
-
-<p>安装配置好node.js和npm。</p>
-
-<h2>Steps</h2>
-
-<ol>
-<li><p>创建App文件夹，进入文件夹</p>
-
-<pre><code>mkdir guess
-cd guess
-</code></pre></li>
-<li><p>用npm下载express</p>
-
-<pre><code>npm install express
-</code></pre></li>
-<li><p>用Express初始化App，可能会警告文件夹非空，选择y继续</p>
-
-<pre><code>./node_module/express/bin/express .
-</code></pre></li>
-<li><p>文件目录如下：</p>
-
-<pre><code>.
-├── app.js                # 应用的入口，主文件
-├── node_modules      # node 模块
-│   └── express           
-├── package.json      # 配置文件
-├── public                # 公共文件，静态文件
-│   ├── images                # 图片
-│   ├── javascripts           # 前端js
-│   └── stylesheets           # 样式表
-├── routes                # 路由文件
-│   └── index.js
-└── views             # 模版
-    ├── index.jade
-    └── layout.jade
-</code></pre></li>
-<li><p>打开package.json文件，这个文件是npm用来获取app的信息和相关依赖module信息的，修改如下：</p></li>
-</ol>
-
-
-<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span>         <span class="p">{</span>
-<span class="lineno"> 2</span>          <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;guess&quot;</span>
-<span class="lineno"> 3</span>        <span class="p">,</span> <span class="s2">&quot;version&quot;</span><span class="o">:</span> <span class="s2">&quot;0.0.1&quot;</span>
-<span class="lineno"> 4</span>        <span class="p">,</span> <span class="s2">&quot;private&quot;</span><span class="o">:</span> <span class="kc">true</span>
-<span class="lineno"> 5</span>        <span class="p">,</span> <span class="s2">&quot;dependencies&quot;</span><span class="o">:</span> <span class="p">{</span>
-<span class="lineno"> 6</span>            <span class="s2">&quot;express&quot;</span><span class="o">:</span> <span class="s2">&quot;2.5.8&quot;</span>
-<span class="lineno"> 7</span>          <span class="p">,</span> <span class="s2">&quot;jade&quot;</span><span class="o">:</span> <span class="s2">&quot;&gt;= 0.0.1&quot;</span>
-<span class="lineno"> 8</span>          <span class="p">,</span> <span class="s2">&quot;socket.io&quot;</span> <span class="o">:</span> <span class="s2">&quot;&gt;= 0.0.1&quot;</span>
-<span class="lineno"> 9</span>        <span class="p">}</span>
-<span class="lineno">10</span>      <span class="p">}</span>
-<span class="lineno">11</span>      
-</code></pre>
-</div>
-
-
-<pre><code>我们添加了socket.io module，保存。再用npm来安装所有依赖的modules。
-
-    npm install
-</code></pre>
-
-<ol>
-<li>基本的配置已经完成了，接下来我们编辑./views/index.js</li>
-</ol>
-
-
-<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span>      <span class="cm">/*</span>
-<span class="lineno">2</span> <span class="cm">      * GET home page.</span>
-<span class="lineno">3</span> <span class="cm">      */</span>
-<span class="lineno">4</span>       
-<span class="lineno">5</span>       <span class="nx">exports</span><span class="p">.</span><span class="nx">index</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">){</span>
-<span class="lineno">6</span>         <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Guess&#39;</span> <span class="p">})</span>
-<span class="lineno">7</span>       <span class="p">};</span>
-<span class="lineno">8</span>       
-</code></pre>
-</div>
-
-
-<pre><code>将title修改成我们应用的名字：Guess。
-</code></pre>
-
-<ol>
-<li><p>接下来就可以运行程序了</p>
-
-<pre><code>node app.js
-Express server listening on port 3000 in development mode
-</code></pre>
-
-<p>在浏览器中访问：<a href="http://localhost:3000/">http://localhost:3000/</a> ，效果如下:</p>
-
-<blockquote><p><h1>Guess</h1>
-<p>Welcome to Guess</p></p></blockquote></li>
-</ol>
-
- -->
-        <em class="post-date">Posted on 25 May 2012.</em>
-    </div>
-    
-    <div class="post-item">
-        <h2 class="post-title">
-            <a href="/blog/2011/12/31/install-nodejs-in-ubuntu.html">
-                Ubuntu 11.04 Node.js 配置
-            </a>
-        </h2>
-        <!-- <p>实在是很折腾，冲着一个好的设计环境换回了windows7，但是感觉做开发的话还是linux下限值会比较小，于是用虚拟机，刚开始装回archlinux，发现vmware下装archlinux又是另外的折腾了，装不好gnome3，不能忍受难看的界面，另外也懒得折腾了，于是改装了ubuntu，10.10不太稳定，选择了10.04 lts。啥都不管了，直奔node的配置，找了篇国外的文章，一边操作一边翻译一下:</p>
-
-<p>由于直奔node而去，之前什么都没有配置过，所以可以直接按照一下来满足node.js的alias：</p>
-
-<pre><code>sudo apt-get install g++ curl libssl-dev apache2-utils
-</code></pre>
-
-<p>最简单的方法当然用git下载node的源码啦，先安装git</p>
-
-<pre><code>sudo apt-get install git-core
-git clone git://github.com/joyent/node.git
-</code></pre>
-
-<p>我这里直接在官网上下载了包：</p>
-
-<pre><code>tar -zxf node-v0.6.5.tar.gz
-cd node-v0.6.5
-./configure
-make
-sudo make install
-</code></pre>
-
-<p>接下来是npm，One Line Install</p>
-
-<pre><code>curl http://npmjs.org/install.sh | sh
-</code></pre>
-
-<p>作者还给喜欢很多行安装方法的人提供了方法，遇到如权限问题等，具体可以到<a href="http://npmjs.org">npm官网</a>上查看</p>
-
-<p>OK啦，又开始nodejs啦</p>
- -->
-        <!-- <p>实在是很折腾，冲着一个好的设计环境换回了windows7，但是感觉做开发的话还是linux下限值会比较小，于是用虚拟机，刚开始装回archlinux，发现vmware下装archlinux又是另外的折腾了，装不好gnome3，不能忍受难看的界面，另外也懒得折腾了，于是改装了ubuntu，10.10不太稳定，选择了10.04 lts。啥都不管了，直奔node的配置，找了篇国外的文章，一边操作一边翻译一下:</p>
-
-<p>由于直奔node而去，之前什么都没有配置过，所以可以直接按照一下来满足node.js的alias：</p>
-
-<pre><code>sudo apt-get install g++ curl libssl-dev apache2-utils
-</code></pre>
-
-<p>最简单的方法当然用git下载node的源码啦，先安装git</p>
-
-<pre><code>sudo apt-get install git-core
-git clone git://github.com/joyent/node.git
-</code></pre>
-
-<p>我这里直接在官网上下载了包：</p>
-
-<pre><code>tar -zxf node-v0.6.5.tar.gz
-cd node-v0.6.5
-./configure
-make
-sudo make install
-</code></pre>
-
-<p>接下来是npm，One Line Install</p>
-
-<pre><code>curl http://npmjs.org/install.sh | sh
-</code></pre>
-
-<p>作者还给喜欢很多行安装方法的人提供了方法，遇到如权限问题等，具体可以到<a href="http://npmjs.org">npm官网</a>上查看</p>
-
-<p>OK啦，又开始nodejs啦</p>
- -->
-        <em class="post-date">Posted on 31 December 2011.</em>
-    </div>
-    
-    <div class="post-item">
-        <h2 class="post-title">
-            <a href="/blog/2011/11/07/html5-game-notes-matching.html">
-                html5游戏笔记 matching game
-            </a>
-        </h2>
-        <!-- <p>我也不知道这个游戏的中文名叫什么，就是12张扑克，翻开两张如果不是一对就自动翻回来，一对的话就可以取走，最后所有牌都取走了游戏就结束。貌似挺无聊的游戏，不过不得不自愧设计功力之低，树上简单的几个css和几个图片，整个页面就变得很有质感和层次感。游戏主要通过CSS3来实现翻转，用javascript来改变DOM的类和整个游戏的逻辑。我觉得最主要吸收的精华是：用CSS3来实现页面元素的动画（效率是不是比cavans高？ 迟点再验证），用javascript控制逻辑。</p> <h2>CSS3实现元素动画</h2> <p>首先来看看CSS3的新的动画animation相关属性。 一开始还有点模糊，因为英文书上用了tween这个单词，查了一下单词的含义并仔细分析以下代码后，得知这动画的实现是利用transition属性来为transform属性的转化增加补间动画。有点绕，意思就是，本来transform属性的变化的是一个状态，是没有过程的，例如从一个位置translate到另一个位置，从一个角度rotate到另一个角度，一个跳跃式的变化。而transition的作用就是让这一切变得不那么突然，先看看CSS3 transition的W3C的解释</p> <blockquote><p>CSS transition allows property changes in CSS values to occur smoothly over a specified duration.</p></blockquote> <p>transition属性将瞬间的变化减慢，并附加指定的动画，它的用法如下：</p> <div class="highlight"><pre><code class="css"> <span class="c">/*</span> <span class="c"> * 值：应用属性名，可设为all，</span> <span class="c"> * 设置动画</span> <span class="c"> * 补间时长</span> <span class="c"> * 动画开始的延时</span> <span class="c"> */</span> <span class="nt">transition</span><span class="o">:</span> <span... -->
-        <!-- <p>我也不知道这个游戏的中文名叫什么，就是12张扑克，翻开两张如果不是一对就自动翻回来，一对的话就可以取走，最后所有牌都取走了游戏就结束。貌似挺无聊的游戏，不过不得不自愧设计功力之低，树上简单的几个css和几个图片，整个页面就变得很有质感和层次感。游戏主要通过CSS3来实现翻转，用javascript来改变DOM的类和整个游戏的逻辑。我觉得最主要吸收的精华是：用CSS3来实现页面元素的动画（效率是不是比cavans高？ 迟点再验证），用javascript控制逻辑。</p>
-
-<h2>CSS3实现元素动画</h2>
-
-<p>首先来看看CSS3的新的动画animation相关属性。 一开始还有点模糊，因为英文书上用了tween这个单词，查了一下单词的含义并仔细分析以下代码后，得知这动画的实现是利用transition属性来为transform属性的转化增加补间动画。有点绕，意思就是，本来transform属性的变化的是一个状态，是没有过程的，例如从一个位置translate到另一个位置，从一个角度rotate到另一个角度，一个跳跃式的变化。而transition的作用就是让这一切变得不那么突然，先看看CSS3 transition的W3C的解释</p>
-
-<blockquote><p>CSS transition allows property changes in CSS values to occur smoothly over a specified duration.</p></blockquote>
-
-<p>transition属性将瞬间的变化减慢，并附加指定的动画，它的用法如下：</p>
-
-<div class="highlight"><pre><code class="css">      
-    <span class="c">/*</span>
-<span class="c">     * 值：应用属性名，可设为all，</span>
-<span class="c">     *     设置动画</span>
-<span class="c">     *     补间时长</span>
-<span class="c">     *     动画开始的延时</span>
-<span class="c">     */</span>
-    <span class="nt">transition</span><span class="o">:</span> <span class="nt">property_name</span> <span class="nt">duration</span> <span class="nt">timing_function</span> <span class="nt">delay</span><span class="o">;</span>
-    <span class="c">/* 为所有变化都附加时长为1s的线性补间动画 */</span>
-    <span class="nt">transition</span><span class="o">:</span> <span class="nt">all</span> <span class="nt">1s</span> <span class="nt">linear</span><span class="o">;</span>
-    <span class="c">/* 为透明化增加0.3s的补间动画，并为背景颜色变化增加0.5s的补间动画 */</span>
-    <span class="nt">transition</span><span class="o">:</span> <span class="nt">opacity</span> <span class="nt">0</span><span class="nc">.3s</span><span class="o">,</span> <span class="nt">background-color</span> <span class="nt">o</span><span class="nc">.5s</span><span class="o">;</span>
-    
-</code></pre>
-</div>
-
-
-<p>transition属性的介绍大概到这里，附送一些参考链接：</p>
-
-<p>接着看看transform的用法，可能会跟以前接触到的CSS属性比较不一样，它所接受的值是函数：</p>
-
-<div class="highlight"><pre><code class="css">      
-    <span class="nt">transform</span><span class="o">:</span> <span class="nt">transform-function1</span> <span class="nt">transform-function2</span><span class="o">;</span>
-    <span class="c">/* 移动到(150px,150px)的位置上，并上下翻转180度 */</span>
-    <span class="nt">transform</span><span class="o">:</span> <span class="nt">translate</span><span class="o">(</span><span class="nt">150px</span><span class="o">,</span><span class="nt">150px</span><span class="o">)</span> <span class="nt">rotate3d</span><span class="o">(</span><span class="nt">1</span><span class="o">,</span><span class="nt">0</span><span class="o">,</span><span class="nt">0</span><span class="o">,</span><span class="nt">180deg</span><span class="o">);</span>
-    
-</code></pre>
-</div>
-
-
-<p>主要有2D和3D两种函数，3D与2D的基本相似，增加了Z轴。所以这里只简单介绍3D transfroms functions：</p>
-
-<p>旋转函数,其中的[x, y, z]是一个单位向量：</p>
-
-<div class="highlight"><pre><code class="css">                      
-    <span class="nt">rotate3d</span><span class="o">(</span><span class="nt">x</span><span class="o">,</span> <span class="nt">y</span><span class="o">,</span> <span class="nt">z</span><span class="o">,</span> <span class="nt">angle</span><span class="o">)</span>
-    <span class="c">/* equals to */</span>
-    <span class="nt">rotateX</span><span class="o">(</span><span class="nt">angle</span><span class="o">)</span>
-    <span class="nt">rotateY</span><span class="o">(</span><span class="nt">angle</span><span class="o">)</span>
-    <span class="nt">rotateZ</span><span class="o">(</span><span class="nt">angle</span><span class="o">)</span>
-    
-</code></pre>
-</div>
-
-
-<p>移动函数，其中(tx, ty, tz)为空间坐标值：</p>
-
-<div class="highlight"><pre><code class="css">  
-    <span class="nt">translate3d</span><span class="o">(</span><span class="nt">tx</span><span class="o">,</span> <span class="nt">ty</span><span class="o">,</span> <span class="nt">tz</span><span class="o">)</span>
-    <span class="c">/* equals to */</span>
-    <span class="nt">translateX</span><span class="o">(</span><span class="nt">tx</span><span class="o">)</span>
-    <span class="nt">translateY</span><span class="o">(</span><span class="nt">ty</span><span class="o">)</span>
-    <span class="nt">translateZ</span><span class="o">(</span><span class="nt">tz</span><span class="o">)</span>
-    
-</code></pre>
-</div>
-
-
-<p>缩放函数：</p>
-
-<div class="highlight"><pre><code class="css">              
-    <span class="nt">scale3d</span><span class="o">(</span><span class="nt">sx</span><span class="o">,</span> <span class="nt">sy</span><span class="o">,</span> <span class="nt">sz</span><span class="o">)</span>
-    <span class="c">/* equals to */</span>
-    <span class="nt">scaleX</span><span class="o">(</span><span class="nt">sx</span><span class="o">)</span>
-    <span class="nt">scaleY</span><span class="o">(</span><span class="nt">sy</span><span class="o">)</span>
-    <span class="nt">scaleZ</span><span class="o">(</span><span class="nt">sz</span><span class="o">)</span>
-    
-</code></pre>
-</div>
-
-
-<p>综上，就可以总结一下大概要设置哪些css类了</p>
-
-<div class="highlight"><pre><code class="css">      
-    <span class="nc">.card</span> <span class="p">{</span>
-        <span class="c">/* 卡牌的类，设置定位，设置所有动画0.3秒的补间 */</span>
-    <span class="p">}</span>
-    <span class="nc">.face</span> <span class="p">{</span>
-        <span class="c">/* 设置卡牌牌面的需要补间的动哈：透明度，变形，盒阴影，补间0.3秒 */</span>
-    <span class="p">}</span>
-    <span class="nc">.front</span> <span class="p">{</span>
-        <span class="c">/* 牌的正面的背景图，z-index高于.back */</span>
-    <span class="p">}</span>
-    <span class="nc">.back</span> <span class="p">{</span>
-        <span class="c">/* 牌底背景图，未设置background-position，</span>
-<span class="c">         * 后面会使用css spirit</span>
-<span class="c">         */</span>
-    <span class="p">}</span>
-    <span class="nc">.card</span><span class="nd">:hover</span> <span class="nc">.face</span><span class="o">,</span> <span class="nc">.card-flipped</span> <span class="nc">.face</span> <span class="p">{</span>
-        <span class="c">/* 设置盒阴影 */</span>
-    <span class="p">}</span>
-    <span class="nc">.card-flipped</span> <span class="nc">.front</span> <span class="p">{</span>
-        <span class="c">/* 旋转变换，设置z-index小于.back */</span>
-    <span class="p">}</span>
-    <span class="nc">.card-flipped</span> <span class="nc">.front</span> <span class="p">{</span>
-        <span class="c">/* 旋转变换 */</span>
-    <span class="p">}</span>
-    <span class="nc">.card-removed</span> <span class="p">{</span>
-        <span class="c">/* 设置淡去效果，并用于作为删除元素的标记 */</span>
-    <span class="p">}</span>
-    
-    <span class="c">/* cards&#39; css sprite */</span>
-    <span class="nc">.cardXX</span> <span class="p">{</span> <span class="k">background-position</span><span class="o">:</span> <span class="n">xpx</span> <span class="n">ypx</span> <span class="p">;}</span>
-    
-</code></pre>
-</div>
-
-
-<p>CSS3实现动画的部分好像讲得太多了，不过那是比较陌生的东西，所以看得比较细置，接下来简单记录以下游戏的逻辑：</p>
-
-<p>洗牌发牌，随机排列预定义的数组，并复制.card元素，通过根据index来作绝对定位，增加css类改变牌底背景坐标，用attr函数给我们自定义的data-pattern属性赋值，用于辨别牌型。最后给每张牌都绑定一个oncli，触发selecCard函数,selectCard先判断现在翻开的牌数：</p>
-
-<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span>         
-<span class="lineno"> 2</span>  <span class="c1">// flip the card and schedule the checking function</span>
-<span class="lineno"> 3</span>  <span class="kd">function</span> <span class="nx">selectCard</span><span class="p">()</span> <span class="p">{</span>
-<span class="lineno"> 4</span>      <span class="c1">// we do nothing if there are already two card flipped</span>
-<span class="lineno"> 5</span>      <span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.card-flipped&quot;</span><span class="p">).</span><span class="nx">size</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 6</span>          <span class="k">return</span><span class="p">;</span>
-<span class="lineno"> 7</span>      <span class="p">}</span>
-<span class="lineno"> 8</span>      <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;card-flipped&quot;</span><span class="p">);</span>
-<span class="lineno"> 9</span>      <span class="c1">// check the pattern of both flipped card 0.7s later</span>
-<span class="lineno">10</span>      <span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.card-flipped&quot;</span><span class="p">).</span><span class="nx">size</span><span class="p">()</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">11</span>          <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">checkPattern</span><span class="p">,</span> <span class="mi">300</span><span class="p">);</span>
-<span class="lineno">12</span>      <span class="p">}</span>
-<span class="lineno">13</span>  <span class="p">}</span>
-<span class="lineno">14</span>  
-</code></pre>
-</div>
-
-
-<p>对牌进行匹配判断，获取已翻开牌的data-pattern属性值来比较，同样的牌则对牌增加.card-removed作为标记，并在变换的补间动画后删除这两个标置了的牌；不匹配的话就将.card-filpped去掉.</p>
-
-<p>逻辑比较简单，不详细说了。</p>
- -->
-        <em class="post-date">Posted on 07 November 2011.</em>
-    </div>
-    
-    <div class="post-item">
-        <h2 class="post-title">
-            <a href="/blog/2011/11/03/html5-game-notes-pingpong.html">
-                html5游戏笔记 pingpong ball
-            </a>
-        </h2>
-        <!-- <p>下载了本《html5 Game Development by Example》的书，看着很有趣，一些游戏的实例，用来熟悉html5/css3配合javascript的新特性。记录一下写一下blog增加记忆。</p> <p><a href="http://mmnn-wordpress.stor.sinaapp.com/uploads/2011/11/1.png"><img class="size-medium wp-image-51" title="pingpong" src="http://mmnn-wordpress.stor.sinaapp.com/uploads/2011/11/1-284x300.png" alt="pingpong" width="284" height="300" /></a></p> <p>书的第一章简单地介绍了html5和css3的一些新特性；第二章的example是一个pingpong的游戏，就是左右各一块板，中间一个小球弹来弹去的游戏。这本书已经完全不考虑html之前的版本了，所以还会介绍html的一些新标签；基本不涉及到css3的内容；使用jquery做游戏开发的基本方法。游戏链接：<a title="Pingpong" href="http://mmnn.sinaapp.com/demos/pingpong/">Pingpong game demo</a></p> <p>html5使用了跟简单的文件声明,取代了原来那一串重来都只是被copy的复杂文件声明，html标签也只需加入一个lang的语言属性即可，制定字符集的meta也得到简化:这次使用了header和footer标签，以前用得很多的这两个id名终于修成正果升级成了正式的标签，加入这种标签提高了html的语义。</p> <p>这里还说到一个js代码插入的位置，以前一般习惯会在head标签内插入script，而建议的将code放到页面的靠后，也就是body的结束标签之前。因为浏览器解析html代码是从上到下的，如果把js代码放到前面，延缓了内容的加载。</p> <p>主要只有三个对象，两挡板和球，对其使用</p> <div class="highlight"><pre><code class="css"> <span class="nt">position</span><span class="nd">:absolute</span><span class="o">;</span> </code></pre> </div> <p>布局，再通过</p> <div class="highlight"><pre><code class="javascript"><span class="lineno">1</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#xxx&quot;</span><span class="p">).</span><span class="nx">css</span><span class="p">({</span><span class="s2">&quot;top&quot;</span><span class="o">:</span> <span class="nx">xx</span><span class="p">,</span> <span... -->
-        <!-- <p>下载了本《html5 Game Development by Example》的书，看着很有趣，一些游戏的实例，用来熟悉html5/css3配合javascript的新特性。记录一下写一下blog增加记忆。</p>
-
-<p><a href="http://mmnn-wordpress.stor.sinaapp.com/uploads/2011/11/1.png"><img class="size-medium wp-image-51" title="pingpong" src="http://mmnn-wordpress.stor.sinaapp.com/uploads/2011/11/1-284x300.png" alt="pingpong" width="284" height="300" /></a></p>
-
-<p>书的第一章简单地介绍了html5和css3的一些新特性；第二章的example是一个pingpong的游戏，就是左右各一块板，中间一个小球弹来弹去的游戏。这本书已经完全不考虑html之前的版本了，所以还会介绍html的一些新标签；基本不涉及到css3的内容；使用jquery做游戏开发的基本方法。游戏链接：<a title="Pingpong" href="http://mmnn.sinaapp.com/demos/pingpong/">Pingpong game demo</a></p>
-
-<p>html5使用了跟简单的文件声明,取代了原来那一串重来都只是被copy的复杂文件声明，html标签也只需加入一个lang的语言属性即可，制定字符集的meta也得到简化:这次使用了header和footer标签，以前用得很多的这两个id名终于修成正果升级成了正式的标签，加入这种标签提高了html的语义。</p>
-
-<p>这里还说到一个js代码插入的位置，以前一般习惯会在head标签内插入script，而建议的将code放到页面的靠后，也就是body的结束标签之前。因为浏览器解析html代码是从上到下的，如果把js代码放到前面，延缓了内容的加载。</p>
-
-<p>主要只有三个对象，两挡板和球，对其使用</p>
-
-<div class="highlight"><pre><code class="css">  <span class="nt">position</span><span class="nd">:absolute</span><span class="o">;</span>
-    
-</code></pre>
-</div>
-
-
-<p>布局，再通过</p>
-
-<div class="highlight"><pre><code class="javascript"><span class="lineno">1</span>  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#xxx&quot;</span><span class="p">).</span><span class="nx">css</span><span class="p">({</span><span class="s2">&quot;top&quot;</span><span class="o">:</span> <span class="nx">xx</span><span class="p">,</span> <span class="s2">&quot;left&quot;</span><span class="o">:</span> <span class="nx">yy</span><span class="p">});</span>
-<span class="lineno">2</span>   
-</code></pre>
-</div>
-
-
-<p>来改变球的位置,基本上就是用元素的top和left这两个css属性来作为x,y坐标，对三个对象进行操作。基本操作的方法就是这样，接下来要让东西动起来了。</p>
-
-<p>动起来就是让他们重复第进行位置改变，对于两挡板来说，位置的改变还需要按键的触发。设置一个interval，间隔为30ms，执行gameloop函数：</p>
-
-<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span>     <span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span> <span class="c1">// set interval to call gameloop every 20 milliseconds         pingpong.timer = setInterval(gameloop, 30); // mark down what key is down and up into an array called &quot;pressedKeys&quot; </span>
-<span class="lineno"> 2</span>      <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">keydown</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span> 
-<span class="lineno"> 3</span>          <span class="nx">pingpong</span><span class="p">.</span><span class="nx">pressedKeys</span><span class="p">[</span><span class="nx">e</span><span class="p">.</span><span class="nx">which</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span> 
-<span class="lineno"> 4</span>      <span class="p">});</span> 
-<span class="lineno"> 5</span>      <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">keyup</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span> 
-<span class="lineno"> 6</span>          <span class="nx">pingpong</span><span class="p">.</span><span class="nx">pressedKeys</span><span class="p">[</span><span class="nx">e</span><span class="p">.</span><span class="nx">which</span><span class="p">]</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span> 
-<span class="lineno"> 7</span>      <span class="p">});</span> 
-<span class="lineno"> 8</span>  <span class="p">});</span> 
-<span class="lineno"> 9</span>  <span class="kd">function</span> <span class="nx">gameloop</span><span class="p">()</span> <span class="p">{</span> 
-<span class="lineno">10</span>      <span class="nx">moveBall</span><span class="p">();</span> 
-<span class="lineno">11</span>      <span class="nx">movePaddles</span><span class="p">();</span> 
-<span class="lineno">12</span>  <span class="p">}</span>
-<span class="lineno">13</span>  
-</code></pre>
-</div>
-
-
-<p>其中，movePaddles()通过上面的keyup()获取键值，触发paddle的移动，最后只需要加上球的位置判断函数，根据位置来改变运动方向了。实例中没有考虑板的两端和背部对球的反弹，这里一并用一个inFiled()函数判断球的位置再根据板来判定反弹方向，</p>
-
-<div class="highlight"><pre><code class="javascript"><span class="lineno"> 1</span>     <span class="kd">function</span> <span class="nx">inField</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span> <span class="p">{</span> 
-<span class="lineno"> 2</span>      <span class="kd">var</span> <span class="nx">pXL</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;left&quot;</span><span class="p">));</span> 
-<span class="lineno"> 3</span>      <span class="kd">var</span> <span class="nx">pXR</span> <span class="o">=</span> <span class="nx">pXL</span> <span class="o">+</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;width&quot;</span><span class="p">));</span> 
-<span class="lineno"> 4</span>      <span class="kd">var</span> <span class="nx">pYT</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;top&quot;</span><span class="p">));</span> 
-<span class="lineno"> 5</span>      <span class="kd">var</span> <span class="nx">pYB</span> <span class="o">=</span> <span class="nx">pYT</span> <span class="o">+</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">));</span> 
-<span class="lineno"> 6</span>      <span class="kd">var</span> <span class="nx">bX</span> <span class="o">=</span> <span class="nx">pingpong</span><span class="p">.</span><span class="nx">ball</span><span class="p">.</span><span class="nx">x</span><span class="p">;</span> 
-<span class="lineno"> 7</span>      <span class="kd">var</span> <span class="nx">bY</span> <span class="o">=</span> <span class="nx">pingpong</span><span class="p">.</span><span class="nx">ball</span><span class="p">.</span><span class="nx">y</span><span class="p">;</span> 
-<span class="lineno"> 8</span>      <span class="kd">var</span> <span class="nx">bD</span> <span class="o">=</span> <span class="nx">pingpong</span><span class="p">.</span><span class="nx">ball</span><span class="p">.</span><span class="nx">d</span><span class="p">;</span> 
-<span class="lineno"> 9</span>      <span class="kd">var</span> <span class="nx">fX</span> <span class="o">=</span> <span class="nx">pingpong</span><span class="p">.</span><span class="nx">ball</span><span class="p">.</span><span class="nx">speed</span> <span class="o">*</span> <span class="nx">pingpong</span><span class="p">.</span><span class="nx">ball</span><span class="p">.</span><span class="nx">directionX</span><span class="p">;</span> 
-<span class="lineno">10</span>      <span class="kd">var</span> <span class="nx">fY</span> <span class="o">=</span> <span class="nx">pingpong</span><span class="p">.</span><span class="nx">ball</span><span class="p">.</span><span class="nx">speed</span> <span class="o">*</span> <span class="nx">pingpong</span><span class="p">.</span><span class="nx">ball</span><span class="p">.</span><span class="nx">directionY</span><span class="p">;</span> 
-<span class="lineno">11</span>          <span class="c1">// right field, return 1</span>
-<span class="lineno">12</span>      <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">&gt;=</span> <span class="nx">pXR</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">&gt;=</span> <span class="nx">pYT</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">&lt;=</span> <span class="nx">pYB</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">13</span>          <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">+</span> <span class="nx">fX</span> <span class="o">&lt;=</span> <span class="nx">pXR</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">14</span>              <span class="k">if</span> <span class="p">(</span><span class="nx">bY</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">+</span> <span class="nx">fY</span> <span class="o">&gt;=</span> <span class="nx">pYT</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">+</span> <span class="nx">fY</span> <span class="o">&lt;=</span> <span class="nx">pYB</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">15</span>                  <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
-<span class="lineno">16</span>              <span class="p">}</span>
-<span class="lineno">17</span>          <span class="p">}</span>
-<span class="lineno">18</span>      <span class="p">}</span>
-<span class="lineno">19</span>      <span class="c1">// left field, return 2</span>
-<span class="lineno">20</span>      <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">&lt;=</span> <span class="nx">pXL</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">&gt;=</span> <span class="nx">pYT</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">&lt;=</span> <span class="nx">pYB</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">21</span>          <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">+</span> <span class="nx">fX</span> <span class="o">&gt;=</span> <span class="nx">pXL</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">22</span>              <span class="k">if</span> <span class="p">(</span><span class="nx">bY</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">+</span> <span class="nx">fY</span> <span class="o">&gt;=</span> <span class="nx">pYT</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">+</span> <span class="nx">fY</span> <span class="o">&lt;=</span> <span class="nx">pYB</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">23</span>                  <span class="k">return</span> <span class="mi">2</span><span class="p">;</span>
-<span class="lineno">24</span>              <span class="p">}</span>
-<span class="lineno">25</span>          <span class="p">}</span>
-<span class="lineno">26</span>      <span class="p">}</span>
-<span class="lineno">27</span>      <span class="c1">// top field, return 3</span>
-<span class="lineno">28</span>      <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">&gt;=</span> <span class="nx">pXL</span> <span class="o">&amp;&amp;</span> <span class="nx">bX</span> <span class="o">&lt;=</span> <span class="nx">pXR</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">&lt;=</span> <span class="nx">pYT</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">29</span>          <span class="k">if</span> <span class="p">(</span><span class="nx">bY</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">+</span> <span class="nx">fY</span> <span class="o">&gt;=</span> <span class="nx">pYT</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">30</span>              <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">+</span> <span class="nx">fX</span> <span class="o">&gt;=</span> <span class="nx">pXL</span> <span class="o">&amp;&amp;</span> <span class="nx">bX</span> <span class="o">+</span> <span class="nx">fX</span> <span class="o">&lt;=</span> <span class="nx">pXR</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">31</span>                  <span class="k">return</span> <span class="mi">3</span><span class="p">;</span>
-<span class="lineno">32</span>              <span class="p">}</span>
-<span class="lineno">33</span>          <span class="p">}</span>
-<span class="lineno">34</span>      <span class="p">}</span>
-<span class="lineno">35</span>      <span class="c1">// bottom field, return 4</span>
-<span class="lineno">36</span>      <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">&gt;=</span> <span class="nx">pXL</span> <span class="o">&amp;&amp;</span> <span class="nx">bX</span> <span class="o">&lt;=</span> <span class="nx">pXR</span> <span class="o">&amp;&amp;</span> <span class="nx">bY</span> <span class="o">&gt;=</span> <span class="nx">pYB</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">37</span>          <span class="k">if</span> <span class="p">(</span><span class="nx">bY</span> <span class="o">+</span> <span class="nx">fY</span> <span class="o">&gt;=</span> <span class="nx">pYT</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">38</span>              <span class="k">if</span> <span class="p">(</span><span class="nx">bX</span> <span class="o">+</span> <span class="nx">bD</span> <span class="o">+</span> <span class="nx">fX</span> <span class="o">&gt;=</span> <span class="nx">pXL</span> <span class="o">&amp;&amp;</span> <span class="nx">bX</span> <span class="o">+</span> <span class="nx">fX</span> <span class="o">&lt;=</span> <span class="nx">pXR</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">39</span>                  <span class="k">return</span> <span class="mi">4</span><span class="p">;</span>
-<span class="lineno">40</span>              <span class="p">}</span>
-<span class="lineno">41</span>          <span class="p">}</span>
-<span class="lineno">42</span>      <span class="p">}</span>
-<span class="lineno">43</span>  <span class="p">}</span>
-<span class="lineno">44</span>  
-</code></pre>
-</div>
-
-
-<p>另外，有个作者介绍的小技巧，就是在调试程序的时候可以用如下的Grid图来作为背景，方便坐标的测定和调整：</p>
-
-<p><a href="http://mmnn-wordpress.stor.sinaapp.com/uploads/2011/11/pixel_grid.jpg"><img class="size-medium wp-image-55" title="pixel_grid" src="http://mmnn-wordpress.stor.sinaapp.com/uploads/2011/11/pixel_grid-300x300.jpg" alt="pixel_grid" width="300" height="300" /></a></p>
-
-<p>还可以利用chrome的developer工具中的js console对js进行调试.</p>
- -->
-        <em class="post-date">Posted on 03 November 2011.</em>
-    </div>
-    
-    <div class="post-item">
-        <h2 class="post-title">
-            <a href="/blog/2011/10/19/network-config-in-archlinux.html">
-                archlinux简单网络配置与命令
-            </a>
-        </h2>
-        <!-- <p>这里只是给出简单的网络配置和常用命令，备忘。详细的可查阅官方wiki上的： Configuring Network</p> <p>首先是/etc/rc.conf的配置，动态获取ip的只需要选择一个接口：</p> <pre><code>interface="eth0" address= netmask= gateway= </code></pre> <p>想要自定义dns，在/etc/dhcpcd.conf</p> <pre><code>nohook resolv.conf </code></pre> <p>并将自己的dns服务器加入/etc/resolv.conf中。</p> <pre><code>/* * 静态ip的还不太了解， * 挖个坑以后再填。 */ </code></pre> <p>重启nerwork daemon，启用配置:</p> <pre><code># /etc/rc.d/network restart </code></pre> <p>通过ping看是否已成功连接</p> <pre><code>$ ping -c 3 www.google.com </code></pre> <p>手动连接或断开网络接口：</p> <pre><code># ip link set up/down </code></pre> <p>接下来是无线网络设置与连接，需要先安装wireless_tools和取得哦给相关软件包madwifi:</p> <pre><code># pacman -S wireless_tools # pacman -S madwifi... -->
-        <!-- <p>这里只是给出简单的网络配置和常用命令，备忘。详细的可查阅官方wiki上的：
-Configuring Network</p>
-
-<p>首先是/etc/rc.conf的配置，动态获取ip的只需要选择一个接口：</p>
-
-<pre><code>interface="eth0"
-address=
-netmask=
-gateway=
-</code></pre>
-
-<p>想要自定义dns，在/etc/dhcpcd.conf</p>
-
-<pre><code>nohook resolv.conf
-</code></pre>
-
-<p>并将自己的dns服务器加入/etc/resolv.conf中。</p>
-
-<pre><code>/*
- * 静态ip的还不太了解，
- * 挖个坑以后再填。
- */
-</code></pre>
-
-<p>重启nerwork daemon，启用配置:</p>
-
-<pre><code># /etc/rc.d/network restart
-</code></pre>
-
-<p>通过ping看是否已成功连接</p>
-
-<pre><code>$ ping -c 3 www.google.com
-</code></pre>
-
-<p>手动连接或断开网络接口：</p>
-
-<pre><code># ip link set  up/down
-</code></pre>
-
-<p>接下来是无线网络设置与连接，需要先安装wireless_tools和取得哦给相关软件包madwifi:</p>
-
-<pre><code># pacman -S wireless_tools
-# pacman -S madwifi
-</code></pre>
-
-<p>确定接口和相应模块</p>
-
-<pre><code># lspci | grep -i net
-</code></pre>
-
-<p>确定此模块已经被载入。使用命令</p>
-
-<pre><code># lsmod | grep 
-</code></pre>
-
-<p>接下来可以开始连接了，确定驱动已经创建了可用的接口(wlanX, ethX, athX):</p>
-
-<pre><code># iwconfig
-</code></pre>
-
-<p>启用无线接口:</p>
-
-<pre><code># ip link set wlan0 up
-</code></pre>
-
-<p>搜索可用的接入点</p>
-
-<pre><code># iwlist wlan0 scan
-</code></pre>
-
-<p>以下是几种不同的wifi的接入：</p>
-
-<ul>
-<li><p>No encryption 无加密的</p>
-
-<pre><code># iwconfig wlan0 essid "MyEssid"
-</code></pre></li>
-<li><p>WEP</p>
-
-<pre><code># #hecadecimal key
-# iwconfig wlan0 essid "MyEssid" key 1234567890
-# #ASCII key
-# iwconfig wlan0 essid "MyEssid" key s:asciikey
-</code></pre></li>
-</ul>
-
-
-<p>确定是否连接到接入点：</p>
-
-<pre><code># iwconfig wlan0
-</code></pre>
-
-<p>动态分配IP</p>
-
-<pre><code># dhcpcd wlan0
-</code></pre>
-
-<p>当然，最简单的还是用网络管理器如：Wicd,NetworkManager.不过我在连接校园网的wifi时用networkmanager未果，故推荐wicd。</p>
- -->
-        <em class="post-date">Posted on 19 October 2011.</em>
-    </div>
-    
-    <div class="post-item">
-        <h2 class="post-title">
-            <a href="/blog/2011/10/16/problems-installing-archlinux.html">
-                Archlinux 安装配置问题
-            </a>
-        </h2>
-        <!-- <p>已经重装了6、7 archlinux了，每次都因为一些琐碎的问题无法解决而选择重装，这次静下心来读wiki，看帖子，总算把之前积累的问题大概都解决了。</p> <p>用的默认的network进行网络管理，开机启动特别慢，而且gnome启动后的networkmanager因为冲突而disabled。networkmanager是一个DAEMON,可以手动用/etc/rc.d/networkmanager start来启动它，更好地是将其加入/etc/rc.conf的DAEMON列表中，并将原来的network用’!'感叹号取消掉，即可。安装network-manager-applet后就能在gnome里显示图标方便使用。</p> <p>此后发现了一个很严重的问题，nerworkmanager连不上校园网，网上也很多说wifi无法连接的文章，与其自己修改到崩溃，不如早点换一个，就试用了wicd，目前尚且完美。安装：</p> <pre><code># pacman -S wicd # pacman -S wicd-gtk </code></pre> <p>开启前必须关闭所有网络的daemons,</p> <pre><code># rc.d stop network # rc.d stop dhcpcd # rc.d stop networkmanager </code></pre> <p>设置DAEMONS，依赖dbus，前面禁用其他网络管理软件：</p> <pre><code># vim /etc/rc.conf DAEMONS=(syslog-ng dbus !network !dhcdbd !networkmanager wicd ...) ~ ~ </code></pre> <p>后续工作咯</p> <p>ibus1.4安装完后无法显示输入法，google之网友们说是一个bug，修复方法如下：</p> <pre><code>sudo pacman -S abs sudo abs... -->
-        <!-- <p>已经重装了6、7 archlinux了，每次都因为一些琐碎的问题无法解决而选择重装，这次静下心来读wiki，看帖子，总算把之前积累的问题大概都解决了。</p>
-
-<p>用的默认的network进行网络管理，开机启动特别慢，而且gnome启动后的networkmanager因为冲突而disabled。networkmanager是一个DAEMON,可以手动用/etc/rc.d/networkmanager start来启动它，更好地是将其加入/etc/rc.conf的DAEMON列表中，并将原来的network用’!'感叹号取消掉，即可。安装network-manager-applet后就能在gnome里显示图标方便使用。</p>
-
-<p>此后发现了一个很严重的问题，nerworkmanager连不上校园网，网上也很多说wifi无法连接的文章，与其自己修改到崩溃，不如早点换一个，就试用了wicd，目前尚且完美。安装：</p>
-
-<pre><code># pacman -S wicd
-# pacman -S wicd-gtk
-</code></pre>
-
-<p>开启前必须关闭所有网络的daemons,</p>
-
-<pre><code># rc.d stop network
-# rc.d stop dhcpcd
-# rc.d stop networkmanager
-</code></pre>
-
-<p>设置DAEMONS，依赖dbus，前面禁用其他网络管理软件：</p>
-
-<pre><code># vim /etc/rc.conf
-DAEMONS=(syslog-ng dbus !network !dhcdbd !networkmanager wicd ...)
-~
-~
-</code></pre>
-
-<p>后续工作咯</p>
-
-<p>ibus1.4安装完后无法显示输入法，google之网友们说是一个bug，修复方法如下：</p>
-
-<pre><code>sudo pacman -S abs
-sudo abs community/ibus-sunpinyin
-mkdir ~/abs
-cp -r /var/abs/community/ibus-sunpinyin ~/abs
-cd ~/abs/ibus-sunpinyin
-makepkg -s
-sudo pacman -U ibus-sunpinyin-2.0.3-1-*.pkg.tar.xz
-</code></pre>
-
-<p>并在~/.profile文件中加入以下代码让其自启动：</p>
-
-<pre><code>export GTK_IM_MODULE=ibus
-export XMODIFIERS=@im=ibus
-export QT_IM_MODULE=ibus
-ibus-daemon -d -x
-</code></pre>
- -->
-        <em class="post-date">Posted on 16 October 2011.</em>
-    </div>
-    
-    <div class="post-item">
-        <h2 class="post-title">
-            <a href="/blog/2011/10/01/install-LAMP-environment-in-ubuntu-1104.html">
-                Ubuntu 11.04 LAMP安装配置
-            </a>
-        </h2>
-        <!-- <p>11.04是lts的版本，以后用ubuntu的话可以作为首选，这里纪录一下LAMP的配置方法。</p>
-
-<ol>
-<li><p>首先是安装LAMP，一个命令：</p>
-
-<pre><code>sudo apt-get install apache2 php5 libapache2-mod-php5 mysql-server libapache2-mod-auth-mysql php5-mysql phpmyadmin 
-</code></pre>
-
-<p>期间会要求你输入mysql数据库的root用户密码，选择服务器类型［apache］，phpMyAdmin的密码等。</p></li>
-<li><p>装完之后重启一下apache，命令：</p>
-
-<pre><code>sudo /etc/init.d/apache2 restart
-</code></pre></li>
-<li><p>把安装的phpmyadmin 链接过来，在/var/www/下用命令：</p>
-
-<pre><code>ln -s /usr/share/phpmyadmin phpmyadmin
-</code></pre></li>
-</ol>
-
- -->
-        <!-- <p>11.04是lts的版本，以后用ubuntu的话可以作为首选，这里纪录一下LAMP的配置方法。</p>
-
-<ol>
-<li><p>首先是安装LAMP，一个命令：</p>
-
-<pre><code>sudo apt-get install apache2 php5 libapache2-mod-php5 mysql-server libapache2-mod-auth-mysql php5-mysql phpmyadmin 
-</code></pre>
-
-<p>期间会要求你输入mysql数据库的root用户密码，选择服务器类型［apache］，phpMyAdmin的密码等。</p></li>
-<li><p>装完之后重启一下apache，命令：</p>
-
-<pre><code>sudo /etc/init.d/apache2 restart
-</code></pre></li>
-<li><p>把安装的phpmyadmin 链接过来，在/var/www/下用命令：</p>
-
-<pre><code>ln -s /usr/share/phpmyadmin phpmyadmin
-</code></pre></li>
-</ol>
-
- -->
-        <em class="post-date">Posted on 01 October 2011.</em>
-    </div>
+<!-- end of .col-left -->
+<!-- col-right -->
+<div class="col-right">
     
 </div>
+<!-- end of .col-left -->
 		</section>
 		<footer>
 			<p>Maintained by <a href="https://github.com/naiteluo">naiteluo</a></p>

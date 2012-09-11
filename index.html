@@ -3,18 +3,42 @@ layout: default
 title: I Want To Code With You
 ---
 
-<h1 style="display: none;">{{ page.title }}</h1>
-<div class="posts-list">
-    {% for post in site.posts %}
-    <div class="post-item">
-        <h2 class="post-title">
-            <a href="{{ post.url }}">
-                {{ post.title }}
-            </a>
-        </h2>
-        <!-- {{ post.content ｜ strip_html | truncatewords: 50 }} -->
-        <!-- {{ post.content }} -->
-        <em class="post-date">Posted on {{ post.date | date_to_long_string }}.</em>
+<!-- .col-left -->
+<div class="col-left">
+    <h1 style="display: none;">
+        I Want to Code with You.
+    </h1>
+    <div class="posts">
+        {% for post in site.posts %}
+        <div class="posts-item">
+            <div class="posts-item-title">
+                <h2>
+                    <a href="{{ post.url }}">
+                        {{ post.title }}
+                    </a>
+                </h2>
+            </div>
+            <div class="posts-item-body">
+                <p>
+                    {% if post.preview %}
+                        {{ post.preview }}
+                    {% else %}
+                        No preview.
+                    {% endif %}
+                </p>
+            </div>
+            <div class="posts-item-footer">
+                <em class="posts-item-footer-date">
+                    Posted on {{ post.date | date_to_long_string }}.
+                </em>
+            </div>
+        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 </div>
+<!-- end of .col-left -->
+<!-- col-right -->
+<div class="col-right">
+    
+</div>
+<!-- end of .col-left -->

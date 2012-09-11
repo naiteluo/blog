@@ -22,7 +22,13 @@
 						<a href="http://naiteluo.net">MMNN</a>
 					</li>
 					<li class="aboutme">
-						<a href="http://naiteluo.net">ABOUT ME</a>
+						<a href="#">ABOUT ME</a>
+					</li>
+					<li class="exam">
+						<a href="/exam.html">EXAM</a>
+						<span class="tip">
+							new!!
+						</span>
 					</li>
 				</ul>
 				<div class="view">
@@ -31,9 +37,10 @@
 			</div>
 		</header>
 		<section class="container">
-			<div class="post-content">
-    <h1>模板语言，Velocity</h1>
-    <h2>什么是Velocity</h2>
+			<div class="post">
+    <div class="post-content">
+        <h1>模板语言，Velocity</h1>
+        <h2>什么是Velocity</h2>
 
 <p>Velocity是一个基于java的模板引擎（template engine）。它允许任何人仅仅简单的使用模板语言（template language）来引用由java代码定义的对象。</p>
 
@@ -700,24 +707,14 @@ All done with dofoo.vm!
 Velocimacro必须被定义在他们被使用之前。也就是说，你的#macro()声明应该出现在使用Velocimacros之前。
 特别要注意的是，如果你试图#parse()一个包含#macro()的模板。因为#parse()发生在运行期，但是解析器在parsetiem决定一个看似VM元素的元素是否是一个VM元素，这样#parse()-ing一组VM声明将不按照预期的样子工作。为了得到预期的结果，只需要你简单的使用velocimacro.library使得Velocity在启动时加载你的VMs。</p>
 
-    <hr>
-    <p>尊重作者，所有原创文章，请注明出处。本站转载的文章请注明原文出处，谢谢！</p>
-    <em>Posted on 10 July 2012.</em> 
-</div>
-<div class="post-footer">
-    <a style="float:right" href="/blog/2012/07/10/template-markup-language-velocity.html#disqus_thread">
-        View Comments
-    </a>
-    <hr>
-    <div id="disqus_thread"></div>
-    <script src="http://disqus.com/forums/mmnn/embed.js"></script>
-    <!-- paginate -->
-    <!-- 
-        <a class="paging" id="prev" href="/blog/2012/06/23/javascript-test-for-my-girl.html">Prev</a>
-    
-    
-        <a class="paging" id="next" href="/blog/2012/07/26/problems-of-front-end-1.html">Next</a>
-     -->
+        <hr>
+        <p>尊重作者，所有原创文章，请注明出处。本站转载的文章请注明原文出处，谢谢！</p>
+        <em>Posted on 10 July 2012.</em> 
+    </div>
+    <div class="post-footer">
+        <div id="disqus_thread"></div>
+        <script src="http://disqus.com/forums/mmnn/embed.js"></script>
+    </div>
 </div>
 		</section>
 		<footer>

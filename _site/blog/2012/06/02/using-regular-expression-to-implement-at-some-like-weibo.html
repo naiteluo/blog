@@ -22,7 +22,13 @@
 						<a href="http://naiteluo.net">MMNN</a>
 					</li>
 					<li class="aboutme">
-						<a href="http://naiteluo.net">ABOUT ME</a>
+						<a href="#">ABOUT ME</a>
+					</li>
+					<li class="exam">
+						<a href="/exam.html">EXAM</a>
+						<span class="tip">
+							new!!
+						</span>
 					</li>
 				</ul>
 				<div class="view">
@@ -31,31 +37,22 @@
 			</div>
 		</header>
 		<section class="container">
-			<div class="post-content">
-    <h1>用正则表达式检测微博中的at人</h1>
-    <pre><code>var msg = "@reelin @naiteluo 哈哈，六一儿童节快乐";
+			<div class="post">
+    <div class="post-content">
+        <h1>用正则表达式检测微博中的at人</h1>
+        <pre><code>var msg = "@reelin @naiteluo 哈哈，六一儿童节快乐";
 var list = msg.match(/ *@([\u4e00-\u9fa5A-Za-z0-9_]*) ?/g);
 var msg = msg.replace(/ *@([\u4e00-\u9fa5A-Za-z0-9_]*) ?/g, '&lt;a href="#"&gt;$1&lt;/a&gt;');
 </code></pre>
 
-    <hr>
-    <p>尊重作者，所有原创文章，请注明出处。本站转载的文章请注明原文出处，谢谢！</p>
-    <em>Posted on 02 June 2012.</em> 
-</div>
-<div class="post-footer">
-    <a style="float:right" href="/blog/2012/06/02/using-regular-expression-to-implement-at-some-like-weibo.html#disqus_thread">
-        View Comments
-    </a>
-    <hr>
-    <div id="disqus_thread"></div>
-    <script src="http://disqus.com/forums/mmnn/embed.js"></script>
-    <!-- paginate -->
-    <!-- 
-        <a class="paging" id="prev" href="/blog/2012/06/02/javascript-the-definitive-guide-reading-notes-lexical-structure.html">Prev</a>
-    
-    
-        <a class="paging" id="next" href="/blog/2012/06/23/javascript-test-for-my-girl.html">Next</a>
-     -->
+        <hr>
+        <p>尊重作者，所有原创文章，请注明出处。本站转载的文章请注明原文出处，谢谢！</p>
+        <em>Posted on 02 June 2012.</em> 
+    </div>
+    <div class="post-footer">
+        <div id="disqus_thread"></div>
+        <script src="http://disqus.com/forums/mmnn/embed.js"></script>
+    </div>
 </div>
 		</section>
 		<footer>
