@@ -359,6 +359,181 @@ pre {
 </code></pre>
 
 <p>提示: <code>+new Date</code>可以很简单地获取到此刻的毫秒数。</p></li>
+<li><p>以下是对Element对象的扩展，理解代码并在问号处添加注释：</p>
+
+<pre><code>/**
+ *  淡出淡入
+ */
+
+(function (d) {
+
+    // ?? 
+    if (d.hide || d.show) {
+        throw new Error('methods already exist');
+    }
+
+    Element.prototype.hide = function (time) {
+        var element = this,
+            speed = (time) ? ((time &lt; 100) ? 5 : (time / 100)) : 5,
+            // ??
+            opacity = (+element.style.opacity) || 1;
+
+        // ??
+        if (element.animateTimer) {
+            clearTimeout(element.animateTimer);
+        }
+
+        // 递归函数
+        function step() {
+            if (opacity &lt;= 0) {
+                opacity = 0;
+                element.style.opacity = opacity;
+                element.style.display = 'none';
+                return;
+            } else {
+                opacity = opacity - 0.01;
+                element.style.opacity = opacity;
+                element.animateTimer = setTimeout(step, speed);
+            }   
+        }
+
+        // 开始执行
+        step();
+
+        // 链式调用
+        return this;
+    };
+
+    Element.prototype.show = function (time) {
+        var element = this,
+            speed = (time) ? ((time &lt; 100) ? 5 : (time / 100)) : 5,
+            opacity = (+element.style.opacity) || 0;
+
+        element.style.display = 'block';
+
+        // 清除正在进行的动画
+        if (element.animateTimer) {
+            clearTimeout(element.animateTimer);
+        }
+
+        function step() {
+            if (opacity &gt;= 1) {
+                opacity = 1;
+                element.style.opacity = opacity;
+                return;
+            } else {
+                opacity = opacity + 0.01;
+                element.style.opacity = opacity;
+                element.animateTimer = setTimeout(step, speed);
+            }       
+        }
+
+        step();
+
+        return this;
+    };
+
+}(document));
+</code></pre>
+
+<p>注释版：</p>
+
+<pre><code>/**
+ *  淡出淡入
+ *  使用方法：
+ *  document.getElementsByTagName(body)[0].hide(200);
+ *  document.getElementsByTagName(body)[0].show(500);
+ */
+
+(function (d) {
+
+    // 避免命名冲突
+    if (d.hide || d.show || d.stop) {
+        throw new Error('methods already exist');
+    }
+
+    // 添加方法到Element的原型
+    Element.prototype.hide = function (time) {
+        // 初始化
+        var element = this,
+            // 控制淡入淡出速度
+            speed = (time) ? ((time &lt; 100) ? 5 : (time / 100)) : 5,
+            // style的成员默认类型为String
+            opacity = (+element.style.opacity) || 1;
+
+        // 清除正在进行的动画
+        element.stop();
+
+        // 递归函数
+        function step() {
+            if (opacity &lt;= 0) {
+                opacity = 0;
+                element.style.opacity = opacity;
+                element.style.display = 'none';
+                console.log('Fade out finished!');
+                return;
+            } else {
+                opacity = opacity - 0.01;
+                element.style.opacity = opacity;
+                element.animateTimer = setTimeout(step, speed);
+            }   
+        }
+
+        // 开始执行
+        step();
+
+        // 允许链式调用
+        return this;
+    };
+
+    Element.prototype.show = function (time) {
+        var element = this,
+            speed = (time) ? ((time &lt; 100) ? 5 : (time / 100)) : 5,
+            opacity = (+element.style.opacity) || 0;
+
+        element.style.display = 'block';
+
+        // 清除正在进行的动画
+        element.stop();
+
+        function step() {
+            if (opacity &gt;= 1) {
+                opacity = 1;
+                element.style.opacity = opacity;
+                console.log('Fade in finished!');
+                return;
+            } else {
+                opacity = opacity + 0.01;
+                element.style.opacity = opacity;
+                element.animateTimer = setTimeout(step, speed);
+            }       
+        }
+
+        step();
+
+        return this;
+    };
+
+    // 中止淡入淡出
+    Element.prototype.stop = function () {
+        var element = this;
+        if (element.animateTimer) {
+            clearTimeout(element.animateTimer);
+            console.log('Fade in or out terminated!');
+        }
+        return this;
+    }
+
+}(document));
+</code></pre></li>
+<li><p>参照题目4中的<code>hide</code>和<code>show</code>，在上面的必包函数中新增一个<code>animate</code>方法，对调用对象进行变形。</p>
+
+<pre><code>Element.prototype.animate = function (width, height, time) {
+    // todo: blablabla
+
+    return this;
+}
+</code></pre></li>
 </ol>
 
 </body>
