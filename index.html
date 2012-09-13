@@ -10,15 +10,15 @@ title: I Want To Code With You
     </h1>
     <div class="posts">
         {% for post in site.posts %}
-        <div class="posts-item">
-            <div class="posts-item-title">
+        <div class="posts-item box">
+            <div class="posts-item-header box-header">
                 <h2>
                     <a href="{{ post.url }}">
                         {{ post.title }}
                     </a>
                 </h2>
             </div>
-            <div class="posts-item-body">
+            <div class="posts-item-body box-body">
                 <p>
                     {% if post.preview %}
                         {{ post.preview }}
@@ -27,7 +27,7 @@ title: I Want To Code With You
                     {% endif %}
                 </p>
             </div>
-            <div class="posts-item-footer">
+            <div class="posts-item-footer box-footer">
                 <em class="posts-item-footer-date">
                     Posted on {{ post.date | date_to_long_string }}.
                 </em>
@@ -39,6 +39,22 @@ title: I Want To Code With You
 <!-- end of .col-left -->
 <!-- col-right -->
 <div class="col-right">
-    
+    <div class="side-bars">
+        <div class="side-bar box">
+            <div class="box-header">
+                <h2>Quick Links</h2>
+            </div>
+            <div class="box-body">
+                <ul>
+                    <li>
+                        <a href="https://gist.github.com/naiteluo">My Gist</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="box-footer">
+                
+            </div>
+        </div>
+    </div>
 </div>
 <!-- end of .col-left -->

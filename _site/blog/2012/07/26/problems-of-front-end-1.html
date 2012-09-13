@@ -37,10 +37,13 @@
 			</div>
 		</header>
 		<section class="container">
-			<div class="post">
-    <div class="post-content">
-        <h1>problems of front end 1</h1>
-        <h3>问题描述</h3>
+			<div class="post-wrapper">
+    <div class="post box">
+        <div class="box-header">
+            <h1>problems of front end 1</h1>
+        </div>
+        <div class="box-body">
+            <h3>问题描述</h3>
 
 <p>在做一个有很多节点的菜单（最深有4层）的时候，我们一开始的步骤是从一个服务器生成的静态的js文件里面获取菜单的树内容，再将树的那内容生成dom。这样再普通浏览器上显示还比较正常，但是如果机子的性能比较差或者是在ie6等浏览器上，菜单部分则会显示空白，经过1～2秒的空白后，完成树的遍历和节点的生成后，才显示到页面中，体验极差。</p>
 
@@ -132,18 +135,18 @@
 
 <p>实习一段时间了，感觉实际中遇到最多的问题都不是什么复杂的问题，都是些需要去仔细察觉的问题，例如怎么写才可以在代码可读性和代码的性能间取得平衡，怎么设计和保护代码，使它们不相互污染，多考虑一些容错情况，等等。</p>
 
-        <hr>
-        <p>尊重作者，所有原创文章，请注明出处。本站转载的文章请注明原文出处，谢谢！</p>
-        <em>Posted on 26 July 2012.</em> 
-    </div>
-    <div class="post-footer">
-        <div id="disqus_thread"></div>
-        <script src="http://disqus.com/forums/mmnn/embed.js"></script>
-    </div>
+            <hr>
+            <p>尊重作者，所有原创文章，请注明出处。本站转载的文章请注明原文出处，谢谢！</p>
+            <em>Posted on 26 July 2012.</em> 
+        </div>
+        <div class="box-footer">
+            <div id="disqus_thread"></div>
+            <script src="http://disqus.com/forums/mmnn/embed.js"></script>
+        </div>
+    </div>  
 </div>
 		</section>
 		<footer>
-			<p>Maintained by <a href="https://github.com/naiteluo">naiteluo</a></p>
 			<p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/naiteluo">naiteluo</a></small></p>
 		</footer>
 	</div>
