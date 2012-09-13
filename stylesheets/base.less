@@ -39,6 +39,13 @@
     box-shadow: @x @y @w @color;
 }
 
+.box-shadow-inset (@x: 0px, @y: 0px, @w: 0px, @color: #ffffff) {
+    -webkit-box-shadow: inset @x @y @w @color;
+    -o-box-shadow: inset @x @y @w @color;
+    -moz-box-shadow: inset @x @y @w @color;
+    box-shadow: inset @x @y @w @color;
+}
+
 .transition (@property: all, @duration: 0.1s, @timing-function: ease-in-out, @delay: 0s) {
     -webkit-transition: @property @duration @timing-function @delay;
     -o-transition: @property @duration @timing-function @delay;

@@ -293,10 +293,16 @@ pre {
 <body>
 <h1>BaoBao Duai&rsquo;s EXAM</h1>
 
-<p><a href="/">返回首页</a></p>
+<p><a href="/">返回首页</a> ｜
+<a href="#exam1">第一题</a> ｜
+<a href="#exam2">第二题</a> ｜
+<a href="#exam3">第三题</a> ｜
+<a href="#exam4">第四题</a> ｜
+<a href="#exam5">第五题</a> ｜
+<a href="#exam6">第六题</a></p>
 
 <ol>
-<li><p>实现<code>walkTheDom</code>函数，接受两个参数，一个是根节点，另一个是回调函数。结构如下：</p>
+<li><p><span id="exam1"></span>实现<code>walkTheDom</code>函数，接受两个参数，一个是根节点，另一个是回调函数。结构如下：</p>
 
 <pre><code>function walkTheDom(root, callback) {
     // todo
@@ -339,7 +345,7 @@ pre {
     }
 }
 </code></pre></li>
-<li><p>解密：</p>
+<li><p><span id="exam2"></span>解密：</p>
 
 <p><code>var code = "l,m,t,h,.,f,d,s,a,j,k,l,f,d,a,8,9,3,2,1,l,k,k,j,s,a,/,t,e,n,.,o,u,l,e,t,i,a,n,/,/,:,p,t,t,h"</code></p>
 
@@ -351,7 +357,7 @@ pre {
 
 <pre><code>code.split(',').reverse().join('');
 </code></pre></li>
-<li><p>实现<code>getSecondToZero</code>函数，返回距离当天凌晨的毫秒数：</p>
+<li><p><span id="exam3"></span>实现<code>getSecondToZero</code>函数，返回距离当天凌晨的毫秒数：</p>
 
 <pre><code>function getSecondToZero() {
     // todo
@@ -359,7 +365,7 @@ pre {
 </code></pre>
 
 <p>提示: <code>+new Date</code>可以很简单地获取到此刻的毫秒数。</p></li>
-<li><p>以下是对Element对象的扩展，理解代码并在问号处添加注释：</p>
+<li><p><span id="exam4"></span>以下是对Element对象的扩展，理解代码并在问号处添加注释：</p>
 
 <pre><code>/**
  *  淡出淡入
@@ -526,7 +532,7 @@ pre {
 
 }(document));
 </code></pre></li>
-<li><p>参照题目4中的<code>hide</code>和<code>show</code>，在上面的必包函数中新增一个<code>animate</code>方法，对调用对象进行变形。</p>
+<li><p><span id="exam5"></span>参照题目4中的<code>hide</code>和<code>show</code>，在上面的必包函数中新增一个<code>animate</code>方法，对调用对象进行变形。</p>
 
 <pre><code>Element.prototype.animate = function (width, height, time) {
     // todo: blablabla
@@ -534,6 +540,29 @@ pre {
     return this;
 }
 </code></pre></li>
+<li><p><span id="exam6"></span>JavaScript中将对象值赋给一个变量并不会复制这个对象，而是让变量指向同一个对象。写一个<code>copy</code>方法，完成对象的拷贝：</p>
+
+<pre><code>function copy(obj) {
+    // todo
+    return newObj;
+}
+
+// 使用方法：
+var a = {name: 'aaa', age: 13};
+var b = copy(a);
+</code></pre></li>
+<li><p><span id="exam7"></span>列出所有假值。</p></li>
+<li><span id="exam8"></span>简述<code>null</code>与<code>undefined</code>的区别。</li>
+<li><p>部分浏览器是不支持<code>getElementsByClassName</code>方法的，扩展Element，新增一个<code>myGetElementsByClassName</code>方法，以供跨浏览器使用</p>
+
+<pre><code>Element.prototype.myGetElementsByClassName = function (className) {
+    var result = [];
+    // todo
+    return result;
+}
+</code></pre>
+
+<p>方法的使用方法和原生方法一样，如<code>document.getElementById('wrapper').myGetElementsByClassName('box');</code>将返回wrapper元素内的所有类名为box的节点。</p></li>
 </ol>
 
 </body>

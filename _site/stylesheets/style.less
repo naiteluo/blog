@@ -1,12 +1,16 @@
 @import '/stylesheets/reset.less';
 @import '/stylesheets/base.less';
+// @import '/stylesheets/module.less';
 @import '/stylesheets/github.less';
 
+/** 
+ *  basic style of page
+ */
 body {
+    min-width: 700px;
+    background-color: #ffffff;
     font-family: Helvetica, arial, sans-serif;
     font-size: 14px;
-    min-width: 700px;
-    background-color: #fdfdfd;
 }
 
 a {
@@ -25,10 +29,21 @@ a {
     }
 }
 
+/** 
+ *  page module or widgets
+ */
+
 span.tip {
     font-size: 12px;
     font-weight: normal;
     color: #de0000;
+}
+
+.box {
+    background-color: #fefefe;
+    margin-bottom: 20px;
+    border: 1px solid #eeeeee;
+    .box-shadow-inset (0px, 0px, 5px, rgba(100,100,100,0.1));
 }
 
 header {
@@ -36,10 +51,10 @@ header {
     top: 0;
     width: 100%;
     height: 40px;
-    background: black;
-    color: white;
+    background: #000000;
+    color: #ffffff;
     overflow: hidden;
-
+    .box-shadow (0px, 0px, 5px, rgba(0,0,0,0.2));
     .inner {
         margin: 0 10%;
         .nav-item () {
@@ -51,15 +66,11 @@ header {
             a {
                 color: white;
             }
-            .transition ();
         }
         ul.nav {
             .left;
             li {
-                .nav-item;
-                &:hover {
-                    text-shadow: 0px 0px 5px rgba(255,255,255,0.3);
-                }              
+                .nav-item;        
             }
             .clearfix;
         }
@@ -74,14 +85,16 @@ header {
 section.container {
     padding-top: 40px;
     margin: 0 10%;
+    .col-left {
+        .left;
+    }
+    .col-right {
+        .left;
+    }
     .posts {
         padding: 20px;
         .posts-item {
-            background-color: white;
-            margin-bottom: 20px;
-            border: 1px solid white;
-            .border-radius (4px);
-            box-shadow: 0px 0px 1px 1px rgba(100, 100, 100, 0.1) inset;
+            .box;
             .posts-item-title {
                 margin: 2px;
                 border-radius: 4px 4px 0px 0px;
@@ -91,7 +104,7 @@ section.container {
                     color: #000000;
                 }
                 padding: 5px 20px;
-                border-bottom: 1px solid rgba(0,0,0,0.1);
+                border-bottom: 1px solid rgba(100,100,100,0.1);
             }
             .posts-item-body {
                 padding: 20px;
@@ -112,6 +125,7 @@ section.container {
             padding: 20px;
         }
     }
+    .clearfix;
 }
 
 footer {
