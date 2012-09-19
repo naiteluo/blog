@@ -285,6 +285,7 @@ layout: demo
 		}
 		
 11.	<span id="exam11"></span>下载附件中的.html文件，按要求完成页面功能。 [右键另存为](/demos/attachment/ex11.html)
+12.	<span id="exam11"></span>使用jQuery实现上题。
 
 ---
 
