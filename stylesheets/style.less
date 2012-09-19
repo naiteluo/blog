@@ -42,6 +42,10 @@ a {
     overflow: hidden;
     background-color: #fefefe;
     .box-shadow-inset (0px, 0px, 5px, rgba(100,100,100,0.1));
+    .transition;
+    &:hover {
+        .box-shadow-inset (0px, 0px, 5px, rgba(65,131,196,0.1));
+    }
     .box-header {
         padding: 7px 20px;
         border-bottom: 1px solid rgba(100,100,100,0.1);
@@ -122,18 +126,17 @@ header {
 section.container {
     padding-top: 40px;
     margin: 0 10%;
-    .col-left {}
+    .col-left {
+        width: 70%;
+        .left;
+    }
     .col-right {
-        .side-bars {
-            padding: 20px;
-            .side-bar {
-                .box;
-            }
-        }
+        width: 30%;
+        .left;
     }
     // posts list
     .posts {
-        padding: 40px 20px 20px;
+        padding: 30px 20px 20px;
         .posts-item {
             .box;
             .posts-item-footer {
@@ -143,9 +146,15 @@ section.container {
             }
         }
     }
+    .side-bars {
+        padding: 30px 20px 20px;
+        .side-bar {
+            .box;
+        }
+    }
     // single post
     .post-wrapper {
-        padding: 40px 20px 20px;
+        padding: 30px 20px 20px;
         .post {
             .box;
             .box-body {

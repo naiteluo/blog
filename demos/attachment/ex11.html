@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        /* basic style */
+        #items {
+            width: 200px;
+            padding: 5px 5px 5px 30px;
+            border: 1px solid #dddddd;
+            overflow: hidden;
+        }
+        .item {
+            margin-bottom: 3px;
+            padding: 2px;
+        }
+        .rules {
+            font-size: 12px;
+        }
+        /* 选中状态样式 */
+        .selected {
+            border: 1px dashed #dddddd;
+        }
+    </style>
+</head>
+<body>
+    <ul id="items">
+        <li class="item">item 1</li>
+        <li class="item">item 2</li>
+        <li class="item">item 3</li>
+        <li class="item">item 4</li>
+        <li class="item">item 5</li>
+    </ul>
+    <div>
+        <input type="text" id="item_name">
+        <button>添加</button> | 
+        <button>删除</button> | 
+        <button>全部删除</button>
+    </div>
+    <p>
+        规则：
+    </p>
+    <ol class="rules">
+        <li>在输入框中输入新item名后点击添加按钮，则在列表最后添加新item。</li>
+        <li>单击item，item被选中，再次单击则取消选中。选中状态类名为selected。</li>
+        <li>点击删除按钮，则删除列表中被选中的item。未选中任何item，则弹出'未选中任何item'提示。</li>
+        <li>点击全部删除按钮，则删除列表中的全部item。</li>
+    </ol>
+    <script type="text/javascript" src="11.js"></script>
+</body>
+</html>
