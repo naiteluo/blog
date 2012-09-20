@@ -290,7 +290,13 @@ layout: demo
 11.	<span id="exam11"></span>下载附件中的.html文件，按要求完成页面功能。 [右键另存为](/demos/attachment/ex11.html)
 12.	<span id="exam12"></span>使用jQuery实现上题。
 13.	<span id="exam13"></span>下载附件中的.html文件和图片，完成脚本，使得页面中的小猫可以被拖拽移动。ex13.html:[右键另存为](/demos/attachment/ex13.html),oct.png[右键另存为](/demos/attachment/oct.png)。
+14.	<span id="exam14"></span>在上题中我们实现了一个可拖拽的小猫，现在尝试将之前的代码重构一下，写成一个Element的扩展`drag`，当给drag传入true时，元素则可拖拽，传入false则取消可拖拽状态
 
----
+		document.getElementById('something').drag(true);
+		
+	参考之前使用过的扩展的写法。
+
+
+--
 
 > ** 加油！加油！！加油！！！ **
