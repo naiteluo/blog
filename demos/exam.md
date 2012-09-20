@@ -14,9 +14,12 @@ layout: demo
 [第六题](#exam6) ｜
 [第七题](#exam7) ｜
 [第八题](#exam8) ｜
-[第九题](#exam9) ｜｜新增：
+[第九题](#exam9) ｜
 [第十题](#exam10)｜
 [第十一题](#exam11)｜
+[第十二题](#exam12)｜｜新增：
+[第十三题](#exam13)｜
+[第十四题](#exam14)｜
 
 
 ---
@@ -285,7 +288,8 @@ layout: demo
 		}
 		
 11.	<span id="exam11"></span>下载附件中的.html文件，按要求完成页面功能。 [右键另存为](/demos/attachment/ex11.html)
-12.	<span id="exam11"></span>使用jQuery实现上题。
+12.	<span id="exam12"></span>使用jQuery实现上题。
+13.	<span id="exam13"></span>下载附件中的.html文件和图片，完成脚本，使得页面中的小猫可以被拖拽移动。ex13.html:[右键另存为](/demos/attachment/ex13.html),oct.png[右键另存为](/demos/attachment/oct.png)。
 
 ---
 
