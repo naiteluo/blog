@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Dragable cat</title>
+    <style type="text/css">
+        #cat {
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            -webkit-transform: rotate(-80deg); 
+            -o-transform: rotate(-80deg);
+            -moz-transform: rotate(-80deg);
+            transform: rotate(-80deg);
+        }
+        #miao {
+            position: absolute;
+            display: none;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <img src="oct.png" alt="octcat" id="cat">
+    <span id="miao">喵</span>
+    <script type="text/javascript">
+        (function (d) {
+            var cat = d.getElementById('cat'),
+                miao = d.getElementById('miao');
+
+            // todo
+            var isMoving = false,
+                originX = 0,
+                originY = 0,
+                originPositionX = 0;
+                originPositionY = 0;
+
+            cat.onmousedown = function (e) {
+                e.preventDefault();
+                var xy = getXY(e);
+                isMoving = true;
+                originX = xy.x;
+                originY = xy.y;
+                originPositionX = _getComputedStyle(cat, 'left');
+                originPositionY = _getComputedStyle(cat, 'top');
+            }
+
+            cat.onmouseup = function (e) {
+                e.preventDefault();
+                var xy = getXY(e);
+                isMoving = false;
+                originX = xy.x;
+                originY = xy.y;
+                originPositionX = _getComputedStyle(cat, 'left');
+                originPositionY = _getComputedStyle(cat, 'top');
+            }
+
+            document.onmousemove = function (e) {
+                e.preventDefault();
+                if (isMoving) {
+                    var xy = getXY(e);
+                    cat.style.left = (originPositionX + (xy.x - originX)) + 'px';
+                    cat.style.top = (originPositionY + (xy.y - originY)) + 'px';
+                }
+            }
+
+            // 获取时间中鼠标的坐标，以{x: ,y: }的形式返回
+            function getXY(e) {
+                var xy = {};
+                if (window.event) {
+                    xy.x = window.event.clientX;
+                    xy.y = window.event.clientY;
+                } else {
+                    xy.x = e.pageX;
+                    xy.y = e.pageY;
+                }
+                return xy;
+            }
+
+            // 获取Element对象的一个样式属性值
+            function _getComputedStyle(element, property) {
+                return parseInt(window.getComputedStyle(element, null)[property]);
+            }
+        }(document));
+    </script>
+</body>
+</html>
