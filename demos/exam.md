@@ -17,9 +17,12 @@ layout: demo
 [第九题](#exam9) ｜
 [第十题](#exam10)｜
 [第十一题](#exam11)｜
-[第十二题](#exam12)｜｜新增：
+[第十二题](#exam12)｜
 [第十三题](#exam13)｜
-[第十四题](#exam14)｜
+[第十四题](#exam14)｜｜新增：
+[第十三题](#exam15)｜
+[第十四题](#exam16)｜
+
 
 
 ---
@@ -295,8 +298,8 @@ layout: demo
 		document.getElementById('something').drag(true);
 		
 	参考之前使用过的扩展的写法。
+15.	<span id="exam14"></span>
 
-
---
+---
 
 > ** 加油！加油！！加油！！！ **
