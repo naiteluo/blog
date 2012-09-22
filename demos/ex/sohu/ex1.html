@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <p>打开console查看运行结果。</p>
+<script type="text/javascript">
+
+var each = function(obj, fn){
+    //+++++++++++答题区域+++++++++++
+
+    var isArray = (Array.isArray) ? Array.isArray(obj) : (typeof obj === 'object' &&
+        Object.prototype.toString.call(obj) === '[object Array]');
+    if (isArray) {
+        for (var i = 0; i < obj.length; i++) {
+            if (fn.call(obj[i], i + 1) === false) {
+                return;
+            }
+        }
+    } else {
+        for (key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                fn.call(obj[key], obj[key], key);
+            }
+        }
+    }
+
+    //+++++++++++答题结束+++++++++++
+};
+
+try{
+    var data1 = [4,5,6,7,8,9,10,11,12];
+    var data2 = {
+    "a": 4,
+    "b": 5,
+    "c": 6
+    };
+    
+    console.group(data1);
+    
+    each(data1, function(o){
+        if( 6 == this )
+            return true;
+        else if( 8 == this )
+            return false;
+        console.log(o + ": \"" + this + "\"");
+    });
+    
+    console.groupEnd();
+    
+    /*------[执行结果]------
+    
+    1: "4"
+    2: "5"
+    4: "7"
+    
+    ------------------*/
+    
+    console.group(data2);
+    
+    each(data2, function(v, n){
+        if( 5 == this )
+            return true;
+        console.log(n + ": \"" + v + "\"");
+    });
+    
+    console.groupEnd();
+    
+    /*------[执行结果]------
+    
+    a: "4"
+    c: "6"
+    
+    ------------------*/
+
+}catch(e){
+    console.error("执行出错，错误信息: " + e);
+}
+
+</script>
+</body>
+</html>

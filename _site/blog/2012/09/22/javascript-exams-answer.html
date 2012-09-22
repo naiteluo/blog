@@ -1,0 +1,163 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<title>
+		
+			一些觉得比较有用的JavaScript题目[解答]
+		
+	</title>
+	<link rel="stylesheet" type="text/less" href="/stylesheets/style.less">
+	<script type="text/javascript" src="/javascripts/less-1.3.0.min.js"></script>
+	<!-- 代码着色 -->
+	<link rel="stylesheet" href="/stylesheets/pygment_trac.css">
+</head>
+<body>
+	<div class="wrapper">
+		<header>
+			<div class="inner">
+				<ul class="nav">
+					<li class="logo">
+						<a href="/">MMNN</a>
+					</li>
+					<li class="aboutme">
+						<a href="/resume">ABOUT ME</a>
+					</li>
+					<li class="exam">
+						<a href="/demos/exam.html">EXAM</a>
+						<span class="tip">
+							new!!
+						</span>
+					</li>
+				</ul>
+				<div class="view">
+					<a href="https://github.com/naiteluo"><small>NAITELUO</small> IN Github.</a>
+				</div>
+			</div>
+		</header>
+		<section class="container">
+			<div class="post-wrapper">
+    <div class="post box">
+        <div class="box-header">
+            <h1>一些觉得比较有用的JavaScript题目[解答]</h1>
+        </div>
+        <div class="box-body">
+            <h2>关于全局变量局部变量的四道小题目</h2>
+
+<p>写出以下各段代码的运行结果。</p>
+
+<ul>
+<li>第一题：</li>
+</ul>
+
+
+<div class="highlight"><pre><code class="javascript">       <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="nx">sayHi</span><span class="p">();</span>
+        <span class="kd">function</span> <span class="nx">sayHi</span><span class="p">()</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+            <span class="nx">alert</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+        
+</code></pre>
+</div>
+
+
+<pre><code>运行结果： 20 10
+</code></pre>
+
+<ul>
+<li>第二题：</li>
+</ul>
+
+
+<div class="highlight"><pre><code class="javascript">       <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="nx">sayHi</span><span class="p">();</span>
+        <span class="kd">function</span> <span class="nx">sayHi</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">a</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+            <span class="nx">alert</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+        
+</code></pre>
+</div>
+
+
+<pre><code>运行结果： 20 20
+</code></pre>
+
+<ul>
+<li>第三题：</li>
+</ul>
+
+
+<div class="highlight"><pre><code class="javascript">       <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="nx">sayHi</span><span class="p">();</span>
+        <span class="kd">function</span> <span class="nx">sayHi</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">a</span> <span class="o">=</span> <span class="nx">a</span> <span class="o">+</span> <span class="mi">10</span><span class="p">;</span>
+            <span class="nx">alert</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nx">a</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="nx">sayHi</span><span class="p">()</span> <span class="o">+</span> <span class="mi">10</span><span class="p">);</span>
+        
+</code></pre>
+</div>
+
+
+<pre><code>运行结果： 20 20 30 40
+</code></pre>
+
+<ul>
+<li>第四题：</li>
+</ul>
+
+
+<div class="highlight"><pre><code class="javascript">       <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="nx">sayHi</span><span class="p">();</span>
+        <span class="kd">function</span> <span class="nx">sayHi</span><span class="p">()</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="nx">a</span> <span class="o">+</span> <span class="mi">10</span><span class="p">;</span>
+            <span class="nx">alert</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nx">a</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="nx">sayHi</span><span class="p">()</span> <span class="o">+</span> <span class="mi">10</span><span class="p">);</span>
+        
+</code></pre>
+</div>
+
+
+<pre><code>运行结果： NAN 10 NAN NAN
+</code></pre>
+
+<p>总结：这几道题其实挺简单的，只要区分好全局变量和局部变量就OK，最后一题里面在sayHi里面的a使局部变量，但是在 <code>a + 10</code> 前a只声明未赋值，所以是<code>undefined</code>， <code>undefined</code>加上一个Number，则得到NAN。</p>
+
+<blockquote><p>摘自<a href="http://www.nowamagic.net/librarys/veda/detail/225">四道JavaScript面试题检测你的js基本功</a></p></blockquote>
+
+<h2>三道搜狐的面试题</h2>
+
+<ul>
+<li><p>题目一，实现一个遍历数组或对象里所有成员的迭代器</p>
+
+<p>答案代码：<a href="/demos/ex/sohu/ex1.html">soho/ex1.html</a></p></li>
+</ul>
+
+
+            <hr>
+            <p>尊重作者，所有原创文章，请注明出处。本站转载的文章请注明原文出处，谢谢！</p>
+            <em>Posted on 22 September 2012.</em> 
+        </div>
+        <div class="box-footer">
+            <div id="disqus_thread"></div>
+            <script src="http://disqus.com/forums/mmnn/embed.js"></script>
+        </div>
+    </div>  
+</div>
+		</section>
+		<footer>
+			<p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/naiteluo">naiteluo</a></small></p>
+		</footer>
+	</div>
+</body>
+</html>
