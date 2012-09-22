@@ -14,7 +14,7 @@ preview: 摘自网上的一些感觉比较有用的JavaScript笔试面试题目�
 
 *	第一题：
 	
-		{% highlight javascript%}
+		{% highlight javascript %}
 		var a = 10;
 		sayHi();
 		function sayHi() {
@@ -22,11 +22,11 @@ preview: 摘自网上的一些感觉比较有用的JavaScript笔试面试题目�
 			alert(a);
 		}
 		alert(a);
-		{% endhighlight%}
+		{% endhighlight %}
 		
 *	第二题：
 
-		{% highlight javascript%}
+		{% highlight javascript %}
 		var a = 10;
 		sayHi();
 		function sayHi() {
@@ -34,11 +34,11 @@ preview: 摘自网上的一些感觉比较有用的JavaScript笔试面试题目�
 			alert(a);
 		}
 		alert(a);
-		{% endhighlight%}
+		{% endhighlight %}
 
 *	第三题：
 
-		{% highlight javascript%}
+		{% highlight javascript %}
 		var a = 10;
 		sayHi();
 		function sayHi() {
@@ -48,11 +48,11 @@ preview: 摘自网上的一些感觉比较有用的JavaScript笔试面试题目�
 		}
 		alert(a);
 		alert(sayHi() + 10);
-		{% endhighlight%}
+		{% endhighlight %}
 
 *	第四题：
 
-		{% highlight javascript%}
+		{% highlight javascript %}
 		var a = 10;
 		sayHi();
 		function sayHi() {
@@ -62,7 +62,7 @@ preview: 摘自网上的一些感觉比较有用的JavaScript笔试面试题目�
 		}
 		alert(a);
 		alert(sayHi() + 10);
-		{% endhighlight%}
+		{% endhighlight %}
 		
 > 摘自[四道JavaScript面试题检测你的js基本功](http://www.nowamagic.net/librarys/veda/detail/225)
 		
@@ -70,7 +70,7 @@ preview: 摘自网上的一些感觉比较有用的JavaScript笔试面试题目�
 
 *	题目一，实现一个遍历数组或对象里所有成员的迭代器
 
-		{% highlight javascript%}
+		{% highlight javascript %}
 		var each = function(obj, fn){
 			//+++++++++++答题区域+++++++++++
 			
@@ -125,11 +125,11 @@ preview: 摘自网上的一些感觉比较有用的JavaScript笔试面试题目�
 		}catch(e){
 			console.error("执行出错，错误信息: " + e);
 		}
-		{% endhighlight%}
+		{% endhighlight %}
 
 *	题目二，实现一个叫Man的类，包含attr, words, say三个方法
 
-		{% highlight javascript%}
+		{% highlight javascript %}
 		var Man;
 		//+++++++++++答题区域+++++++++++
 		
@@ -209,11 +209,11 @@ preview: 摘自网上的一些感觉比较有用的JavaScript笔试面试题目�
 		}catch(e){
 	        console.error("执行出错，错误信息: " + e);
 		}
-		{% endhighlight%}
+		{% endhighlight %}
 
 *	题目三，实现一个URI解析方法，把url里#之后的参数解析成指定的数据结构
 
-		{% highlight javascript%}
+		{% highlight javascript %}
 		function urlParser(s){
 	        //+++++++++++答题区域+++++++++++
 	
@@ -241,7 +241,7 @@ preview: 摘自网上的一些感觉比较有用的JavaScript笔试面试题目�
 		}catch(e){
 	        console.error("执行出错，错误信息: " + e);
 		}
-		{% endhighlight%}
+		{% endhighlight %}
 
 > 摘自[搜狐JavaScript面试题](http://www.muzilei.com/archives/255)
 

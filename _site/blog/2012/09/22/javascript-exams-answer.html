@@ -48,88 +48,60 @@
 <p>写出以下各段代码的运行结果。</p>
 
 <ul>
-<li>第一题：</li>
+<li><p>第一题：</p>
+
+<pre><code>var a = 10;
+sayHi();
+function sayHi() {
+    var a = 20;
+    alert(a);
+}
+alert(a);
+</code></pre>
+
+<p>运行结果： 20 10</p></li>
+<li><p>第二题：</p>
+
+<pre><code>var a = 10;
+sayHi();
+function sayHi() {
+    a = 20;
+    alert(a);
+}
+alert(a);
+</code></pre>
+
+<p>运行结果： 20 20</p></li>
+<li><p>第三题：</p>
+
+<pre><code>var a = 10;
+sayHi();
+function sayHi() {
+    a = a + 10;
+    alert(a);
+    return a;
+}
+alert(a);
+alert(sayHi() + 10);
+</code></pre>
+
+<p>运行结果： 20 20 30 40</p></li>
+<li><p>第四题：</p>
+
+<pre><code>var a = 10;
+sayHi();
+function sayHi() {
+    var a = a + 10;
+    alert(a);
+    return a;
+}
+alert(a);
+alert(sayHi() + 10);
+</code></pre>
+
+<p>运行结果： NAN 10 NAN NAN</p></li>
 </ul>
 
-
-<div class="highlight"><pre><code class="javascript">       <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-        <span class="nx">sayHi</span><span class="p">();</span>
-        <span class="kd">function</span> <span class="nx">sayHi</span><span class="p">()</span> <span class="p">{</span>
-            <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
-            <span class="nx">alert</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="nx">alert</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
-        
-</code></pre>
-</div>
-
-
-<pre><code>运行结果： 20 10
-</code></pre>
-
-<ul>
-<li>第二题：</li>
-</ul>
-
-
-<div class="highlight"><pre><code class="javascript">       <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-        <span class="nx">sayHi</span><span class="p">();</span>
-        <span class="kd">function</span> <span class="nx">sayHi</span><span class="p">()</span> <span class="p">{</span>
-            <span class="nx">a</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
-            <span class="nx">alert</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="nx">alert</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
-        
-</code></pre>
-</div>
-
-
-<pre><code>运行结果： 20 20
-</code></pre>
-
-<ul>
-<li>第三题：</li>
-</ul>
-
-
-<div class="highlight"><pre><code class="javascript">       <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-        <span class="nx">sayHi</span><span class="p">();</span>
-        <span class="kd">function</span> <span class="nx">sayHi</span><span class="p">()</span> <span class="p">{</span>
-            <span class="nx">a</span> <span class="o">=</span> <span class="nx">a</span> <span class="o">+</span> <span class="mi">10</span><span class="p">;</span>
-            <span class="nx">alert</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
-            <span class="k">return</span> <span class="nx">a</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="nx">alert</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
-        <span class="nx">alert</span><span class="p">(</span><span class="nx">sayHi</span><span class="p">()</span> <span class="o">+</span> <span class="mi">10</span><span class="p">);</span>
-        
-</code></pre>
-</div>
-
-
-<pre><code>运行结果： 20 20 30 40
-</code></pre>
-
-<ul>
-<li>第四题：</li>
-</ul>
-
-
-<div class="highlight"><pre><code class="javascript">       <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-        <span class="nx">sayHi</span><span class="p">();</span>
-        <span class="kd">function</span> <span class="nx">sayHi</span><span class="p">()</span> <span class="p">{</span>
-            <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="nx">a</span> <span class="o">+</span> <span class="mi">10</span><span class="p">;</span>
-            <span class="nx">alert</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
-            <span class="k">return</span> <span class="nx">a</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="nx">alert</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
-        <span class="nx">alert</span><span class="p">(</span><span class="nx">sayHi</span><span class="p">()</span> <span class="o">+</span> <span class="mi">10</span><span class="p">);</span>
-        
-</code></pre>
-</div>
-
-
-<pre><code>运行结果： NAN 10 NAN NAN
-</code></pre>
 
 <p>总结：这几道题其实挺简单的，只要区分好全局变量和局部变量就OK，最后一题里面在sayHi里面的a使局部变量，但是在 <code>a + 10</code> 前a只声明未赋值，所以是<code>undefined</code>， <code>undefined</code>加上一个Number，则得到NAN。</p>
 
@@ -140,7 +112,96 @@
 <ul>
 <li><p>题目一，实现一个遍历数组或对象里所有成员的迭代器</p>
 
+<p>此外，可以通过回调函数的返回值，来终止迭代。</p>
+
+<p>这道题比较有用的知识点是判断数组和对象，<code>arr instanceof Array</code>在一般情况下还是管用的，但是如果涉及到不同的JavaScript环境，不同的框架，则不完全可靠。以下是兼容的解决方法</p>
+
+<pre><code>var isArray = Array.isArray || function (o) {
+    return typeof o === 'string' &amp;&amp;
+        Object.prototype.toString.call(o) === '[object Array]';
+}
+</code></pre>
+
+<p>还使用到<code>Function.call</code>或者<code>Function.apply</code>。call指定函数的this和参数并调用。这两个的区别在于参数的传入方式，如下：</p>
+
+<pre><code>func.call(thisObj, arg0, arg1, arg2);
+func.apply(this.Obj, [arg0, arg1, arg2]);
+</code></pre>
+
 <p>答案代码：<a href="/demos/ex/sohu/ex1.html">soho/ex1.html</a></p></li>
+<li><p>题目二，实现一个叫Man的类，包含attr, words, say三个方法</p>
+
+<p>比较难的有三个地方。</p>
+
+<p>首先，要让Man支持两种调用方式，一种是java式的<code>var me = Man(options);</code>，另一种是使用<code>new</code>操作符的<code>var me = new Man(options);</code>。第一种方法的<code>this</code>指向的是当前执行环境，而第二种的话，会新建一个空对象，<code>this</code>指向这个对象本身，返回给变量<code>me</code>。要想使用prototype来添加方法的话，使用第二种会比较好。基本是按照第二种来写构造函数，对第一种作特殊处理。</p>
+
+<pre><code>if (this.constructor !== Man) {
+    return new Man(options);
+}
+</code></pre>
+
+<p>如果this的构造器不是Man的话，则使用第二种方式创建实例。但是我发现这里面有个比较大的bug，就是当在Man的实例方法里面用this的构造器是Man，这样的话这个判断就无效了。使用另外一种方法可以解决这个问题：</p>
+
+<pre><code>Man ＝ function (options) {
+    return new Man.prototype.init(options);
+}
+
+// 真正的构造器
+Man.prototype.init = function (options) {
+
+}
+
+Man.prototype.init.prototype {
+    attr: function () {},
+    words: function (str) {},
+    say: function () {}
+}
+</code></pre>
+
+<p>上面的写法实际上构造器是<code>Man.prototype.init</code>，所以<code>me instanceof Man</code>返回的是<code>false</code>，所以我觉得这种写法不如上面，而且还比较难理解。</p>
+
+<p>第二就是在测试代码里面要求不能直接直接通过用对象的属性来写<code>fullname</code>和<code>gender</code>：</p>
+
+<pre><code>me.fullname = "废柴";
+me.gender = "人妖";
+</code></pre>
+
+<p>不可以这样去改变实例的这两个属性，也就是相当于让这两个属性变得私有。实现的方法是，在构造器内用<code>var</code>定义这两个变量，然后创建特权函数getter setter来操作这这两个属性，如下：</p>
+
+<pre><code>Man = function (options) {
+
+    // 两种调用方式 var p = Man(options); or var p = new Man(options);
+    if (this.constructor !== Man) {
+        return new Man(options);
+    }
+
+    // private variables 私有变量
+    var fullname, 
+        gender;
+
+    // privilege functions 特权函数
+    this.setFullname = function (_name) {
+        fullname = _name;
+    }
+    this.setGender = function (_gender) {
+        gender = _gender;
+    }
+    this.getFullname = function () {
+        return fullname || '&lt;用户未输入&gt;';
+    }
+    this.getGender = function () {
+        return gender || '&lt;用户未输入&gt;';
+    }
+
+    this.attr(options);
+}
+</code></pre>
+
+<p>再在<code>Man.prototype</code>中定义<code>attr</code>,<code>words</code>,<code>say</code>方法。</p>
+
+<p>第三个比较麻烦的是<code>attr</code>方法，它可以接受多种参数形式。不过只需要对参数个数的类型作判断分情况处理就可以了。还需注意的是，我们的fullname和gender都是需要用setter，getter来操作的，其他值直接通过this的属性读写。当attr的参数中有这两个特殊情况时也要分开处理。</p>
+
+<p>答案代码：<a href="/demos/ex/sohu/ex2.html">soho/ex2.html</a></p></li>
 </ul>
 
 

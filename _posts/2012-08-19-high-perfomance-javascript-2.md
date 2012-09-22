@@ -186,6 +186,7 @@ HTML集合是包含了DOM节点引用的类数组对象，以下方法的返回�
 			}
 			{% endhighlight %}
 		
+		
 		第一段代码出了更简洁之外，效率还比第二段高2～6倍。
 		
 	*	支持的浏览器： IE8, Firefox 3.5+, Safari 3.1+, Chrome1+, Opera 10+
