@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>实现一个URI解析方法，把url里#之后的参数解析成指定的数据结构</title>
+</head>
+<body>
+    <p>打开console查看运行结果。</p>
+<script type="text/javascript">
+
+function urlParser(s){
+    //+++++++++++答题区域+++++++++++
+    var requestReg = /#(.+)/,
+        params = [],
+        request = s.match(requestReg)[1];
+
+    if(request.length != 0) {
+        var temp = request.split('?'),
+            queryParams = temp.pop(),
+            requestParams;
+
+        if (temp[0]) {
+            requestParams = temp[0].split('/');
+            for (var i = 0; i < requestParams.length; i++) {
+                if (requestParams[i]) {
+                    params.push(requestParams[i]);
+                }
+            }
+        }
+        queryParams = queryParams.split(/&|=/);
+        var obj = {};
+        for (var i = 0; i < queryParams.length - 1; i += 2) {
+            obj[queryParams[i]] = queryParams[i + 1];
+        }
+        params.push(obj);
+    }
+    return params;
+    //+++++++++++答题结束+++++++++++
+}
+
+try{
+    var url1 = "http://www.abc.com/m/s/#page/2/?type=latest_videos&page_size=20";
+    var url2 = "http://www.abc.com/m/s/#type=latest_videos&page_size=20";
+    var url3 = "http://www.abc.com/m/s/#page?type=latest_videos&page_size=20";
+    var url4 = "http://www.abc.com/c/s/d/c#javascript/page/3/?type=text&page_size=12&id=234";
+
+    console.group();
+    console.info( urlParser(url1) );
+    console.info( urlParser(url2) );
+    console.info( urlParser(url3) );
+    console.info( urlParser(url4) );
+    console.groupEnd();
+    /*------[执行结果]------
+
+   ["page", "2", { "type": "latest_videos", "page_size": 20 }]
+   [{ "type": "latest_videos", "page_size": 20 }]
+   ["page", { "type": "latest_videos", "page_size": 20 }]
+
+   ------------------*/
+
+}catch(e){
+    console.error("执行出错，错误信息: " + e);
+}      
+
+</script>
+</body>
+</html>

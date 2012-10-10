@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>parseURL</title>
+</head>
+<body>
+    <input id="url" type="text" size="100" placeholder="输入URL">
+    <button id="start">START</button>
+    <div id="result">
+        
+    </div>
+    <script type="text/javascript">
+        function parseURL(url) {
+            var urlReg = /(\w+:)\/\/(([\w\.\-\$@&]+)(?:\:(\d+))?)(\/[\w\.\-\$@&%\/]+)(\?[\w\.\-\$@&%=]+)?/,
+                arr,
+                obj = {};
+
+            if (!urlReg.test(url)) {
+                throw new Error('非法URL！');
+            }
+
+            arr = url.match(urlReg);
+
+            obj.protocol = arr[1];
+            obj.host = arr[2];
+            obj.hostname = arr[3];
+            obj.port = arr[4];
+            obj.path = arr[5];
+            obj.search = arr[6];
+
+            return obj;
+        }
+
+        function printLocation(location, container) {
+            var list = document.createElement('ul');
+            for (key in location) {
+                var item = document.createElement('li');
+                item.appendChild(document.createTextNode(key + ': \"' + location[key] + '\"'));
+                list.appendChild(item);
+            }
+            container = container || document.body;
+            container.appendChild(list);
+        }
+
+    var urlInput = document.getElementById('url'),
+        startBtn = document.getElementById('start'),
+        result = document.getElementById('result');
+
+    startBtn.addEventListener('click', function () {
+        try {
+            result.innerHTML = '';
+            printLocation(parseURL(urlInput.value), result);
+        } catch (error) {
+            console.error(error);
+            result.innerHTML = '<strong>' + error + '</strong>';
+        }
+    });
+
+    </script>
+</body>
+</html>
