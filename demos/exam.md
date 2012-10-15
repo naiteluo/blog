@@ -297,7 +297,7 @@ layout: demo
 		document.getElementById('something').drag(true);
 		
 	参考之前使用过的扩展的写法。
-15.	<span id="exam14"></span>用原生代码发送一个Ajax请求获取数据。
+15.	<span id="exam15"></span>用原生代码发送一个Ajax请求获取数据。
 
 	完成ajax.js文件中的todo，实现一个get方法：
 
