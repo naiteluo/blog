@@ -1,0 +1,25 @@
+{
+    "state": true,
+    "list": [
+        {
+            "name": "Zounima",
+            "age": 31,
+            "sex": "female"
+        },
+        {
+            "name": "Wanbi",
+            "age": 21,
+            "sex": "female"
+        },
+        {
+            "name": "Xiongji",
+            "age": 22,
+            "sex": "male"
+        },
+        {
+            "name": "Reelin",
+            "age": 4,
+            "sex": "female"
+        }
+    ]
+}

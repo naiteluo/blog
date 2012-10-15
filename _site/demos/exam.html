@@ -36,8 +36,7 @@
 <a href="#exam12">第十二题</a>｜
 <a href="#exam13">第十三题</a>｜
 <a href="#exam14">第十四题</a>｜｜新增：
-<a href="#exam15">第十三题</a>｜
-<a href="#exam16">第十四题</a>｜</p>
+<a href="#exam15">第十五题</a></p>
 
 <hr />
 
@@ -319,7 +318,36 @@ var b = copy(a);
 </code></pre>
 
 <p>参考之前使用过的扩展的写法。</p></li>
-<li><span id="exam14"></span></li>
+<li><p><span id="exam14"></span>用原生代码发送一个Ajax请求获取数据。</p>
+
+<p>完成ajax.js文件中的todo，实现一个get方法：</p>
+
+<pre><code>ajax.get(url, function (data) {
+    // 回调函数，data为请求返回的内容
+});
+</code></pre>
+
+第二个参数为可选的params对象：
+
+<pre><code>ajax.get(url, {page: 1}, function (data) {
+    // 回调函数，data为请求返回的内容
+});
+</code></pre>
+
+<p>相当于发出一个url + '?page=1'这样的get请求。</p>
+
+<p>点击页面中的START按钮，即发出Ajax请求，请求一个以json保存的用户列表，将请求获取的用户列表信息插入到页面中。</p>
+
+<p>注意事项：</p>
+
+<ol>
+<li>由于要使用AJAX，所以将下载的代码解压缩到服务器目录中，用http://localhost/你的路径/ajax来访问目标页面。</li>
+<li>用JSON.parse(str)方法处理获取到的json文本。</li>
+<li>页面中的其他代码已经完成，阅读代码了解功能后，实现ajax.js中的todo部分。</li>
+</ol>
+
+
+<p>文件包：<a href="/demos/ex/ajax.zip">ajax.zip</a></p></li>
 </ol>
 
 

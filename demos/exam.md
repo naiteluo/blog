@@ -20,8 +20,7 @@ layout: demo
 [第十二题](#exam12)｜
 [第十三题](#exam13)｜
 [第十四题](#exam14)｜｜新增：
-[第十三题](#exam15)｜
-[第十四题](#exam16)｜
+[第十五题](#exam15)
 
 
 
@@ -298,7 +297,31 @@ layout: demo
 		document.getElementById('something').drag(true);
 		
 	参考之前使用过的扩展的写法。
-15.	<span id="exam14"></span>
+15.	<span id="exam14"></span>用原生代码发送一个Ajax请求获取数据。
+
+	完成ajax.js文件中的todo，实现一个get方法：
+
+		ajax.get(url, function (data) {
+		    // 回调函数，data为请求返回的内容
+		});
+
+	第二个参数为可选的params对象：
+		ajax.get(url, {page: 1}, function (data) {
+			// 回调函数，data为请求返回的内容
+		});
+
+	相当于发出一个url + '?page=1'这样的get请求。
+
+	点击页面中的START按钮，即发出Ajax请求，请求一个以json保存的用户列表，将请求获取的用户列表信息插入到页面中。
+
+	注意事项：
+
+	1.	由于要使用AJAX，所以将下载的代码解压缩到服务器目录中，用http://localhost/你的路径/ajax来访问目标页面。
+	2.	用JSON.parse(str)方法处理获取到的json文本。
+	3.	页面中的其他代码已经完成，阅读代码了解功能后，实现ajax.js中的todo部分。
+
+	文件包：[ajax.zip](/demos/ex/ajax.zip)
+
 
 ---
 
