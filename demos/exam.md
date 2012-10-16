@@ -322,6 +322,8 @@ layout: demo
 
 	文件包：[ajax.zip](/demos/ex/ajax.zip)
 
+	参考答案：[ajax demo](/demos/ex/ajax/index.html)
+
 
 ---
 

@@ -23,7 +23,6 @@
             }
 
             var xhr = ajax.createXHR();
-            alert(1);
             xhr.open('GET', url);
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4) {
