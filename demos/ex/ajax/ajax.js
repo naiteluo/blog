@@ -1,34 +1,19 @@
 (function (global) {
 
-    /**
-     *  Ajax操作对象
-     */
     var ajax = {
-
-        /**
-         *  GET
-         *
-         *  使用方法：
-         *
-         *  ajax.get(url, function (data) {
-         *      // 回调函数，data为请求返回的内容
-         *  });
-         *
-         *  第二个参数为可选的params：
-         *
-         *  ajax.get(url, {page: 1}, function (data) {
-         *      // 回调函数，data为请求返回的内容
-         *  });
-         *
-         *  相当于发出一个url + '?page=1'这样的get请求
-         *
-         **/
         get: function () {
             var url,
                 params, 
                 callback;
 
-            // todo: 判断参数个数
+            url = arguments[0];
+
+            if (arguments.length === 2) {
+                callback = arguments[1];
+            } else if (arguments.lenght === 3) {
+                params = arguments[1];
+                callback = arguments[2];
+            }
 
             if (params) {
                 url += '?';
@@ -37,35 +22,47 @@
                 }
             }
 
-
             var xhr = ajax.createXHR();
-            
-            // todo: 发送、处理请求            
+            alert(1);
+            xhr.open('GET', url);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
+                        try {
+                            var data = JSON.parse(xhr.responseText);
+                            callback(data);
+                        } catch (e) {
+                            try {
+                                var data = eval('(' + xhr.responseText + ')');
+                                callback(data);
+                            } catch (e) {
+                                ajax.debug(e);
+                            }
+                        }
+                    } else {
+                        ajax.debug('Request was unsuccessful: ' + xhr.status);
+                    }
+                }
+            };
+            xhr.send(null);
         },
 
-        /**
-         *  POST
-         *
-         *  暂不要求
-         */
-        post: function () {
-
-        },
-
-        /**
-         *  其他方法......
-         */
-
-        /**
-         *  返回一个XHR对象；多浏览器兼容
-         */
         createXHR: function () {
-            // todo: 创建XHR对象，注意浏览器兼容
+            if (window.XMLHttpRequest === undefined) {
+                try {
+                    return new ActiveXObject('MSXML2.XMLHTTP.6.0');
+                } catch(e) {
+                    try {
+                        return new ActiveXObject('MSXML2.XMLHTTP.3.0');
+                    } catch(e) {
+                        throw new Error('XMLHttpRequest is not supported');
+                    }
+                }
+            } else {
+                return new XMLHttpRequest();
+            }
         },
 
-        /**
-         *  debug信息输出
-         */
         debug: function (message) {
             message = 'AJAX DEBUG: ' + message;
             if (console && console.log) {
@@ -76,11 +73,13 @@
         }
     };
 
+
     if (global.ajax) {
+        alert(1);
         throw new Error('ajax object already existed.');
     }
 
-    // 在全局环境中引入ajax对象
+    // expose the ajax object to global environment
     global.ajax = ajax;
 
 }(window));
