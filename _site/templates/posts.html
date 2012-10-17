@@ -1,0 +1,150 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>I Wanna Code With You [Posts page]</title>
+    <!-- put *.less file before less.*.js -->
+    <link rel="stylesheet" type="text/less" href="stylesheets/style.less">
+    <script src="javascripts/less-1.3.0.min.js"></script>
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" type="text/css" href="stylesheets/ie.fix.css">
+    <script type="text/javascript" src="javascripts/ie.fix.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <div class="inner">
+                <ul class="nav">
+                    <li><a href="#">MMNN</a></li>
+                    <li>
+                        <a href="#">EXAM</a>
+                        <span class="tip">
+                            new!!
+                        </span>
+                    </li>
+                    <li><a href="#">DEMOS</a></li>
+                    <li><a href="#">ABOUT ME</a></li>
+                </ul>
+                <div class="view">
+                    <a href="#">
+                        <small>NAITELUO</small>
+                        In Github.
+                    </a>
+                </div>
+            </div> 
+        </header>
+        <section class="container">
+            <!-- .col-left -->
+            <div class="col-left">
+                <div class="posts">
+                    <div class="posts-item box">
+                        <div class="box-header">
+                            <h2>
+                                <a href="#">
+                                    {{ post.title }}
+                                </a>
+                            </h2>
+                        </div>
+                        <div class="box-body">
+                            <p>
+                                {% if post.preview %}
+                                    {{ post.preview }}
+                                {% else %}
+                                    No preview.
+                                {% endif %}
+                            </p>
+                        </div>
+                        <div class="box-footer">
+                            <em class="posts-item-footer-date">
+                                Posted on {{ post.date | date_to_long_string }}.
+                            </em>
+                        </div>
+                    </div> 
+                    <div class="posts-item box">
+                        <div class="box-header">
+                            <h2>
+                                <a href="#">
+                                    This is Title One
+                                </a>
+                            </h2>
+                        </div>
+                        <div class="box-body">
+                            <p>
+                                Put you post preview content here. bdk ksfd lsdf kjsdfs. sdf lkjls kdincd iekdc dsali kjasi lenc.
+                            </p>
+                        </div>
+                        <div class="box-footer">
+                            <em class="posts-item-footer-date">
+                                Posted on 22 September 2012.
+                            </em>
+                        </div>
+                    </div>
+                    <div class="posts-item box">
+                        <div class="box-header">
+                            <h2>
+                                <a href="#">
+                                    标题，中文示例
+                                </a>
+                            </h2>
+                        </div>
+                        <div class="box-body">
+                            <p>
+                                将文章简介内容放置这里。阿呆上风口浪尖里卡多幅不长来啃哦i继续离开，么哦擦。
+                            </p>
+                        </div>
+                        <div class="box-footer">
+                            <em class="posts-item-footer-date">
+                                Posted on 22 September 2012.
+                            </em>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end of .col-left -->
+            <!-- .col-right -->
+            <div class="col-right">
+                <div class="side-bars">
+                    <div class="side-bar box">
+                        <div class="box-header">
+                            <h2>About</h2>
+                        </div>
+                        <div class="box-body">
+                            Templates by naiteluo.
+                        </div>
+                        <div class="box-fooer">
+                            
+                        </div>
+                    </div>
+                    <div class="side-bar box">
+                        <div class="box-header">
+                            <h2>Contact</h2>
+                        </div>
+                        <div class="box-body">
+                            <dl>
+                                <dt>email</dt>
+                                <dd>naiteluo@gmail.com</dd>
+                                <dt>twitter</dt>
+                                <dd>@naiteluo</dd>
+                            </dl>
+                        </div>
+                        <div class="box-fooer">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end of .col-right -->
+        </section>
+        <footer>
+            <p>
+                <small>
+                    Hosted on GitHub Pages &mdash;
+                    Theme by 
+                    <a href="https://github.com/naiteluo">naiteluo</a> 
+                </small>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

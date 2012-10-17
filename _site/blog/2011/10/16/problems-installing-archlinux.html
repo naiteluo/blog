@@ -1,46 +1,45 @@
 <!DOCTYPE HTML>
 <html lang="en-US">
 <head>
-	<meta charset="UTF-8">
-	<title>
-		
-			Archlinux 安装配置问题
-		
-	</title>
-	<!-- put *.less file before less.*.js -->
-	<link rel="stylesheet" type="text/less" href="/stylesheets/style.less">
-	<script type="text/javascript" src="/javascripts/less-1.3.0.min.js"></script>
-	<!-- pygment code style -->
-	<link rel="stylesheet" href="/stylesheets/pygment_trac.css">
+    <meta charset="UTF-8">
+    <title>
+    	
+	    	Archlinux 安装配置问题
+	    
+    </title>
+    <!-- put *.less file before less.*.js -->
+    <link rel="stylesheet" type="text/less" href="/stylesheets/style.less">
+    <script src="/javascripts/less-1.3.0.min.js"></script>
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/ie.fix.css">
+    <script type="text/javascript" src="/javascripts/ie.fix.js"></script>
+    <![endif]-->
 </head>
 <body>
-	<div class="wrapper">
-		<header>
-			<div class="inner">
-				<ul class="nav">
-					<li class="logo">
-						<a href="/">MMNN</a>
-					</li>
-					<li class="aboutme">
-						<a href="/resume">ABOUT ME</a>
-					</li>
-					<li class="exam">
-						<a href="/demos/exam.html">EXAM</a>
-						<span class="tip">
-							new!!
-						</span>
-					</li>
-					<li class="exam">
-						<a href="/demos">DEMOS</a>
-					</li>
-				</ul>
-				<div class="view">
-					<a href="https://github.com/naiteluo"><small>NAITELUO</small> IN Github.</a>
-				</div>
-			</div>
-		</header>
-		<section class="container">
-			<p>已经重装了6、7 archlinux了，每次都因为一些琐碎的问题无法解决而选择重装，这次静下心来读wiki，看帖子，总算把之前积累的问题大概都解决了。</p>
+    <div id="wrapper">
+        <header>
+            <div class="inner">
+                <ul class="nav">
+                    <li><a href="/">MMNN</a></li>
+                    <li>
+                        <a href="/demos/exam.html">EXAM</a>
+                        <span class="tip">
+                            new!!
+                        </span>
+                    </li>
+                    <li><a href="/demos">DEMOS</a></li>
+                    <li><a href="/resume">ABOUT ME</a></li>
+                </ul>
+                <div class="view">
+                    <a href="https://github.com/naiteluo">
+                        <small>NAITELUO</small>
+                        In Github.
+                    </a>
+                </div>
+            </div> 
+        </header>
+        <section class="container">
+        	<p>已经重装了6、7 archlinux了，每次都因为一些琐碎的问题无法解决而选择重装，这次静下心来读wiki，看帖子，总算把之前积累的问题大概都解决了。</p>
 
 <p>用的默认的network进行网络管理，开机启动特别慢，而且gnome启动后的networkmanager因为冲突而disabled。networkmanager是一个DAEMON,可以手动用/etc/rc.d/networkmanager start来启动它，更好地是将其加入/etc/rc.conf的DAEMON列表中，并将原来的network用’!'感叹号取消掉，即可。安装network-manager-applet后就能在gnome里显示图标方便使用。</p>
 
@@ -86,10 +85,16 @@ export QT_IM_MODULE=ibus
 ibus-daemon -d -x
 </code></pre>
 
-		</section>
-		<footer>
-			<p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/naiteluo">naiteluo</a></small></p>
-		</footer>
-	</div>
+        </section>
+        <footer>
+            <p>
+                <small>
+                    Hosted on GitHub Pages &mdash;
+                    Theme by 
+                    <a href="https://github.com/naiteluo">naiteluo</a> 
+                </small>
+            </p>
+        </footer>
+    </div>
 </body>
 </html>

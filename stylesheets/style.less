@@ -1,6 +1,6 @@
 @import 'reset.less';
 @import 'base.less';
-@import 'github.less';
+@import 'markdown.less';
 
 // basic style of page
 
@@ -29,7 +29,7 @@ a {
 
 // page module or widgets
 
-.tip () {
+.tip {
     font-size: 12px;
     font-weight: normal;
     color: #de0000;
@@ -71,6 +71,8 @@ a {
     }
     .box-body {
         padding: 20px;
+        overflow: hidden;
+        .markdown-render-style;
     }
     .box-footer {
         padding: 5px 20px;
@@ -96,6 +98,8 @@ a {
     .clearfix;
 }
 
+// page basic structure
+
 header {
     position: fixed;
     top: 0;
@@ -110,9 +114,6 @@ header {
         margin: 0 10%;
         ul.nav {
             .nav;
-            .exam span{
-                .tip;
-            }
         }
         .view {
             .right;
@@ -125,6 +126,8 @@ header {
 section.container {
     padding-top: 40px;
     margin: 0 10%;
+
+    // structure
     .col-left {
         width: 70%;
         .left;
@@ -133,17 +136,8 @@ section.container {
         width: 30%;
         .left;
     }
-    // posts list
-    .posts {
+    .col-center {
         padding: 30px 20px 20px;
-        .posts-item {
-            .box;
-            .posts-item-footer {
-                .posts-item-footer-date {
-                    color: #8f8f8f;
-                }
-            }
-        }
     }
     .side-bars {
         padding: 30px 20px 20px;
@@ -151,20 +145,34 @@ section.container {
             .box;
         }
     }
-    // single post
-    .post-wrapper {
+    .common-wrapper {
+        .markdown-render-style;
+    }
+
+    // posts list
+    .posts {
         padding: 30px 20px 20px;
-        .post {
+        .posts-item {
             .box;
-            .box-body {
-                .markdown-render-style;
-                overflow: auto;
-            }
             .box-footer {
-                padding: 20px;
+                .posts-item-footer-date {
+                    color: #8f8f8f;
+                }
             }
         }
     }
+
+    // single post
+    .post-wrapper {
+        padding: 30px 20px 20px;
+    }
+    .post {
+        .box;
+        .box-footer {
+            padding: 20px;
+        }
+    }
+
     .clearfix;
 }
 

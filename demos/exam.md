@@ -1,9 +1,7 @@
 ---
 layout: demo
-
+title: BaoBao Duai's EXAM
 ---
-
-# BaoBao Duai's EXAM
 
 [返回首页](/) ｜｜
 [第一题](#exam1) ｜ 
@@ -21,8 +19,6 @@ layout: demo
 [第十三题](#exam13)｜
 [第十四题](#exam14)｜｜新增：
 [第十五题](#exam15)
-
-
 
 ---
 

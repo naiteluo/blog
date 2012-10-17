@@ -1,0 +1,29 @@
+/**
+ *  ie fix
+ */
+
+/* ie do not know these elements, set it as block */
+header, section, footer, nav {
+    display: block;
+}
+
+/* ie6 position fixed bug */
+header {
+    position: absolute;
+    bottom: auto;
+    top: expression(eval(document.documentElement.scrollTop));
+    right: auto;
+    left: expression(eval(document.documentElement.scrollLeft));
+}
+
+/* ie6 do not support rgba color */
+.box-header {
+    border-bottom: 1px solid #eeeeee !important;
+}
+
+/* ie6 inline code block overflow */
+.post .box-body p {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 20px;
+}

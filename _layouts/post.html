@@ -9,8 +9,12 @@ layout: default
         <div class="box-body">
             {{ content }}
             <hr>
-            <p>{% include announcement.md %}</p>
-            <em>Posted on {{ page.date | date_to_long_string }}.</em> 
+            <p>{% include announcement.html %}</p>
+            <em>
+                {% if post.date %}
+                    Posted on {{ post.date | date_to_long_string }}.
+                {% endif %}
+            </em> 
         </div>
         <div class="box-footer">
             <div id="disqus_thread"></div>

@@ -1,46 +1,45 @@
 <!DOCTYPE HTML>
 <html lang="en-US">
 <head>
-	<meta charset="UTF-8">
-	<title>
-		
-			archlinux简单网络配置与命令
-		
-	</title>
-	<!-- put *.less file before less.*.js -->
-	<link rel="stylesheet" type="text/less" href="/stylesheets/style.less">
-	<script type="text/javascript" src="/javascripts/less-1.3.0.min.js"></script>
-	<!-- pygment code style -->
-	<link rel="stylesheet" href="/stylesheets/pygment_trac.css">
+    <meta charset="UTF-8">
+    <title>
+    	
+	    	archlinux简单网络配置与命令
+	    
+    </title>
+    <!-- put *.less file before less.*.js -->
+    <link rel="stylesheet" type="text/less" href="/stylesheets/style.less">
+    <script src="/javascripts/less-1.3.0.min.js"></script>
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/ie.fix.css">
+    <script type="text/javascript" src="/javascripts/ie.fix.js"></script>
+    <![endif]-->
 </head>
 <body>
-	<div class="wrapper">
-		<header>
-			<div class="inner">
-				<ul class="nav">
-					<li class="logo">
-						<a href="/">MMNN</a>
-					</li>
-					<li class="aboutme">
-						<a href="/resume">ABOUT ME</a>
-					</li>
-					<li class="exam">
-						<a href="/demos/exam.html">EXAM</a>
-						<span class="tip">
-							new!!
-						</span>
-					</li>
-					<li class="exam">
-						<a href="/demos">DEMOS</a>
-					</li>
-				</ul>
-				<div class="view">
-					<a href="https://github.com/naiteluo"><small>NAITELUO</small> IN Github.</a>
-				</div>
-			</div>
-		</header>
-		<section class="container">
-			<p>这里只是给出简单的网络配置和常用命令，备忘。详细的可查阅官方wiki上的：
+    <div id="wrapper">
+        <header>
+            <div class="inner">
+                <ul class="nav">
+                    <li><a href="/">MMNN</a></li>
+                    <li>
+                        <a href="/demos/exam.html">EXAM</a>
+                        <span class="tip">
+                            new!!
+                        </span>
+                    </li>
+                    <li><a href="/demos">DEMOS</a></li>
+                    <li><a href="/resume">ABOUT ME</a></li>
+                </ul>
+                <div class="view">
+                    <a href="https://github.com/naiteluo">
+                        <small>NAITELUO</small>
+                        In Github.
+                    </a>
+                </div>
+            </div> 
+        </header>
+        <section class="container">
+        	<p>这里只是给出简单的网络配置和常用命令，备忘。详细的可查阅官方wiki上的：
 Configuring Network</p>
 
 <p>首先是/etc/rc.conf的配置，动态获取ip的只需要选择一个接口：</p>
@@ -139,10 +138,16 @@ gateway=
 
 <p>当然，最简单的还是用网络管理器如：Wicd,NetworkManager.不过我在连接校园网的wifi时用networkmanager未果，故推荐wicd。</p>
 
-		</section>
-		<footer>
-			<p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/naiteluo">naiteluo</a></small></p>
-		</footer>
-	</div>
+        </section>
+        <footer>
+            <p>
+                <small>
+                    Hosted on GitHub Pages &mdash;
+                    Theme by 
+                    <a href="https://github.com/naiteluo">naiteluo</a> 
+                </small>
+            </p>
+        </footer>
+    </div>
 </body>
 </html>
