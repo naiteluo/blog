@@ -67,4 +67,47 @@ preview: Notes about Object in JavaScript, from <JavaScript the definitive guide
     var title = book[attrName];
 
 *   对象属性的查询会一只顺着原型链进行，一直到属性被找到或者到达为`null`的原型。
-*   
+*   查询一个不存在的属性不会引起错误，返回值是`undefined`
+*   但是查询或设置一个不存在的对象（`null`,`undefined`）的属性，则引起错误。可以用`&&`来避免引起类型错误，例如：
+
+        var len = book && book.subtitle && book.subtitle.length;
+
+*   无法对一些被保护的属性赋值，例如：`Object.prototype ＝ 0`，赋值不会成功，但是也不会提示错误。
+*   在ECMAScript 5中上述类似的设置属性失败也会提示`TypeError`。
+
+
+## 删除属性
+
+*   `delete`操作符删除的是属性本身，而不是属性值
+*   `delete`操作符删除的是对象所有的属性，而不会删除继承而来的属性
+*   `delete`操作会有返回值，当成功删除，或者无意义的删除，都会返回`true`；当删除`configurable`值为`false`的属性，则返回`false`
+
+        var o = { x: 1};
+        delete o.x;     // 返回true
+        delete o.x;     // do nothing, but return true
+        delete o.toString;  // do nothing, but return true
+        delete 1;       // Nonsense, return true
+        delete Object.prototype;    // 无法删除，返回false
+
+*   书中说用`var`和`function`声明的变量无法用`delete`从`this`上删除，但实际验证是可以的，而且返回`true`
+
+## 监测属性
+
+*   `in`操作符，左边为属性名，右边为对象。当对象拥有该属性则返回`true`,继承原型而来的也返回`true`
+*   `hasOwnProperty()`，继承原型而来的返回`false`
+*   `propertyIsEnumerable()`，只有可枚举的属性才返回`true`,继承原型而来的返回`false`
+*   `o.x !== undefined`，这种表达式也能用于代替`in`，但是区别是当属性值等于`undefined`时只有`in`能区分。
+
+## 枚举属性
+
+*   `for/in`循环
+*   `Object.keys(o)`以数组形式返回对象o的所有可枚举属性名
+*   `Object.getOwnPropertyNames(o)`以数组形式返回对象o的所有属性名，包括不可枚举的属性
+
+
+
+
+
+
+
+
