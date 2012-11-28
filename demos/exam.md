@@ -320,7 +320,7 @@ title: BaoBao Duai's EXAM
 
 	参考答案：[ajax demo](/demos/ex/ajax/index.html)
 
-
+16.	<span id="exam16"></span>
 ---
 
 > ** 加油！加油！！加油！！！ **  	[返回顶部](#)
